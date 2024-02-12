@@ -1,0 +1,11 @@
+.homeInfoContainer {
+  background-color: #374151;
+  height: 400px;
+  color: white;
+}
+
+/* Info box */
+.infoBoxContainer {
+  width: 33%;
+  height: 300px;
+}
