@@ -1,9 +1,11 @@
 import UserNavbar from "../../../components/common/userNavbar/userNavbar";
+import UserHomeHeader from "../../../components/userHome/header/userHomeHeader";
 const Home = () => {
   return (
     <>
       <UserNavbar />
-      <h1> Home </h1>
+      <UserHomeHeader />
+      
     </>
   );
 };

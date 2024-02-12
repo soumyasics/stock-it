@@ -1,0 +1,13 @@
+.headerContainer {
+  background-color: #1f2937;
+  color: white;
+  height: 500px;
+}
+
+.headerContainer h1 {
+  letter-spacing: 2px;
+}
+
+.headerContent {
+  color: rgb(156, 163, 175, 1);
+}
