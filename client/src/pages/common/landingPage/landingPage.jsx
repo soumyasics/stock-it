@@ -1,7 +1,7 @@
 import UserNavbar from "../../../components/common/userNavbar/userNavbar";
 import UserHomeHeader from "../../../components/userHome/header/userHomeHeader";
 import HomeInfo from "../../../components/userHome/info/homeInfo";
-const Home = () => {
+export const LandingPage = () => {
   return (
     <>
       <UserNavbar />
@@ -10,5 +10,3 @@ const Home = () => {
     </>
   );
 };
-
-export default Home;
