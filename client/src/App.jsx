@@ -1,16 +1,19 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { LandingPage } from "./pages/common/landingPage/landingPage";
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+
+import  { LandingPage } from "./pages/common/landingPage/landingPage";
 import { UserHome } from "./pages/user/home/userHome";
 import { UserSignup } from "./pages/user/signup/userSignup";
 import { UserLogin } from "./pages/user/login/userLogin";
 import { UserProfile } from "./pages/user/profile/userProfile";
 import "./App.css";
-import { CompanyHome } from "./pages/company/home/companyHome";
-import { CompanyLogin } from "./pages/company/login/companyLogin";
-import { CompanySignup } from "./pages/company/signup/companySignup";
-import { CompanyProfile } from "./pages/company/profile/companyProfile";
-import { AdminDashboard } from "./pages/admin/adminDashboard/adminDashboard";
-import { AdminComapnyRequest } from "./pages/admin/adminCompanyRequest/adminCompanyRequest";
+
+import Footer from "./components/common/userNavbar/Footer";
+import CompanyRegistration from "./components/userHome/CompanyRegistration";
+import AdminLogin from "./components/userHome/AdminLogin";
+
 
 function App() {
   return (
@@ -23,6 +26,9 @@ function App() {
           <Route path="/user/signup" element={<UserSignup />} />
           <Route path="/user/login" element={<UserLogin />} />
           <Route path="/user/profile" element={<UserProfile />} />
+          <Route path="/footer" element={<Footer/>}/>
+          <Route path="/CompanyRegistration" element={<CompanyRegistration/>}/>
+          <Route path="/AdminLogin" element={<AdminLogin/>}/>
 
           {/* company  */}
           <Route path="/company/home" element={<CompanyHome />} />
