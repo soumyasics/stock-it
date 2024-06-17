@@ -27,8 +27,6 @@ function App() {
           <Route path="/footer" element={<Footer />} />
           <Route path="/CompanyRegistration" element={<CompanyRegistration />} />
           <Route path="/AdminLogin" element={<AdminLogin />} />
-
-
           <Route path="/commonNavbar" element={<CommonNavbar />} />
           <Route path="/landingheader" element={[<CommonNavbar />, <LandingPageHeader />]} />
 

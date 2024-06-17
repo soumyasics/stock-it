@@ -5,7 +5,6 @@ import img5 from '../../assets/images/image 8.png'
 function CompanyRegistration() {
   return (
 
-
     <div className='CompanyRegistation-background'>
       <div className='CompanyRegistartion-inner-box '>
         <h2 className='CompanyRegistation-heading'>Company Registration</h2>

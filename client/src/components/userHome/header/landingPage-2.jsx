@@ -16,6 +16,7 @@ function LandingPageHeader() {
         <img src={imgGif} alt="" />
 
       </div>
+      
       <div className='landingheader-h1'>
         <div className='landingheader-left'>
           <h1>Welcome to stock it</h1>

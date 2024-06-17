@@ -11,6 +11,7 @@ function AdminLogin() {
     setState({ ...state, [input.target.name]: input.target.value })
 
   }
+  
   function btnsubmit(input) {
     input.preventDefault();
     console.log(state);

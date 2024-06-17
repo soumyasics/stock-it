@@ -8,7 +8,7 @@ export const LandingPage = () => {
       <UserNavbar />
       <UserHomeHeader />
       <HomeInfo />
-      
+    
     </>
   );
 };
