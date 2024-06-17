@@ -180,19 +180,19 @@ function LandingPageHeader() {
           </div>
         </div>
         <div className='landingheader-h2-footer'>
-        <div className='landingheader-h2-footer-img'>
-        <img src={img4} alt="" />    
-        </div>
-        <div className='h2-parag'>
-        <h4>Building Awesome Investing & Trading Platforms</h4>
-        <br />
-        <p>Building awesome investing and trading platforms involves <br />
-integrating a variety of features and functionalities to ensure <br />
-a seamless, user-friendly, and robust experience for users. <br />
-Here are some key elements and steps to consider:</p>
-        </div>
+          <div className='landingheader-h2-footer-img'>
+            <img src={img4} alt="" />
+          </div>
+          <div className='h2-parag'>
+            <h4>Building Awesome Investing & Trading Platforms</h4>
+            <br />
+            <p>Building awesome investing and trading platforms involves <br />
+              integrating a variety of features and functionalities to ensure <br />
+              a seamless, user-friendly, and robust experience for users. <br />
+              Here are some key elements and steps to consider:</p>
+          </div>
 
-      </div>
+        </div>
       </div>
     </div>
   )
