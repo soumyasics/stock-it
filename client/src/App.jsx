@@ -13,6 +13,7 @@ import LandingPageHeader from "./components/userHome/header/landingPage-2";
 import Footer from "./components/common/userNavbar/Footer";
 import CompanyRegistration from "./components/userHome/CompanyRegistration";
 import AdminLogin from "./components/userHome/AdminLogin";
+import AdminSidebar from "./components/common/adminSidebar";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route path="/AdminLogin" element={<AdminLogin />} />
           <Route path="/commonNavbar" element={<CommonNavbar />} />
           <Route path="/landingheader" element={[<CommonNavbar />, <LandingPageHeader />]} />
+          <Route path="/adminSidebar" element={[<CommonNavbar/>,<AdminSidebar/>]}/>
 
 
 

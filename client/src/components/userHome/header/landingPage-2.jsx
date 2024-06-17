@@ -8,6 +8,7 @@ import imgStep1 from '../../../assets/images/Group 386.png'
 import imgStep2 from '../../../assets/images/Group 391.png'
 import imgStep3 from '../../../assets/images/Group 393.png'
 import img4 from '../../../assets/images/image 13.png'
+import img5 from '../../../assets/images/image 12.png'
 
 function LandingPageHeader() {
   return (
@@ -16,7 +17,7 @@ function LandingPageHeader() {
         <img src={imgGif} alt="" />
 
       </div>
-      
+
       <div className='landingheader-h1'>
         <div className='landingheader-left'>
           <h1>Welcome to stock it</h1>
@@ -195,8 +196,17 @@ function LandingPageHeader() {
         </div>
       </div>
       <div className='landingheader-h3'>
-
-</div>
+        <div className='landingheader-h3-content'>
+          <h2>Always Keeping You First</h2>
+          <p>Our users-traders & investor-will always be our priority,even when we're building new features or delivering
+            <br /> customer support everyday.
+          </p>
+        </div>
+        <div className='landingheader-h3-images'>
+        <img src={img5} alt="" />
+        </div>
+      
+      </div>
     </div>
   )
 }
