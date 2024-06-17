@@ -1,10 +1,10 @@
 footer
 {
     background-color: #374151;
-    height:242;
+    height:242px;
     width: 100%;
-    position: absolute;
-    bottom:0;
+    position: relative;
+    bottom: 0;
 }
 .footer-left-box
 {

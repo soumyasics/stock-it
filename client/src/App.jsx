@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
-import  { LandingPage } from "./pages/common/landingPage/landingPage";
+import { LandingPage } from "./pages/common/landingPage/landingPage";
 
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -22,17 +22,17 @@ function App() {
     <>
       <BrowserRouter basename="/stock_it">
         <Routes>
-     
-
-          <Route path="/footer" element={<Footer/>}/>
-          <Route path="/CompanyRegistration" element={<CompanyRegistration/>}/>
-          <Route path="/AdminLogin" element={<AdminLogin/>}/>
 
 
-        <Route path="/commonNavbar" element={<CommonNavbar/>}/> 
-        <Route path="/landingheader" element={[<CommonNavbar/>,<LandingPageHeader/>]}/>
+          <Route path="/footer" element={<Footer />} />
+          <Route path="/CompanyRegistration" element={<CompanyRegistration />} />
+          <Route path="/AdminLogin" element={<AdminLogin />} />
 
-      
+
+          <Route path="/commonNavbar" element={<CommonNavbar />} />
+          <Route path="/landingheader" element={[<CommonNavbar />, <LandingPageHeader />]} />
+
+
 
           <Route path="/*" element={"<h1> 404 </h1>"} />
         </Routes>
