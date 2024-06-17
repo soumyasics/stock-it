@@ -192,9 +192,11 @@ function LandingPageHeader() {
               a seamless, user-friendly, and robust experience for users. <br />
               Here are some key elements and steps to consider:</p>
           </div>
-
         </div>
       </div>
+      <div className='landingheader-h3'>
+
+</div>
     </div>
   )
 }

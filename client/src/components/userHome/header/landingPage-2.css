@@ -314,4 +314,13 @@ td {
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    letter-spacing: normal;
+}
+
+/* landingheader-h3 */
+
+.landingheader-h3{
+    width: 100%;
+    height: 743px;
+    background: #1F2937;
 }

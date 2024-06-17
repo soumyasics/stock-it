@@ -10,8 +10,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import CommonNavbar from "./components/commonNavbar";
 import LandingPageHeader from "./components/userHome/header/landingPage-2";
-
-
 import Footer from "./components/common/userNavbar/Footer";
 import CompanyRegistration from "./components/userHome/CompanyRegistration";
 import AdminLogin from "./components/userHome/AdminLogin";

@@ -8,7 +8,7 @@ import img4 from "../../../assets/images/facebook.png"
 function Footer() {
   return (
     <div>
-      <footer>
+      <footer className='footer-h1'>
         <div class="row ">
           <div class="col ">
             <div className='left-footer-inner-box my-4'>
