@@ -15,6 +15,7 @@ import LandingPageHeader from "./components/userHome/header/landingPage-2";
 import Footer from "./components/common/userNavbar/Footer";
 import CompanyRegistration from "./components/userHome/CompanyRegistration";
 import AdminLogin from "./components/userHome/AdminLogin";
+import About from "./components/userHome/About";
 
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
 
           <Route path="/commonNavbar" element={<CommonNavbar />} />
           <Route path="/landingheader" element={[<CommonNavbar />, <LandingPageHeader />]} />
-
+          <Route path="/about" element={[<CommonNavbar />,<About/>]}/>
 
 
           <Route path="/*" element={"<h1> 404 </h1>"} />
