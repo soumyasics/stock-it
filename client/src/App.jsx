@@ -23,7 +23,7 @@ function App() {
       <BrowserRouter basename="/stock_it">
         <Routes>
 
-
+    
           <Route path="/footer" element={<Footer />} />
           <Route path="/CompanyRegistration" element={<CompanyRegistration />} />
           <Route path="/AdminLogin" element={<AdminLogin />} />
