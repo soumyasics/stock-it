@@ -9,7 +9,6 @@ function Footer() {
   return (
     <div>
       <footer>
-
         <div class="row ">
           <div class="col ">
             <div className='left-footer-inner-box my-4'>
