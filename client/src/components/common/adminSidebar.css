@@ -2,8 +2,27 @@
 
 .adminSidebar{
     width: 100%;
-    height: 1003px;
     background-color:#1F2937;
+}
+.navlogo img{
+    margin-top: -12px;
+    margin-left: 10px;
+}
+.adminlogo img{
+    width: 15.818px;
+height: 15.818px;
+margin-top: 10px;
+}
+.adminlogo button{
+    color: #B6B5B5;
+font-size: 15.818px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin-top: 3px;
+}
+.adminlogo button:hover{
+    color: #fff ;
 }
 .adminSidebar-gif{
     width: 100%;
@@ -13,7 +32,7 @@
     width: 100%;
     height: 37px;
     position: absolute;
-    top: 64px;
+    top: 55px;
 }
 .adminSidebar-main{
     width:307px;
@@ -28,18 +47,16 @@ padding: 30px 20px;
 .adminSidebar-content{
     width: 307px;
     height: 800px;
-    /* text-align: center; */
     color: #fff;
 
 }
-.adminSidebar-grid{
+.adminSidebar-user-grid{
     width: 307px;
     height: 40px;
-    background-color: #fff;
 }
 .adminSidebar-user{
     display: flex;
-    padding-bottom: 20px;
+    margin-bottom: 10px;
 }
 .adminSidebar-user img{
     width: 18px;
@@ -54,31 +71,174 @@ padding: 30px 20px;
     font-weight: 400;
     line-height: normal;
     position: relative;
-    left: 70px;
+    left: 73px;
     top: 3px;
 }
-.adminSidebar-compaines{
-    display: flex;
+.adminSidebar-companies{
     padding-bottom: 20px;
 }
-.adminSidebar-compaines img{
+.adminSidebar-companies img{
     width: 18px;
     height: 18px;
     position: relative;
     left: 57px;
 }
-.adminSidebar-compaines h4{
+.adminSidebar-companies button{
+    border: none;
+    background-color: #374151;
+    color: #fff;
+    margin-left: 65px;
+    margin-top: 3px;
+    position: absolute;
+}
+.sidebar-drop-1{
+    margin-top: 10px;
+    background-color: #1F2937;
+    width: 310px;
+    height: 80%;
+}
+.sidebar-drop-1 ul{
+    list-style: none;
+    font-size: small;
+    margin-top: 10px;
+}
+
+.sidebar-drop-1 li{
+    padding: 5px;
+    margin-left: 30px;
+}
+.adminSidebar-compainyipos{
+    margin-top: 50px;
+    width:307px;
+    height: 50px;
+    background-color: #fff;
+}
+.adminSidebar-compainyipos{
+    padding-bottom: 20px;
+}
+.sidebar-ipos-drop img{
+    width: 18px;
+    height: 18px;
+    margin-left: 57px;
+
+}
+.sidebar-ipos-drop button{
+    border: none;
+    background-color: #374151;
+    color: #fff;
+    margin-top: 3px;
+    position: absolute;
+    margin-left: 9px;
+}
+.sidebar-drop-2{
+    margin-top: 10px;
+    background-color: #1F2937;
+    width: 310px;
+    height: 80%;
+}
+.sidebar-drop-2 ul{
+    list-style: none;
+    font-size: small;
+    margin-top: 10px;
+}
+.sidebar-drop-2 li{
+    padding: 5px;
+    margin-left: 30px;
+}
+.adminSidebar-education button{
+    border: none;
+    background-color: #374151;
+    color: #fff;
+    margin-left: 10px;
+    position: absolute;
+    margin-top: 20px;
+}
+.sidebar-education-drop img{
+    width: 18px;
+    height: 18px;
+    margin-top: 22px;
+    margin-left: 57px;
+}
+.sidebar-drop-3{
+    margin-top: 10px;
+    background-color: #1F2937;
+    width: 310px;
+    height: 80%;
+}
+.sidebar-drop-3 ul{
+    list-style: none;
+    font-size: small;
+    margin-top: 10px;
+}
+.sidebar-drop-3 li{
+    padding: 5px;
+    margin-left: 30px;
+}       
+.adminSidebar-stock-grid img{
+    width: 18px;
+    height: 18px;
+    margin-top: 22px;
+    margin-left: 57px;
+}
+.adminSidebar-stock{
+    display: flex;
+}
+.adminSidebar-stock h5{
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    position: relative;
-    left: 70px;
-    top: 3px;
+    margin-top: 25px;
+    padding-left: 17px;
 }
-.content-2{
-    margin-top: 2px;
-    margin-left: 40px;
-    background-color:#374151 !important;  
-    border: none;
+.adminSidebar-takeaction{
+    display: flex;
+}
+.adminSidebar-takeaction-grid img{
+    width: 20px;
+    height: 20px;
+    margin-top: 10px;
+    margin-left: 57px;
+}
+.adminSidebar-takeaction h5{
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 14px;
+    padding-left: 15px;
+}
+.adminSidebar-resetpassword{
+    display: flex;
+}
+.adminSidebar-resetpassword-grid img{
+    width: 18px;
+    height: 18px;
+    margin-top: 10px;
+    margin-left: 57px;
+}
+.adminSidebar-resetpassword h5{
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 14px;
+    padding-left: 15px;
+}
+.adminSidebar-logout{
+    display: flex;
+}
+.adminSidebar-logout-grid img{
+    width: 18px;
+    height: 16px;
+    margin-top: 10px;
+    margin-left: 59px;
+}
+.adminSidebar-logout h5{
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 12px;
+    padding-left: 15px;
 }

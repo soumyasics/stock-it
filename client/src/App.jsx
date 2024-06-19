@@ -28,7 +28,7 @@ function App() {
           <Route path="/AdminLogin" element={<AdminLogin />} />
           <Route path="/commonNavbar" element={<CommonNavbar />} />
           <Route path="/landingheader" element={[<CommonNavbar />, <LandingPageHeader />]} />
-          <Route path="/adminSidebar" element={[<CommonNavbar/>,<AdminSidebar/>]}/>
+          <Route path="/adminSidebar" element={<AdminSidebar/>}/>
 
 
 

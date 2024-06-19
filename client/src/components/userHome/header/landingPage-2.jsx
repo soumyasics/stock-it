@@ -8,7 +8,8 @@ import imgStep1 from '../../../assets/images/Group 386.png'
 import imgStep2 from '../../../assets/images/Group 391.png'
 import imgStep3 from '../../../assets/images/Group 393.png'
 import img4 from '../../../assets/images/image 13.png'
-import img5 from '../../../assets/images/image 12.png'
+import img5 from '../../../assets/images/phonegroup.png'
+import img6 from '../../../assets/images/commentsgif.gif'
 
 function LandingPageHeader() {
   return (
@@ -185,7 +186,7 @@ function LandingPageHeader() {
           <div className='landingheader-h2-footer-img'>
             <img src={img4} alt="" />
           </div>
-          <div className='h2-parag'>
+          <div className='landingheader-h2-parag'>
             <h4>Building Awesome Investing & Trading Platforms</h4>
             <br />
             <p>Building awesome investing and trading platforms involves <br />
@@ -203,9 +204,14 @@ function LandingPageHeader() {
           </p>
         </div>
         <div className='landingheader-h3-images'>
-        <img src={img5} alt="" />
+          <img src={img5} alt="" />
+          <h6>What India feels about Grow!!</h6>
         </div>
-      
+        <div className='h3-comments'>
+          <div>
+          <img src={img6} alt="" />
+          </div>
+        </div>
       </div>
     </div>
   )
