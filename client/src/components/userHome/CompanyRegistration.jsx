@@ -1,9 +1,89 @@
-import React from 'react'
-import './CompanyRegistration.css'
-import img5 from '../../assets/images/image 8.png'
+import React, { useState } from "react";
+import img5 from "../../assets/images/image 8.png";
+import axiosMultipartInstance from "../../apis/axiosMultipartInstance";
+import "./CompanyRegistration.css";
 
 function CompanyRegistration() {
+  const [companyData, setCompanyData] = useState({
+    name: "",
+    pincode: "",
+    companyType: "",
+    year: "",
+    password: "",
+    website: "",
+    state: "",
+    contact: "",
+    district: "",
+    email: "",
+    description: "",
+    regNo: "",
+    logo: null,
+    license: null,
+  });
+
+  // This code is just for testing purpose
+  // const [companyData, setCompanyData] = useState({
+  //   name: "name 1",
+  //   pincode: "1234123",
+  //   companyType: "Type1",
+  //   year: "2000",
+  //   password: "1234123",
+  //   confirmPassword: "12341234",
+  //   website: "https://www.google.com",
+  //   state: "state",
+  //   contact: "1234132412",
+  //   district: "city",
+  //   email: "abc@gmail.com",
+  //   description: "description",
+  //   regNo: "1234123412",
+  //   logo: null,
+  //   license: null,
+  // });
+
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+    if (name === "logo" || name === "license") {
+      setCompanyData({ ...companyData, [name]: files[0] });
+    } else {
+      setCompanyData({ ...companyData, [name]: value });
+    }
+
+    console.log(companyData);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    for (const key in companyData) {
+      if (key !== "logo" && key !== "license") {
+        formData.append(key, companyData[key]);
+      }
+    }
+    sendDataToServer(formData);
+  };
+
+  const sendDataToServer = async (formData) => {
+    formData.append("files", companyData.logo);
+    formData.append("files", companyData.license);
+    try {
+      const response = await axiosMultipartInstance.post(
+        "/registerCompany",
+        formData
+      );
+      console.log(response.data);
+      if (response.data.status === 200) {
+        alert("Company registered successfully");
+      }else {
+        alert("Email already used.");
+      }
+        
+
+    } catch (error) {
+      console.error("There was an error registering the company!", error);
+    }
+  };
   return (
+<<<<<<< HEAD
 
     <div className='CompanyRegistation-background'>
       <div className='CompanyRegistartion-inner-box '>
@@ -11,115 +91,231 @@ function CompanyRegistration() {
         <div class="row my-5">
           <div class="col-5 CompanyRegistraion-left-box">
             <img className='CompanyRegistration-logo my-5 img-fluid' src={img5} alt="" />
+=======
+    <div className="CompanyRegistation-background">
+      <div className="CompanyRegistartion-inner-box">
+        <h2 className="CompanyRegistation-heading">Company Registration</h2>
+        <div className="row my-5">
+          <div className="col-5 CompanyRegistraion-left-box">
+            <img
+              className="CompanyRegistration-logo my-5 img-fluid"
+              src={img5}
+              alt=""
+            />
+>>>>>>> 636d2b620774b0f02e1c148b042042b2a917402a
           </div>
-
-
-          <div class="col-7 CompanyRegistraion-right-box">
-            <div className='CompanyRegistration-form-box'>
-              <form action="" >
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <label for="text" class="form-label">Name</label>
-                    <input type="email" class="form-control CompanyRegistration-inp" placeholder='Enter Company Adress' id="inputEmail4" />
+          <div className="col-7 CompanyRegistraion-right-box">
+            <div className="CompanyRegistration-form-box">
+              <form onSubmit={handleSubmit} encType="multipart/form-data">
+                <div className="row g-3">
+                  <div className="col-md-6">
+                    <label className="form-label">Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      className="form-control CompanyRegistration-inp"
+                      placeholder="Enter Company Name"
+                      required
+                      value={companyData.name}
+                      onChange={handleChange}
+                    />
                   </div>
-                  <div class="col-md-6 ">
-                    <label for="text" class="form-label">Company Type</label>
-                     <select class="form-select select-box CompanyRegistration-inp" aria-label="Default select example">
-                      <option selected className='CompanyRegistration-option'>Open this select menu</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
+                  <div className="col-md-6">
+                    <label className="form-label">Company Type</label>
+                    <select
+                      name="companyType"
+                      className="form-select select-box CompanyRegistration-inp"
+                      required
+                      value={companyData.companyType}
+                      onChange={handleChange}
+                    >
+                      <option value="">Open this select menu</option>
+                      <option value="Type1">Type 1</option>
+                      <option value="Type2">Type 2</option>
+                      <option value="Type3">Type 3</option>
                     </select>
                   </div>
                 </div>
-
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <label for="text" class="form-label">City</label>
-                    <input type="email" class="form-control CompanyRegistration-inp" id="inputEmail4" placeholder='Enter City' />
+                <div className="row g-3">
+                  <div className="col-md-6">
+                    <label className="form-label">City</label>
+                    <input
+                      type="text"
+                      name="district"
+                      className="form-control CompanyRegistration-inp"
+                      placeholder="Enter City"
+                      required
+                      value={companyData.district}
+                      onChange={handleChange}
+                    />
                   </div>
-                  <div class="col-md-6">
-                    <label for="text" class="form-label">state</label>
-                    <input type="password" class="form-control CompanyRegistration-inp" id="inputPassword4" placeholder='Enter state' />
-                  </div>
-                </div>
-
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <label for="number" class="form-label">Pincode</label>
-                    <input type="email" class="form-control CompanyRegistration-inp" id="inputEmail4" placeholder='Enter Pincode' />
-                  </div>
-                  <div class="col-md-6">
-                    <label for="Email" class="form-label">Email Id</label>
-                    <input type="password" class="form-control CompanyRegistration-inp" id="inputPassword4" placeholder='Enter Email Id' />
-                  </div>
-                </div>
-
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <label for="number" class="form-label">Contact Number</label>
-                    <input type="email" class="form-control CompanyRegistration-inp" id="inputEmail4" placeholder='Enter Contact Number' />
-                  </div>
-                  <div class="col-md-6">
-                    <label for="number" class="form-label">Registration number</label>
-                    <input type="password" class="form-control CompanyRegistration-inp" id="inputPassword4" placeholder='Enter Registration Number' />
+                  <div className="col-md-6">
+                    <label className="form-label">State</label>
+                    <input
+                      type="text"
+                      name="state"
+                      className="form-control CompanyRegistration-inp"
+                      placeholder="Enter State"
+                      required
+                      value={companyData.state}
+                      onChange={handleChange}
+                    />
                   </div>
                 </div>
-
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <label for="file" class="form-label">comapany licences</label>
-                    <input type="email" class="form-control CompanyRegistration-inp" id="inputEmail4" placeholder='Upload File' />
+                <div className="row g-3">
+                  <div className="col-md-6">
+                    <label className="form-label">Pincode</label>
+                    <input
+                      type="number"
+                      name="pincode"
+                      className="form-control CompanyRegistration-inp"
+                      placeholder="Enter Pincode"
+                      required
+                      value={companyData.pincode}
+                      onChange={handleChange}
+                    />
                   </div>
-                  <div class="col-md-6 ">
-                    <label for="text" class="form-label">Year Founded</label>
-
-                    <select class="form-select select-box CompanyRegistration-inp" aria-label="Default select example">
-                      <option selected className='CompanyRegistration-option'>Select Year</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                    </select>
-                  </div>
-
-                </div>
-
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <label for="file" class="form-label">Company Logo</label>
-                    <input type="email" class="form-control CompanyRegistration-inp" id="inputEmail4" placeholder='Upload File' />
-                  </div>
-                  <div class="col-md-6">
-                    <label for="inputPassword4" class="form-label">Company Website</label>
-                    <input type="password" class="form-control CompanyRegistration-inp" id="inputPassword4" placeholder='Add website' />
+                  <div className="col-md-6">
+                    <label className="form-label">Email Id</label>
+                    <input
+                      type="email"
+                      name="email"
+                      className="form-control CompanyRegistration-inp"
+                      placeholder="Enter Email Id"
+                      required
+                      value={companyData.email}
+                      onChange={handleChange}
+                    />
                   </div>
                 </div>
-                <div class="mb-3">
-                  <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder='Add Discription'></textarea>
-                </div>
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <label for="password" class="form-label">password</label>
-                    <input type="email" class="form-control" id="inputEmail4" placeholder='Enter Password' />
+                <div className="row g-3">
+                  <div className="col-md-6">
+                    <label className="form-label">Contact Number</label>
+                    <input
+                      type="tel"
+                      name="contact"
+                      className="form-control CompanyRegistration-inp"
+                      placeholder="Enter Contact Number"
+                      required
+                      value={companyData.contact}
+                      onChange={handleChange}
+                    />
                   </div>
-                  <div class="col-md-6">
-                    <label for="select" class="form-label">Confirm Pasword</label>
-                    <input type="password" class="form-control" id="inputPassword4" placeholder='Re Enter Password' />
+                  <div className="col-md-6">
+                    <label className="form-label">Registration number</label>
+                    <input
+                      type="text"
+                      name="regNo"
+                      className="form-control CompanyRegistration-inp"
+                      placeholder="Enter Registration Number"
+                      required
+                      value={companyData.regNo}
+                      onChange={handleChange}
+                    />
                   </div>
                 </div>
-                <button className='my-5 CompanyRegistration-button'>register</button>
-                <p className='CompanyRegistration-footer'> Already have an account?Login Now!</p>
+                <div className="row g-3">
+                  <div className="col-md-6">
+                    <label className="form-label">Company License</label>
+                    <input
+                      type="file"
+                      name="license"
+                      className="form-control CompanyRegistration-inp"
+                      required
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="col-md-6">
+                    <label className="form-label">Year Founded</label>
+                    <input
+                      type="number"
+                      name="year"
+                      className="form-control CompanyRegistration-inp"
+                      placeholder="Enter Year"
+                      required
+                      value={companyData.year}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+                <div className="row g-3">
+                  <div className="col-md-6">
+                    <label className="form-label">Company Logo</label>
+                    <input
+                      type="file"
+                      name="logo"
+                      className="form-control CompanyRegistration-inp"
+                      required
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="col-md-6">
+                    <label className="form-label">Company Website</label>
+                    <input
+                      type="url"
+                      name="website"
+                      className="form-control CompanyRegistration-inp"
+                      placeholder="Add website"
+                      required
+                      value={companyData.website}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Description</label>
+                  <textarea
+                    name="description"
+                    className="form-control"
+                    rows="3"
+                    placeholder="Add Description"
+                    required
+                    value={companyData.description}
+                    onChange={handleChange}
+                  ></textarea>
+                </div>
+                <div className="row g-3">
+                  <div className="col-md-6">
+                    <label className="form-label">Password</label>
+                    <input
+                      type="password"
+                      name="password"
+                      className="form-control"
+                      placeholder="Enter Password"
+                      required
+                      value={companyData.password}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="col-md-6">
+                    <label className="form-label">Confirm Password</label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      placeholder="Re-enter Password"
+                      required
+                      name="confirmPassword"
+                      value={companyData.confirmPassword}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  className="my-5 CompanyRegistration-button"
+                >
+                  Register
+                </button>
+                <p className="CompanyRegistration-footer">
+                  Already have an account? Login Now!
+                </p>
               </form>
-             
             </div>
           </div>
         </div>
-
       </div>
-
     </div>
-  )
+  );
 }
 
-export default CompanyRegistration
+export default CompanyRegistration;
