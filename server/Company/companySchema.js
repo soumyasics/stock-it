@@ -38,6 +38,10 @@ const companySchema = mongoose.Schema({
         type: String,
         require: true,
     },
+    city:{
+        type:String,
+        require:true,
+    },
     email: {
         type: String,
         unique: true,

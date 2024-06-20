@@ -23,6 +23,7 @@ const storage = multer.diskStorage({
   },
 });
 
+
 const upload = multer({ storage: storage }).array("files");
 // Register Company
 const registerCompany = async (req, res) => {
@@ -38,6 +39,7 @@ const registerCompany = async (req, res) => {
       contact,
       district,
       email,
+      city,
       description,
       regNo,
     } = req.body;
@@ -52,6 +54,7 @@ const registerCompany = async (req, res) => {
       !contact ||
       !district ||
       !email ||
+      !city||
       !description ||
       !regNo
     ) {
