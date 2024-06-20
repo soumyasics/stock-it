@@ -54,15 +54,25 @@ function CompanyRegistration() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    for (const key in companyData) {
-      if (key !== "logo" && key !== "license") {
-        formData.append(key, companyData[key]);
-      }
-    }
+
     sendDataToServer(formData);
   };
 
   const sendDataToServer = async (formData) => {
+    formData.append("name", companyData.name);
+    formData.append("pincode", companyData.pincode);
+    formData.append("companyType", companyData.companyType);
+    formData.append("year", companyData.year);
+    formData.append("password", companyData.password);
+    formData.append("website", companyData.website);
+    formData.append("state", companyData.state);
+    formData.append("contact", companyData.contact);
+    formData.append("district", companyData.district);
+    formData.append("email", companyData.email);
+    formData.append("description", companyData.description);
+    formData.append("regNo", companyData.regNo);
+    formData.append("city", companyData.city);
+
     formData.append("files", companyData.logo);
     formData.append("files", companyData.license);
     try {
@@ -73,25 +83,16 @@ function CompanyRegistration() {
       console.log(response.data);
       if (response.data.status === 200) {
         alert("Company registered successfully");
-      }else {
-        alert("Email already used.");
+      } else {
+        alert(response.data.msg);
       }
-        
+
 
     } catch (error) {
       console.error("There was an error registering the company!", error);
     }
   };
   return (
-<<<<<<< HEAD
-
-    <div className='CompanyRegistation-background'>
-      <div className='CompanyRegistartion-inner-box '>
-        <h2 className='CompanyRegistation-heading'>Company Registration</h2>
-        <div class="row my-5">
-          <div class="col-5 CompanyRegistraion-left-box">
-            <img className='CompanyRegistration-logo my-5 img-fluid' src={img5} alt="" />
-=======
     <div className="CompanyRegistation-background">
       <div className="CompanyRegistartion-inner-box">
         <h2 className="CompanyRegistation-heading">Company Registration</h2>
@@ -102,7 +103,7 @@ function CompanyRegistration() {
               src={img5}
               alt=""
             />
->>>>>>> 636d2b620774b0f02e1c148b042042b2a917402a
+
           </div>
           <div className="col-7 CompanyRegistraion-right-box">
             <div className="CompanyRegistration-form-box">
