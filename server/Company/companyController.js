@@ -26,6 +26,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage }).array("files");
 // Register Company
 const registerCompany = async (req, res) => {
+  console.log("data",req.body);
   try {
     const {
       name,
@@ -40,6 +41,7 @@ const registerCompany = async (req, res) => {
       email,
       description,
       regNo,
+      city
     } = req.body;
     if (
       !name ||
@@ -52,6 +54,7 @@ const registerCompany = async (req, res) => {
       !contact ||
       !district ||
       !email ||
+      !city||
       !description ||
       !regNo
     ) {
@@ -68,6 +71,7 @@ const registerCompany = async (req, res) => {
       contact,
       district,
       email,
+      city,
       logo: req.files[0],
       license: req.files[1],
       description,
