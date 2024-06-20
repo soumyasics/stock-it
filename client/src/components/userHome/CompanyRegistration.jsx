@@ -1,6 +1,6 @@
 import React from 'react'
 import './CompanyRegistration.css'
-import img5 from '../../assets/images/image 8.png'
+import img5 from '../../assets/images/shieldLogo.png'
 
 function CompanyRegistration() {
   return (
@@ -11,7 +11,7 @@ function CompanyRegistration() {
         <h2 className='CompanyRegistation-heading'>Company Registration</h2>
         <div class="row my-5">
           <div class="col-5 CompanyRegistraion-left-box">
-            <img className='CompanyRegistration-logo my-5 img-fluid' src={img5} alt="" />
+            <img className='CompanyRegistration-logo   img-fluid' src={img5} alt="" />
           </div>
 
 
@@ -40,7 +40,7 @@ function CompanyRegistration() {
                     <input type="email" class="form-control CompanyRegistration-inp" id="inputEmail4" placeholder='Enter City' />
                   </div>
                   <div class="col-md-6">
-                    <label for="text" class="form-label">state</label>
+                    <label for="text" class="form-label">State</label>
                     <input type="password" class="form-control CompanyRegistration-inp" id="inputPassword4" placeholder='Enter state' />
                   </div>
                 </div>
@@ -69,7 +69,7 @@ function CompanyRegistration() {
 
                 <div class="row g-3">
                   <div class="col-md-6">
-                    <label for="file" class="form-label">comapany licences</label>
+                    <label for="file" class="form-label">Comapany licences</label>
                     <input type="email" class="form-control CompanyRegistration-inp" id="inputEmail4" placeholder='Upload File' />
                   </div>
                   <div class="col-md-6 ">
@@ -109,7 +109,7 @@ function CompanyRegistration() {
                     <input type="password" class="form-control" id="inputPassword4" placeholder='Re Enter Password' />
                   </div>
                 </div>
-                <button className='my-5 CompanyRegistration-button'>register</button>
+                <button className='my-5 CompanyRegistration-button'>Register</button>
                 <p className='CompanyRegistration-footer'> Already have an account?Login Now!</p>
               </form>
              

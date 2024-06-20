@@ -7,9 +7,8 @@
 
 .about-heading {
     color: #FFF;
-
     text-align: center;
-    font-family: inherit;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
@@ -21,7 +20,7 @@
 
 .about-image {
     width: 80%;
-    height: 18%;
+    height: 15%;
     flex-shrink: 0;
     margin-top: 4%;
 
@@ -43,11 +42,12 @@
 .about-pargaraph {
     color: #FFF;
     text-align: center;
-    font-family: ;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 400;
     line-height: normal;
     margin-top: 4%;
+    font-family: 'Noto Sans', sans-serif;
+
 }
 
 .about-middle-box {
@@ -63,7 +63,7 @@
 .about-middle-box-heading {
     color: #FFF;
     text-align: center;
-    font-family: inherit;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 21px;
     font-style: normal;
     font-weight: 600;
@@ -72,7 +72,7 @@
 
 .about-middle-box-description {
     color: #FFF;
-    font-family: Inter;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
@@ -81,7 +81,7 @@
 
 .about-ourVision {
     color: #FFF;
-    font-family: Inter;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 27px;
     font-style: normal;
     font-weight: 700;
@@ -102,7 +102,7 @@
     width: 85%;
     padding: 14px 36px;
     justify-content: center;
-     border-radius: 25px;
+    border-radius: 25px;
     background: #777;
     text-align: center;
     color: #FFF;
@@ -111,14 +111,13 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    height:26%;
+    height: 26%;
 }
 
 .about-pargaraph2 {
-    font-family: "Noto Sans";
+    font-family: 'Noto Sans', sans-serif;
     color: #FFF;
     text-align: center;
-    font-family: "Noto Sans";
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
@@ -135,7 +134,7 @@
 
 .about-4 {
     color: #959595;
-    font-family: "Noto Sans";
+    font-family: 'Noto Sans', sans-serif;
     font-size: 175.235px;
     font-style: normal;
     font-weight: 800;
@@ -147,12 +146,12 @@
 .about-4-box {
     display: flex;
     height: 80%;
-    width: 80%;
+    width: 90%;
     background-color: rgba(245, 245, 220, 0);
-    position: relative;
-    left: 20%;
+
     text-align: left;
-    margin-left: 10%;
+    margin-left: 30%;
+    margin-top: 10%;
 }
 
 .about-core {
@@ -161,7 +160,7 @@
     top: 25%;
     color: #FFF;
     font-size: 34px;
-     font-family: "Noto Sans";
+    font-family: 'Noto Sans', sans-serif;
     font-size: 34.047px;
     font-style: normal;
     font-weight: 500;
@@ -170,19 +169,18 @@
 
 .about-core-text {
     position: relative;
-    top:55%;
-    right: 25%;
+    top: 55%;
+    right: 22%;
     color: #FFF;
+    font-size: large;
+    font-family: 'Noto Sans', sans-serif;
 
-    word-spacing: 5%;
 
-    font-family: "Noto Sans";
 }
 
 .about-last-inner-box {
     height: 40%;
     width: 70%;
-
     border-radius: 12.364px;
     background: #9A9A9A;
     margin-top: 5%;
@@ -199,13 +197,13 @@
 
 .about-last-inner-box-text {
     color: #FFF;
-    font-family: "Noto Sans";
-    font-size: 15.012px;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 14.012px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     position: relative;
-    top: 8%;
+    top: 4%;
 
 
 }
@@ -213,11 +211,11 @@
 .about-last-inner-box-head {
 
     color: #FFF;
-    font-family: "Noto Sans";
+    font-family: 'Noto Sans', sans-serif;
     font-size: 14.836px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
     position: relative;
-    top: 15%;
+    top: 10%;
 }

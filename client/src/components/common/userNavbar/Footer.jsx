@@ -13,26 +13,26 @@ function Footer() {
           <div class="col ">
             <div className='left-footer-inner-box my-4'>
               <img src={img1} alt="" className='img-fluid' />
-              <p className='my-2'>The goal of a successful trader <br />
+              <p className='my-2 footer-text'>The goal of a successful trader <br />
                 is to make the best traders</p>
             </div>
           </div>
 
           <div class="col ">
             <div className='middle-footer-inner-box my-5'>
-              <li className='middle-footer-head'>Quick Links</li>
-              <li>Home</li>
-              <li>About</li>
-              <li>Privacy Policy</li>
-              <li>Team of Services</li>
+              <li className='footer-head'>Quick Links</li>
+              <li className='footer-text'>Home</li>
+              <li className='footer-text'>About</li>
+              <li className='footer-text'>Privacy Policy</li>
+              <li className='footer-text'>Team of Services</li>
             </div>
           </div>
 
           <div class="col ">
             <div className='right-footer-inner-box my-5'>
-              <li>Contact Us</li>
-              <li>Stockitofficial@gmail.com</li>
-              <li> +91 - 7802569677</li>
+              <li className='footer-head'>Contact Us</li>
+              <li className='footer-text'>Stockitofficial@gmail.com</li>
+              <li className='footer-text'> +91 - 7802569677</li>
               <div >
               <img src={img3} alt="" className='img-fluid mx-2 my-2' />
               <img src={img4} alt="" className='img-fluid mx-3' />

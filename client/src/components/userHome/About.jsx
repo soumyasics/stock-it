@@ -1,5 +1,6 @@
 import React from 'react'
 import './About.css'
+
 import img7 from '../../assets/images/graph.png'
 import img8 from '../../assets/images/Group 307.svg'
 import img9 from '../../assets/images/Group 308.svg'
@@ -77,7 +78,7 @@ function About() {
                     <div className='about-4-box'>
                         <p className='about-4 display-1'>4</p>
                         <span className='about-core'>core <br /> values</span>
-                        <span className='about-core-text'>The key decision-making <br />  criteria for all.z</span>
+                        <span className='about-core-text' >The key decision-making <br/>  criteria for all.z</span>
 
                     </div>
                 </div>
