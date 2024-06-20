@@ -25,7 +25,7 @@ function App() {
       <BrowserRouter basename="/stock_it">
         <Routes>
 
-
+    
           <Route path="/footer" element={<Footer />} />
           <Route path="/CompanyRegistration" element={[<CommonNavbar/>,<CompanyRegistration />,<Footer/>]} />
           <Route path="/AdminLogin" element={[<CommonNavbar/>,<AdminLogin />]} />
