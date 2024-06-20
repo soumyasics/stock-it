@@ -39,6 +39,7 @@ function CompanyRegistration() {
   //   logo: null,
   //   license: null,
   // });
+  
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -49,15 +50,26 @@ function CompanyRegistration() {
     }
 
     console.log(companyData);
+
   };
+ 
+
+  }
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+   
+
+  
     const formData = new FormData();
   
     sendDataToServer(formData);
+  
   };
 
+ 
   const sendDataToServer = async (formData) => {
     formData.append("name", companyData.name);
     formData.append("pincode", companyData.pincode);
@@ -91,6 +103,8 @@ function CompanyRegistration() {
     } catch (error) {
       console.error("There was an error registering the company!", error);
     }
+  
+
   };
   return (
 
