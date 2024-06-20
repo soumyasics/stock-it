@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+  import React, { useState } from 'react'
 import './AdminLogin.css'
-import img6 from '../../assets/images/image 8.png'
+import img6 from '../../assets/images/shieldLogo.png'
 
 function AdminLogin() {
   let username = "admin@gmail.com"

@@ -1,7 +1,7 @@
 .CompanyRegistation-background {
     background-color: #1F2937;
     width: 100%;
-    height: 140vh;
+    height: 160vh;
 }
 
 .CompanyRegistartion-inner-box {
@@ -20,6 +20,8 @@
     text-align: center;
     position: relative;
     top: 10px;
+    font-family: 'Noto Sans', sans-serif;
+
 }
 
 .CompanyRegistraion-left-box {
@@ -63,4 +65,14 @@
 
 .CompanyRegistration-footer {
     text-align: center;
+}
+.CompanyRegistration-form-box label
+{
+    margin-top: 10px;
+    font-family: 'Noto Sans', sans-serif;
+
+}
+.CompanyRegistration-logo
+{
+    margin-top: 25%;
 }
