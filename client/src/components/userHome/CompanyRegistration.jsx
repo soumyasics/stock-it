@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import img5 from "../../assets/images/shieldLogo.png";
+
 import axiosMultipartInstance from "../../apis/axiosMultipartInstance";
 import "./CompanyRegistration.css";
-
 function CompanyRegistration() {
   const [companyData, setCompanyData] = useState({
     name: "",
@@ -42,7 +42,7 @@ function CompanyRegistration() {
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    if (name === "logo" || name === "license") {
+    if (files) {
       setCompanyData({ ...companyData, [name]: files[0] });
     } else {
       setCompanyData({ ...companyData, [name]: value });
@@ -54,15 +54,25 @@ function CompanyRegistration() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    for (const key in companyData) {
-      if (key !== "logo" && key !== "license") {
-        formData.append(key, companyData[key]);
-      }
-    }
+  
     sendDataToServer(formData);
   };
 
   const sendDataToServer = async (formData) => {
+    formData.append("name", companyData.name);
+    formData.append("pincode", companyData.pincode);
+    formData.append("companyType", companyData.companyType);
+    formData.append("year", companyData.year);
+    formData.append("website", companyData.website);
+    formData.append("state", companyData.state);
+    formData.append("contact", companyData.contact);
+    formData.append("district", companyData.district);
+    formData.append("email", companyData.email);
+    formData.append("description", companyData.description);
+    formData.append("regNo", companyData.regNo);
+    formData.append("password", companyData.password);
+    formData.append("city", companyData.city);
+
     formData.append("files", companyData.logo);
     formData.append("files", companyData.license);
     try {
@@ -70,13 +80,13 @@ function CompanyRegistration() {
         "/registerCompany",
         formData
       );
-      console.log(response.data);
+      console.log(response);
       if (response.data.status === 200) {
         alert("Company registered successfully");
-      }else {
-        alert("Email already used.");
+      } else {
+        alert(response.data.msg);
       }
-        
+
 
     } catch (error) {
       console.error("There was an error registering the company!", error);
@@ -103,7 +113,6 @@ function CompanyRegistration() {
                       name="name"
                       className="form-control CompanyRegistration-inp"
                       placeholder="Enter Company Name"
-                      required
                       value={companyData.name}
                       onChange={handleChange}
                     />
@@ -132,14 +141,13 @@ function CompanyRegistration() {
                       name="district"
                       className="form-control CompanyRegistration-inp"
                       placeholder="Enter City"
-                      required
                       value={companyData.district}
                       onChange={handleChange}
                     />
                   </div>
                   <div class="col-md-6">
                     <label for="text" class="form-label">State</label>
-                    <input type="password" class="form-control CompanyRegistration-inp" id="inputPassword4" placeholder='Enter state' />
+                    <input type="text" class="form-control CompanyRegistration-inp" id="inputPassword4" placeholder='Enter state' name="state" required value={companyData.state} onChange={handleChange} />
                   </div>
                 </div>
                 <div className="row g-3">
@@ -198,7 +206,20 @@ function CompanyRegistration() {
                 <div class="row g-3">
                   <div class="col-md-6">
                     <label for="file" class="form-label">Comapany licences</label>
-                    <input type="email" class="form-control CompanyRegistration-inp" id="inputEmail4" placeholder='Upload File' />
+
+
+                    <input
+                      type="file"
+                      name="license"
+                      className="form-control CompanyRegistration-inp"
+                      required
+                      onChange={handleChange}
+                    />
+
+
+
+
+                    {/* <input type="email" class="form-control CompanyRegistration-inp" id="inputEmail4" placeholder='Upload File' /> */}
                   </div>
                   <div className="col-md-6">
                     <label className="form-label">Year Founded</label>
