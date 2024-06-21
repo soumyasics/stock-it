@@ -14,18 +14,12 @@ function CompanyRequest() {
           <p className='companyRequest-entries'>Entries per page</p>
 
         </div>
-        <div class="btn-group">
-          <button type="button" class="companyRequet-dropdown dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            16
-          </button>
-          <ul class="dropdown-menu">
-            <li>15</li>
-            <li>14</li>
-            <li>13</li>
-            <li>12</li>
-            <li>11</li>
-          </ul>
-        </div>
+        <select class="form-select form-select-sm companyRequet-dropdown " aria-label="Small select example">
+  <option selected> 15</option>
+  <option value="1">16</option>
+  <option value="2">17</option>
+  <option value="3">18</option>
+</select>
       </div>
 
       <div className='companyRequest-details'>

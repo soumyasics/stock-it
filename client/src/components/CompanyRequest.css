@@ -1,5 +1,5 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
 .companyRequest-body {
     height: 100vh;
     width: 100%;
@@ -89,21 +89,29 @@
     font-weight: 400;
     line-height: normal;
 }
-.companyRequest-entries
-{
-margin-left: 5%;
-margin-top: 2%;
+
+.companyRequest-entries {
+    margin-left: 5%;
+    margin-top: 2%;
 
 }
-.companyRequesest-second-box
-{
+
+.companyRequesest-second-box {
     display: flex;
 }
-.companyRequet-dropdown
-{
+
+.companyRequet-dropdown {
     border-radius: 0px 15px 15px 0px;
-background: #515151;
-width: 45px;
-height: 32px;
-margin-top:20.32px;
+    height: 32px;
+    width: 60px;
+    margin-top: 20.3px;
+    border-color: #1F2937;
+    color: #FFF;
+    background-color:#515151;
 }
+.companyRequet-dropdown select
+{
+ color: #FFF;
+}
+
+
