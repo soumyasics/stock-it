@@ -20,6 +20,25 @@ function CompanyRegistration() {
     logo: null,
     license: null,
   });
+  const [errors, setErrors] = useState({
+    name: '',
+    dob: '',
+    gender: '',
+    nationality: '',
+    address: '',
+    contact: '',
+    email: '',
+    password: '',
+    bcNo: '',
+    dateOfEnrollment: '',
+    bcState: '',
+    specialization: '',
+    experience: '',
+    qualification: '',
+    profilePic: '',
+    idProof: '',
+  });
+
 
   // This code is just for testing purpose
   // const [companyData, setCompanyData] = useState({
@@ -39,7 +58,6 @@ function CompanyRegistration() {
   //   logo: null,
   //   license: null,
   // });
-  
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -50,26 +68,20 @@ function CompanyRegistration() {
     }
 
     console.log(companyData);
-
   };
- 
+
+  function validateContact(fieldName, value) {
+    console.log("in validate", value);
+    const contactRegex = /^[0-9]+$/;
+    if (!value.trim()) {
+      return `${fieldName} is required`;
+    } else if (!contactRegex.test(value) || value.length !== 10) {
+      return 'Please enter a valid Contact Number';
+    }
+    return '';
+
 
   }
-
-
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-   
-
-  
-    const formData = new FormData();
-  
-    sendDataToServer(formData);
-  
-  };
-
- 
   const sendDataToServer = async (formData) => {
     formData.append("name", companyData.name);
     formData.append("pincode", companyData.pincode);
@@ -84,7 +96,6 @@ function CompanyRegistration() {
     formData.append("regNo", companyData.regNo);
     formData.append("password", companyData.password);
     formData.append("city", companyData.city);
-
     formData.append("files", companyData.logo);
     formData.append("files", companyData.license);
     try {
@@ -102,8 +113,30 @@ function CompanyRegistration() {
 
     } catch (error) {
       console.error("There was an error registering the company!", error);
+      alert(error)
     }
-  
+  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+
+
+    let errors = {};
+    let formIsValid = true;
+    errors.contact = validateContact('Contact', companyData.contact);
+    setErrors(errors);
+    for (let key in errors) {
+      if (errors[key]) {
+        formIsValid = false;
+        break;
+      }
+    }
+
+    if (formIsValid) {
+
+      sendDataToServer(formData)
+
+    };
 
   };
   return (
@@ -202,6 +235,8 @@ function CompanyRegistration() {
                       value={companyData.contact}
                       onChange={handleChange}
                     />
+                    {errors.contact && <div className="text-danger">{errors.contact}</div>} 
+
                   </div>
                   <div className="col-md-6">
                     <label className="form-label">Registration number</label>
