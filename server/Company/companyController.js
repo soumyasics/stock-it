@@ -43,7 +43,6 @@ const registerCompany = async (req, res) => {
       city,
       description,
       regNo,
-      city
     } = req.body;
     if (
       !name ||
