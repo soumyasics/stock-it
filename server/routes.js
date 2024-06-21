@@ -1,6 +1,10 @@
 const router=require('express').Router()
 const company=require('./Company/companyController')
+const admin=require('./Admin/adminController')
 
+// Admin routes
+router.post('/loginAdmin',admin.loginAdmin)
+router.post('/resetPwd',admin.resetPwd)
 
 //company routes
 router.post('/registerCompany',company.upload,company.registerCompany)
