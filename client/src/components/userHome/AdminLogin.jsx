@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+  import React, { useState } from 'react'
 import './AdminLogin.css'
-import img6 from '../../assets/images/image 8.png'
+import img6 from '../../assets/images/shieldLogo.png'
 
 function AdminLogin() {
   let username = "admin@gmail.com"
@@ -15,7 +15,7 @@ function AdminLogin() {
     input.preventDefault();
     console.log(state);
     if (state.username == a) {
-      alert("enter a username")
+      alert("Enter a username")
     }
     else if (state.username !== username) {
       alert("inorrect username")

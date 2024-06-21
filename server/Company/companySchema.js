@@ -30,6 +30,11 @@ const companySchema = mongoose.Schema({
         type: String,
         require: true,
     },
+    city:{
+        type: String,
+        require: true,
+    }
+    ,
     contact: {
         type: Number,
         require: true,
