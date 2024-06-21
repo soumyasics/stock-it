@@ -1,9 +1,13 @@
 const router = require("express").Router();
 const company = require("./Company/companyController");
+const admin=require('./Admin/adminController')
 
 router.get("/", (req, res) => {
   return res.send({ message: "Stock it Server working" });
 });
+// Admin routes
+router.post('/loginAdmin',admin.loginAdmin)
+router.post('/resetPwd',admin.resetPwd)
 
 //company routes
 router.post("/registerCompany", company.upload, company.registerCompany);
