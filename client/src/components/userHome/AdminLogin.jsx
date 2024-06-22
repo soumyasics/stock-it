@@ -69,7 +69,6 @@ const btnsubmit = (e) =>
             <div class="col-5 AdminLogin-left-box">
               <img src={img6} alt="loginPage logo" className='img-fluid my-4 adminLogin-image' />
             </div>
-
             <div class="col-7 AdminLogin-left-box">
               <div className='AdminLogin-left-inner-box my-5'>
                 <form action=""  onSubmit={btnsubmit}>
