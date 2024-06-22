@@ -78,6 +78,8 @@ const registerCompany = async (req, res) => {
       description,
       regNo,
     });
+    
+
 
     let existingCompany = await Company.findOne({ email });
     if (existingCompany) {

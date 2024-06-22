@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 footer {
     background-color: #374151;
     height: 242px;
@@ -5,6 +7,7 @@ footer {
     position: relative;
     /* top: 1200px; */
     bottom: 0;
+    font-family: "Noto Sans", sans-serif;
 }
 
 .footer-left-box {
