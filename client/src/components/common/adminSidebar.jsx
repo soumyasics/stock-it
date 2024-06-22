@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import './adminSidebar.css'
-import logo from '../../assets/images/Frame 339.png'
-import logo2 from '../../assets/images/adminlogo.png'
+
 import imgGif from '../../assets/images/headergif.gif'
 import titleImg from '../../assets/images/Group 398.png'
 import vector1 from '../../assets/images/Vector.png'
@@ -19,15 +18,7 @@ function AdminSidebar() {
     const [show2, setShow2] = useState(false)
     return (
         <div className='adminSidebar'>
-            <nav class="navbar">
-                <div class="container-fluid navlogo">
-                    <img src={logo} alt="" />
-                    <form class="d-flex adminlogo">
-                        <img src={logo2} alt="" />
-                        <button class="btn" type="submit">Admin</button>
-                    </form>
-                </div>
-            </nav>
+          
             <div className='adminSidebar-gif'>
                 <img src={imgGif} alt="" />
             </div>
