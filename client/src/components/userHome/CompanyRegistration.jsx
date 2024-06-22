@@ -144,7 +144,7 @@ function CompanyRegistration() {
 
     <div className='CompanyRegistation-background'>
       <div className='CompanyRegistartion-inner-box '>
-        <h2 className='CompanyRegistation-heading'>Company Registration</h2>
+        <h4 className='CompanyRegistation-heading'>Company Registration</h4>
         <div class="row my-5">
           <div class="col-5 CompanyRegistraion-left-box">
             <img className='CompanyRegistration-logo   img-fluid' src={img5} alt="" />
@@ -325,7 +325,7 @@ function CompanyRegistration() {
                     <input
                       type="password"
                       name="password"
-                      className="form-control"
+                      className="form-control CompanyRegistration-inp"
                       placeholder="Enter Password"
                       required
                       value={companyData.password}
@@ -336,7 +336,7 @@ function CompanyRegistration() {
                     <label className="form-label">Confirm Password</label>
                     <input
                       type="password"
-                      className="form-control"
+                      className="form-control CompanyRegistration-inp"
                       placeholder="Re-enter Password"
                       required
                       name="confirmPassword"

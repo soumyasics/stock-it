@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 .about-background {
     background-color: #1F2937;
-    height: 280vh;
+    height: 290vh;
     width: 100%;
     text-align: center;
 }
@@ -36,13 +38,13 @@
     font-weight: 700;
     line-height: normal;
     text-align: center;
-    margin-top: 2%;
+    margin-top: 4%;
 }
 
 .about-pargaraph {
     color: #FFF;
     text-align: center;
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 400;
     line-height: normal;
     margin-top: 4%;
@@ -53,7 +55,7 @@
 .about-middle-box {
     background-color: rgba(250, 235, 215, 0);
     height: 13%;
-    width: 60%;
+    width:79%;
     margin: auto;
     margin-top: 5%;
     text-align: center;
@@ -107,7 +109,7 @@
     text-align: center;
     color: #FFF;
     font-family: Inter;
-    font-size: 1.3vw;
+    font-size: 1.15vw;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
