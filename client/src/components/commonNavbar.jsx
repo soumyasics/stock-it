@@ -6,7 +6,7 @@ import img1 from '../assets/images/Frame 339.png'
 function CommonNavbar() {
     return (
         <div>
-            <nav class="navbar commonNavbar">
+                        <nav class="navbar commonNavbar">
                 <div className='container'>
                     <a class="navbar-brand commonNavbar-image" href="#">
                         <img src={img1} className='img-fluid'/>

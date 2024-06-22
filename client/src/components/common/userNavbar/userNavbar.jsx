@@ -12,6 +12,7 @@ const UserNavbar = () => {
         <li>Guide</li>
         <li>Markets</li>
       </ul>
+      
 
       <div className={`${navStyle.navRegisterContainer} ms-auto`}>
         <button className="w-100 border-0 btn">Login/Register</button>
