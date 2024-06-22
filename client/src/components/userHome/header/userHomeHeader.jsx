@@ -17,6 +17,7 @@ const UserHomeHeader = () => {
             informed decisions meet seamless transactions
           </p>
           <Row className="w-75">
+            
             <Col>
               <Button> Browse Markets </Button>
             </Col>

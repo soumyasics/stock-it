@@ -1,4 +1,4 @@
-  import React, { useState } from 'react'
+import React, { useState } from 'react'
 import './AdminLogin.css'
 import img6 from '../../assets/images/shieldLogo.png'
 
@@ -9,8 +9,8 @@ function AdminLogin() {
   const [state, setState] = useState({ username: '', password: '' })
   function btnchange(input) {
     setState({ ...state, [input.target.name]: input.target.value })
-
   }
+
   function btnsubmit(input) {
     input.preventDefault();
     console.log(state);
@@ -18,7 +18,7 @@ function AdminLogin() {
       alert("Enter a username")
     }
     else if (state.username !== username) {
-      alert("inorrect username")
+      alert("Inorrect username")
     }
     else if (state.password == a) {
       alert("Enter password ")
