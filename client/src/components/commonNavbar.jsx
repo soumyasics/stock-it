@@ -1,6 +1,7 @@
 import React from 'react'
 import './commonNavbar.css'
 import img1 from '../assets/images/Frame 339.png'
+import { Link } from 'react-router-dom'
 
 
 function CommonNavbar() {
@@ -12,9 +13,9 @@ function CommonNavbar() {
                         <img src={img1} className='img-fluid'/>
                     </a>
                     <div className='commonNavbar-right'>
-                        <a href="#">Home</a>
-                        <a href="#">About</a>
-                        <button>login</button>
+                    <Link to="/">Home</Link>
+                        <Link to="/about">About</Link>
+                        <button>  <Link to="/AdminLogin">login</Link></button>
                     </div>
                 </div>
             </nav>
