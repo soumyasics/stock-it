@@ -2,37 +2,18 @@ import React, { useState } from 'react'
 import './AdminLogin.css'
 import img6 from '../../assets/images/shieldLogo.png'
 import axiosInstance from '../../apis/axiosInstance'
+import { useNavigate } from 'react-router-dom'
 
 function AdminLogin() {
-  // let username = "admin@gmail.com"
-  // let password = "admin@123"
-  // let a = "";
+  
+  const navigate=useNavigate()
   const [state, setState] = useState({ email: '', password: '' })
   function btnchange(input) {
     setState({ ...state, [input.target.name]: input.target.value })
 
 
   }
-  // function btnsubmit(input) {
-  //   input.preventDefault();
-  //   console.log(state);
-  //   if (state.username == a) {
-  //     alert("Enter a username")
-  //   }
-  //   else if (state.username !== username) {
-  //     alert("incorrect username")
-  //   }
-  //   else if (state.password == a) {
-  //     alert("Enter password ")
-  //   }
-  //   else if (state.password !== password) {
-  //     alert("Incorrect password")
-  //   }
-  //   else {
-  //     alert("Login sucessfully")
-  //   }
-  // }
-
+  
 const btnsubmit = (e) =>
   {
     e.preventDefault();
@@ -43,7 +24,8 @@ const btnsubmit = (e) =>
       console.log(res);
       if(res.data.status===200)
         {
-          alert("Update Successfully")
+          alert("Login Successfully")
+          navigate('/AdminDashboard')
         }
         else
         {
