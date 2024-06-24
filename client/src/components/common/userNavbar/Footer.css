@@ -4,10 +4,11 @@ footer {
     background-color: #374151;
     height: 242px;
     width: 100%;
-    position: relative;
-    /* top: 1200px; */
+    position: absolute;
+    top: 2900px;
     bottom: 0;
     font-family: "Noto Sans", sans-serif;
+    /* margin-bottom: 0px; */
 }
 
 .footer-left-box {
