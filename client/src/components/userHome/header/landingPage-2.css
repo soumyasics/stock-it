@@ -188,6 +188,7 @@
     height: 300px;
     width: 520px;
     border: none;
+    margin-left: 0px;
 }
 
 .left-table th {
@@ -240,6 +241,7 @@ td {
     height: 300px;
     width: 520px;
     border: none;
+    margin-left: 0px;
 }
 
 .right-table th {
@@ -362,8 +364,9 @@ td {
     line-height: 1.5;
 }
 
-.landingheader-h3-images {
+.landingheader-h3-images{
     text-align: center;
+    
 }
 
 .landingheader-h3-images h6 {
@@ -375,13 +378,9 @@ td {
     line-height: normal;
     margin-top: 60px;
 }
-
-.h3-comments {
-    text-align: center;
-}
-
 .h3-comments img {
     margin-top: 30px;
-    width: 1290px;
-    height: 162px;
+    width: 87%;
+    height: auto;
+    padding-left:12%;
 }
