@@ -40,9 +40,9 @@ function App() {
           <Route path="/AdminLogin" element={[<CommonNavbar />, <AdminLogin />]} /> 
           <Route path="/adminsidebar" element={[<AdminNavbar />, <AdminSidebar />]} />
           <Route path="/commonNavbar" element={<CommonNavbar />} />
-          <Route path="/landingheader" element={[<CommonNavbar />, <LandingPageHeader />]} />
+          <Route path="/landingheader" element={[<CommonNavbar />, <LandingPageHeader />,<Footer/>]} />
           <Route path="/about" element={[<CommonNavbar />, <About />, <Footer />]} />
-          <Route path="/companyrequest" element={[<CommonNavbar />, <CompanyRequest />]} />
+          <Route path="/companyrequest" element={[<AdminNavbar />, <CompanyRequest />]} />
 
           <Route path="/resetPassword" element={[<AdminNavbar/>,<Resetpassword />]} />
           <Route path="/adminNavbar" element={<AdminNavbar />} />
