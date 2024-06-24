@@ -13,6 +13,7 @@ import img6 from '../../../assets/images/commentsgif.gif'
 
 function LandingPageHeader() {
   return (
+    <div>
     <div className='landingheader'>
       <div className='landingheader-gif'>
         <img src={imgGif} alt="" />
@@ -213,6 +214,7 @@ function LandingPageHeader() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   )
 }
