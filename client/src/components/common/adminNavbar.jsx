@@ -6,10 +6,10 @@ import logo2 from '../../assets/images/adminlogo.png'
 function AdminNavbar() {
   return (
     <div className='adminNavbar'>
-            <nav class="navbar">
-                <div class="container-fluid navlogo">
+            <nav className="navbar">
+                <div className="container-fluid navlogo">
                     <img src={logo} alt="" />
-                    <form class="d-flex adminlogo">
+                    <form className="d-flex adminlogo">
                         <img src={logo2} alt="" />
                         <button class="btn" type="submit">Admin</button>
                     </form>
