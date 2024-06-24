@@ -57,7 +57,7 @@ function LandingPageHeader() {
           <h4>Become a Better <span className='middle-text'> Stock Investor!</span></h4>
           <br />
           <p>Stock it Portal helps investors make efficient stock research
-            and analysis by providing quality fundamental data with insightful <br />
+            and analysis by providing quality fundamental data with insightful
             Visuals !!</p>
         </div>
       </div>
