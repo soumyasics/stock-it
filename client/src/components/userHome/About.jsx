@@ -36,8 +36,8 @@ function About() {
                 <div class="col">
                     <img src={img10} alt="" />
                     <p className='about-middle-box-heading'>Simple</p>
-                    <p className='about-middle-box-description'>Dedicated modes for investors
-                        and traders to support their individual
+                    <p className='about-middle-box-description'>Dedicated modes for investors<br/>
+                        and traders to support their individual<br/>
                         needs and goals </p>
                 </div>
             </div>
