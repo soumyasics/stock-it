@@ -2,8 +2,8 @@
 
 .adminSidebar{
     width: 100%;
-    background-color:#1F2937;
-    height:100px;
+    background-color:black;
+    height:176vh;
 }
 .adminSidebar-gif{
     width: 100%;
@@ -17,7 +17,7 @@
 }
 .adminSidebar-main{
     width:307px;
-    height: 800px;
+    height: 170vh;
     background: #374151;
 }
 .adminSidebar-title-head{

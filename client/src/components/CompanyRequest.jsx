@@ -16,10 +16,7 @@ function CompanyRequest() {
         console.log(err);
       })
   }, [])
-  const searchbtn=(ser)=>
-    {
-console.log(ser);
-    }
+
 
 
   return (
@@ -44,60 +41,69 @@ console.log(ser);
             </select>
           </div>
           <div className='comapanyRequest-search-box'>
-            <input type='search' className='companyRequest-serchbox' placeholder='Companies' onChange={searchbtn}/>
+            <input type='search' className='companyRequest-serchbox' placeholder='Companies'  />
           </div>
         </div>
         {
-          <div className='row row-cols-5'>
-            {
+          <div class="container-fluid">
 
-              state.map((e) => {
-                return (
-                  <div>
-                    <div className='companyRequest-details '>
-                      <div className='companyRequest-innerbox1'>
-                        <img className='companyRequest-logo' src={`${BASE_URL}${e?.logo?.filename}`} alt="test   " />
-                        <p className='companyRequest-subheading'>subway</p>
+            <div className='row row-cols-5'>
+              {
+
+                state.map((e) => {
+                  return (
+                    <div>
+                      <div className='companyRequest-details '>
+                        <div className='companyRequest-innerbox1'>
+                          <img className='companyRequest-logo img-fluid' src={`${BASE_URL}${e?.logo?.filename}`} alt="test   " />
+                          <p className='companyRequest-subheading'>{e.name}</p>
+                        </div>
+                        <table className='companyRequest-table'>
+                          <tr>
+                            <td>Name</td>
+                            <td>:</td>
+                            <td className='companyRequest-data'>{e.name}</td>
+                          </tr>
+                          <tr>
+                            <td>Company Type</td>
+                            <td>:</td>
+                            <td className='companyRequest-data'>  {e.companyType}</td>
+                          </tr>
+                          <tr>
+                            <td>Contact Number</td>
+                            <td>:</td>
+                            <td className='companyRequest-data'> {e.contact}</td>
+                          </tr>
+                          <tr>
+                            <td>Email Id</td>
+                            <td>:</td>
+                            <td className='companyRequest-data'>{e.email}</td>
+                          </tr>
+                        </table>
+                        <p className='companyRewquest-viewmore'>View more</p>
                       </div>
-                      <table className='companyRequest-table'>
-                        <tr>
-                          <td>Name</td>
-                          <td>:</td>
-                          <td className='companyRequest-data'>{e.name}</td>
-                        </tr>
-                        <tr>
-                          <td>Company Type</td>
-                          <td>:</td>
-                          <td className='companyRequest-data'>  {e.companyType}</td>
-                        </tr>
-                        <tr>
-                          <td>Contact Number</td>
-                          <td>:</td>
-                          <td className='companyRequest-data'> {e.contact}</td>
-                        </tr>
-                        <tr>
-                          <td>Email Id</td>
-                          <td>:</td>
-                          <td className='companyRequest-data'>{e.email}</td>
-                        </tr>
-                      </table>
-                      <p className='companyRewquest-viewmore'>View more</p>
+
+
                     </div>
-
-
-                  </div>
-                )
-              })
-            }
-
+                  )
+                })
+              }
+            </div>
 
           </div>
 
         }
-         <div>
-    
-      </div>
-     
+
+
+        <div class="btn-group companyRequest-btngroup" role="group" aria-label="Basic outlined example">
+          <button type="button" class="btn ">Previous</button>
+          <button type="button" class="btn ">Next</button>
+        </div>
+
+        <div>
+
+        </div>
+
       </div>
 
     </div>
