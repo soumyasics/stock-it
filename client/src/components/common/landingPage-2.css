@@ -5,7 +5,7 @@
     height: auto;
 }
 .landingheader {
-    background: url(../../../assets/images/headerImg.png);
+    background: url(../../assets/images/headerImg.png);
     height: 745px;
     width: 100%;
     background-repeat: no-repeat;
@@ -281,7 +281,7 @@ td {
     width: 100%;
     height: 700px;
     background-color: #1F2937;
-    background: url(../../../assets/images/middleBg.png);
+    background: url(../../assets/images/middleBg.png);
     background-repeat: no-repeat;
     background-size: cover;
     text-align: center;

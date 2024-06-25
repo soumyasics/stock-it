@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './CompanyRequest.css'
-import img1 from '../assets/images/Ellipse 18.svg'
-import axiosInstance from '../apis/axiosInstance'
-import { BASE_URL } from '../apis/baseUrl'
+import { BASE_URL } from '../../apis/baseUrl'
+import axiosInstance from '../../apis/axiosInstance'
+
 
 function CompanyRequest() {
   const [state, setState] = useState([])
