@@ -6,18 +6,18 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
-import CommonNavbar from "./components/commonNavbar";
-import LandingPageHeader from "./components/company/landingPage-2";
+import CommonNavbar from "./components/common/commonNavbar";
+import LandingPageHeader from "./components/common/landingPage-2";
 
 import Footer from "./components/common/userNavbar/Footer";
 import CompanyRegistration from "./components/company/CompanyRegistration";
-import AdminLogin from "./components/userHome/AdminLogin";
-import About from "./components/userHome/About";
+import AdminLogin from "./components/adminLogin/AdminLogin";
+import About from "./components/common/About";
 import CompanyRequest from "./components/company/CompanyRequest";
 import AdminSidebar from "./components/common/adminSidebar";
 
 import AdminNavbar from "./components/common/adminNavbar";
-import Resetpassword from "./components/userHome/resetPassword";
+import Resetpassword from "./components/company/resetPassword";
 import RequestPage from "./components/company/requestPage";
 
 
