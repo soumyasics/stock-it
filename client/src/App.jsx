@@ -40,14 +40,15 @@ function App() {
           <Route path="/AdminLogin" element={[<CommonNavbar />, <AdminLogin />]} />
           <Route path="/adminsidebar" element={[<AdminNavbar />, <AdminSidebar />]} />
           <Route path="/commonNavbar" element={<CommonNavbar />} />
-          <Route path="/landingheader" element={[<CommonNavbar />, <LandingPageHeader />, <Footer />]} />
+          <Route path="/landingheader" element={[<CommonNavbar />, <LandingPageHeader />,<Footer/>]} />
           <Route path="/about" element={[<CommonNavbar />, <About />, <Footer />]} />
           <Route path="/companyrequest" element={[<AdminNavbar />, <AdminSidebar />, <CompanyRequest />]} />
           <Route path="/AdminDashboard" element={[<CommonNavbar />, <AdminSidebar />, <CompanyRequest />]} />
 
           <Route path="/resetPassword" element={[<AdminNavbar />, <Resetpassword />]} />
           <Route path="/adminNavbar" element={<AdminNavbar />} />
-          <Route path="/requestpage" element={<RequestPage />} />
+          <Route path="/requestpage" element={<RequestPage/>}/>
+          <Route path="/edit" element={<CompanyRequest/>}/>
 
           <Route path="/*" element={"<h1> 404 </h1>"} />
         </Routes>
