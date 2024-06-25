@@ -39,7 +39,6 @@ function Footer() {
               <img src={img2} alt="" className='img-fluid mx-3' />
               </div>
 
-
             </div>
           </div>
         </div>
