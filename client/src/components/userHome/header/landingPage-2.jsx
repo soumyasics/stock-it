@@ -13,13 +13,11 @@ import img6 from '../../../assets/images/commentsgif.gif'
 
 function LandingPageHeader() {
   return (
-    <div>
+    <div className='landingheader-main'>
     <div className='landingheader'>
       <div className='landingheader-gif'>
         <img src={imgGif} alt="" />
-
       </div>
-
       <div className='landingheader-h1'>
         <div className='landingheader-left'>
           <h1>Welcome to stock it</h1>

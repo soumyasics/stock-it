@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
+.landingheader-main{
+    width: 100%;
+    height: auto;
+}
 .landingheader {
     background: url(../../../assets/images/headerImg.png);
     height: 745px;
@@ -67,6 +71,8 @@
     height: 350px;
     flex-shrink: 0;
     margin-left: 70px;
+    position: relative;
+    top: 70px;
 }
 
 .landingheader-bottom {
@@ -319,7 +325,7 @@ td {
 }
 
 .landingheader-h2-footer-img {
-    padding-left: 250px;
+    margin-left: 250px;
 }
 
 .landingheader-h2-parag h4 {

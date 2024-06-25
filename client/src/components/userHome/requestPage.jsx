@@ -6,7 +6,7 @@ import { Link, useParams } from 'react-router-dom'
 import { BASE_URL } from '../../apis/baseUrl'
 
 function RequestPage() {
-  const [state, setState] = useState({license:{filename:''}})
+  const [state, setState] = useState({ license: { filename: '' } })
   const { id } = useParams()
   useEffect(() => {
     axiosInstance.post(`/viewCompanyById/66768c500c19004743abce81`)
@@ -37,14 +37,13 @@ function RequestPage() {
       .then((res) => {
         if (res.data.status == 200) {
           alert(res.data.msg)
-        }else{
+        } else {
           alert(res.data.msg)
         }
       })
   })
   return (
     <div className='requestpage-bg'>
-            
       <div className='requestpage-header'>
         <img src={`${BASE_URL}${state?.logo?.filename}`} alt="profile" />
         <div className='requestpage-companyname'>
@@ -102,7 +101,9 @@ function RequestPage() {
           <tr>
             <td>Company License</td>
             <td>-</td>
-            <td><a href={`${BASE_URL}${state?.logo?.filename}`}>{`${BASE_URL}${state?.logo?.filename}`}</a> </td>
+            <td><button type="button" class="modal-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              View License
+            </button></td>
           </tr>
           <tr>
             <td>Year Founded</td>
@@ -120,7 +121,24 @@ function RequestPage() {
         <button class="btn" type="submit" value="submit" onClick={toAccept} >Accept</button>
         <button class="btn" type="submit" value="submit" onClick={toDelete} >Reject</button>
       </div>
-     
+
+
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Company License</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body modal-image">
+              <img src={`${BASE_URL}${state?.logo?.filename}`} alt="profile" />
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
