@@ -27,6 +27,7 @@ function CompanyRequest() {
       })
   }, [])
 
+  
 
   const displayUsers = state
     .slice(pageVisited, pageVisited + userPerPage)
@@ -92,7 +93,7 @@ function CompanyRequest() {
             </select>
           </div>
           <div className='comapanyRequest-search-box'>
-            <input type='search' className='companyRequest-serchbox' placeholder='Companies' />
+            <input type='search' className='companyRequest-serchbox' placeholder='Companies'  onChange={serchbtn} />
           </div>
         </div>
         {
