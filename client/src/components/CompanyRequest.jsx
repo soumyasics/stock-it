@@ -1,11 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import './CompanyRequest.css'
-import img1 from '../assets/images/Ellipse 18.svg'
 import axiosInstance from '../apis/axiosInstance'
 import { BASE_URL } from '../apis/baseUrl'
+import ReactPaginate from "react-paginate"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
+
 
 function CompanyRequest() {
   const [state, setState] = useState([])
+
+
+  const [pageNumber, setPageNumber] = useState(0)
+  const userPerPage = 15;
+  const pageVisited = pageNumber * userPerPage;
+
+
   useEffect(() => {
     axiosInstance.post("/viewCompanies")
       .then((res) => {
@@ -18,12 +28,53 @@ function CompanyRequest() {
   }, [])
 
 
+  const displayUsers = state
+    .slice(pageVisited, pageVisited + userPerPage)
+    .map((e) => {
+      return (
+        <div>
+          <div className='companyRequest-details '>
+            <div className='companyRequest-innerbox1'>
+              <img className='companyRequest-logo img-fluid' src={`${BASE_URL}${e?.logo?.filename}`} alt="test   " />
+              <p className='companyRequest-subheading'>subway</p>
+            </div>
+            <table className='companyRequest-table'>
+              <tr>
+                <td>Name</td>
+                <td>:</td>
+                <td className='companyRequest-data'>{e.name}</td>
+              </tr>
+              <tr>
+                <td>Company Type</td>
+                <td>:</td>
+                <td className='companyRequest-data'>  {e.companyType}</td>
+              </tr>
+              <tr>
+                <td>Contact Number</td>
+                <td>:</td>
+                <td className='companyRequest-data'> {e.contact}</td>
+              </tr>
+              <tr>
+                <td>Email Id</td>
+                <td>:</td>
+                <td className='companyRequest-data'>{e.email}</td>
+              </tr>
+            </table>
+            <p className='companyRewquest-viewmore'>View more</p>
+          </div>
+        </div>
+      )
+    })
 
+
+  const pageCount = Math.ceil(state.length / userPerPage);
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+
+
+  }
   return (
-
     <div>
-
-
       <div className='companyRequest-body' >
         <div className='companyRequest-heading'>
           <p>Company Requests</p>
@@ -41,74 +92,38 @@ function CompanyRequest() {
             </select>
           </div>
           <div className='comapanyRequest-search-box'>
-            <input type='search' className='companyRequest-serchbox' placeholder='Companies'  />
+            <input type='search' className='companyRequest-serchbox' placeholder='Companies' />
           </div>
         </div>
         {
-          <div class="container-fluid">
+          <div className="container-fluid">
 
             <div className='row row-cols-5'>
-              {
-
-                state.map((e) => {
-                  return (
-                    <div>
-                      <div className='companyRequest-details '>
-                        <div className='companyRequest-innerbox1'>
-                          <img className='companyRequest-logo img-fluid' src={`${BASE_URL}${e?.logo?.filename}`} alt="test   " />
-                          <p className='companyRequest-subheading'>{e.name}</p>
-                        </div>
-                        <table className='companyRequest-table'>
-                          <tr>
-                            <td>Name</td>
-                            <td>:</td>
-                            <td className='companyRequest-data'>{e.name}</td>
-                          </tr>
-                          <tr>
-                            <td>Company Type</td>
-                            <td>:</td>
-                            <td className='companyRequest-data'>  {e.companyType}</td>
-                          </tr>
-                          <tr>
-                            <td>Contact Number</td>
-                            <td>:</td>
-                            <td className='companyRequest-data'> {e.contact}</td>
-                          </tr>
-                          <tr>
-                            <td>Email Id</td>
-                            <td>:</td>
-                            <td className='companyRequest-data'>{e.email}</td>
-                          </tr>
-                        </table>
-                        <p className='companyRewquest-viewmore'>View more</p>
-                      </div>
-
-
-                    </div>
-                  )
-                })
-              }
+              {displayUsers}
             </div>
-
           </div>
-
         }
 
 
-        <div class="btn-group companyRequest-btngroup" role="group" aria-label="Basic outlined example">
-          <button type="button" class="btn ">Previous</button>
-          <button type="button" class="btn ">Next</button>
+        <div className='comapanyRequest-btngroup'>
+          <div className='companyRequest-inner-btngroup'>
+            <ReactPaginate
+              previousLabel={<FontAwesomeIcon icon={faArrowLeft} style={{ color: "white" }} />}
+              nextLabel={<FontAwesomeIcon icon={faArrowRight} style={{ color: "white" }} />}
+              pageCount={pageCount}
+              onPageChange={changePage}
+              containerClassName={"paginationBtns"}
+              previousLinkClassName={"previousbtn"}
+              nextLinkClassName={"nextbtn"}
+              disabledClassName={"paginationDisabled"}
+              activeClassName={"paginationActive"}
+            />
+
+
+          </div>
         </div>
-
-        <div>
-
-        </div>
-
       </div>
-
     </div>
-
-
   )
 }
 
