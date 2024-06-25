@@ -13,9 +13,11 @@ router.post('/resetPwd',admin.resetPwd)
 router.post("/registerCompany", company.upload, company.registerCompany);
 router.post("/viewCompanies", company.viewCompanies);
 router.post("/loginCompany", company.login);
+router.post("/viewCompanyById/:id", company.viewCompanyById);
 router.post("/acceptCompanyById/:id", company.acceptCompanyById);
 router.post("/deActivateCompanyById", company.deActivateCompanyById);
 router.post("/deleteCompanyById/:id", company.deleteCompanyById);
 router.post("/activateCompanyById/:id", company.activateCompanyById);
+router.post("/searchcompanyByName/:id", company.searchcompanyByName);
 
 module.exports = router;

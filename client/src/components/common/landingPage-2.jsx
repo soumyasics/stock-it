@@ -1,24 +1,23 @@
 import React from 'react'
-import '../../../components/userHome/header/landingPage-2.css'
-import img1 from '../../../assets/images/image logo.png'
-import img2 from '../../../assets/images/image 9.png'
-import img3 from '../../../assets/images/image 8.png'
-import imgGif from '../../../assets/images/headergif.gif'
-import imgStep1 from '../../../assets/images/Group 386.png'
-import imgStep2 from '../../../assets/images/Group 391.png'
-import imgStep3 from '../../../assets/images/Group 393.png'
-import img4 from '../../../assets/images/image 13.png'
-import img5 from '../../../assets/images/phonegroup.png'
-import img6 from '../../../assets/images/commentsgif.gif'
+import '../common/landingPage-2.css'
+import img1 from '../../assets/images/image logo.png'
+import img2 from '../../assets/images/image 9.png'
+import img3 from '../../assets/images/image 8.png'
+import imgGif from '../../assets/images/headergif.gif'
+import imgStep1 from '../../assets/images/Group 386.png'
+import imgStep2 from '../../assets/images/Group 391.png'
+import imgStep3 from '../../assets/images/Group 393.png'
+import img4 from '../../assets/images/image 13.png'
+import img5 from '../../assets/images/phonegroup.png'
+import img6 from '../../assets/images/commentsgif.gif'
 
 function LandingPageHeader() {
   return (
+    <div className='landingheader-main'>
     <div className='landingheader'>
       <div className='landingheader-gif'>
         <img src={imgGif} alt="" />
-
       </div>
-
       <div className='landingheader-h1'>
         <div className='landingheader-left'>
           <h1>Welcome to stock it</h1>
@@ -56,7 +55,7 @@ function LandingPageHeader() {
           <h4>Become a Better <span className='middle-text'> Stock Investor!</span></h4>
           <br />
           <p>Stock it Portal helps investors make efficient stock research
-            and analysis by providing quality fundamental data with insightful <br />
+            and analysis by providing quality fundamental data with insightful
             Visuals !!</p>
         </div>
       </div>
@@ -213,6 +212,7 @@ function LandingPageHeader() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import './commonNavbar.css'
-import img1 from '../assets/images/Frame 339.png'
+import img1 from '../../assets/images/Frame 339.png'
 import { Link } from 'react-router-dom'
 
 
