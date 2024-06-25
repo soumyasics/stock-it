@@ -19,6 +19,8 @@ import AdminSidebar from "./components/common/adminSidebar";
 import AdminNavbar from "./components/common/adminNavbar";
 import Resetpassword from "./components/company/resetPassword";
 import RequestPage from "./components/company/requestPage";
+import CompanyLogin from "./components/company/CompanyLogin/companyLogin";
+
 
 
 
@@ -49,6 +51,8 @@ function App() {
           <Route path="/adminNavbar" element={<AdminNavbar />} />
           <Route path="/requestpage" element={<RequestPage/>}/>
           <Route path="/edit" element={<CompanyRequest/>}/>
+
+          <Route path="/companylogin" element={[<CommonNavbar/>,<CompanyLogin/>]}/>
 
           <Route path="/*" element={"<h1> 404 </h1>"} />
         </Routes>
