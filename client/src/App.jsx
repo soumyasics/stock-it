@@ -50,7 +50,6 @@ function App() {
           <Route path="/resetPassword" element={[<AdminNavbar />, <Resetpassword />]} />
           <Route path="/adminNavbar" element={<AdminNavbar />} />
           <Route path="/requestpage" element={<RequestPage/>}/>
-          <Route path="/edit" element={<CompanyRequest/>}/>
 
           <Route path="/companylogin" element={[<CommonNavbar/>,<CompanyLogin/>]}/>
 
