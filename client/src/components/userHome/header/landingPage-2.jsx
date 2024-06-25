@@ -13,12 +13,11 @@ import img6 from '../../../assets/images/commentsgif.gif'
 
 function LandingPageHeader() {
   return (
+    <div className='landingheader-main'>
     <div className='landingheader'>
       <div className='landingheader-gif'>
         <img src={imgGif} alt="" />
-
       </div>
-
       <div className='landingheader-h1'>
         <div className='landingheader-left'>
           <h1>Welcome to stock it</h1>
@@ -56,7 +55,7 @@ function LandingPageHeader() {
           <h4>Become a Better <span className='middle-text'> Stock Investor!</span></h4>
           <br />
           <p>Stock it Portal helps investors make efficient stock research
-            and analysis by providing quality fundamental data with insightful <br />
+            and analysis by providing quality fundamental data with insightful
             Visuals !!</p>
         </div>
       </div>
@@ -213,6 +212,7 @@ function LandingPageHeader() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   )
 }

@@ -16,7 +16,7 @@ function CommonNavbar() {
               <a href="#">Home</a>
               <a href="#">About</a>
               <div className='right-btn'>
-              <button>login</button>
+              <button type='submin'>login</button>
               </div>
               
           </div>

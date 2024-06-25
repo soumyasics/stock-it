@@ -99,3 +99,14 @@ a:hover {
 .requestpage-btn {
     color: #FFF;
 }
+.modal-image img{
+    width: 100%;
+    height: auto;
+}
+.modal-btn{
+    background-color:#11182700;
+    border: none;
+    color:#FFF ;
+    padding: 0;
+    
+}

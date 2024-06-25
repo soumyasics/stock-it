@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+.landingheader-main{
+    width: 100%;
+    height: auto;
+}
 .landingheader {
     background: url(../../../assets/images/headerImg.png);
     height: 745px;
@@ -32,6 +38,8 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    font-family: "Noto Sans";
+
 }
 
 .landingheader-left p {
@@ -40,14 +48,13 @@
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
+    font-family: "Noto Sans";
+
 }
 
 .landingheader-left-btn {
     width: 150px;
     height: 40px;
-    position: relative;
-    top: 8px;
-    left: 1px;
 }
 
 .landingheader-left-btn button {
@@ -63,9 +70,9 @@
     width: 390px;
     height: 350px;
     flex-shrink: 0;
+    margin-left: 70px;
     position: relative;
-    right: -50px;
-    top: 120px;
+    top: 70px;
 }
 
 .landingheader-bottom {
@@ -128,6 +135,8 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    font-family: "Noto Sans";
+
 }
 
 .landingheader-right-bottom p {
@@ -176,6 +185,8 @@
     font-weight: 700;
     line-height: normal;
     padding-top: 35px;
+    font-family: "Noto Sans";
+
 }
 
 .leftbox-inner {
@@ -188,6 +199,7 @@
     height: 300px;
     width: 520px;
     border: none;
+    margin-left: 0px;
 }
 
 .left-table th {
@@ -196,6 +208,8 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    font-family: "Noto Sans";
+
 }
 
 .leftbox-inner tr,
@@ -228,6 +242,8 @@ td {
     font-weight: 700;
     line-height: normal;
     padding-top: 35px;
+    font-family: "Noto Sans";
+
 }
 
 .rightbox-inner {
@@ -240,6 +256,7 @@ td {
     height: 300px;
     width: 520px;
     border: none;
+    margin-left: 0px;
 }
 
 .right-table th {
@@ -248,6 +265,7 @@ td {
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    font-family: "Noto Sans";
 }
 
 .rightbox-inner tr {
@@ -277,6 +295,8 @@ td {
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    font-family: "Noto Sans";
+
 }
 
 .middle-step {
@@ -285,6 +305,8 @@ td {
     display: flex;
     justify-content: space-evenly;
     margin-top: 80px;
+    font-family: "Noto Sans";
+
 }
 
 .middle-step p {
@@ -303,7 +325,7 @@ td {
 }
 
 .landingheader-h2-footer-img {
-    padding-left: 250px;
+    margin-left: 250px;
 }
 
 .landingheader-h2-parag h4 {
@@ -314,6 +336,8 @@ td {
     line-height: normal;
     padding-left: 90px;
     padding-top: 50px;
+    font-family: "Noto Sans";
+
 }
 
 .landingheader-h2-parag p {
@@ -325,6 +349,8 @@ td {
     font-style: normal;
     font-weight: 700;
     line-height: 1.2;
+    font-family: "Noto Sans";
+
 }
 
 /* landingheader-h3 */
@@ -342,6 +368,8 @@ td {
     width: 1032px;
     text-align: center;
     color: #FFF;
+    font-family: "Noto Sans";
+
 }
 
 .landingheader-h3-content h2 {
@@ -351,6 +379,8 @@ td {
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    font-family: "Noto Sans";
+
 }
 
 .landingheader-h3-content p {
@@ -362,8 +392,9 @@ td {
     line-height: 1.5;
 }
 
-.landingheader-h3-images {
+.landingheader-h3-images{
     text-align: center;
+    
 }
 
 .landingheader-h3-images h6 {
@@ -374,14 +405,12 @@ td {
     font-weight: 500;
     line-height: normal;
     margin-top: 60px;
-}
+    font-family: "Noto Sans";
 
-.h3-comments {
-    text-align: center;
 }
-
 .h3-comments img {
     margin-top: 30px;
-    width: 1290px;
-    height: 162px;
+    width: 87%;
+    height: auto;
+    padding-left:12%;
 }
