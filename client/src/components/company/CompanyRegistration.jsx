@@ -5,7 +5,10 @@ import axiosMultipartInstance from "../../apis/axiosMultipartInstance";
 import "./CompanyRegistration.css";
 import CommonNavbar from "../common/commonNavbar";
 import { Footer2 } from "../common/footer2/footer2";
+import { useNavigate } from "react-router-dom";
+
 function CompanyRegistration() {
+  const navigate = useNavigate();
   const [companyData, setCompanyData] = useState({
     name: "",
     pincode: "",
@@ -60,6 +63,9 @@ function CompanyRegistration() {
   //   license: null,
   // });
 
+  const redirectToLogin = () => {
+    navigate("/companylogin");
+  };
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (files) {
@@ -170,10 +176,11 @@ function CompanyRegistration() {
                         value={companyData.companyType}
                         onChange={handleChange}
                       >
-                        <option value="">Open this select menu</option>
-                        <option value="Type1">Type 1</option>
-                        <option value="Type2">Type 2</option>
-                        <option value="Type3">Type 3</option>
+                        <option value="">Choose company type</option>
+                        <option value="Tech">Tech</option>
+                        <option value="Medical">Medical</option>
+                        <option value="Education">Education</option>
+                        <option value="Other">Other</option>
                       </select>
                     </div>
                   </div>
@@ -357,7 +364,14 @@ function CompanyRegistration() {
                   </button>
                   <p className="CompanyRegistration-footer">
                     {" "}
-                    Already have an account?Login Now!
+                    Already have an account? &nbsp;{" "}
+                    <span
+                      className="fs-6 fw-bold text-primary"
+                      style={{ cursor: "pointer" }}
+                      onClick={redirectToLogin}
+                    >
+                      Login Now!
+                    </span>
                   </p>
                 </form>
               </div>
