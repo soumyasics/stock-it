@@ -9,7 +9,7 @@ function RequestPage() {
   const [state, setState] = useState({ license: { filename: '' } })
   const { id } = useParams()
   useEffect(() => {
-    axiosInstance.post(`/viewCompanyById/66768c500c19004743abce81`)
+    axiosInstance.post(`/viewCompanyById/${id}`)
       .then((response) => {
         console.log(response);
         setState(response.data.data)
@@ -21,7 +21,7 @@ function RequestPage() {
 
   const toAccept = ((e) => {
     e.preventDefault()
-    axiosInstance.post("/acceptCompanyById/6673dc6eca65d0d24d5333ae")
+    axiosInstance.post("/acceptCompanyById/" + id) 
       .then((response) => {
         console.log(response);
         if (response.data.status == 200) {
@@ -33,7 +33,7 @@ function RequestPage() {
   })
   const toDelete = ((e) => {
     e.preventDefault();
-    axiosInstance.post("deleteCompanyById/6673dc6eca65d0d24d5333ae")
+    axiosInstance.post(`deleteCompanyById/${id}`)
       .then((res) => {
         if (res.data.status == 200) {
           alert(res.data.msg)
