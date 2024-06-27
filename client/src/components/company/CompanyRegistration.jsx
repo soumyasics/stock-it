@@ -6,6 +6,7 @@ import "./CompanyRegistration.css";
 import CommonNavbar from "../common/commonNavbar";
 import { Footer2 } from "../common/footer2/footer2";
 import { useNavigate } from "react-router-dom";
+import {toast} from "react-hot-toast";
 
 function CompanyRegistration() {
   const navigate = useNavigate();
@@ -110,7 +111,8 @@ function CompanyRegistration() {
       );
       console.log(response);
       if (response.data.status === 200) {
-        alert("Company registered successfully");
+        toast.success("Company registered successfully");
+        redirectToLogin();
       } else {
         alert(response.data.msg);
       }

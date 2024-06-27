@@ -52,13 +52,13 @@ function CompanyLogin() {
             <form class="col-7 companylogin-inputs" onSubmit={handleSubmit}>
               <div class="mb-3 companylogin-inner">
                 <label for="exampleFormControlInput1" class="form-label">
-                  Username
+                  Email
                 </label>
                 <input
                   type="text"
                   class="form-control"
                   id="exampleFormControlInput1"
-                  placeholder="Enter Username"
+                  placeholder="Enter Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />

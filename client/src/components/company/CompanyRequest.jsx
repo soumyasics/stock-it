@@ -71,8 +71,9 @@ function CompanyRequest() {
             <p
               className="companyRewquest-viewmore"
               onClick={() => {
-                navigateToPeningCompanyRequest(e._id)
+                navigateToPeningCompanyRequest(e._id);
               }}
+              style={{ cursor: "pointer" }}
             >
               View more
             </p>
