@@ -9,12 +9,14 @@ import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 function CompanyRequest() {
   const [state, setState] = useState([])
-  const [search, setSearch] = useState()
 
 
   const [pageNumber, setPageNumber] = useState(0)//state for pagination
   const userPerPage = 15;
   const pageVisited = pageNumber * userPerPage;
+  const [searchResult,setSearchResult] =useState("")
+
+
 
 
   useEffect(() => {
@@ -30,23 +32,18 @@ function CompanyRequest() {
   }, [])
 
   const handleSearch = (name) => {
-    setSearch(name.target.value)
-
     console.log("sear", name.target.value);
     let d = name.target.value
     axiosInstance.post(`/searchcompanyByName/${d}`)
       .then((res) => {
-        console.log(res);
-        if(res.status==200)
-          {
-            setState(res.data)
-
-          }
-          else{
-            alert(res.data.msg)
-          }
         
+        console.log(res);    
+        setState(res.data);
 
+        if(res.data.length == 200)
+          {
+            
+          }
       }
       )
       .catch((err) => {
@@ -118,7 +115,6 @@ function CompanyRequest() {
           <div className='comapanyRequest-search-box'>
             <input type='search' className='companyRequest-serchbox'
               placeholder='Companies'
-              value={search}
               onChange={handleSearch} />
 
           </div>
@@ -128,6 +124,8 @@ function CompanyRequest() {
 
             <div className='row row-cols-5'>
               {displayUsers}
+    
+
             </div>
           </div>
         }
