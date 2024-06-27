@@ -18,6 +18,6 @@ router.post("/acceptCompanyById/:id", company.acceptCompanyById);
 router.post("/deActivateCompanyById", company.deActivateCompanyById);
 router.post("/deleteCompanyById/:id", company.deleteCompanyById);
 router.post("/activateCompanyById/:id", company.activateCompanyById);
-router.post("/searchcompanyByName/:id", company.searchcompanyByName);
+router.post("/searchcompanyByName/:name", company.searchcompanyByName);
 
 module.exports = router;
