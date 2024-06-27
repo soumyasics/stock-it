@@ -275,7 +275,7 @@ const searchcompanyByName = (req, res) => {
   Company.find({ name: { $regex: req.params.name, $options: 'i' } })
       .then(data => {
           if (data.length === 0) {
-              return res.status(404).json({ message: 'No Company found with the specified Name.' });
+              return res.status(409).json({ message: 'No Company found with the specified Name.' });
           }
           res.status(200).json(data);
       })
