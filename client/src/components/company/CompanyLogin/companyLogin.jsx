@@ -52,6 +52,7 @@ function CompanyLogin() {
                 <span
                   onClick={redirectToComapanySignup}
                   className="fs-6 fw-bold ms-2"
+                  style={{cursor: "pointer"}}
                 >
                   Register Now!
                 </span>

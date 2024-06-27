@@ -4,7 +4,7 @@ import img5 from "../../assets/images/shieldLogo.png";
 import axiosMultipartInstance from "../../apis/axiosMultipartInstance";
 import "./CompanyRegistration.css";
 import CommonNavbar from "../common/commonNavbar";
-import Footer from "../common/userNavbar/Footer";
+import { Footer2 } from "../common/footer2/footer2";
 function CompanyRegistration() {
   const [companyData, setCompanyData] = useState({
     name: "",
@@ -133,9 +133,9 @@ function CompanyRegistration() {
     }
   };
   return (
-    <div className="bg-danger">
+    <div>
       <CommonNavbar />
-      <div className="CompanyRegistation-background bg-primary">
+      <div className="CompanyRegistation-background ">
         <div className="CompanyRegistartion-inner-box ">
           <h4 className="CompanyRegistation-heading">Company Registration</h4>
           <div class="row my-5">
@@ -365,8 +365,8 @@ function CompanyRegistration() {
           </div>
         </div>
       </div>
-      <div className="mt-5">
-        <Footer />
+      <div>
+        <Footer2 />
       </div>
     </div>
   );
