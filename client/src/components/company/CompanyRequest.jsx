@@ -9,14 +9,16 @@ import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 function CompanyRequest() {
   const [state, setState] = useState([])
+  const [search, setSearch] = useState()
 
 
-  const [pageNumber, setPageNumber] = useState(0)
+  const [pageNumber, setPageNumber] = useState(0)//state for pagination
   const userPerPage = 15;
   const pageVisited = pageNumber * userPerPage;
 
 
   useEffect(() => {
+
     axiosInstance.post("/viewCompanies")
       .then((res) => {
         console.log(res);
@@ -27,7 +29,30 @@ function CompanyRequest() {
       })
   }, [])
 
-  
+  const handleSearch = (name) => {
+    setSearch(name.target.value)
+
+    console.log("sear", name.target.value);
+    let d = name.target.value
+    axiosInstance.post(`/searchcompanyByName/${d}`)
+      .then((res) => {
+        console.log(res);
+        if(res.status==200)
+          {
+            setState(res.data)
+
+          }
+          else{
+            alert(res.data.msg)
+          }
+        
+
+      }
+      )
+      .catch((err) => {
+        console.log(err);
+      })
+  }
 
   const displayUsers = state
     .slice(pageVisited, pageVisited + userPerPage)
@@ -37,7 +62,7 @@ function CompanyRequest() {
           <div className='companyRequest-details '>
             <div className='companyRequest-innerbox1'>
               <img className='companyRequest-logo img-fluid' src={`${BASE_URL}${e?.logo?.filename}`} alt="test   " />
-              <p className='companyRequest-subheading'>subway</p>
+              <p className='companyRequest-subheading'>{e.name}</p>
             </div>
             <table className='companyRequest-table'>
               <tr>
@@ -67,11 +92,9 @@ function CompanyRequest() {
       )
     })
 
-
   const pageCount = Math.ceil(state.length / userPerPage);
   const changePage = ({ selected }) => {
     setPageNumber(selected);
-
 
   }
   return (
@@ -93,7 +116,11 @@ function CompanyRequest() {
             </select>
           </div>
           <div className='comapanyRequest-search-box'>
-            <input type='search' className='companyRequest-serchbox' placeholder='Companies'  onChange={serchbtn} />
+            <input type='search' className='companyRequest-serchbox'
+              placeholder='Companies'
+              value={search}
+              onChange={handleSearch} />
+
           </div>
         </div>
         {
@@ -119,7 +146,6 @@ function CompanyRequest() {
               disabledClassName={"paginationDisabled"}
               activeClassName={"paginationActive"}
             />
-
 
           </div>
         </div>

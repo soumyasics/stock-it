@@ -107,8 +107,7 @@ function CompanyRegistration() {
       if (response.data.status === 200) {
         alert("Company registered successfully");
       } else {
-        alert(response.data.msg);
-      }
+alert(response.data.found)      }
 
 
     } catch (error) {
@@ -131,7 +130,7 @@ function CompanyRegistration() {
         break;
       }
     }
-
+   
     if (formIsValid) {
 
       sendDataToServer(formData)
