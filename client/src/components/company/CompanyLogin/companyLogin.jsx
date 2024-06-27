@@ -1,13 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import "./companyLogin.css";
 import img1 from "../../../assets/images/shieldLogo.png";
 import CompanyRequest from "../CompanyRequest";
-
+import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../../../apis/axiosInstance";
+
 function CompanyLogin() {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const redirectToComapanySignup = () => {
     navigate("/CompanyRegistration");
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    sendDataToServer();
+  };
+
+  const sendDataToServer = async () => {
+    try {
+      const res = await axiosInstance.post("loginCompany", { email, password });
+      if (res.status === 200) {
+        const userData = res.data?.data || null;
+        if (userData) {
+          localStorage.setItem("stock_it_companyData", JSON.stringify(userData));
+        }
+        console.log("user data", res.data)
+        toast.success("Login Successful");
+      } else {
+        throw new Error("Something wrong.");
+      }
+      console.log("resp", res);
+    } catch (err) {
+      const msg = err.response?.data?.msg || "Something went wrong";
+      
+      console.log("ompany login msg", err)
+      toast.error(msg);
+    }
   };
   return (
     <div>
@@ -18,16 +49,18 @@ function CompanyLogin() {
             <div class="col-5 companylogin-logo">
               <img src={img1} alt="loginPage logo" className="img-fluid my-4" />
             </div>
-            <div class="col-7 companylogin-inputs">
+            <form class="col-7 companylogin-inputs" onSubmit={handleSubmit}>
               <div class="mb-3 companylogin-inner">
                 <label for="exampleFormControlInput1" class="form-label">
-                  Username
+                  Email
                 </label>
                 <input
                   type="text"
                   class="form-control"
                   id="exampleFormControlInput1"
-                  placeholder="Enter Username"
+                  placeholder="Enter Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div class="mb-3 companylogin-inner">
@@ -39,6 +72,8 @@ function CompanyLogin() {
                   class="form-control"
                   id="exampleFormControlInput1"
                   placeholder="Enter Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <div className="forgot-password">
@@ -52,11 +87,12 @@ function CompanyLogin() {
                 <span
                   onClick={redirectToComapanySignup}
                   className="fs-6 fw-bold ms-2"
+                  style={{ cursor: "pointer" }}
                 >
                   Register Now!
                 </span>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>

@@ -20,10 +20,11 @@ import AdminNavbar from "./components/common/adminNavbar";
 import Resetpassword from "./components/company/resetPassword";
 import RequestPage from "./components/company/requestPage";
 import CompanyLogin from "./components/company/CompanyLogin/companyLogin";
-
+import { Toaster } from "react-hot-toast";
 function App() {
   return (
     <>
+      <Toaster />
       <BrowserRouter basename="stock_it">
         <Routes>
           <Route path="/" element={<LandingPageHeader />} />

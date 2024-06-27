@@ -4,8 +4,12 @@ import img5 from "../../assets/images/shieldLogo.png";
 import axiosMultipartInstance from "../../apis/axiosMultipartInstance";
 import "./CompanyRegistration.css";
 import CommonNavbar from "../common/commonNavbar";
-import Footer from "../common/userNavbar/Footer";
+import { Footer2 } from "../common/footer2/footer2";
+import { useNavigate } from "react-router-dom";
+import {toast} from "react-hot-toast";
+
 function CompanyRegistration() {
+  const navigate = useNavigate();
   const [companyData, setCompanyData] = useState({
     name: "",
     pincode: "",
@@ -60,6 +64,9 @@ function CompanyRegistration() {
   //   license: null,
   // });
 
+  const redirectToLogin = () => {
+    navigate("/companylogin");
+  };
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (files) {
@@ -104,7 +111,8 @@ function CompanyRegistration() {
       );
       console.log(response);
       if (response.data.status === 200) {
-        alert("Company registered successfully");
+        toast.success("Company registered successfully");
+        redirectToLogin();
       } else {
         alert(response.data.msg);
       }
@@ -133,9 +141,9 @@ function CompanyRegistration() {
     }
   };
   return (
-    <div className="bg-danger">
+    <div>
       <CommonNavbar />
-      <div className="CompanyRegistation-background bg-primary">
+      <div className="CompanyRegistation-background ">
         <div className="CompanyRegistartion-inner-box ">
           <h4 className="CompanyRegistation-heading">Company Registration</h4>
           <div class="row my-5">
@@ -170,10 +178,11 @@ function CompanyRegistration() {
                         value={companyData.companyType}
                         onChange={handleChange}
                       >
-                        <option value="">Open this select menu</option>
-                        <option value="Type1">Type 1</option>
-                        <option value="Type2">Type 2</option>
-                        <option value="Type3">Type 3</option>
+                        <option value="">Choose company type</option>
+                        <option value="Tech">Tech</option>
+                        <option value="Medical">Medical</option>
+                        <option value="Education">Education</option>
+                        <option value="Other">Other</option>
                       </select>
                     </div>
                   </div>
@@ -357,7 +366,14 @@ function CompanyRegistration() {
                   </button>
                   <p className="CompanyRegistration-footer">
                     {" "}
-                    Already have an account?Login Now!
+                    Already have an account? &nbsp;{" "}
+                    <span
+                      className="fs-6 fw-bold text-primary"
+                      style={{ cursor: "pointer" }}
+                      onClick={redirectToLogin}
+                    >
+                      Login Now!
+                    </span>
                   </p>
                 </form>
               </div>
@@ -365,8 +381,8 @@ function CompanyRegistration() {
           </div>
         </div>
       </div>
-      <div className="mt-5">
-        <Footer />
+      <div>
+        <Footer2 />
       </div>
     </div>
   );
