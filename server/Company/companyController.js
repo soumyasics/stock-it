@@ -240,7 +240,7 @@ const login = async (req, res) => {
     if (!company) {
       return res.status(404).json({ msg: "Company not found" });
     }
-
+console.log("co", company)
     if (company.password !== password) {
       return res.status(401).json({ msg: "Password mismatch" });
     }

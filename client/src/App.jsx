@@ -21,6 +21,9 @@ import Resetpassword from "./components/company/resetPassword";
 import RequestPage from "./components/company/requestPage";
 import CompanyLogin from "./components/company/CompanyLogin/companyLogin";
 import { Toaster } from "react-hot-toast";
+import { UserRegistration } from "./components/user/userRegistration/userRegistration";
+import { UserHomePage } from "./components/user/userHome/userHome";
+import { UserLogin } from "./components/user/userLogin/userLogin";
 function App() {
   return (
     <>
@@ -29,7 +32,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPageHeader />} />
 
-          {/* company  */}
+          {/* company pages */}
           <Route
             path="/CompanyRegistration"
             element={<CompanyRegistration />}
@@ -43,6 +46,11 @@ function App() {
             element={[<CommonNavbar />, <CompanyLogin />]}
           />
 
+          {/* user pages  */}
+          <Route path="/userRegistration" element={<UserRegistration />} />
+          <Route path="/userHome" element={<UserHomePage />} />
+          <Route path="/userLogin" element={<UserLogin />} />
+
           <Route
             path="/AdminLogin"
             element={[<CommonNavbar />, <AdminLogin />]}
@@ -52,10 +60,7 @@ function App() {
             element={[<AdminNavbar />, <AdminSidebar />]}
           />
           <Route path="/commonNavbar" element={<CommonNavbar />} />
-          <Route
-            path="/landingheader"
-            element={[<CommonNavbar />, <LandingPageHeader />, <Footer />]}
-          />
+          <Route path="/landingheader" element={<LandingPageHeader />} />
           <Route
             path="/about"
             element={[<CommonNavbar />, <About />, <Footer />]}
