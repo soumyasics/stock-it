@@ -24,6 +24,7 @@ import { Toaster } from "react-hot-toast";
 import { UserRegistration } from "./components/user/userRegistration/userRegistration";
 import { UserHomePage } from "./components/user/userHome/userHome";
 import { UserLogin } from "./components/user/userLogin/userLogin";
+import { AdminContainer } from "./pages/admin/adminContainer/adminContainer";
 function App() {
   return (
     <>
@@ -51,9 +52,10 @@ function App() {
           <Route path="/userHome" element={<UserHomePage />} />
           <Route path="/userLogin" element={<UserLogin />} />
 
+          {/* admin pages  */}
           <Route
             path="/AdminLogin"
-            element={[<CommonNavbar />, <AdminLogin />]}
+            element={<AdminLogin />}
           />
           <Route
             path="/adminsidebar"
@@ -61,16 +63,13 @@ function App() {
           />
           <Route path="/commonNavbar" element={<CommonNavbar />} />
           <Route path="/landingheader" element={<LandingPageHeader />} />
-          <Route
-            path="/about"
-            element={[<CommonNavbar />, <About />, <Footer />]}
-          />
+          <Route path="/about" element={[<CommonNavbar />, <About />]} />
 
           <Route
             path="/AdminDashboard"
             element={[<CommonNavbar />, <AdminSidebar />, <CompanyRequest />]}
           />
-
+          <Route path="/admin" element={<AdminContainer />}/>
           <Route
             path="/resetPassword"
             element={[<AdminNavbar />, <Resetpassword />]}

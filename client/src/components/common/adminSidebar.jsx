@@ -17,16 +17,16 @@ function AdminSidebar() {
   const [show1, setShow1] = useState(false);
   const [show2, setShow2] = useState(false);
   return (
-    <div className="adminSidebar">
+    <div className="adminSidebar bg-primary">
       <div className="adminSidebar-gif">
         <img src={imgGif} alt="" />
       </div>
-      <div className="adminSidebar-h1">
+      <div className="adminSidebar-h1 bg-warning">
         <div className="adminSidebar-main">
           <div className="adminSidebar-title-head">
             <img src={titleImg} alt="" />
           </div>
-          <div className="adminSidebar-content ">
+          <div className="adminSidebar-content bg-danger">
             <div className="adminSidebar-user-grid">
               <div className="adminSidebar-user">
                 <img src={vector1} alt="" />
