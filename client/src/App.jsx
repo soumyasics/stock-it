@@ -63,7 +63,7 @@ function App() {
           <Route path="/landingheader" element={<LandingPageHeader />} />
           <Route
             path="/about"
-            element={[<CommonNavbar />, <About />, <Footer />]}
+            element={[<CommonNavbar />, <About />]}
           />
 
           <Route

@@ -24,8 +24,8 @@ function CommonNavbar() {
   const navigateOptions = [
     // { value: "/", label: "Login" },
     { value: "/companylogin", label: "Comapny" },
+    { value: "/userLogin", label: "User" },
 
-    { value: "/AdminLogin", label: "Admin" },
   ];
 
   return (
