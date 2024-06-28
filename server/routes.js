@@ -3,6 +3,12 @@ const company = require("./Company/companyController");
 const admin = require("./Admin/adminController");
 const userController = require("./user/userController");
 const { isEmailUnique } = require("./middlewares/isEmailUnique");
+const IPO=require('./IPO/ipoController')
+const ET=require('./Tutors/tutorController')
+
+
+
+
 router.get("/", (req, res) => {
   return res.send({ message: "Stock it Server working" });
 });
@@ -31,5 +37,32 @@ router.post(
 router.post("/loginUser", userController.loginUser);
 router.post("/getAllUsers", userController.getAllUsers);
 router.post("/getUserById/:id", userController.getUserById);
+router.post("/editUserById/:id",userController.upload, userController.editUserById);
+router.post("/activateUserById/:id", userController.activateUserById);
+router.post("/deActivateUserById/:id", userController.deActivateUserById);
+
+
+
+//IPO routes
+router.post("/createIpo",IPO.createIpo);
+router.post("/getIpoByCompanyId/:id",IPO.getIpoByCompanyId);
+router.post("/deleteIpo/:id",IPO.deleteIpo);
+router.post("/getIpos",IPO.getIpos);
+router.post("/deleteIpo/:id",IPO.getIpoById);
+router.post("/deleteIpo/:id",IPO.getIposForAdminApproval);
+router.post("/deleteIpo/:id",IPO.approveIPOById);
+router.post("/updateIpo/:id",IPO.updateIpo);
+
+
+router.post("/registerTutor",ET.upload, ET.registerTutor);
+
+router.post("/loginTutor", ET.loginTutor);
+router.post("/getAllTutors", ET.getAllTutors);
+router.post("/getTutorById/:id", ET.getTutorById);
+router.post("/updateTutorById/:id",ET.upload, ET.updateTutorById);
+router.post("/activateTutorById/:id", ET.activateTutorById);
+router.post("/deactivateTutorById/:id", ET.deactivateTutorById);
+router.post("/deactivateTutorById/:id", ET.approveTutorById);
+router.post("/deleteTutorById/:id", ET.deleteTutorById);
 
 module.exports = router;
