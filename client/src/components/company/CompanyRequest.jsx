@@ -18,10 +18,17 @@ function CompanyRequest() {
 
 
 
+  const navigate = useNavigate();
+  const navigateToPeningCompanyRequest = (id) => {
+    console.log("check", id);
+    navigate(`/requestpage/${id}`);
+  };
 
   useEffect(() => {
 
     axiosInstance.post("/viewCompanies")
+    axiosInstance
+      .post("/viewCompanies")
       .then((res) => {
         console.log(res);
         setState(res.data.data)
@@ -30,26 +37,6 @@ function CompanyRequest() {
         console.log(err);
       })
   }, [])
-
-  const handleSearch = (name) => {
-   
-    console.log("sear", name.target.value);
-    let d = name.target.value
-    
-    axiosInstance.post(`/searchcompanyByName/${d}`)
-      .then((res) => {
-
-        console.log(res);
-
-        setState(res.data);
-
-
-      }
-      )
-      .catch((err) => {
-        console.log(err);
-      })
-  }
 
   const displayUsers = state
     .slice(pageVisited, pageVisited + userPerPage)
@@ -60,6 +47,14 @@ function CompanyRequest() {
             <div className='companyRequest-innerbox1'>
               <img className='companyRequest-logo img-fluid' src={`${BASE_URL}${e?.logo?.filename}`} alt="test   " />
               <p className='companyRequest-subheading'>{e.name}</p>
+          <div className="companyRequest-details ">
+            <div className="companyRequest-innerbox1">
+              <img
+                className="companyRequest-logo img-fluid"
+                src={`${BASE_URL}${e?.logo?.filename}`}
+                alt="test   "
+              />
+              <p className="companyRequest-subheading">subway</p>
             </div>
             <table className='companyRequest-table'>
               <tr>
@@ -89,11 +84,15 @@ function CompanyRequest() {
       )
     })
 
+      );
+    });
+
   const pageCount = Math.ceil(state.length / userPerPage);
   const changePage = ({ selected }) => {
     setPageNumber(selected);
 
   }
+  const serchbtn = () => {};
   return (
     <div>
       <div className='companyRequest-body' >
@@ -117,6 +116,13 @@ function CompanyRequest() {
               placeholder='Companies'
               onChange={handleSearch} />
 
+          <div className="comapanyRequest-search-box">
+            <input
+              type="search"
+              className="companyRequest-serchbox"
+              placeholder="Companies"
+              onChange={serchbtn}
+            />
           </div>
         </div>
         {
@@ -127,6 +133,7 @@ function CompanyRequest() {
 
 
             </div>
+            <div className="row row-cols-5">{displayUsers}</div>
           </div>
         }
 
