@@ -52,8 +52,6 @@ router.post("/deleteIpo/:id",IPO.getIpoById);
 router.post("/deleteIpo/:id",IPO.getIposForAdminApproval);
 router.post("/deleteIpo/:id",IPO.approveIPOById);
 router.post("/updateIpo/:id",IPO.updateIpo);
-
-
 router.post("/registerTutor",ET.upload, ET.registerTutor);
 
 router.post("/loginTutor", ET.loginTutor);
