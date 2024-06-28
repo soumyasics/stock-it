@@ -12,7 +12,7 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage: storage }).single("photo");
+const upload = multer({ storage: storage }).any();
 
 // Create User
 const createUser = async (req, res) => {
@@ -26,13 +26,15 @@ const createUser = async (req, res) => {
       city,
       state,
       pincode,
-      photo,
       contactNumber,
       email,
       password,
+      dematACNumber,
+      bankName,
+      branchName,
+      ifscCode,
     } = req.body;
 
-    console.log("req body", req.body);
     if (
       !firstName ||
       !lastName ||
@@ -40,14 +42,19 @@ const createUser = async (req, res) => {
       !dob ||
       !address ||
       !city ||
-      !state || 
-      !pincode || 
-      !contactNumber || 
-      !email || 
-      !password
+      !state ||
+      !pincode ||
+      !contactNumber ||
+      !email ||
+      !password ||
+      !dematACNumber ||
+      !bankName ||
+      !branchName ||
+      !ifscCode
     ) {
       return res.status(400).json({ msg: "All fields are required" });
     }
+
     if (pincode.length !== 6) {
       return res.status(400).json({ msg: "Invalid pincode" });
     }
@@ -56,6 +63,12 @@ const createUser = async (req, res) => {
       return res.status(400).json({ msg: "Invalid contact number" });
     }
 
+    const photo = req.files.find(
+      (file) => file.fieldname === "photo"
+    )?.filename;
+    const idProof = req.files.find(
+      (file) => file.fieldname === "idProof"
+    )?.filename;
     const user = await UserModel.create({
       firstName,
       lastName,
@@ -65,10 +78,15 @@ const createUser = async (req, res) => {
       city,
       state,
       pincode,
-      photo: req.file,
+      photo,
+      idProof,
       contactNumber,
       email,
       password,
+      dematACNumber,
+      bankName,
+      branchName,
+      ifscCode,
     });
     return res
       .status(200)
