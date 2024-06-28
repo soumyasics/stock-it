@@ -1,11 +1,65 @@
 import CommonNavbar from "../../common/commonNavbar";
 import { Footer2 } from "../../common/footer2/footer2";
+import img1 from "../../../assets/images/shieldLogo.png";
+
 export const UserLogin = () => {
   return (
     <div>
       <CommonNavbar />
       <div style={{ minHeight: "500px" }}>
-        <h1> User Login page</h1>
+      <div>
+      <div className="companylogin-background">
+        <div className="companylogin-box">
+          <h3 className="resetpassword-heading">User Login</h3>
+          <div class="row">
+            <div class="col-5 companylogin-logo">
+              <img src={img1} alt="loginPage logo" className="img-fluid my-4" />
+            </div>
+            <form class="col-7 companylogin-inputs" >
+              <div class="mb-3 companylogin-inner">
+                <label for="exampleFormControlInput1" class="form-label">
+                  User Name
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="Enter Email"
+                 
+                />
+              </div>
+              <div class="mb-3 companylogin-inner">
+                <label for="exampleFormControlInput1" class="form-label">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="Enter Password"
+            
+                />
+              </div>
+              <div className="forgot-password">
+                <a href="">forgot password?</a>
+              </div>
+              <button class="login-button" value="submit" type="submit">
+                Login
+              </button>
+              <div className="register-now">
+                Don't have an account Yet?
+                <span
+                  className="fs-6 fw-bold ms-2"
+                  style={{ cursor: "pointer" }}
+                >
+                  Register Now!
+                </span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      </div>
       </div>
       <Footer2 />
     </div>

@@ -36,7 +36,7 @@ function CompanyLogin() {
     } catch (err) {
       const msg = err.response?.data?.msg || "Something went wrong";
       
-      console.log("ompany login msg", err)
+      console.log("company login msg", err)
       toast.error(msg);
     }
   };
