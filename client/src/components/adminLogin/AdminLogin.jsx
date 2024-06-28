@@ -4,6 +4,7 @@ import img6 from "../../assets/images/shieldLogo.png";
 import axiosInstance from "../../apis/axiosInstance";
 import { useNavigate } from "react-router-dom";
 import {toast} from "react-hot-toast";
+import CommonNavbar from "../common/commonNavbar";
 
 function AdminLogin() {
   const navigate = useNavigate();
@@ -33,6 +34,8 @@ function AdminLogin() {
   };
 
   return (
+    <>
+    <CommonNavbar />
     <div>
       <div className="AdminLogin-background">
         <div className="AdminLogin-box">
@@ -89,6 +92,7 @@ function AdminLogin() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
