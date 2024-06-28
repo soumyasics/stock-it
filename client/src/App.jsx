@@ -25,6 +25,7 @@ import { UserRegistration } from "./components/user/userRegistration/userRegistr
 import { UserHomePage } from "./components/user/userHome/userHome";
 import { UserLogin } from "./components/user/userLogin/userLogin";
 import { AdminContainer } from "./pages/admin/adminContainer/adminContainer";
+import { UserViewCompanies } from "./components/user/viewCompanies/viewCompanies";
 function App() {
   return (
     <>
