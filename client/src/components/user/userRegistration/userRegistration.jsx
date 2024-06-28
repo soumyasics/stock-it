@@ -447,7 +447,7 @@ export const UserRegistration = () => {
                         placeholder="Re Enter Password"
                         aria-label="Last name"
                         onChange={handleChanges}
-                        name="confirmpassword"
+                        name="confirmPassword"
                         value={userData.confirmPassword}
                       />
                     </div>
