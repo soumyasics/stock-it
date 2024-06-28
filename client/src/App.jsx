@@ -51,6 +51,7 @@ function App() {
           <Route path="/userRegistration" element={<UserRegistration />} />
           <Route path="/userHome" element={<UserHomePage />} />
           <Route path="/userLogin" element={<UserLogin />} />
+          <Route path="/userViewCompany" element={<UserViewCompanies />} />
 
           {/* admin pages  */}
           <Route
