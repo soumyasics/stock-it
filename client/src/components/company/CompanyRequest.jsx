@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
-function CompanyRequest() {
+function CompanyRequest({changePage}) {
   const [state, setState] = useState([]);
 
   const [pageNumber, setPageNumber] = useState(0);
@@ -31,6 +31,7 @@ function CompanyRequest() {
         console.log(err);
       });
   }, []);
+  
 
   const displayUsers = state
     .slice(pageVisited, pageVisited + userPerPage)
@@ -44,7 +45,7 @@ function CompanyRequest() {
                 src={`${BASE_URL}${e?.logo?.filename}`}
                 alt="test   "
               />
-              <p className="companyRequest-subheading">subway</p>
+              <p className="companyRequest-subheading">{e.name}</p>
             </div>
             <table className="companyRequest-table">
               <tr>
@@ -83,9 +84,7 @@ function CompanyRequest() {
     });
 
   const pageCount = Math.ceil(state.length / userPerPage);
-  const changePage = ({ selected }) => {
-    setPageNumber(selected);
-  };
+  
 
   const serchbtn = () => {};
   return (
@@ -119,7 +118,7 @@ function CompanyRequest() {
           </div>
         </div>
         {
-          <div className="container-fluid">
+          <div className="container-fluid ">
             <div className="row row-cols-5">{displayUsers}</div>
           </div>
         }
