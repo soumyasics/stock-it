@@ -25,75 +25,75 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage }).array("files");
 // Register Company
-const registerCompany = async (req, res) => {
-  console.log("data", req.body);
-  try {
-    const {
-      name,
-      pincode,
-      companyType,
-      year,
-      password,
-      website,
-      state,
-      contact,
-      district,
-      email,
-      city,
-      description,
-      regNo,
-    } = req.body;
-    if (
-      !name ||
-      !pincode ||
-      !companyType ||
-      !year ||
-      !password ||
-      !website ||
-      !state ||
-      !contact ||
-      !district ||
-      !email ||
-      !city ||
-      !description ||
-      !regNo
-    ) {
-      return res.json({ status: 400, msg: "All fields are required" });
-    }
-    const newCompany = new Company({
-      name,
-      pincode,
-      companyType,
-      year,
-      password,
-      website,
-      state,
-      contact,
-      district,
-      email,
-      city,
-      logo: req.files[0],
-      license: req.files[1],
-      description,
-      regNo,
-    });
+  const registerCompany = async (req, res) => {
+    console.log("data", req.body);
+    try {
+      const {
+        name,
+        pincode,
+        companyType,
+        year,
+        password,
+        website,
+        state,
+        contact,
+        district,
+        email,
+        city,
+        description,
+        regNo,
+      } = req.body;
+      if (
+        !name ||
+        !pincode ||
+        !companyType ||
+        !year ||
+        !password ||
+        !website ||
+        !state ||
+        !contact ||
+        !district ||
+        !email ||
+        !city ||
+        !description ||
+        !regNo
+      ) {
+        return res.json({ status: 400, msg: "All fields are required" });
+      }
+      const newCompany = new Company({
+        name,
+        pincode,
+        companyType,
+        year,
+        password,
+        website,
+        state,
+        contact,
+        district,
+        email,
+        city,
+        logo: req.files[0],
+        license: req.files[1],
+        description,
+        regNo,
+      });
 
-    let existingCompany = await Company.findOne({ email });
-    if (existingCompany) {
-      return res.json({ status: 409, msg: "Email already registered" });
-    }
+      let existingCompany = await Company.findOne({ email });
+      if (existingCompany) {
+        return res.json({ status: 409, msg: "Email already registered" });
+      }
 
-    await newCompany.save();
-    res.json({
-      status: 200,
-      msg: "Company registered successfully",
-      data: newCompany,
-    });
-  } catch (error) {
-    console.log(error);
-    res.json({ status: 500, msg: error });
-  }
-};
+      await newCompany.save();
+      res.json({
+        status: 200,
+        msg: "Company registered successfully",
+        data: newCompany,
+      });
+    } catch (error) {
+      console.log(error);
+      res.json({ status: 500, msg: error });
+    }
+  };
 
 // View all Companies
 const viewCompanies = async (req, res) => {
