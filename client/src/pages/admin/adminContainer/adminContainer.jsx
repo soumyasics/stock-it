@@ -1,16 +1,25 @@
-import AdminNavbar from "../../../components/common/adminNavbar"
-import AdminSidebar from "../../../components/common/adminSidebar"
-import { Footer2 } from "../../../components/common/footer2/footer2"
+import { useState } from "react";
+import AdminNavbar from "../../../components/common/adminNavbar";
+import AdminSidebar from "../../../components/common/adminSidebar";
+import { Footer2 } from "../../../components/common/footer2/footer2";
+import { AdminComapnyRequest } from "../adminCompanyRequest/adminCompanyRequest";
+import CompanyRequest from "../../../components/company/CompanyRequest";
+import { OverviewPage } from "../adminOverview/adminOverview";
 
 export const AdminContainer = () => {
-    return (
-        <div>
-            <AdminNavbar />
-            <div style={{minHeight: "600px"}}>
-                <AdminSidebar />
-            </div>
-            
-            <Footer2 />
-        </div>
-    )
-}
+  const [selectedPage, setSelectedPage] = useState("overview");
+  const changePage = (value) => {
+    setSelectedPage(value);
+  };
+  return (
+    <div>
+      <AdminNavbar />
+      <div className="d-flex" style={{ minHeight: "600px" }}>
+        <AdminSidebar changePage={changePage} />
+
+        <div>{selectedPage === "company-request" && <CompanyRequest />}</div>
+        <div>{selectedPage === "overview" && <OverviewPage />}</div>
+      </div>
+    </div>
+  );
+};

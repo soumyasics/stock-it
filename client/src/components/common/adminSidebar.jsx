@@ -11,22 +11,38 @@ import img2 from "../../assets/images/stock.png";
 import img3 from "../../assets/images/action.png";
 import img4 from "../../assets/images/reset.png";
 import img5 from "../../assets/images/logout.png";
-
-function AdminSidebar() {
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+function AdminSidebar({ changePage }) {
   const [show, setShow] = useState(false);
+
   const [show1, setShow1] = useState(false);
   const [show2, setShow2] = useState(false);
+  const navigate = useNavigate();
+  const adminLogout = () => {
+    localStorage.setItem("stock_it_admin_login", false);
+    navigate("/AdminLogin");
+  };
+
+  useEffect(() => {
+    const val = localStorage.getItem("stock_it_admin_login");
+    console.log("valj", val)
+    if (!localStorage.getItem("stock_it_admin_login")) {
+      console.log("wokd..")
+      navigate("/AdminLogin");
+    }
+  }, [])
   return (
-    <div className="adminSidebar bg-primary">
+    <div className="adminSidebar ">
       <div className="adminSidebar-gif">
         <img src={imgGif} alt="" />
       </div>
-      <div className="adminSidebar-h1 bg-warning">
+      <div className="adminSidebar-h1 ">
         <div className="adminSidebar-main">
           <div className="adminSidebar-title-head">
             <img src={titleImg} alt="" />
           </div>
-          <div className="adminSidebar-content bg-danger">
+          <div className="adminSidebar-content ">
             <div className="adminSidebar-user-grid">
               <div className="adminSidebar-user">
                 <img src={vector1} alt="" />
@@ -42,8 +58,20 @@ function AdminSidebar() {
                   {show && (
                     <div className="sidebar-drop-1">
                       <ul>
-                        <li>View all Requests</li>
-                        <li>View all Companies</li>
+                        <li
+                          onClick={() => {
+                            viewAllCompanyRequest("company-request");
+                          }}
+                        >
+                          View all Requests
+                        </li>
+                        <li
+                          onClick={() => {
+                            viewAllCompanyRequest("company-request");
+                          }}
+                        >
+                          View all Companies
+                        </li>
                         <li>View all Company Article</li>
                       </ul>
                     </div>
@@ -60,7 +88,13 @@ function AdminSidebar() {
                   {show1 && (
                     <div className="sidebar-drop-2">
                       <ul>
-                        <li>View all Request</li>
+                        <li
+                          onClick={() => {
+                            changePage("");
+                          }}
+                        >
+                          View all Request
+                        </li>
                         <li>View all Company IPOs</li>
                       </ul>
                     </div>
@@ -111,7 +145,11 @@ function AdminSidebar() {
                 <div className="adminSidebar-logout-grid">
                   <img src={img5} alt="" />
                 </div>
-                <div className="logout-h1">
+                <div
+                  className="logout-h1 text-danger"
+                  style={{ cursor: "pointer" }}
+                  onClick={adminLogout}
+                >
                   <h5>Logout</h5>
                 </div>
               </div>

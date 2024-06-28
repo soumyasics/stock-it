@@ -135,7 +135,7 @@ function CompanyRegistration() {
         break;
       }
     }
-
+   
     if (formIsValid) {
       sendDataToServer(formData);
     }

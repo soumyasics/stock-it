@@ -26,6 +26,7 @@ import { UserHomePage } from "./components/user/userHome/userHome";
 import { UserLogin } from "./components/user/userLogin/userLogin";
 import { AdminContainer } from "./pages/admin/adminContainer/adminContainer";
 import { UserViewCompanies } from "./components/user/viewCompanies/viewCompanies";
+import { Footer2 } from "./components/common/footer2/footer2";
 function App() {
   return (
     <>
@@ -52,7 +53,7 @@ function App() {
           <Route path="/userRegistration" element={<UserRegistration />} />
           <Route path="/userHome" element={<UserHomePage />} />
           <Route path="/userLogin" element={<UserLogin />} />
-          <Route path="/userViewCompany" element={<UserViewCompanies />} />
+          <Route path="/userViewCompany" element={[<AdminNavbar/>,<UserViewCompanies/>]} />
 
           {/* admin pages  */}
           <Route
@@ -69,9 +70,13 @@ function App() {
 
           <Route
             path="/AdminDashboard"
+            element={[<AdminNavbar />, <AdminSidebar />, <CompanyRequest />]}
+          />
+          <Route
+            path="/admin"
             element={[<CommonNavbar />, <AdminSidebar />, <CompanyRequest />]}
           />
-          <Route path="/admin" element={<AdminContainer />}/>
+          {/* <Route path="/admin" element={<AdminContainer />}/> */}
           <Route
             path="/resetPassword"
             element={[<AdminNavbar />, <Resetpassword />]}
