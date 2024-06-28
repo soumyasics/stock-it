@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+.userRegistration {
+    width: 100%;
+    padding: 50px 70px;
+    background: #1F2937;
+}
+
+.userRegistration-main {
+    width: 1220px;
+    height: 998px;
+    flex-shrink: 0;
+    background-color: #000;
+    margin: auto;
+    border-radius: 40px;
+}
+
+.userRegistration-main h1 {
+    color: #FFF;
+    font-family: "Noto Sans";
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-top: 10px;
+    text-align: center;
+}
+.userRegistration.logo img{
+    margin-top: 50px;
+}
