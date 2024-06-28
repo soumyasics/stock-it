@@ -23,11 +23,10 @@ const storage = multer.diskStorage({
   },
 });
 
-
 const upload = multer({ storage: storage }).array("files");
 // Register Company
 const registerCompany = async (req, res) => {
-  console.log("data",req.body);
+  console.log("data", req.body);
   try {
     const {
       name,
@@ -55,7 +54,7 @@ const registerCompany = async (req, res) => {
       !contact ||
       !district ||
       !email ||
-      !city||
+      !city ||
       !description ||
       !regNo
     ) {
@@ -78,8 +77,6 @@ const registerCompany = async (req, res) => {
       description,
       regNo,
     });
-    
-
 
     let existingCompany = await Company.findOne({ email });
     if (existingCompany) {
@@ -177,10 +174,12 @@ const deleteCompanyById = async (req, res) => {
 // accept Company by ID
 const acceptCompanyById = async (req, res) => {
   try {
-    const company = await Company.findByIdAndUpdate({
-      _id: req.params.id,
-      adminApproved: true,
-    });
+    const company = await Company.findByIdAndUpdate(
+      req.params.id, 
+      { adminApproved: true },
+      { new: true } 
+    );
+
     if (!company) {
       return res.json({ status: 500, msg: "Company not found" });
     }
@@ -241,11 +240,13 @@ const login = async (req, res) => {
     if (!company) {
       return res.status(404).json({ msg: "Company not found" });
     }
-
+console.log("co", company)
     if (company.password !== password) {
       return res.status(401).json({ msg: "Password mismatch" });
     }
-
+    if (company.adminApproved === false) {
+      return res.status(401).json({ msg: "Company not approved by admin" });
+    }
     const token = jwt.sign({ companyId: company._id }, secret, {
       expiresIn: "1h",
     });
@@ -272,18 +273,20 @@ const requireAuth = (req, res, next) => {
   });
 };
 const searchcompanyByName = (req, res) => {
-  Company.find({ name: { $regex: req.params.name, $options: 'i' } })
-      .then(data => {
-          if (data.length === 0) {
-              return res.status(404).json({ message: 'No Company found with the specified Name.' });
-          }
-          res.status(200).json(data);
-      })
-      .catch(err => {
-          console.error(err);
-          res.status(500).json({ message: 'Server Error' });
-      });
-}
+  Company.find({ name: { $regex: req.params.name, $options: "i" } })
+    .then((data) => {
+      if (data.length === 0) {
+        return res
+          .status(409)
+          .json({ message: "No Company found with the specified Name." });
+      }
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ message: "Server Error" });
+    });
+};
 module.exports = {
   registerCompany,
   viewCompanies,
@@ -297,5 +300,5 @@ module.exports = {
   deActivateCompanyById,
   acceptCompanyById,
   deleteCompanyById,
-  searchcompanyByName
+  searchcompanyByName,
 };
