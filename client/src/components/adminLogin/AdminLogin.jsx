@@ -4,6 +4,8 @@ import img6 from "../../assets/images/shieldLogo.png";
 import axiosInstance from "../../apis/axiosInstance";
 import { useNavigate } from "react-router-dom";
 import {toast} from "react-hot-toast";
+import { useEffect } from "react";
+
 import CommonNavbar from "../common/commonNavbar";
 
 function AdminLogin() {
@@ -12,6 +14,13 @@ function AdminLogin() {
   function btnchange(input) {
     setState({ ...state, [input.target.name]: input.target.value });
   }
+
+  useEffect(() => {
+    const isAdminLoggedin = localStorage.getItem("stock_it_admin_login") || null;
+    if (!isAdminLoggedin) {
+      navigate("/AdminDashboard");
+    }
+  }, [])
 
   const btnsubmit = (e) => {
     e.preventDefault();
@@ -22,6 +31,7 @@ function AdminLogin() {
         console.log(res);
         if (res.data.status === 200) {
           toast.success("Login Successfully");
+          localStorage.setItem("stock_it_admin_login", true);
           navigate("/AdminDashboard");
         } else {
           toast.error(res.data.msg);

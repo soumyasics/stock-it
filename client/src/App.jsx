@@ -70,9 +70,13 @@ function App() {
 
           <Route
             path="/AdminDashboard"
+            element={[<AdminNavbar />, <AdminSidebar />, <CompanyRequest />]}
+          />
+          <Route
+            path="/admin"
             element={[<CommonNavbar />, <AdminSidebar />, <CompanyRequest />]}
           />
-          <Route path="/admin" element={<AdminContainer />}/>
+          {/* <Route path="/admin" element={<AdminContainer />}/> */}
           <Route
             path="/resetPassword"
             element={[<AdminNavbar />, <Resetpassword />]}

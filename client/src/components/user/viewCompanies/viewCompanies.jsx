@@ -75,10 +75,7 @@ export const UserViewCompanies = () => {
 
 
 
-            <div>
-                {/* footer here  */}
-            </div>
-
-        </div>
-    )
-}
+      <div>{/* footer here  */}</div>
+    </div>
+  );
+};
