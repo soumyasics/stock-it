@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
+
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
@@ -20,6 +21,7 @@ import AdminNavbar from "./components/common/adminNavbar";
 import Resetpassword from "./components/company/resetPassword";
 import RequestPage from "./components/company/requestPage";
 import CompanyLogin from "./components/company/CompanyLogin/companyLogin";
+import ActivationPage from "./components/company/activationPage";
 
 
 
@@ -53,6 +55,7 @@ function App() {
           <Route path="/edit" element={<CompanyRequest/>}/>
 
           <Route path="/companylogin" element={[<CommonNavbar/>,<CompanyLogin/>]}/>
+          <Route path="/activationpage" element={<ActivationPage/>}/>
 
           <Route path="/*" element={"<h1> 404 </h1>"} />
         </Routes>

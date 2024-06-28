@@ -115,3 +115,10 @@ font-style: normal;
 font-weight: 500;
 line-height: normal;
 }
+#toggle-password {
+    position: absolute;
+    top: 51%;
+    right: 100px;
+    transform: translateY(-40%);
+    cursor: pointer;
+}
