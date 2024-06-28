@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const userSchema = new Schema({
+const tSchema = new Schema({
     firstName: {
         type: String,
         required: true,
@@ -10,16 +10,24 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
-    gender: {
+    qualification: {
         type: String,
         required: true,
     },
-    dob: {
-        type: Date,
+    background: {
+        type: String,
         required: true,
     },
     address: {
         type: String,
+        required: true,
+    },
+    specialization: {
+        type: String,
+        required: true,
+    },
+    experience: {
+        type: Number,
         required: true,
     },
     city: {
@@ -54,10 +62,14 @@ const userSchema = new Schema({
 
 isActive:{
     type:Boolean,
-    default:true
+    default:false
+},
+adminApproved:{
+    type:Boolean,
+    default:false
 }
 });
 
-const UserModel = mongoose.model("user", userSchema);
+const UserModel = mongoose.model("tutors", tSchema);
 
 module.exports = { UserModel };

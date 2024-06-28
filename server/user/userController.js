@@ -1,3 +1,4 @@
+const { deActivateCompanyById } = require("../Company/companyController");
 const { UserModel } = require("./userSchema");
 
 const multer = require("multer");
@@ -125,10 +126,116 @@ const getUserById = async (req, res) => {
   }
 };
 
+
+const activateUserById = async (req, res) => {
+  try {
+    const user = await UserModel.findByIdAndUpdate({_id:req.params.id},{isActive:true});
+    if (!user) {
+      return res.status(404).json({ msg: "User not found" });
+    }
+    return res
+      .status(200)
+      .json({ msg: "User retrieved successfully", data: user });
+  } catch (error) {
+    return res.status(500).json({ msg: "Failed to retrieve user", error });
+  }
+};
+
+const deActivateUserById = async (req, res) => {
+  try {
+    const user = await UserModel.findByIdAndUpdate({_id:req.params.id},{isActive:false});
+    if (!user) {
+      return res.status(404).json({ msg: "User not found" });
+    }
+    return res
+      .status(200)
+      .json({ msg: "User retrieved successfully", data: user });
+  } catch (error) {
+    return res.status(500).json({ msg: "Failed to retrieve user", error });
+  }
+};
+
+
+// Edit User by ID
+const editUserById = async (req, res) => {
+  try {
+    const {
+      firstName,
+      lastName,
+      gender,
+      dob,
+      address,
+      city,
+      state,
+      pincode,
+      photo,
+      contactNumber,
+      email,
+      password,
+    } = req.body;
+
+    if (
+      !firstName ||
+      !lastName ||
+      !gender ||
+      !dob ||
+      !address ||
+      !city ||
+      !state || 
+      !pincode || 
+      !contactNumber || 
+      !email || 
+      !password
+    ) {
+      return res.status(400).json({ msg: "All fields are required" });
+    }
+    if (pincode.length !== 6) {
+      return res.status(400).json({ msg: "Invalid pincode" });
+    }
+
+    if (contactNumber.length !== 10) {
+      return res.status(400).json({ msg: "Invalid contact number" });
+    }
+
+    const updatedUser = await UserModel.findByIdAndUpdate(
+      req.params.id,
+      {
+        firstName,
+        lastName,
+        gender,
+        dob,
+        address,
+        city,
+        state,
+        pincode,
+        photo: req.file,
+        contactNumber,
+        email,
+        password,
+      },
+      { new: true } // To return the updated document
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({ msg: "User not found" });
+    }
+
+    return res
+      .status(200)
+      .json({ msg: "User updated successfully", data: updatedUser });
+  } catch (error) {
+    return res.status(500).json({ msg: "Failed to update user", error });
+  }
+};
+
 module.exports = {
   upload,
   createUser,
   loginUser,
   getAllUsers,
   getUserById,
+  editUserById,
+  deActivateUserById,
+  activateUserById,
+  
 };
