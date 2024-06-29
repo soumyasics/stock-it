@@ -160,7 +160,7 @@ export const UserHomePage = () => {
       </div>
     </div>
 
-    <div className="footer2">
+    <div className="userHome-footer2">
             <Footer2 />
    
 
