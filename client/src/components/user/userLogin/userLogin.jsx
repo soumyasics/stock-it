@@ -13,7 +13,7 @@ export const UserLogin = () => {
     navigate("/userRegistration");
   };
   const redirectToHome = () => {
-    // navigate('/userDashboard')
+    navigate('/userHome')
   }
   const handleSubmit = (e) => {
     e.preventDefault();

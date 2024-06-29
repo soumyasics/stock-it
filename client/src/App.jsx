@@ -51,7 +51,7 @@ function App() {
 
           {/* user pages  */}
           <Route path="/userRegistration" element={<UserRegistration />} />
-          <Route path="/userHome" element={<UserHomePage />} />
+          {/* <Route path="/userHome" element={<UserHomePage />} /> */}
           <Route path="/userLogin" element={<UserLogin />} />
           <Route path="/userViewCompany" element={[<AdminNavbar/>,<UserViewCompanies/>]} />
 
@@ -66,7 +66,7 @@ function App() {
           />
           <Route path="/commonNavbar" element={<CommonNavbar />} />
           <Route path="/landingheader" element={<LandingPageHeader />} />
-          <Route path="/about" element={[<CommonNavbar />, <About />]} />
+          <Route path="/userHome" element={[<CommonNavbar />, <About />]} />
 
           <Route
             path="/AdminDashboard"
