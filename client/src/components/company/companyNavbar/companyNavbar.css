@@ -1,0 +1,37 @@
+.commonNavbar {
+  background: #111827;
+  height: 64px;
+}
+
+.commonNavbar-image img {
+  position: relative;
+  top: -14px;
+  right: 60px;
+}
+
+.commonNavbar-right a {
+  display: inline;
+  padding-left: 10px;
+  margin-right: 30px;
+  text-decoration: none;
+  color: #fff;
+  font-family: "Noto Sans";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.commonNavbar-right button {
+  display: inline-flex;
+  width: auto 73px;
+  height: 26px;
+  padding: 6px 2px 10px 15px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: none;
+  color: #fff;
+  background: linear-gradient(109deg, #cacaca 7.86%, #787373 94.87%);
+}

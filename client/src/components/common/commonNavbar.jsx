@@ -37,7 +37,7 @@ function CommonNavbar() {
           </a>
           <div className="commonNavbar-right  align-items-center d-flex" style={{width: "300px"}}>
             <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
+            <Link >About</Link>
             <Form.Select
               onChange={handleLoginPageNavigate}
               defaultValue=""

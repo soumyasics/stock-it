@@ -24,14 +24,6 @@ function AdminSidebar({ changePage }) {
     navigate("/AdminLogin");
   };
 
-  useEffect(() => {
-    const val = localStorage.getItem("stock_it_admin_login");
-    console.log("valj", val)
-    if (!localStorage.getItem("stock_it_admin_login")) {
-      console.log("wokd..")
-      navigate("/AdminLogin");
-    }
-  }, [])
   return (
     <div className="adminSidebar ">
       <div className="adminSidebar-gif">

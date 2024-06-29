@@ -15,12 +15,7 @@ function AdminLogin() {
     setState({ ...state, [input.target.name]: input.target.value });
   }
 
-  useEffect(() => {
-    const isAdminLoggedin = localStorage.getItem("stock_it_admin_login") || null;
-    if (!isAdminLoggedin) {
-      navigate("/AdminDashboard");
-    }
-  }, [])
+  
 
   const btnsubmit = (e) => {
     e.preventDefault();
