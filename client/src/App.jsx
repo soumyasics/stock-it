@@ -35,6 +35,7 @@ import CompanySidebar from "./components/company/companySidebar/companySidebar";
 import IpoForm from "./components/company/Ipoform/ipoForm";
 import Forgotpassword from "./components/common/forgetPassword/forgotpassword";
 
+import { EtUserHomePage } from "./components/educational-tutors/et-userHome/EtUserHome";
 
 function App() {
   return (
@@ -80,6 +81,7 @@ function App() {
           <Route path="/userViewCompany" element={ <UserViewCompanies />} />
 
           <Route path="/userabout" element={ <UserHomePage />} />
+          <Route path="/et" element={<EtUserHomePage/>}/>
 
           {/* admin pages  */}
           <Route

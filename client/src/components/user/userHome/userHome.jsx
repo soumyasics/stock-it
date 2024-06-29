@@ -6,6 +6,7 @@ import img9 from "../../../assets/images/Group 308.svg";
 import img10 from "../../../assets/images/Group 399.png";
 import { UserNavbar } from "../userNavbar/userNavbar";
 import { Footer2 } from "../../common/footer2/footer2";
+import { UserWelcome } from "../../educational-tutors/userWelcome/userWelcome";
 
 export const UserHomePage = () => {
   return (
@@ -19,7 +20,8 @@ export const UserHomePage = () => {
           Online platform to invest in stocks, derivatives, mutual funds, and
           more
         </h5>
-        <img className="img-fluid about-image" src={img7} alt="" />
+        {/* <img className="img-fluid about-image" src={img7} alt="" /> */}
+        <UserWelcome/>
         <h6 className="about-second-heading">
           “Our mission is to help every Indian confidently Up their wealth”
         </h6>
