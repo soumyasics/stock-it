@@ -23,7 +23,7 @@ function CommonNavbar() {
   };
   const navigateOptions = [
     // { value: "/", label: "Login" },
-    { value: "/companylogin", label: "Comapny" },
+    { value: "/companylogin", label: "Company" },
     { value: "/userLogin", label: "User" },
 
   ];
@@ -37,7 +37,7 @@ function CommonNavbar() {
           </a>
           <div className="commonNavbar-right  align-items-center d-flex" style={{width: "300px"}}>
             <Link to="/">Home</Link>
-            <Link >About</Link>
+            <Link to="/landingAbout">About</Link>
             <Form.Select
               onChange={handleLoginPageNavigate}
               defaultValue=""
