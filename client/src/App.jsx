@@ -31,6 +31,7 @@ import { UserNavbar } from "./components/user/userNavbar/userNavbar";
 import { CompanyHome } from "./components/company/companyHome/companyHome";
 import NewAdminsidebar from "./components/AdminNewSidebar/newAdminsidebar";
 import { ViewCompanyDetails } from "./components/user/viewCompaniesDetails/viewCompaniesDetails";
+import CompanySidebar from "./components/company/companySidebar/companySidebar";
 
 function App() {
   return (
@@ -63,6 +64,10 @@ function App() {
             path="/companyDetails/:id"
             element={ <ViewCompanyDetails />}
           />
+
+          <Route
+          path="/companysidebar"
+          element={<CompanySidebar/>}/>
 
           {/* user pages  */}
           <Route path="/userRegistration" element={<UserRegistration />} />

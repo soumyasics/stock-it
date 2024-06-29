@@ -8,12 +8,14 @@ import img3 from '../../../assets/images/orderIcon.svg'
 import img4 from '../../../assets/images/article.svg'
 import img5 from '../../../assets/images/action.png'
 import img6 from '../../../assets/images/logout.png'
+import AdminNavbar from '../../common/adminNavbar'
 
 function CompanySidebar() {
     const [show, setShow] = useState(false);
     const [show1, setShow1] = useState(false);
     return (
         <div>
+            <AdminNavbar/>
             <div className='companysidebar-main'>
                 <div className='companysidebar-profile'>
                     <div className='companyprofile'>
