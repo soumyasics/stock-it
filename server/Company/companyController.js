@@ -99,7 +99,7 @@ const upload = multer({ storage: storage }).array("files");
 const viewCompanies = async (req, res) => {
   try {
     const companies = await Company.find();
-    res.json({
+    return res.json({
       status: 200,
       msg: "Companies retrieved successfully",
       data: companies,

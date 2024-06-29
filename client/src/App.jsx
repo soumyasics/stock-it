@@ -30,6 +30,7 @@ import { Footer2 } from "./components/common/footer2/footer2";
 import { UserNavbar } from "./components/user/userNavbar/userNavbar";
 import { CompanyHome } from "./components/company/companyHome/companyHome";
 import NewAdminsidebar from "./components/AdminNewSidebar/newAdminsidebar";
+import { ViewCompanyDetails } from "./components/user/viewCompaniesDetails/viewCompaniesDetails";
 
 function App() {
   return (
@@ -58,13 +59,17 @@ function App() {
             path="/companylogin"
             element={[<CommonNavbar />, <CompanyLogin />]}
           />
+          <Route
+            path="/companyDetails/:id"
+            element={ <ViewCompanyDetails />}
+          />
 
           {/* user pages  */}
           <Route path="/userRegistration" element={<UserRegistration />} />
           <Route path="/userHome" element={<UserHomePage />} />
           <Route path="/userLogin" element={<UserLogin />} />
-          <Route path="/userViewCompany" element={[<AdminNavbar />, <UserViewCompanies />]} />
-          <Route path="/userabout" element={[<UserNavbar />, <UserHomePage />, <Footer2 />]} />
+          <Route path="/userViewCompany" element={ <UserViewCompanies />} />
+          <Route path="/userabout" element={ <UserHomePage />} />
 
           {/* admin pages  */}
           <Route
