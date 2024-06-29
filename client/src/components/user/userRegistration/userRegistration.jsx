@@ -229,13 +229,14 @@ export const UserRegistration = () => {
       );
       console.log("resg respo", response);
       if (response.status === 200) {
-        toast.success("Company registered successfully");
+        toast.success("User registered successfully");
+        console.log("resp", response)
         redirectToLogin();
       } else {
-        toast.error(response.data.msg);
+        // toast.error(response.data.data.msg);
       }
     } catch (error) {
-      console.error("There was an error registering the company!", error);
+      console.error("There was an error registering the user!", error);
       const msg = error?.response?.data?.msg || "Network issue";
       toast.error(msg);
     }

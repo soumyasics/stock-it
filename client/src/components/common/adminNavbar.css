@@ -1,6 +1,7 @@
 .adminNavbar{
     width: 100%;
     background: #111827;
+    height: 50px;
 }
 .navlogo img{
     margin-top: -12px;

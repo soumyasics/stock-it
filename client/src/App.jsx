@@ -28,6 +28,7 @@ import { AdminContainer } from "./pages/admin/adminContainer/adminContainer";
 import { UserViewCompanies } from "./components/user/viewCompanies/viewCompanies";
 import { Footer2 } from "./components/common/footer2/footer2";
 import { UserNavbar } from "./components/user/userNavbar/userNavbar";
+import { CompanyHome } from "./components/company/companyHome/companyHome";
 function App() {
   return (
     <>
@@ -37,6 +38,12 @@ function App() {
           <Route path="/" element={<LandingPageHeader />} />
 
           {/* company pages */}
+          
+          <Route
+            path="/companyHome"
+            element={<CompanyHome />}
+          />
+
           <Route
             path="/CompanyRegistration"
             element={<CompanyRegistration />}
@@ -52,7 +59,7 @@ function App() {
 
           {/* user pages  */}
           <Route path="/userRegistration" element={<UserRegistration />} />
-          <Route path="/userHome" element={<UserHomePage />} />
+          {/* <Route path="/userHome" element={<UserHomePage />} /> */}
           <Route path="/userLogin" element={<UserLogin />} />
           <Route path="/userViewCompany" element={[<AdminNavbar/>,<UserViewCompanies/>]} />
           <Route path="/userabout" element={[<UserNavbar/>,<UserHomePage/>,<Footer2/>]}/>
@@ -68,7 +75,7 @@ function App() {
           />
           <Route path="/commonNavbar" element={<CommonNavbar />} />
           <Route path="/landingheader" element={<LandingPageHeader />} />
-          <Route path="/about" element={[<CommonNavbar />, <About />]} />
+          <Route path="/userHome" element={[<CommonNavbar />, <About />]} />
 
           <Route
             path="/AdminDashboard"
@@ -76,7 +83,7 @@ function App() {
           />
           <Route
             path="/admin"
-            element={[<CommonNavbar />, <AdminSidebar />, <CompanyRequest />]}
+            element={[<AdminNavbar />, <AdminSidebar />, <CompanyRequest />]}
           />
           {/* <Route path="/admin" element={<AdminContainer />}/> */}
           <Route
