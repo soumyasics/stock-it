@@ -29,6 +29,8 @@ import { UserViewCompanies } from "./components/user/viewCompanies/viewCompanies
 import { Footer2 } from "./components/common/footer2/footer2";
 import { UserNavbar } from "./components/user/userNavbar/userNavbar";
 import { CompanyHome } from "./components/company/companyHome/companyHome";
+import NewAdminsidebar from "./components/AdminNewSidebar/newAdminsidebar";
+
 function App() {
   return (
     <>
@@ -38,7 +40,7 @@ function App() {
           <Route path="/" element={<LandingPageHeader />} />
 
           {/* company pages */}
-          
+
           <Route
             path="/companyHome"
             element={<CompanyHome />}
@@ -61,8 +63,8 @@ function App() {
           <Route path="/userRegistration" element={<UserRegistration />} />
           {/* <Route path="/userHome" element={<UserHomePage />} /> */}
           <Route path="/userLogin" element={<UserLogin />} />
-          <Route path="/userViewCompany" element={[<AdminNavbar/>,<UserViewCompanies/>]} />
-          <Route path="/userabout" element={[<UserNavbar/>,<UserHomePage/>,<Footer2/>]}/>
+          <Route path="/userViewCompany" element={[<AdminNavbar />, <UserViewCompanies />]} />
+          <Route path="/userabout" element={[<UserNavbar />, <UserHomePage />, <Footer2 />]} />
 
           {/* admin pages  */}
           <Route
@@ -77,6 +79,8 @@ function App() {
           <Route path="/landingheader" element={<LandingPageHeader />} />
           <Route path="/landingAbout" element={[<CommonNavbar />, <About />]} />
 
+          <Route path="/newsidebar" element={[<AdminNavbar/>,<NewAdminsidebar />]} />
+
           <Route
             path="/AdminDashboard"
             element={[<AdminNavbar />, <AdminSidebar />, <CompanyRequest />]}
@@ -90,6 +94,8 @@ function App() {
             path="/resetPassword"
             element={[<AdminNavbar />, <Resetpassword />]}
           />
+
+
           <Route path="/adminNavbar" element={<AdminNavbar />} />
           <Route path="/requestpage/:id" element={<RequestPage />} />
 

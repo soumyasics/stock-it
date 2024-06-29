@@ -1,0 +1,209 @@
+.adminSidebar-main{
+    width:307px;
+    min-height: 100vh;
+    background: #374151;
+    border: none;
+}
+.adminSidebar-title-head{
+width: 307px;
+height: 107px;
+padding: 30px 20px;
+}
+.adminSidebar-content{
+    width: 307px;
+    height: 800px;
+    color: #fff;
+
+}
+.adminSidebar-user-grid{
+    width: 307px;
+    height: 40px;
+}
+.adminSidebar-user{
+    display: flex;
+    margin-bottom: 10px;
+}
+.adminSidebar-user img{
+    width: 18px;
+    height: 18px;
+    position: relative;
+    left: 57px;
+   
+}
+.adminSidebar-user h4{
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: relative;
+    left: 73px;
+    top: 3px;
+}
+.adminSidebar-companies{
+    padding-bottom: 20px;
+}
+.adminSidebar-companies img{
+    width: 18px;
+    height: 18px;
+    position: relative;
+    left: 57px;
+}
+.adminSidebar-companies button{
+    border: none;
+    background-color: #374151;
+    color: #fff;
+    margin-left: 65px;
+    margin-top: 3px;
+    position: absolute;
+}
+.sidebar-drop-1{
+    margin-top: 10px;
+    background-color: #1F2937;
+    width: 310px;
+    height: 80%;
+}
+.sidebar-drop-1 ul{
+    list-style: none;
+    font-size: small;
+    margin-top: 10px;
+}
+
+.sidebar-drop-1 li{
+    padding: 5px;
+    margin-left: 30px;
+}
+.adminSidebar-compainyipos{
+    margin-top: 50px;
+    width:307px;
+    height: 50px;
+    background-color: #fff;
+}
+.adminSidebar-compainyipos{
+    padding-bottom: 20px;
+}
+.sidebar-ipos-drop img{
+    width: 18px;
+    height: 18px;
+    margin-left: 57px;
+
+}
+.sidebar-ipos-drop button{
+    border: none;
+    background-color: #374151;
+    color: #fff;
+    margin-top: 3px;
+    position: absolute;
+    margin-left: 9px;
+}
+.sidebar-drop-2{
+    margin-top: 10px;
+    background-color: #1F2937;
+    width: 310px;
+    height: 80%;
+}
+.sidebar-drop-2 ul{
+    list-style: none;
+    font-size: small;
+    margin-top: 10px;
+}
+.sidebar-drop-2 li{
+    padding: 5px;
+    margin-left: 30px;
+}
+.adminSidebar-education button{
+    border: none;
+    background-color: #374151;
+    color: #fff;
+    margin-left: 10px;
+    position: absolute;
+    margin-top: 20px;
+}
+.sidebar-education-drop img{
+    width: 18px;
+    height: 18px;
+    margin-top: 22px;
+    margin-left: 57px;
+}
+.sidebar-drop-3{
+    margin-top: 10px;
+    background-color: #1F2937;
+    width: 310px;
+    height: 80%;
+}
+.sidebar-drop-3 ul{
+    list-style: none;
+    font-size: small;
+    margin-top: 10px;
+}
+.sidebar-drop-3 li{
+    padding: 5px;
+    margin-left: 30px;
+}       
+.adminSidebar-stock-grid img{
+    width: 18px;
+    height: 18px;
+    margin-top: 22px;
+    margin-left: 57px;
+}
+.adminSidebar-stock{
+    display: flex;
+}
+.adminSidebar-stock h5{
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 25px;
+    padding-left: 17px;
+}
+.adminSidebar-takeaction{
+    display: flex;
+}
+.adminSidebar-takeaction-grid img{
+    width: 20px;
+    height: 20px;
+    margin-top: 10px;
+    margin-left: 57px;
+}
+.adminSidebar-takeaction h5{
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 14px;
+    padding-left: 15px;
+}
+.adminSidebar-resetpassword{
+    display: flex;
+}
+.adminSidebar-resetpassword-grid img{
+    width: 18px;
+    height: 18px;
+    margin-top: 10px;
+    margin-left: 57px;
+}
+.adminSidebar-resetpassword h5{
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 14px;
+    padding-left: 15px;
+}
+.adminSidebar-logout{
+    display: flex;
+}
+.adminSidebar-logout-grid img{
+    width: 18px;
+    height: 16px;
+    margin-top: 10px;
+    margin-left: 59px;
+}
+.adminSidebar-logout h5{
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 12px;
+    padding-left: 15px;
+}
