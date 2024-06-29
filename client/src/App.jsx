@@ -61,7 +61,7 @@ function App() {
 
           {/* user pages  */}
           <Route path="/userRegistration" element={<UserRegistration />} />
-          {/* <Route path="/userHome" element={<UserHomePage />} /> */}
+          <Route path="/userHome" element={<UserHomePage />} />
           <Route path="/userLogin" element={<UserLogin />} />
           <Route path="/userViewCompany" element={[<AdminNavbar />, <UserViewCompanies />]} />
           <Route path="/userabout" element={[<UserNavbar />, <UserHomePage />, <Footer2 />]} />
@@ -83,7 +83,7 @@ function App() {
 
           <Route
             path="/AdminDashboard"
-            element={[<AdminNavbar />, <AdminSidebar />, <CompanyRequest />]}
+            element={[ <AdminSidebar />, <CompanyRequest />]}
           />
           <Route
             path="/admin"

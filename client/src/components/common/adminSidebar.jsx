@@ -13,6 +13,7 @@ import img4 from "../../assets/images/reset.png";
 import img5 from "../../assets/images/logout.png";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import AdminNavbar from "./adminNavbar";
 function AdminSidebar({ changePage }) {
   const [show, setShow] = useState(false);
 
@@ -25,6 +26,8 @@ function AdminSidebar({ changePage }) {
   };
 
   return (
+    <>
+    <AdminNavbar />
     <div className="adminSidebar ">
       <div className="adminSidebar-gif">
         <img src={imgGif} alt="" />
@@ -150,6 +153,8 @@ function AdminSidebar({ changePage }) {
         </div>
       </div>
     </div>
+
+    </>
   );
 }
 
