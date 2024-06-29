@@ -79,7 +79,8 @@
     font-weight: 400;
     line-height: normal;
 }
-.companysidebar-content img{
+
+.companysidebar-content img {
     margin-bottom: 5px;
 }
 
@@ -91,7 +92,8 @@
 .companysidebar-content-dividend h6 {
     margin-left: 8px;
 }
-.receiveorder-drop button{
+
+.company-content-drop button {
     border: none;
     background: transparent;
     color: #FFF;
@@ -100,4 +102,36 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+}
+
+.sidebar-drop {
+    margin-top: 10px;
+    background-color: #1F2937;
+    width: 226px;
+    height: 80%;
+}
+
+.sidebar-drop ul {
+    list-style: none;
+    font-size: small;
+    margin-top: 10px;
+}
+
+.sidebar-drop li {
+    padding: 5px;
+}
+.companysidebar-content-Article {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+.companysidebar-content-Article button{
+    margin-left: 3px;
+}
+.company-content-complaint img {
+ margin-left: 2px;
+ margin-right: 2px;
+}
+.company-content-logout img{
+    margin-left: 5px;
+    margin-right: 5px;
 }
