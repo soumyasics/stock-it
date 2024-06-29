@@ -123,9 +123,8 @@ export const UserHomePage = () => {
               <p className="about-last-inner-box-head">Clients First</p>
               <p className="about-last-inner-box-text ">
                 Our clients' success is paramount - their success <br />
-                is our success. We build and nurture long-term <br />
-                relationships with our clients by using our proven <br />
-                investment strategies.
+                is our success. We build and nurture long-term
+               
               </p>
             </div>
 
@@ -135,8 +134,7 @@ export const UserHomePage = () => {
                 We assess every investment opportunity <br />
                 objectively and with total impartiality. <br />
                 Our independence sets us apart and helps ensure <br />
-                that our decisions are aligned with the needs <br />
-                of our clients.
+             
               </p>
             </div>
           </div>
@@ -146,8 +144,7 @@ export const UserHomePage = () => {
               <p className="about-last-inner-box-text">
                 Success is built on respect for each individual. <br />
                 It is our aim to create a true meritocracy in <br />
-                which talent and achievement are rewarded <br />
-                and opportunity is equally available to all.
+               
               </p>
             </div>
             <div className="about-last-inner-box">
@@ -155,17 +152,19 @@ export const UserHomePage = () => {
               <p className="about-last-inner-box-text">
                 we are profoundly aware of our responsibilities. <br />
                 As a good corporate citizen, we aim to give back <br />
-                to the communities in which we live and actively <br />
-                support and participate in a range of initiatives <br />
-                within them.
+             
               </p>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div>
-      <Footer2 /> 
+
+    <div className="footer2">
+            <Footer2 />
+   
+
+ 
       </div>
     </>
   );
