@@ -29,6 +29,7 @@ function CompanyLogin() {
         }
         console.log("user data", res.data)
         toast.success("Login Successful");
+        navigate('/companyHome')
       } else {
         throw new Error("Something wrong.");
       }

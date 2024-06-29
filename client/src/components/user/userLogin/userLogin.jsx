@@ -89,10 +89,10 @@ export const UserLogin = () => {
                       onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
-                  <div className="forgot-password">
+                  {/* <div className="forgot-password">
                     <a href="">forgot password?</a>
-                  </div>
-                  <button class="login-button" value="submit" type="submit">
+                  </div> */}
+                  <button className="login-button mt-3" value="submit" type="submit">
                     Login
                   </button>
                   <div className="register-now">

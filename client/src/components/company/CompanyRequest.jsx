@@ -6,8 +6,9 @@ import ReactPaginate from "react-paginate";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import AdminNavbar from "../common/adminNavbar";
 
-function CompanyRequest({changePage}) {
+function CompanyRequest({ changePage }) {
   const [state, setState] = useState([]);
 
   const [pageNumber, setPageNumber] = useState(0);
@@ -31,7 +32,6 @@ function CompanyRequest({changePage}) {
         console.log(err);
       });
   }, []);
-  
 
   const displayUsers = state
     .slice(pageVisited, pageVisited + userPerPage)
@@ -84,72 +84,73 @@ function CompanyRequest({changePage}) {
     });
 
   const pageCount = Math.ceil(state.length / userPerPage);
-  
 
   const serchbtn = () => {};
   return (
-    <div>
-      <div className="companyRequest-body">
-        <div className="companyRequest-heading">
-          <p>Company Requests</p>
-        </div>
-        <div className="comapnyRequest-first-box">
-          <div className="companyRequesest-second-box" role="group">
-            <div className="companyrequest-enterpage">
-              <p className="companyRequest-entries">Entries per page</p>
+    <>
+      <div>
+        <div className="companyRequest-body">
+          <div className="companyRequest-heading">
+            <p>Company Requests</p>
+          </div>
+          <div className="comapnyRequest-first-box">
+            <div className="companyRequesest-second-box" role="group">
+              <div className="companyrequest-enterpage">
+                <p className="companyRequest-entries">Entries per page</p>
+              </div>
+              <select
+                class="form-select form-select-sm companyRequet-dropdown "
+                aria-label="Small select example"
+              >
+                <option selected> 15</option>
+                <option value="1">16</option>
+                <option value="2">17</option>
+                <option value="3">18</option>
+              </select>
             </div>
-            <select
-              class="form-select form-select-sm companyRequet-dropdown "
-              aria-label="Small select example"
-            >
-              <option selected> 15</option>
-              <option value="1">16</option>
-              <option value="2">17</option>
-              <option value="3">18</option>
-            </select>
+            <div className="comapanyRequest-search-box">
+              <input
+                type="search"
+                className="companyRequest-serchbox"
+                placeholder="Companies"
+                onChange={serchbtn}
+              />
+            </div>
           </div>
-          <div className="comapanyRequest-search-box">
-            <input
-              type="search"
-              className="companyRequest-serchbox"
-              placeholder="Companies"
-              onChange={serchbtn}
-            />
-          </div>
-        </div>
-        {
-          <div className="container-fluid ">
-            <div className="row row-cols-5">{displayUsers}</div>
-          </div>
-        }
+          {
+            <div className="container-fluid ">
+              <div className="row row-cols-5">{displayUsers}</div>
+            </div>
+          }
 
-        <div className="comapanyRequest-btngroup">
-          <div className="companyRequest-inner-btngroup">
-            <ReactPaginate
-              previousLabel={
-                <FontAwesomeIcon
-                  icon={faArrowLeft}
-                  style={{ color: "white" }}
-                />
-              }
-              nextLabel={
-                <FontAwesomeIcon
-                  icon={faArrowRight}
-                  style={{ color: "white" }}
-                />
-              }
-              pageCount={pageCount}
-              onPageChange={changePage}
-              containerClassName={"paginationBtns"}
-              previousLinkClassName={"previousbtn"}
-              nextLinkClassName={"nextbtn"}
-              disabledClassName={"paginationDisabled"}
-              activeClassName={"paginationActive"}
-            />
+          <div className="comapanyRequest-btngroup">
+            <div className="companyRequest-inner-btngroup">
+              <ReactPaginate
+                previousLabel={
+                  <FontAwesomeIcon
+                    icon={faArrowLeft}
+                    style={{ color: "white" }}
+                  />
+                }
+                nextLabel={
+                  <FontAwesomeIcon
+                    icon={faArrowRight}
+                    style={{ color: "white" }}
+                  />
+                }
+                pageCount={pageCount}
+                onPageChange={changePage}
+                containerClassName={"paginationBtns"}
+                previousLinkClassName={"previousbtn"}
+                nextLinkClassName={"nextbtn"}
+                disabledClassName={"paginationDisabled"}
+                activeClassName={"paginationActive"}
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

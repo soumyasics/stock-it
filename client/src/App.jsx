@@ -27,6 +27,7 @@ import { UserLogin } from "./components/user/userLogin/userLogin";
 import { AdminContainer } from "./pages/admin/adminContainer/adminContainer";
 import { UserViewCompanies } from "./components/user/viewCompanies/viewCompanies";
 import { Footer2 } from "./components/common/footer2/footer2";
+import { CompanyHome } from "./components/company/companyHome/companyHome";
 function App() {
   return (
     <>
@@ -36,6 +37,12 @@ function App() {
           <Route path="/" element={<LandingPageHeader />} />
 
           {/* company pages */}
+          
+          <Route
+            path="/companyHome"
+            element={<CompanyHome />}
+          />
+
           <Route
             path="/CompanyRegistration"
             element={<CompanyRegistration />}
@@ -74,7 +81,7 @@ function App() {
           />
           <Route
             path="/admin"
-            element={[<CommonNavbar />, <AdminSidebar />, <CompanyRequest />]}
+            element={[<AdminNavbar />, <AdminSidebar />, <CompanyRequest />]}
           />
           {/* <Route path="/admin" element={<AdminContainer />}/> */}
           <Route
