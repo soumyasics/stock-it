@@ -4,9 +4,13 @@ import img7 from "../../../assets/images/graph.png";
 import img8 from "../../../assets/images/Group 307.svg";
 import img9 from "../../../assets/images/Group 308.svg";
 import img10 from "../../../assets/images/Group 399.png";
+import { UserNavbar } from "../userNavbar/userNavbar";
+import { Footer2 } from "../../common/footer2/footer2";
 
 export const UserHomePage = () => {
   return (
+    <>
+    <UserNavbar />
     <div>
         <div className="about-background">
         <h5 className=" about-heading">
@@ -160,5 +164,9 @@ export const UserHomePage = () => {
         </div>
       </div>
     </div>
+    <div>
+      <Footer2 /> 
+      </div>
+    </>
   );
 };
