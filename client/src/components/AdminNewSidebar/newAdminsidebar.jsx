@@ -10,6 +10,7 @@ import img3 from "../../assets/images/action.png";
 import img4 from "../../assets/images/reset.png";
 import img5 from "../../assets/images/logout.png";
 import { useNavigate } from 'react-router-dom';
+import AdminNavbar from '../common/adminNavbar';
 
 function NewAdminsidebar() {
     const [show, setShow] = useState(false);
@@ -23,6 +24,7 @@ function NewAdminsidebar() {
       };
 
     return (
+        
         <div>
             <div className="adminSidebar-main">
                 <div className="adminSidebar-title-head">

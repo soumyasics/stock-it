@@ -30,6 +30,11 @@ import { Footer2 } from "./components/common/footer2/footer2";
 import { UserNavbar } from "./components/user/userNavbar/userNavbar";
 import { CompanyHome } from "./components/company/companyHome/companyHome";
 import NewAdminsidebar from "./components/AdminNewSidebar/newAdminsidebar";
+import { ViewCompanyDetails } from "./components/user/viewCompaniesDetails/viewCompaniesDetails";
+import CompanySidebar from "./components/company/companySidebar/companySidebar";
+import IpoForm from "./components/company/Ipoform/ipoForm";
+import Forgotpassword from "./components/common/forgetPassword/forgotpassword";
+
 import { EtUserHomePage } from "./components/educational-tutors/et-userHome/EtUserHome";
 
 function App() {
@@ -59,12 +64,22 @@ function App() {
             path="/companylogin"
             element={[<CommonNavbar />, <CompanyLogin />]}
           />
+          <Route
+            path="/companyDetails/:id"
+            element={ <ViewCompanyDetails />}
+          />
+
+          <Route
+          path="/companysidebar"
+          element={<CompanySidebar/>}/>
 
           {/* user pages  */}
           <Route path="/userRegistration" element={<UserRegistration />} />
           <Route path="/userHome" element={<UserHomePage />} />
           <Route path="/userLogin" element={<UserLogin />} />
-          <Route path="/userViewCompany" element={[<AdminNavbar />, <UserViewCompanies />]} />
+
+          <Route path="/userViewCompany" element={ <UserViewCompanies />} />
+
           <Route path="/userabout" element={ <UserHomePage />} />
           <Route path="/et" element={<EtUserHomePage/>}/>
 
@@ -81,7 +96,7 @@ function App() {
           <Route path="/landingheader" element={<LandingPageHeader />} />
           <Route path="/landingAbout" element={[<CommonNavbar />, <About />]} />
 
-          <Route path="/newsidebar" element={[<AdminNavbar/>,<NewAdminsidebar />]} />
+          <Route path="/newsidebar" element={<NewAdminsidebar />} />
 
           <Route
             path="/AdminDashboard"
@@ -97,9 +112,12 @@ function App() {
             element={[<AdminNavbar />, <Resetpassword />]}
           />
 
-
+          
           <Route path="/adminNavbar" element={<AdminNavbar />} />
           <Route path="/requestpage/:id" element={<RequestPage />} />
+
+          <Route path="/ipoform" element={<IpoForm/>}/>
+          <Route path="/forgotpassword" element={<Forgotpassword/>}/>
 
           <Route path="/*" element={"<h1> 404 </h1>"} />
         </Routes>
