@@ -6,6 +6,7 @@ import profilePic from '../../../assets/images/userprofile.svg'
 
 
 export const UserRegistration = () => {
+
   return (
     <div>
       <CommonNavbar />
@@ -90,18 +91,19 @@ export const UserRegistration = () => {
                   <div className="row fieldgap">
                     <div className="col">
                       <label htmlFor="email">Email ID</label>
-                      <input type="email" className="form-control" placeholder="First name" aria-label="First name" />
+                      <input type="email" className="form-control" placeholder="Enter email" aria-label="First name" />
                     </div>
                     <div className="col">
-                      <label htmlFor="proof">Id proof</label>
+                      <label htmlFor="proof">Id Proof</label>
                       <input type="file" className="form-control" placeholder="upload" aria-label="Last name" />
                     </div>
                   </div>
 
                   <div className="row fieldgap">
                     <div className="col">
-                      <label htmlFor="password">password</label>
-                      <input type="password" className="form-control" placeholder="Enter Password" aria-label="First name" />
+                      <label htmlFor="password">Password</label>
+                      <input  type="password" className="form-control" placeholder="Enter Password" aria-label="First name" id="Inputpassword" required/>
+              
                     </div>
                     <div className="col">
                       <label htmlFor="confirmpassword">Confirm Password</label>
