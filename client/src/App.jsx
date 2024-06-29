@@ -77,7 +77,7 @@ function App() {
           />
           <Route path="/commonNavbar" element={<CommonNavbar />} />
           <Route path="/landingheader" element={<LandingPageHeader />} />
-          <Route path="/userHome" element={[<CommonNavbar />, <About />]} />
+          <Route path="/landingAbout" element={[<CommonNavbar />, <About />]} />
 
           <Route path="/newsidebar" element={[<AdminNavbar/>,<NewAdminsidebar />]} />
 

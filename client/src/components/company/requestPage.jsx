@@ -9,6 +9,7 @@ import { toast } from "react-hot-toast";
 import AdminNavbar from "../common/adminNavbar";
 function RequestPage() {
   const [state, setState] = useState({ license: { filename: "" } });
+  console.log("state", state)
   const { id } = useParams();
   const navigate = useNavigate();
   useEffect(() => {
@@ -118,6 +119,7 @@ function RequestPage() {
                 <td>-</td>
                 <td>
                   <button
+                    className="btn-primary btn"
                     type="button"
                     class="modal-btn"
                     data-bs-toggle="modal"
@@ -173,7 +175,7 @@ function RequestPage() {
                 </div>
                 <div class="modal-body modal-image">
                   <img
-                    src={`${BASE_URL}${state?.logo?.filename}`}
+                    src={`${BASE_URL}${state?.license?.filename}`}
                     alt="profile"
                   />
                 </div>
