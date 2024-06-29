@@ -30,6 +30,7 @@ import { Footer2 } from "./components/common/footer2/footer2";
 import { UserNavbar } from "./components/user/userNavbar/userNavbar";
 import { CompanyHome } from "./components/company/companyHome/companyHome";
 import NewAdminsidebar from "./components/AdminNewSidebar/newAdminsidebar";
+import CompanySidebar from "./components/company/companySidebar/companySidebar";
 
 function App() {
   return (
@@ -58,6 +59,7 @@ function App() {
             path="/companylogin"
             element={[<CommonNavbar />, <CompanyLogin />]}
           />
+          <Route path="/companysidebar" element={<CompanySidebar/>}/>
 
           {/* user pages  */}
           <Route path="/userRegistration" element={<UserRegistration />} />
@@ -79,7 +81,7 @@ function App() {
           <Route path="/landingheader" element={<LandingPageHeader />} />
           <Route path="/userHome" element={[<CommonNavbar />, <About />]} />
 
-          <Route path="/newsidebar" element={[<AdminNavbar/>,<NewAdminsidebar />]} />
+          <Route path="/newsidebar" element={<NewAdminsidebar />} />
 
           <Route
             path="/AdminDashboard"
@@ -95,7 +97,7 @@ function App() {
             element={[<AdminNavbar />, <Resetpassword />]}
           />
 
-
+          
           <Route path="/adminNavbar" element={<AdminNavbar />} />
           <Route path="/requestpage/:id" element={<RequestPage />} />
 
