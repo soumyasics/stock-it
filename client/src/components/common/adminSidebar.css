@@ -27,7 +27,7 @@ padding: 30px 20px;
 }
 .adminSidebar-content{
     width: 307px;
-    height: 800px;
+    min-height: 700px;
     color: #fff;
 
 }
