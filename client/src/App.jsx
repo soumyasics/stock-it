@@ -32,6 +32,9 @@ import { CompanyHome } from "./components/company/companyHome/companyHome";
 import NewAdminsidebar from "./components/AdminNewSidebar/newAdminsidebar";
 import { ViewCompanyDetails } from "./components/user/viewCompaniesDetails/viewCompaniesDetails";
 import CompanySidebar from "./components/company/companySidebar/companySidebar";
+import IpoForm from "./components/company/Ipoform/ipoForm";
+import Forgotpassword from "./components/common/forgetPassword/forgotpassword";
+
 
 function App() {
   return (
@@ -110,6 +113,9 @@ function App() {
           
           <Route path="/adminNavbar" element={<AdminNavbar />} />
           <Route path="/requestpage/:id" element={<RequestPage />} />
+
+          <Route path="/ipoform" element={<IpoForm/>}/>
+          <Route path="/forgotpassword" element={<Forgotpassword/>}/>
 
           <Route path="/*" element={"<h1> 404 </h1>"} />
         </Routes>
