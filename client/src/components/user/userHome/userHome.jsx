@@ -4,9 +4,13 @@ import img7 from "../../../assets/images/graph.png";
 import img8 from "../../../assets/images/Group 307.svg";
 import img9 from "../../../assets/images/Group 308.svg";
 import img10 from "../../../assets/images/Group 399.png";
+import { UserNavbar } from "../userNavbar/userNavbar";
+import { Footer2 } from "../../common/footer2/footer2";
 
 export const UserHomePage = () => {
   return (
+    <>
+    <UserNavbar />
     <div>
         <div className="about-background">
         <h5 className=" about-heading">
@@ -119,9 +123,8 @@ export const UserHomePage = () => {
               <p className="about-last-inner-box-head">Clients First</p>
               <p className="about-last-inner-box-text ">
                 Our clients' success is paramount - their success <br />
-                is our success. We build and nurture long-term <br />
-                relationships with our clients by using our proven <br />
-                investment strategies.
+                is our success. We build and nurture long-term
+               
               </p>
             </div>
 
@@ -131,8 +134,7 @@ export const UserHomePage = () => {
                 We assess every investment opportunity <br />
                 objectively and with total impartiality. <br />
                 Our independence sets us apart and helps ensure <br />
-                that our decisions are aligned with the needs <br />
-                of our clients.
+             
               </p>
             </div>
           </div>
@@ -142,8 +144,7 @@ export const UserHomePage = () => {
               <p className="about-last-inner-box-text">
                 Success is built on respect for each individual. <br />
                 It is our aim to create a true meritocracy in <br />
-                which talent and achievement are rewarded <br />
-                and opportunity is equally available to all.
+               
               </p>
             </div>
             <div className="about-last-inner-box">
@@ -151,14 +152,20 @@ export const UserHomePage = () => {
               <p className="about-last-inner-box-text">
                 we are profoundly aware of our responsibilities. <br />
                 As a good corporate citizen, we aim to give back <br />
-                to the communities in which we live and actively <br />
-                support and participate in a range of initiatives <br />
-                within them.
+             
               </p>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <div className="userHome-footer2">
+            <Footer2 />
+   
+
+ 
+      </div>
+    </>
   );
 };

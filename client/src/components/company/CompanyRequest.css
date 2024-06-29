@@ -2,7 +2,7 @@
 
 
 .companyRequest-body {
-    height: 170vh;
+    min-height: 700px;
     width: 80.3%;
     background-color: black;
     background-size: 100%;

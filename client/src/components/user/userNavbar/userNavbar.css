@@ -5,6 +5,11 @@
     
 }
 
+.user-navbar>h6 {
+    cursor: pointer;
+}
+
+
 .commonNavbar-image img {
     position: relative;
     right: 60px;
