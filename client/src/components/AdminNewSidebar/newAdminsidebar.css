@@ -1,24 +1,8 @@
-/* adminSidebar */
-
-.adminSidebar{
-    width: 100%;
-    background-color:black;
-    height:100vh;
-}
-.adminSidebar-gif{
-    width: 100%;
-    height: 37px;
-}
-.adminSidebar-gif img{
-    width: 100%;
-    height: 37px;
-    position: absolute;
-    top: 55px;
-}
 .adminSidebar-main{
     width:307px;
     min-height: 100vh;
     background: #374151;
+    border: none;
 }
 .adminSidebar-title-head{
 width: 307px;
@@ -27,7 +11,7 @@ padding: 30px 20px;
 }
 .adminSidebar-content{
     width: 307px;
-    min-height: 700px;
+    height: 800px;
     color: #fff;
 
 }

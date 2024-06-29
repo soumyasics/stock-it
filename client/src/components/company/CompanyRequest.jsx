@@ -94,7 +94,7 @@ function CompanyRequest({ changePage }) {
             <p>Company Requests</p>
           </div>
           <div className="comapnyRequest-first-box">
-            <div className="companyRequesest-second-box" role="group">
+            {/* <div className="companyRequesest-second-box" role="group">
               <div className="companyrequest-enterpage">
                 <p className="companyRequest-entries">Entries per page</p>
               </div>
@@ -107,15 +107,15 @@ function CompanyRequest({ changePage }) {
                 <option value="2">17</option>
                 <option value="3">18</option>
               </select>
-            </div>
-            <div className="comapanyRequest-search-box">
+            </div> */}
+            {/* <div className="comapanyRequest-search-box">
               <input
                 type="search"
                 className="companyRequest-serchbox"
                 placeholder="Companies"
                 onChange={serchbtn}
               />
-            </div>
+            </div> */}
           </div>
           {
             <div className="container-fluid ">

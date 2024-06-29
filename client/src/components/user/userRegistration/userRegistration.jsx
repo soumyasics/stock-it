@@ -2,7 +2,6 @@ import CommonNavbar from "../../common/commonNavbar";
 import { Footer2 } from "../../common/footer2/footer2";
 import "./userRegistration.css";
 import img1 from "../../../assets/images/shieldLogo.png";
-import profilePic from "../../../assets/images/userprofile.svg";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { DateOfBirthSelector } from "./dateOfbirthSelector";
@@ -439,6 +438,7 @@ export const UserRegistration = () => {
                         name="password"
                         value={userData.password}
                       />
+                      
                     </div>
                     <div className="col">
                       <label htmlFor="confirmpassword">Confirm Password</label>
