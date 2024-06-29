@@ -1,0 +1,25 @@
+.commonNavbar {
+    background: #111827;
+    height: 64px;
+    flex-shrink: 0;
+    
+}
+
+.commonNavbar-image img {
+    position: relative;
+    right: 60px;
+}
+
+.commonNavbar-right a {
+    color: #FFF;
+    font-family: "Noto Sans";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal; 
+    margin-left:12px;  
+}
+.commonNavbar-right img{
+margin-left: 20px;
+position:absolute;
+top: 35%;}

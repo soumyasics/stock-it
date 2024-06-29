@@ -27,6 +27,7 @@ import { UserLogin } from "./components/user/userLogin/userLogin";
 import { AdminContainer } from "./pages/admin/adminContainer/adminContainer";
 import { UserViewCompanies } from "./components/user/viewCompanies/viewCompanies";
 import { Footer2 } from "./components/common/footer2/footer2";
+import { UserNavbar } from "./components/user/userNavbar/userNavbar";
 import { CompanyHome } from "./components/company/companyHome/companyHome";
 function App() {
   return (
@@ -61,6 +62,7 @@ function App() {
           {/* <Route path="/userHome" element={<UserHomePage />} /> */}
           <Route path="/userLogin" element={<UserLogin />} />
           <Route path="/userViewCompany" element={[<AdminNavbar/>,<UserViewCompanies/>]} />
+          <Route path="/userabout" element={[<UserNavbar/>,<UserHomePage/>,<Footer2/>]}/>
 
           {/* admin pages  */}
           <Route
