@@ -64,7 +64,7 @@ function App() {
           <Route path="/userHome" element={<UserHomePage />} />
           <Route path="/userLogin" element={<UserLogin />} />
           <Route path="/userViewCompany" element={[<AdminNavbar />, <UserViewCompanies />]} />
-          <Route path="/userabout" element={[<UserNavbar />, <UserHomePage />, <Footer2 />]} />
+          <Route path="/userabout" element={ <UserHomePage />} />
 
           {/* admin pages  */}
           <Route
