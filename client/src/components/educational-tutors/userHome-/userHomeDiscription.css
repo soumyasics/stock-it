@@ -1,0 +1,42 @@
+.userHome-discription-body
+{
+    background-color: #1F2937;
+    min-height:98vh;
+}
+.userHome-discription-body h4{
+    color: #FFF;
+    text-align: justify;
+    font-family: "Noto Sans";
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    padding-left: 5%;
+    padding-top: 3%;
+}
+.userHome-discription-body li
+{
+    color: #FFF;
+text-align: justify;
+font-family: "Noto Sans";
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+padding-left: 5%;
+list-style-type: none;
+padding-top: 1.5%;
+}
+.userHome-discription-body p
+{
+    color: #FFF;
+font-family: "Noto Sans";
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+padding-left: 5%;
+padding-right: 5%;
+text-align: justify;
+padding-top: 2%;
+}

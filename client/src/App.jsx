@@ -30,6 +30,7 @@ import { Footer2 } from "./components/common/footer2/footer2";
 import { UserNavbar } from "./components/user/userNavbar/userNavbar";
 import { CompanyHome } from "./components/company/companyHome/companyHome";
 import NewAdminsidebar from "./components/AdminNewSidebar/newAdminsidebar";
+import { EtUserHomePage } from "./components/educational-tutors/et-userHome/EtUserHome";
 
 function App() {
   return (
@@ -65,6 +66,7 @@ function App() {
           <Route path="/userLogin" element={<UserLogin />} />
           <Route path="/userViewCompany" element={[<AdminNavbar />, <UserViewCompanies />]} />
           <Route path="/userabout" element={ <UserHomePage />} />
+          <Route path="/et" element={<EtUserHomePage/>}/>
 
           {/* admin pages  */}
           <Route
