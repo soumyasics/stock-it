@@ -159,8 +159,12 @@ export const UserHomePage = () => {
         </div>
       </div>
     </div>
-    <div className="userHome-footer2">
-      <Footer2 /> 
+
+    <div className="footer2">
+            <Footer2 />
+   
+
+ 
       </div>
     </>
   );
