@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+
+.requestfrom-box {
+    width: 581px;
+    min-height: 611px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #374151;
+}
+
+.requestfrom-head h3 {
+    color: #FFF;
+    font-family: "Noto Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration-line: underline;
+    padding-left: 6%;
+    text-transform: capitalize;
+}
+
+.requestfrom-content th {
+    color: #FFF;
+    font-family: "Noto Sans";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.requestfrom-innerbox {
+    width: 532px;
+    height: 67px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #1F2937;
+    margin: 10px 26px 2px 23px;
+    display: flex;
+}
+
+.requestfrom-innerbox-image {
+    width: 48.38px;
+    height: 47.08px;
+    flex-shrink: 0;
+    border-radius: 48.38px;
+    position: relative;
+    top: 10%;
+    left: 2%;
+}
+
+.requestfrom-innerbox-image img {
+    width: 48.38px;
+    height: 47.08px;
+    flex-shrink: 0;
+    border-radius: 48.38px;
+}
+
+.requestfrom-innerbox-content {
+    color: #ffffffb5;
+    font-family: Inter;
+    font-size: 15.166px;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+    margin:4.1% ;
+    width: 60%;
+}
+.requestfrom-innerbox-content a{
+color: #FFF;
+font-family: Inter;
+font-size: 15.166px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+text-decoration: none;
+}
+.requestfrom-innerbox-btn {
+    width: 100px;
+    height: 50px;
+    margin: 20px 10px; 
+}
+.requestfrom-innerbox-btn button{
+    width: 93px;
+height: 27px;
+border-radius: 15px;
+background: #374151;
+color: #FFF;
+border: none;
+}
