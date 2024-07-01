@@ -31,8 +31,8 @@ import { UserNavbar } from "./components/user/userNavbar/userNavbar";
 import { CompanyHome } from "./components/company/companyHome/companyHome";
 import NewAdminsidebar from "./components/AdminNewSidebar/newAdminsidebar";
 import { ViewCompanyDetails } from "./components/user/viewCompaniesDetails/viewCompaniesDetails";
-import CompanySidebar from "./components/company/companySidebar/companySidebar";
-import IpoForm from "./components/company/Ipoform/ipoForm";
+import {CompanySidebar} from "./components/company/companySidebar/companySidebar";
+import {IpoForm} from "./components/company/Ipoform/ipoForm";
 import Forgotpassword from "./components/common/forgetPassword/forgotpassword";
 
 import { EtUserHomePage } from "./components/educational-tutors/et-userHome/EtUserHome";
@@ -43,6 +43,7 @@ import Requestfrom from "./components/Admin/Requestpage/requestfrom";
 import StockProfit from "./components/Admin/StockProfit/stockProfit";
 import AdminCount from "./components/Admin/Admincount/adminCount";
 import { CompanyAbout } from "./components/company/companyAbout/companyAbout";
+import { CompanyDashboard } from "./components/company/companyDashboard/companyDashboard";
 
 function App() {
   return (
@@ -72,6 +73,7 @@ function App() {
           <Route path="/companyDetails/:id" element={<ViewCompanyDetails />} />
 
           <Route path="/companysidebar" element={<CompanySidebar />} />
+          <Route path="/company-dashboard" element={<CompanyDashboard />} />
 
           {/* user pages  */}
           <Route path="/userRegistration" element={<UserRegistration />} />

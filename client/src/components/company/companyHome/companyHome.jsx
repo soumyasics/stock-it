@@ -1,7 +1,6 @@
 import React from "react";
 import "../../common/landingPage-2.css";
 
-import { CompanyNavbar } from "../companyNavbar/companyNavbar";
 import Footer from "../../../components/common/userNavbar/Footer";
 import img1 from "../../../assets/images/image logo.png";
 import img2 from "../../../assets/images/image 9.png";
@@ -13,6 +12,7 @@ import imgStep3 from "../../../assets/images/Group 393.png";
 import img4 from "../../../assets/images/image 13.png";
 import img5 from "../../../assets/images/phonegroup.png";
 import img6 from "../../../assets/images/commentsgif.gif";
+import { CompanyNavbar } from "../companyNavbar/companyNavbar";
 export const CompanyHome = () => {
   return (
     <>
