@@ -3,6 +3,7 @@ import axiosInstance from "../../../apis/axiosInstance";
 import { Card, Col, Image, ListGroup, Row, Table } from "react-bootstrap";
 import ipoImage1 from "../../../assets/images/ipo-1.png";
 import "./companyProfile.css";
+import coImg1 from "../../../assets/images/co-1.png";
 export const CompanyProfile = () => {
   const [ipoStatus, setIpoStatus] = useState(null);
   console.log("ipo", ipoStatus);
@@ -37,8 +38,11 @@ export const CompanyProfile = () => {
   };
   return (
     <div className="text-light pt-5">
-      <h4 className="text-center">IPO Status</h4>
+      <h4 className="text-center">Profile </h4>
       <Row className=" mx-auto mt-5" style={{ width: "90%" }}>
+      <Col md={6}>
+          <Image className="w-75" src={coImg1} alt="ipo" />
+        </Col>
         <Col md={6} className="company-ipo-status shadow p-3">
           <Card style={{ width: "18rem" }}>
             <Card.Header className="capitalizeText text-center fw-bold">{ipoStatus?.companyId?.name?.substring(0, 20)} IPO Status</Card.Header>
@@ -92,9 +96,7 @@ export const CompanyProfile = () => {
             </ListGroup>
           </Card>
         </Col>
-        <Col md={6}>
-          <Image className="w-75" src={ipoImage1} alt="ipo" />
-        </Col>
+    
       </Row>
     </div>
   );

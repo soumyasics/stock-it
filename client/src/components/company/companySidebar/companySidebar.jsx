@@ -30,7 +30,7 @@ export const CompanySidebar = ({ changePage }) => {
         <div className="companysidebar-content">
           <div
             onClick={() => {
-              changePage("company-profile");
+              changePage("profile");
             }}
             className="companysidebar-items companysidebar-content-companyipos"
           >
