@@ -64,7 +64,6 @@
 
 .companysidebar-content {
   margin-left: 8%;
-  margin-top: 20%;
   width: 250px;
   padding-left: 20px;
 }
@@ -134,15 +133,19 @@
   margin-right: 5px;
 }
 
-
 /* modification  */
 .companysidebar-items {
-    cursor: pointer;
-    margin-top: 5px;
+  cursor: pointer;
+  margin-top: 5px;
+  text-align: left;
 }
 
 .companysidebar-items :hover {
-    background-color: #1f2937;
-    border-radius: 5px;
+  background-color: #1f2937;
+  border-radius: 5px;
+  width: 100%;
+}
 
+.company-content-drop button {
+  text-align: left;
 }

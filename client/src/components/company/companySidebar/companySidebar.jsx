@@ -8,9 +8,8 @@ import img3 from "../../../assets/images/orderIcon.svg";
 import img4 from "../../../assets/images/article.svg";
 import img5 from "../../../assets/images/action.png";
 import img6 from "../../../assets/images/logout.png";
-import AdminNavbar from "../../common/adminNavbar";
 
-export const CompanySidebar = ({changePage}) => {
+export const CompanySidebar = ({ changePage }) => {
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
   return (
@@ -28,20 +27,53 @@ export const CompanySidebar = ({changePage}) => {
         <div className="companysidebar-title">
           <img src={titleImg} alt="" />
         </div>
-        <div className="companysidebar-content" onClick={() => {
-            changePage("ipo-status")
-        }}>
-          <div className="companysidebar-items companysidebar-content-companyipos">
+        <div className="companysidebar-content">
+          <div
+            onClick={() => {
+              changePage("company-profile");
+            }}
+            className="companysidebar-items companysidebar-content-companyipos"
+          >
             <tr className="">
               <td>
                 <img src={img1} alt="icon" />
               </td>
               <td>
-                <h6>Company IPOs</h6>
+                <h6>Profile</h6>
               </td>
             </tr>
           </div>
-          <div className=" companysidebar-items companysidebar-content-dividend">
+          <div
+            onClick={() => {
+              changePage("ipo-form");
+            }}
+            className="companysidebar-items companysidebar-content-companyipos"
+          >
+            <tr className="">
+              <td>
+                <img src={img1} alt="icon" />
+              </td>
+              <td>
+                <h6>Initiate IPO</h6>
+              </td>
+            </tr>
+          </div>
+          <div
+            onClick={() => {
+              changePage("ipo-status");
+            }}
+            className="companysidebar-items companysidebar-content-companyipos"
+          >
+            <tr className="">
+              <td>
+                <img src={img1} alt="icon" />
+              </td>
+              <td>
+                <h6>IPO Status</h6>
+              </td>
+            </tr>
+          </div>
+          <div  className="companysidebar-items companysidebar-content-dividend">
             <tr>
               <td>
                 <img src={img2} alt="" />
