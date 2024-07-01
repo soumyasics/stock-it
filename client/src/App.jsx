@@ -36,12 +36,12 @@ import IpoForm from "./components/company/Ipoform/ipoForm";
 import Forgotpassword from "./components/common/forgetPassword/forgotpassword";
 
 import { EtUserHomePage } from "./components/educational-tutors/et-userHome/EtUserHome";
-import Gainer from "./components/admin/Gainer/gainer";
-import Loser from "./components/admin/Losers/loser";
-import SectorPerform from "./components/admin/SectorPerform/sectorPerform";
-import Requestfrom from "./components/admin/Requestpage/requestfrom";
-import StockProfit from "./components/admin/StockProfit/stockProfit";
-import AdminCount from "./components/admin/Admincount/adminCount";
+import Gainer from "./components/Admin/Gainer/gainer";
+import Loser from "./components/Admin/Losers/loser";
+import SectorPerform from "./components/Admin/SectorPerform/sectorPerform";
+import Requestfrom from "./components/Admin/Requestpage/requestfrom";
+import StockProfit from "./components/Admin/StockProfit/stockProfit";
+import AdminCount from "./components/Admin/Admincount/adminCount";
 
 function App() {
   return (
@@ -102,6 +102,7 @@ function App() {
           <Route path="/landingheader" element={<LandingPageHeader />} />
           <Route path="/landingAbout" element={[<CommonNavbar />, <About />]} />
 
+    {/* new  */}
           <Route path="/newsidebar" element={<NewAdminsidebar />} />
 
           <Route
