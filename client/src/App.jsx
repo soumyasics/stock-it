@@ -36,8 +36,8 @@ import IpoForm from "./components/company/Ipoform/ipoForm";
 import Forgotpassword from "./components/common/forgetPassword/forgotpassword";
 
 import { EtUserHomePage } from "./components/educational-tutors/et-userHome/EtUserHome";
-import Gainer from "./components/Admin/Gainer/gainer";
-import Loser from "./components/Admin/Losers/loser";
+import Gainer from "./components/admin/Gainer/gainer";
+import Loser from "./components/admin/Losers/loser";
 
 function App() {
   return (
