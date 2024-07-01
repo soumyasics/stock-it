@@ -10,7 +10,7 @@ import img5 from "../../../assets/images/action.png";
 import img6 from "../../../assets/images/logout.png";
 import AdminNavbar from "../../common/adminNavbar";
 
-export const CompanySidebar = () => {
+export const CompanySidebar = ({changePage}) => {
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
   return (
@@ -28,7 +28,9 @@ export const CompanySidebar = () => {
         <div className="companysidebar-title">
           <img src={titleImg} alt="" />
         </div>
-        <div className="companysidebar-content">
+        <div className="companysidebar-content" onClick={() => {
+            changePage("ipo-status")
+        }}>
           <div className="companysidebar-items companysidebar-content-companyipos">
             <tr className="">
               <td>

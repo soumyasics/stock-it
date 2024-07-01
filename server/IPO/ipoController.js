@@ -1,5 +1,5 @@
 const Ipo = require("./ipoSchema.js");
-
+const CompanyModel = require("../Company/companySchema.js");
 // Controller functions
 
 // Create a new IPO
@@ -56,15 +56,22 @@ exports.getIposForAdminApproval = async (req, res) => {
   }
 };
 // Get a single IPO by ID
-exports.getIpoById = async (req, res) => {
+exports.getIpoByCompanyId = async (req, res) => {
   try {
-    const ipo = await Ipo.findById(req.params.id);
+    const { id } = req.params;
+    console.log("id", id)
+    const company = await CompanyModel.findById(id);
+    if (!company) {
+      return res.status(404).json({ message: "IPO not found" });
+    }
+    const ipo = await Ipo.findOne({ companyId: id }).populate("companyId").exec();
+    console.log("ipp", ipo)
     if (!ipo) {
       return res.status(404).json({ message: "IPO not found" });
     }
-    res.json(ipo);
+    return res.status(200).json({ message: "IPO status", data: ipo });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    return res.status(500).json({ message: err.message });
   }
 };
 
@@ -108,9 +115,11 @@ exports.deleteIpo = async (req, res) => {
   }
 };
 // Get a single IPO by ID
-exports.getIpoByCompanyId = async (req, res) => {
+exports.getIpoById = async (req, res) => {
   try {
-    const ipo = await Ipo.find({ companyId: req.params.id });
+    const id = req.params.id;
+
+    const ipo = await Ipo.findById(req.params.id);
     if (!ipo) {
       return res.status(404).json({ message: "IPO not found" });
     }

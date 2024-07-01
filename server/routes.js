@@ -45,7 +45,7 @@ router.post("/deActivateUserById/:id", userController.deActivateUserById);
 
 //IPO routes
 router.post("/createIpo",IPO.createIpo);
-router.post("/getIpoByCompanyId/:id",IPO.getIpoByCompanyId);
+router.get("/getIpoByCompanyId/:id",IPO.getIpoByCompanyId);
 router.post("/deleteIpo/:id",IPO.deleteIpo);
 router.post("/getIpos",IPO.getIpos);
 router.post("/deleteIpo/:id",IPO.getIpoById);
