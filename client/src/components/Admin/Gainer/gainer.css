@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+.gainer-box {
+    width: 323px;
+    height: 248px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #374151;
+}
+
+.gainer-head h3 {
+    color: #FFF;
+    font-family: "Noto Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration-line: underline;
+    padding-left: 4%;
+}
+
+.gainer-content {
+    width: 95%;
+    margin-left: 2%;
+    height: 70%;
+    color: #FFF;
+    color: #FFF;
+    font-family: "Noto Sans";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.price-clr {
+    color: #5FFD51;
+    font-family: "Noto Sans";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}

@@ -36,6 +36,8 @@ import IpoForm from "./components/company/Ipoform/ipoForm";
 import Forgotpassword from "./components/common/forgetPassword/forgotpassword";
 
 import { EtUserHomePage } from "./components/educational-tutors/et-userHome/EtUserHome";
+import Gainer from "./components/Admin/Gainer/gainer";
+import Loser from "./components/Admin/Losers/loser";
 
 function App() {
   return (
@@ -118,6 +120,10 @@ function App() {
 
           <Route path="/ipoform" element={<IpoForm/>}/>
           <Route path="/forgotpassword" element={<Forgotpassword/>}/>
+
+          {/* Admin components */}
+          <Route path="/gainer" element={<Gainer/>}/>
+          <Route path="/loser" element={<Loser/>}/>
 
           <Route path="/*" element={"<h1> 404 </h1>"} />
         </Routes>
