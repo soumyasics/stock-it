@@ -10,6 +10,9 @@ export const CompanyNavbar = () => {
     console.log("working")
     navigate('/companyLogin')
   }
+  const redirectCompanyAbout = () => {
+    navigate('/companyAbout')
+  }
   return (
     <div>
       <div>
@@ -22,8 +25,8 @@ export const CompanyNavbar = () => {
               className="commonNavbar-right  align-items-center d-flex"
               style={{ width: "300px" }}
             >
-              <Link>Home</Link>
-              <Link>About</Link>
+              <h6>Home</h6>
+              <h6 className="text-light fw-bold" onClick={redirectCompanyAbout}>About</h6>
               <h6 className="text-danger fw-bold" onClick={handleCompanyLogout}>Logout</h6>
             </div>
           </div>
