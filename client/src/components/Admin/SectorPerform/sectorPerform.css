@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+.sectorperform-box {
+    width: 481px;
+    height: 325px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #374151;
+}
+
+.sectorperform-head h3 {
+    color: #FFF;
+    font-family: "Noto Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration-line: underline;
+    padding-left: 6%;
+}
+.sectorperform-content th{
+    color: #FFF;
+    font-family: "Noto Sans";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.sectorperform-content {
+    width: 92%;
+    margin-left: 2%;
+    height: 70%;
+    color: #FFF;
+    font-family: "Noto Sans";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+td{
+    padding: 5px;
+}

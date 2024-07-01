@@ -38,6 +38,10 @@ import Forgotpassword from "./components/common/forgetPassword/forgotpassword";
 import { EtUserHomePage } from "./components/educational-tutors/et-userHome/EtUserHome";
 import Gainer from "./components/admin/Gainer/gainer";
 import Loser from "./components/admin/Losers/loser";
+import SectorPerform from "./components/admin/SectorPerform/sectorPerform";
+import Requestfrom from "./components/admin/Requestpage/requestfrom";
+import StockProfit from "./components/admin/StockProfit/stockProfit";
+import AdminCount from "./components/admin/Admincount/adminCount";
 
 function App() {
   return (
@@ -124,6 +128,10 @@ function App() {
           {/* Admin components */}
           <Route path="/gainer" element={<Gainer/>}/>
           <Route path="/loser" element={<Loser/>}/>
+          <Route path="/sectorperform" element={<SectorPerform/>}/>
+          <Route path="/requestfrom" element={<Requestfrom/>}/>
+          <Route path="/stockprofit" element={<StockProfit/>}/>
+          <Route path="/admincount" element={<AdminCount/>}/>
 
           <Route path="/*" element={"<h1> 404 </h1>"} />
         </Routes>
