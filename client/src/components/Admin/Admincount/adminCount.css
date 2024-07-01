@@ -1,0 +1,43 @@
+.admincount-main{
+    display: flex;
+width: 420px;
+align-items: flex-start;
+align-content: flex-start;
+gap: 52px 51px;
+flex-wrap: wrap;
+}
+.admincount-block{
+    width: 172px;
+height: 87px;
+flex-shrink: 0;
+border-radius: 10px;
+background: #374151;
+margin-top: 3px;
+margin-left: 8px;
+}
+.admincount-block img{
+    margin: 3% 0 0 3%;
+}
+.admincount-head{
+    text-align: center;
+}
+h3{
+    margin-bottom: 0;
+    color: #FFF;
+text-align: center;
+font-family: "Noto Sans";
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+p{
+    color: #FFF;
+    text-align: center;
+    font-family: "Noto Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 0;
+}

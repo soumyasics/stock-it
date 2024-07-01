@@ -24,8 +24,6 @@ function Gainer() {
                                         <td>{e.price}</td>
                                         <td className='price-clr'>{e.percent}</td>
                                     </tr>
-
-
                                 </>
                             )
                         })

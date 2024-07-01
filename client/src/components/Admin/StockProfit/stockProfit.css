@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+.stockprofit-box {
+    width: 481px;
+     min-height: 255.263px;
+    border-radius: 10px;
+    background: #374151;
+}
+
+.stockprofit-head h3 {
+    color: #FFF;
+    font-family: "Noto Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration-line: underline;
+    padding-left: 6%;
+}
+.stockprofit-subhead{
+    width: 15%;
+    color: #FFF;
+font-family: "Noto Sans";
+font-size: 10px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+    margin-left: 70%;
+}
+.stockprofit-subhead p{
+    margin-bottom: 1px;
+}
+
+.stockprofit-content {
+    width: 95%;
+    height: 31.644px;
+    border-radius: 10px;
+    border: 2px solid  #B6B5B5;
+    margin-top: 10px;
+    margin-left: 2%;
+    color: #FFF;
+    font-family: "Noto Sans";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border-collapse:initial ;
+}
+.stockprofit-image {
+    width: 22px;
+    height: 23.206px;
+    border-radius: 23.206px;
+    position: relative;
+    bottom: 4px;
+}
+
+.stockprofit-image img {
+    width: 22px;
+    height: 23.206px;
+    border-radius: 23.206px;
+}
