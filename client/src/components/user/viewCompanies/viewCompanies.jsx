@@ -16,18 +16,18 @@ export const UserViewCompanies = () => {
     ])
 
     const [allCompanies, setAllCompanies] = useState([]);
-    
+
     const getAllCompanies = async () => {
         try {
             const res = await axiosInstance.post('viewCompanies');
             if (res.status === 200) {
                 const data = res.data?.data || [];
                 setAllCompanies(data);
-            }else {
+            } else {
                 console.log("Error ", res)
             }
         } catch (error) {
-            console.log("Error getting compnaies", error )
+            console.log("Error getting compnaies", error)
         }
     }
 
@@ -71,7 +71,7 @@ export const UserViewCompanies = () => {
 
                 <div className="viewCompany-table ">
                     <table border="1px">
-                        <tr className="viewCompancy-head-row">  
+                        <tr className="viewCompancy-head-row">
                             <th> No</th>
                             <th>Name</th>
                             <th>Type</th>
@@ -79,31 +79,27 @@ export const UserViewCompanies = () => {
                             <th>State</th>
                             <th>Email</th>
                             <th>
-                                View More 
+                                View More
                             </th>
                         </tr>
                         {
                             allCompanies.map((co, i) => {
                                 return (
-                                    
-
-                                        <tr key={co._id}>
-                                            <td>{i + 1}</td>
-                                           <td>{co.name}</td>
-                                            <td>{co.companyType}</td>
-                                            <td>{co.contact}</td>
-                                            <td> {co.state}</td>
-                                            <td>{co.email}</td>
-                                            <td className="viewComapny-viewmore">
-                                                <Button onClick={() => {
-                                                    navigate(`/companyDetails/${co._id}`)
-                                                }}>
-
+                                    <tr key={co._id}>
+                                        <td>{i + 1}</td>
+                                        <td>{co.name}</td>
+                                        <td>{co.companyType}</td>
+                                        <td>{co.contact}</td>
+                                        <td> {co.state}</td>
+                                        <td>{co.email}</td>
+                                        <td className="viewComapny-viewmore">
+                                            <Button onClick={() => {
+                                                navigate(`/companyDetails/${co._id}`)
+                                            }}>
                                                 View more
-                                                </Button>
-                                                </td>
-                                        </tr>
-                                    
+                                            </Button>
+                                        </td>
+                                    </tr>
                                 )
                             })
                         }
@@ -114,9 +110,9 @@ export const UserViewCompanies = () => {
 
 
 
-      <div >
-        <Footer2 />
-      </div>
-    </div>
-  );
+            <div >
+                <Footer2 />
+            </div>
+        </div>
+    );
 };
