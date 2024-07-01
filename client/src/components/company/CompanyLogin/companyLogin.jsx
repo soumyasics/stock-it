@@ -5,6 +5,7 @@ import CompanyRequest from "../CompanyRequest";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../../apis/axiosInstance";
+import { Footer2 } from "../../common/footer2/footer2";
 
 function CompanyLogin() {
   const navigate = useNavigate();
@@ -97,6 +98,10 @@ function CompanyLogin() {
           </div>
         </div>
       </div>
+      <div>
+        <Footer2 /> 
+      </div>
+
     </div>
   );
 }
