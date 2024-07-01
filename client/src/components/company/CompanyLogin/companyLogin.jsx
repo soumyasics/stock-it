@@ -24,13 +24,12 @@ function CompanyLogin() {
     try {
       const res = await axiosInstance.post("loginCompany", { email, password });
       if (res.status === 200) {
-        const userData = res.data?.data || null;
+        const userData = res.data?.data?._id || null;
         if (userData) {
-          localStorage.setItem("stock_it_companyData", JSON.stringify(userData));
+          localStorage.setItem("stock_it_companyId", JSON.stringify(userData));
         }
-        console.log("user data", res.data)
         toast.success("Login Successful");
-        navigate('/companyHome')
+        navigate('/company-dashboard')
       } else {
         throw new Error("Something wrong.");
       }

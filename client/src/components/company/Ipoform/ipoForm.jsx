@@ -2,26 +2,39 @@ import React, { useEffect, useState } from "react";
 import "./ipoForm.css";
 import { toast } from "react-hot-toast";
 
+import { useNavigate } from "react-router-dom";
+import axiosInstance from "../../../apis/axiosInstance";
 export const IpoForm = () => {
-  const [totalNoShares, setTotalNoShares] = useState("");
+  const [totalShares, setTotalNoShares] = useState("");
   const [costPerShare, setCostPerShare] = useState("");
   const [totalMarketCap, setTotalMarketCap] = useState(0);
-
+  const [companyId, setCompanyId] = useState(null);
+  const navigate = useNavigate();
   useEffect(() => {
-    const cap = totalNoShares * costPerShare;
+    let companyId = localStorage.getItem("stock_it_companyId") || null;
+    if (companyId) {
+      companyId = companyId.replace(/['"]+/g, "");
+      setCompanyId(companyId);
+    } else {
+      toast.error("Please login again.");
+      navigate("/companyLogin");
+    }
+  }, []);
+  useEffect(() => {
+    const cap = totalShares * costPerShare;
     if (isNaN(cap)) {
       setTotalMarketCap("");
       return;
     }
     setTotalMarketCap(cap);
-  }, [totalNoShares, costPerShare]);
+  }, [totalShares, costPerShare]);
 
   const handleTotalNoSharesChange = (e) => {
     const value = e.target.value;
     if (value === "") {
       setTotalNoShares("");
     } else {
-      const numValue = parseFloat(value);
+      const numValue = parseInt(value);
       if (numValue >= 0) {
         setTotalNoShares(numValue);
       }
@@ -41,15 +54,54 @@ export const IpoForm = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!totalNoShares || totalNoShares === 0) {
+    if (!totalShares || totalShares === 0) {
       toast.error("Total number of shares cannot be 0");
-    } else if (!costPerShare || costPerShare === 0) {
+      return;
+    }
+
+    if (!costPerShare || costPerShare === 0) {
       toast.error("Cost per share cannot be 0");
-    } else {
-      sendDataToServer();
+      return;
+    }
+    if (totalMarketCap === 0) {
+      toast.error("Total Market Cap cannot be 0");
+      return;
+    }
+
+    if (!companyId) {
+      toast.error("Please login again.");
+      navigate("/companyLogin");
+      return;
+    }
+
+    const ipoData = {
+      totalShares,
+      costPerShare: costPerShare,
+      companyId: companyId,
+      capitation: totalMarketCap,
+    };
+    sendDataToServer(ipoData);
+  };
+  const sendDataToServer = async (ipoData) => {
+    try {
+      const res = await axiosInstance.post("/createIpo", ipoData);
+
+      if (res.status === 201) {
+        toast.success("Your IPO request has been created successfully");
+        return;
+      } else {
+        console.log("response", res);
+      }
+    } catch (error) {
+      const status = error?.response?.status;
+      if (status === 409) {
+        toast.error(error?.response?.data?.message || "Something went wrong.");
+        return;
+      }
+
+      toast.error("Something went wrong");
     }
   };
-  const sendDataToServer = () => {};
   return (
     <div>
       <div style={{ minHeight: "50px" }}></div>
@@ -64,7 +116,7 @@ export const IpoForm = () => {
           <br />
           <input
             type="number"
-            value={totalNoShares}
+            value={totalShares}
             className="ps-3"
             onChange={handleTotalNoSharesChange}
             placeholder="Total Shares"
