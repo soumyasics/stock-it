@@ -13,14 +13,25 @@ export const CompanyNavbar = () => {
   const redirectCompanyAbout = () => {
     navigate("/companyAbout");
   };
+
+  const companyDashboard = () => {
+    navigate("/company-dashboard");
+  };
   return (
     <div>
       <div>
-        <nav className="navbar commonNavbar ps-5">
-          <div className="container">
-            <a className="navbar-brand commonNavbar-image" href="#">
+        <nav className="navbar d-flex commonNavbar ps-5">
+          <div className="container ">
+            <a className="navbar-brand commonNavbar-image">
               <img src={img1} className="img-fluid" />
             </a>
+            <p
+              style={{ color: "white", cursor: "pointer" }}
+              onClick={companyDashboard}
+
+            >
+              Dashboard
+            </p>
           </div>
         </nav>
       </div>

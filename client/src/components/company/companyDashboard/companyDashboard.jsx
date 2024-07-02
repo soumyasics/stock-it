@@ -10,7 +10,7 @@ export const CompanyDashboard = () => {
     setActivePage(value);
   };
   return (
-    <div className="d-flex bg-danger" style={{ height: "100vh" }}>
+    <div className="d-flex " style={{ height: "120vh", backgroundColor: "#374151" }}>
       <CompanySidebar changePage={changePage} />
       <div
         className=" w-100"

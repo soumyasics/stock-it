@@ -8,13 +8,25 @@ import img3 from "../../../assets/images/orderIcon.svg";
 import img4 from "../../../assets/images/article.svg";
 import img5 from "../../../assets/images/action.png";
 import img6 from "../../../assets/images/logout.png";
-
+import { IoMdArrowBack } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 export const CompanySidebar = ({ changePage }) => {
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
+  const navigate = useNavigate();
+  const redirectCompanyHome = () => {
+    navigate("/companyHome");
+  };
   return (
     <div>
       <div className="companysidebar-main pt-5">
+        <p
+          className="ms-5 mb-3"
+          style={{ textAlign: "left", cursor: "pointer" }}
+          onClick={redirectCompanyHome}
+        >
+          <IoMdArrowBack /> &nbsp; Back to home{" "}
+        </p>
         <div className="companysidebar-profile ">
           <div className="companyprofile">
             <img src={profilePic} alt="Profile" />
@@ -73,7 +85,7 @@ export const CompanySidebar = ({ changePage }) => {
               </td>
             </tr>
           </div>
-          <div  className="companysidebar-items companysidebar-content-dividend">
+          <div className="companysidebar-items companysidebar-content-dividend">
             <tr>
               <td>
                 <img src={img2} alt="" />
@@ -140,7 +152,11 @@ export const CompanySidebar = ({ changePage }) => {
             </tr>
           </div>
           <div className="companysidebar-items company-content-logout">
-            <tr>
+            <tr
+              onClick={() => {
+                navigate("/companyLogin");
+              }}
+            >
               <td>
                 <img src={img6} alt="icon" />
               </td>

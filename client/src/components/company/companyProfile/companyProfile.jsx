@@ -45,7 +45,7 @@ export const CompanyProfile = () => {
         </Col>
         <Col md={6} className="company-ipo-status shadow p-3">
           <Card style={{ width: "18rem" }}>
-            <Card.Header className="capitalizeText text-center fw-bold">{ipoStatus?.companyId?.name?.substring(0, 20)} IPO Status</Card.Header>
+            <Card.Header className="capitalizeText text-center fw-bold"> Company Details</Card.Header>
             <ListGroup variant="flush">
               <ListGroup.Item>
                 {" "}
@@ -77,20 +77,20 @@ export const CompanyProfile = () => {
               <ListGroup.Item>
                 {" "}
                 <h6>
-                  Market capitalization: <span>{ipoStatus?.capitation}</span>{" "}
+                  Type: <span>{ipoStatus?.companyId?.companyType}</span>{" "}
                 </h6>
               </ListGroup.Item>
               <ListGroup.Item>
                 {" "}
                 <h6>
-                  Total number of shares: <span>{ipoStatus?.totalShares}</span>{" "}
+                  Contact: <span>{ipoStatus?.companyId?.contact}</span>{" "}
                 </h6>
               </ListGroup.Item>
               <ListGroup.Item>
                 {" "}
                 <h6>
-                  Cost per share:
-                  <span>{ipoStatus?.costPerShare}</span>
+                  District:
+                  <span>{ipoStatus?.companyId?.district}</span>
                 </h6>
               </ListGroup.Item>
             </ListGroup>
