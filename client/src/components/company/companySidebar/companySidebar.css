@@ -140,11 +140,11 @@
   text-align: left;
 }
 
-.companysidebar-items :hover {
+/* .companysidebar-items :hover {
   background-color: #1f2937;
   border-radius: 5px;
   width: 100%;
-}
+} */
 
 .company-content-drop button {
   text-align: left;
