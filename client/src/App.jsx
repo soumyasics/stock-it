@@ -44,6 +44,7 @@ import StockProfit from "./components/Admin/StockProfit/stockProfit";
 import AdminCount from "./components/Admin/Admincount/adminCount";
 import { CompanyAbout } from "./components/company/companyAbout/companyAbout";
 import { CompanyDashboard } from "./components/company/companyDashboard/companyDashboard";
+import EtSignup from "./components/educational-tutors/et-signup/et-signup";
 
 function App() {
   return (
@@ -97,6 +98,7 @@ function App() {
 
           {/* new  */}
           <Route path="/newsidebar" element={<NewAdminsidebar />} />
+          <Route path="/etsignup" element={<EtSignup/>}/>
 
           <Route
             path="/AdminDashboard"
