@@ -30,9 +30,9 @@ function CommonNavbar() {
 
   return (
     <div>
-      <nav class="navbar commonNavbar">
+      <nav className="navbar commonNavbar">
         <div className="container">
-          <a class="navbar-brand commonNavbar-image" href="#">
+          <a className  ="navbar-brand commonNavbar-image" href="#">
             <img src={img1} className="img-fluid" />
           </a>
           <div className="commonNavbar-right  align-items-center d-flex" style={{width: "300px"}}>
