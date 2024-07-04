@@ -31,8 +31,8 @@ import { UserNavbar } from "./components/user/userNavbar/userNavbar";
 import { CompanyHome } from "./components/company/companyHome/companyHome";
 import NewAdminsidebar from "./components/AdminNewSidebar/newAdminsidebar";
 import { ViewCompanyDetails } from "./components/user/viewCompaniesDetails/viewCompaniesDetails";
-import {CompanySidebar} from "./components/company/companySidebar/companySidebar";
-import {IpoForm} from "./components/company/Ipoform/ipoForm";
+import { CompanySidebar } from "./components/company/companySidebar/companySidebar";
+import { IpoForm } from "./components/company/Ipoform/ipoForm";
 import Forgotpassword from "./components/common/forgetPassword/forgotpassword";
 
 import { EtUserHomePage } from "./components/educational-tutors/et-userHome/EtUserHome";
@@ -44,6 +44,7 @@ import StockProfit from "./components/Admin/StockProfit/stockProfit";
 import AdminCount from "./components/Admin/Admincount/adminCount";
 import { CompanyAbout } from "./components/company/companyAbout/companyAbout";
 import { CompanyDashboard } from "./components/company/companyDashboard/companyDashboard";
+import { AdminDashboard } from "./components/Admin/adminDashboard/adminDashboard";
 import EtSignup from "./components/educational-tutors/et-signup/et-signup";
 
 function App() {
@@ -88,10 +89,7 @@ function App() {
 
           {/* admin pages  */}
           <Route path="/AdminLogin" element={<AdminLogin />} />
-          <Route
-            path="/adminsidebar"
-            element={[<AdminNavbar />, <AdminSidebar />]}
-          />
+          <Route path="/adminsidebar" element={<AdminSidebar />} />
           <Route path="/commonNavbar" element={<CommonNavbar />} />
           <Route path="/landingheader" element={<LandingPageHeader />} />
           <Route path="/landingAbout" element={[<CommonNavbar />, <About />]} />
@@ -100,10 +98,7 @@ function App() {
           <Route path="/newsidebar" element={<NewAdminsidebar />} />
           <Route path="/etsignup" element={<EtSignup/>}/>
 
-          <Route
-            path="/AdminDashboard"
-            element={[<AdminSidebar />, <CompanyRequest />]}
-          />
+          <Route path="/AdminDashboard" element={<AdminDashboard />} />
           <Route
             path="/admin"
             element={[<AdminNavbar />, <AdminSidebar />, <CompanyRequest />]}

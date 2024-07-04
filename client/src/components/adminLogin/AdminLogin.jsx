@@ -19,7 +19,12 @@ function AdminLogin() {
 
   const btnsubmit = (e) => {
     e.preventDefault();
+    if (state.email === "" || state.password === "") {
+      toast.error("Please email and password.");
+      return;
+    }
     console.log(state);
+    
     axiosInstance
       .post("/loginAdmin", state)
       .then((res) => {
@@ -29,7 +34,8 @@ function AdminLogin() {
           localStorage.setItem("stock_it_admin_login", true);
           navigate("/AdminDashboard");
         } else {
-          toast.error(res.data.msg);
+          let msg = res.data?.msg || "Something went wrong";
+          toast.error(msg);
         }
       })
       .catch((err) => {
@@ -61,7 +67,7 @@ function AdminLogin() {
                       Email
                     </label>
                     <input
-                      type="text"
+                      type="email"
                       className="form-control AdminLogin-input"
                       id="formGroupExampleInput"
                       placeholder="Enter email"
