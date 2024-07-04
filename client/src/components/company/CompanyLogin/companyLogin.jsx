@@ -5,6 +5,7 @@ import CompanyRequest from "../CompanyRequest";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../../apis/axiosInstance";
+import { Footer2 } from "../../common/footer2/footer2";
 
 function CompanyLogin() {
   const navigate = useNavigate();
@@ -23,13 +24,12 @@ function CompanyLogin() {
     try {
       const res = await axiosInstance.post("loginCompany", { email, password });
       if (res.status === 200) {
-        const userData = res.data?.data || null;
+        const userData = res.data?.data?._id || null;
         if (userData) {
-          localStorage.setItem("stock_it_companyData", JSON.stringify(userData));
+          localStorage.setItem("stock_it_companyId", JSON.stringify(userData));
         }
-        console.log("user data", res.data)
         toast.success("Login Successful");
-        navigate('/companyHome')
+        navigate('/company-dashboard')
       } else {
         throw new Error("Something wrong.");
       }
@@ -97,6 +97,10 @@ function CompanyLogin() {
           </div>
         </div>
       </div>
+      <div>
+        <Footer2 /> 
+      </div>
+
     </div>
   );
 }

@@ -2,4 +2,4 @@ LS admin key
 stock_it_admin_login
 
 LS co. key
-stock_it_companyData 
+stock_it_companyId 

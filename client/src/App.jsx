@@ -31,8 +31,8 @@ import { UserNavbar } from "./components/user/userNavbar/userNavbar";
 import { CompanyHome } from "./components/company/companyHome/companyHome";
 import NewAdminsidebar from "./components/AdminNewSidebar/newAdminsidebar";
 import { ViewCompanyDetails } from "./components/user/viewCompaniesDetails/viewCompaniesDetails";
-import CompanySidebar from "./components/company/companySidebar/companySidebar";
-import IpoForm from "./components/company/Ipoform/ipoForm";
+import {CompanySidebar} from "./components/company/companySidebar/companySidebar";
+import {IpoForm} from "./components/company/Ipoform/ipoForm";
 import Forgotpassword from "./components/common/forgetPassword/forgotpassword";
 
 import { EtUserHomePage } from "./components/educational-tutors/et-userHome/EtUserHome";
@@ -42,6 +42,8 @@ import SectorPerform from "./components/Admin/SectorPerform/sectorPerform";
 import Requestfrom from "./components/Admin/Requestpage/requestfrom";
 import StockProfit from "./components/Admin/StockProfit/stockProfit";
 import AdminCount from "./components/Admin/Admincount/adminCount";
+import { CompanyAbout } from "./components/company/companyAbout/companyAbout";
+import { CompanyDashboard } from "./components/company/companyDashboard/companyDashboard";
 
 function App() {
   return (
@@ -53,10 +55,8 @@ function App() {
 
           {/* company pages */}
 
-          <Route
-            path="/companyHome"
-            element={<CompanyHome />}
-          />
+          <Route path="/companyHome" element={<CompanyHome />} />
+          <Route path="/companyAbout" element={<CompanyAbout />} />
 
           <Route
             path="/CompanyRegistration"
@@ -70,30 +70,23 @@ function App() {
             path="/companylogin"
             element={[<CommonNavbar />, <CompanyLogin />]}
           />
-          <Route
-            path="/companyDetails/:id"
-            element={ <ViewCompanyDetails />}
-          />
+          <Route path="/companyDetails/:id" element={<ViewCompanyDetails />} />
 
-          <Route
-          path="/companysidebar"
-          element={<CompanySidebar/>}/>
+          <Route path="/companysidebar" element={<CompanySidebar />} />
+          <Route path="/company-dashboard" element={<CompanyDashboard />} />
 
           {/* user pages  */}
           <Route path="/userRegistration" element={<UserRegistration />} />
           <Route path="/userHome" element={<UserHomePage />} />
           <Route path="/userLogin" element={<UserLogin />} />
 
-          <Route path="/userViewCompany" element={ <UserViewCompanies />} />
+          <Route path="/userViewCompany" element={<UserViewCompanies />} />
 
-          <Route path="/userabout" element={ <UserHomePage />} />
-          <Route path="/et" element={<EtUserHomePage/>}/>
+          <Route path="/userabout" element={<UserHomePage />} />
+          <Route path="/et" element={<EtUserHomePage />} />
 
           {/* admin pages  */}
-          <Route
-            path="/AdminLogin"
-            element={<AdminLogin />}
-          />
+          <Route path="/AdminLogin" element={<AdminLogin />} />
           <Route
             path="/adminsidebar"
             element={[<AdminNavbar />, <AdminSidebar />]}
@@ -102,11 +95,12 @@ function App() {
           <Route path="/landingheader" element={<LandingPageHeader />} />
           <Route path="/landingAbout" element={[<CommonNavbar />, <About />]} />
 
+          {/* new  */}
           <Route path="/newsidebar" element={<NewAdminsidebar />} />
 
           <Route
             path="/AdminDashboard"
-            element={[ <AdminSidebar />, <CompanyRequest />]}
+            element={[<AdminSidebar />, <CompanyRequest />]}
           />
           <Route
             path="/admin"
@@ -118,20 +112,19 @@ function App() {
             element={[<AdminNavbar />, <Resetpassword />]}
           />
 
-          
           <Route path="/adminNavbar" element={<AdminNavbar />} />
           <Route path="/requestpage/:id" element={<RequestPage />} />
 
-          <Route path="/ipoform" element={<IpoForm/>}/>
-          <Route path="/forgotpassword" element={<Forgotpassword/>}/>
+          <Route path="/ipoform" element={<IpoForm />} />
+          <Route path="/forgotpassword" element={<Forgotpassword />} />
 
           {/* Admin components */}
-          <Route path="/gainer" element={<Gainer/>}/>
-          <Route path="/loser" element={<Loser/>}/>
-          <Route path="/sectorperform" element={<SectorPerform/>}/>
-          <Route path="/requestfrom" element={<Requestfrom/>}/>
-          <Route path="/stockprofit" element={<StockProfit/>}/>
-          <Route path="/admincount" element={<AdminCount/>}/>
+          <Route path="/gainer" element={<Gainer />} />
+          <Route path="/loser" element={<Loser />} />
+          <Route path="/sectorperform" element={<SectorPerform />} />
+          <Route path="/requestfrom" element={<Requestfrom />} />
+          <Route path="/stockprofit" element={<StockProfit />} />
+          <Route path="/admincount" element={<AdminCount />} />
 
           <Route path="/*" element={"<h1> 404 </h1>"} />
         </Routes>
