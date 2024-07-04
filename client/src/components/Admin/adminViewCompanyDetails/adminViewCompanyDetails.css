@@ -10,6 +10,7 @@
 .companyRequest-heading {
   width: 100%;
   height: 60px;
+  background: #374151;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   text-align: center;
   color: #fff;
@@ -23,12 +24,14 @@
   top: 18%;
 }
 
-.companyRequest-details2 {
+.companyRequest-details {
+  width: 94%;
   height: 291px;
   border-radius: 15px;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  width: 260px;
   background: #374151;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  margin-left: 6%;
+  margin-top: 11%;
 }
 
 .companyRequest-innerbox1 {
@@ -43,11 +46,12 @@
   border-radius: 55px;
 }
 
-.companyRequest-subheading2 {
+.companyRequest-subheading {
   color: #fff;
   font-style: normal;
   font-weight: 700;
   margin-top: 9.5%;
+  margin-left: 7%;
 }
 
 .companyRequest-table {
@@ -65,9 +69,10 @@
   line-height: normal;
 }
 
-.companyRewquest-viewmore2 {
+.companyRewquest-viewmore {
+  margin-left: 70px;
+  margin-top: 20px;
   color: #4f8cef;
-  text-align: center;
   text-decoration: underline;
 }
 

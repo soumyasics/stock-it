@@ -16,8 +16,7 @@
   top: 55px;
 }
 .adminSidebar-main2 {
-
-  height: 102vh;
+  height: 100%;
   background: #374151;
 }
 .adminSidebar-title-head {
@@ -221,9 +220,8 @@
   padding-left: 15px;
 }
 
-
 /* modification of sidebar */
 .clickable-item {
-    cursor: pointer;
-    color: white;
+  cursor: pointer;
+  color: white;
 }

@@ -34,7 +34,6 @@ export const CompanyPendingRequest = () => {
       });
   }, []);
 
-
   const displayUsers = state
     .slice(pageVisited, pageVisited + userPerPage)
     .map((e, i) => {
@@ -46,14 +45,9 @@ export const CompanyPendingRequest = () => {
               src={`${BASE_URL}${e?.logo?.filename}`}
               alt="test   "
             />
-            <p className="companyRequest-subheading">{e.name}</p>
+            <p className="companyRequest-subheading2 ms-3">{e?.name}</p>
           </div>
           <table className="companyRequest-table">
-            <tr>
-              <td>Name</td>
-              <td>:</td>
-              <td className="companyRequest-data">{e.name}</td>
-            </tr>
             <tr>
               <td>Company Type</td>
               <td>:</td>
@@ -96,7 +90,6 @@ export const CompanyPendingRequest = () => {
           {displayUsers}
         </div>
       }
-    
     </div>
   );
 };

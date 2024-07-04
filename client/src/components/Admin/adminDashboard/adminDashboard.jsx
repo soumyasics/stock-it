@@ -3,6 +3,7 @@ import AdminSidebar from "../../common/adminSidebar";
 import { Col, Row } from "react-bootstrap";
 import { CompanyPendingRequest } from "../../company/CompanyRequest";
 import { Footer2 } from "../../common/footer2/footer2";
+import AdminNavbar from "../../common/adminNavbar";
 export const AdminDashboard = () => {
   const [activePage, setActivePage] = useState("company-pending-request");
   const changePage = (value) => {
@@ -10,6 +11,7 @@ export const AdminDashboard = () => {
   };
   return (
     <>
+    <AdminNavbar />
       <Row>
         <Col md={3} className="p-0">
           <AdminSidebar changePage={changePage} />

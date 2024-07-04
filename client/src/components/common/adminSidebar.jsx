@@ -24,6 +24,10 @@ function AdminSidebar({ changePage }) {
     navigate("/AdminLogin");
   };
 
+  const navigateToAllCompanies = () => {
+    navigate("/adminViewCompany");
+  };
+
   return (
     <div className="adminSidebar-main2 w-100">
       <div className="adminSidebar-title-head">
@@ -52,13 +56,7 @@ function AdminSidebar({ changePage }) {
                     >
                       Company Pending Requests
                     </li>
-                    <li
-                      onClick={() => {
-                        changePage("company-request");
-                      }}
-                    >
-                      View all Companies
-                    </li>
+                    <li onClick={navigateToAllCompanies}>View all Companies</li>
                     <li>View all Company Article</li>
                   </ul>
                 </div>
