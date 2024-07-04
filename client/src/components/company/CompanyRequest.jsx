@@ -7,8 +7,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import AdminNavbar from "../common/adminNavbar";
+import { Footer2 } from "../common/footer2/footer2";
 
-function CompanyRequest({ changePage }) {
+export const CompanyPendingRequest = () => {
   const [state, setState] = useState([]);
 
   const [pageNumber, setPageNumber] = useState(0);
@@ -35,123 +36,60 @@ function CompanyRequest({ changePage }) {
 
   const displayUsers = state
     .slice(pageVisited, pageVisited + userPerPage)
-    .map((e) => {
+    .map((e, i) => {
       return (
-        <div>
-          <div className="companyRequest-details ">
-            <div className="companyRequest-innerbox1">
-              <img
-                className="companyRequest-logo img-fluid"
-                src={`${BASE_URL}${e?.logo?.filename}`}
-                alt="test   "
-              />
-              <p className="companyRequest-subheading">{e.name}</p>
-            </div>
-            <table className="companyRequest-table">
-              <tr>
-                <td>Name</td>
-                <td>:</td>
-                <td className="companyRequest-data">{e.name}</td>
-              </tr>
-              <tr>
-                <td>Company Type</td>
-                <td>:</td>
-                <td className="companyRequest-data"> {e.companyType}</td>
-              </tr>
-              <tr>
-                <td>Contact Number</td>
-                <td>:</td>
-                <td className="companyRequest-data"> {e.contact}</td>
-              </tr>
-              <tr>
-                <td>Email Id</td>
-                <td>:</td>
-                <td className="companyRequest-data">{e.email}</td>
-              </tr>
-            </table>
-            <p
-              className="companyRewquest-viewmore"
-              onClick={() => {
-                navigateToPeningCompanyRequest(e._id);
-              }}
-              style={{ cursor: "pointer" }}
-            >
-              View more
-            </p>
+        <div className="companyRequest-details2" key={i}>
+          <div className="companyRequest-innerbox1">
+            <img
+              className="companyRequest-logo img-fluid"
+              src={`${BASE_URL}${e?.logo?.filename}`}
+              alt="test   "
+            />
+            <p className="companyRequest-subheading2 ms-3">{e?.name}</p>
           </div>
+          <table className="companyRequest-table">
+            <tr>
+              <td>Company Type</td>
+              <td>:</td>
+              <td className="companyRequest-data"> {e.companyType}</td>
+            </tr>
+            <tr>
+              <td>Contact Number</td>
+              <td>:</td>
+              <td className="companyRequest-data"> {e.contact}</td>
+            </tr>
+            <tr>
+              <td>Email Id</td>
+              <td>:</td>
+              <td className="companyRequest-data">{e.email}</td>
+            </tr>
+          </table>
+          <p
+            className="companyRewquest-viewmore2 mt-3"
+            onClick={() => {
+              navigateToPeningCompanyRequest(e._id);
+            }}
+            style={{ cursor: "pointer" }}
+          >
+            View more
+          </p>
         </div>
       );
     });
 
-  const pageCount = Math.ceil(state.length / userPerPage);
-
-  const serchbtn = () => {};
   return (
-    <>
-      <div>
-        <div className="companyRequest-body">
-          <div className="companyRequest-heading">
-            <p>Company Requests</p>
-          </div>
-          <div className="comapnyRequest-first-box">
-            {/* <div className="companyRequesest-second-box" role="group">
-              <div className="companyrequest-enterpage">
-                <p className="companyRequest-entries">Entries per page</p>
-              </div>
-              <select
-                class="form-select form-select-sm companyRequet-dropdown "
-                aria-label="Small select example"
-              >
-                <option selected> 15</option>
-                <option value="1">16</option>
-                <option value="2">17</option>
-                <option value="3">18</option>
-              </select>
-            </div> */}
-            {/* <div className="comapanyRequest-search-box">
-              <input
-                type="search"
-                className="companyRequest-serchbox"
-                placeholder="Companies"
-                onChange={serchbtn}
-              />
-            </div> */}
-          </div>
-          {
-            <div className="container-fluid ">
-              <div className="row row-cols-5">{displayUsers}</div>
-            </div>
-          }
-
-          <div className="comapanyRequest-btngroup">
-            <div className="companyRequest-inner-btngroup">
-              <ReactPaginate
-                previousLabel={
-                  <FontAwesomeIcon
-                    icon={faArrowLeft}
-                    style={{ color: "white" }}
-                  />
-                }
-                nextLabel={
-                  <FontAwesomeIcon
-                    icon={faArrowRight}
-                    style={{ color: "white" }}
-                  />
-                }
-                pageCount={pageCount}
-                onPageChange={changePage}
-                containerClassName={"paginationBtns"}
-                previousLinkClassName={"previousbtn"}
-                nextLinkClassName={"nextbtn"}
-                disabledClassName={"paginationDisabled"}
-                activeClassName={"paginationActive"}
-              />
-            </div>
-          </div>
-        </div>
+    <div className="companyRequest-body">
+      <div className="companyRequest-heading">
+        <p>Company Requests</p>
       </div>
-    </>
+      {
+        <div
+          style={{ height: "500px", overflow: "auto" }}
+          className="d-flex flex-wrap justify-content-between px-3 pe-5 gap-5 mt-3 ms-3"
+        >
+          {displayUsers}
+        </div>
+      }
+    </div>
   );
-}
-
-export default CompanyRequest;
+};

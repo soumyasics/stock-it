@@ -13,7 +13,7 @@ import Footer from "./components/common/userNavbar/Footer";
 import CompanyRegistration from "./components/company/CompanyRegistration";
 import AdminLogin from "./components/adminLogin/AdminLogin";
 import About from "./components/common/About";
-import CompanyRequest from "./components/company/CompanyRequest";
+import { CompanyPendingRequest } from "./components/company/CompanyRequest";
 import AdminSidebar from "./components/common/adminSidebar";
 
 import AdminNavbar from "./components/common/adminNavbar";
@@ -24,7 +24,6 @@ import { Toaster } from "react-hot-toast";
 import { UserRegistration } from "./components/user/userRegistration/userRegistration";
 import { UserHomePage } from "./components/user/userHome/userHome";
 import { UserLogin } from "./components/user/userLogin/userLogin";
-import { AdminContainer } from "./pages/admin/adminContainer/adminContainer";
 import { UserViewCompanies } from "./components/user/viewCompanies/viewCompanies";
 import { Footer2 } from "./components/common/footer2/footer2";
 import { UserNavbar } from "./components/user/userNavbar/userNavbar";
@@ -47,6 +46,9 @@ import { CompanyDashboard } from "./components/company/companyDashboard/companyD
 import { AdminDashboard } from "./components/Admin/adminDashboard/adminDashboard";
 import EtSignup from "./components/educational-tutors/et-signup/et-signup";
 import Etlogin from "./components/educational-tutors/et-login/et-login";
+import { AdminViewAllCompanies } from "./components/Admin/adminViewAllcompanies/adminViewAllCompanies";
+import { AdminViewCompanyDetails } from "./components/Admin/adminViewCompanyDetails/adminViewCompanyDetails";
+import { AdminViewAllUsers } from "./components/Admin/adminViewAllusers/adminViewAllUsers";
 
 function App() {
   return (
@@ -65,10 +67,7 @@ function App() {
             path="/CompanyRegistration"
             element={<CompanyRegistration />}
           />
-          <Route
-            path="/companyrequest"
-            element={[<AdminNavbar />, <AdminSidebar />, <CompanyRequest />]}
-          />
+          <Route path="/companyrequest" element={<CompanyPendingRequest />} />
           <Route
             path="/companylogin"
             element={[<CommonNavbar />, <CompanyLogin />]}
@@ -84,6 +83,7 @@ function App() {
           <Route path="/userLogin" element={<UserLogin />} />
 
           <Route path="/userViewCompany" element={<UserViewCompanies />} />
+          
 
           <Route path="/userabout" element={<UserHomePage />} />
           <Route path="/et" element={<EtUserHomePage />} />
@@ -94,18 +94,16 @@ function App() {
           <Route path="/commonNavbar" element={<CommonNavbar />} />
           <Route path="/landingheader" element={<LandingPageHeader />} />
           <Route path="/landingAbout" element={[<CommonNavbar />, <About />]} />
-
+          <Route path="/adminViewUsers" element={<AdminViewAllUsers />} />
+          <Route path="/adminViewCompany" element={<AdminViewAllCompanies />} />
+          <Route path="/adminViewCompany/:id" element={<AdminViewCompanyDetails />} />
           {/* new  */}
           <Route path="/newsidebar" element={<NewAdminsidebar />} />
           <Route path="/etsignup" element={<EtSignup/>}/>
           <Route path="/etlogin" element={<Etlogin/>}/>
 
-          <Route path="/AdminDashboard" element={<AdminDashboard />} />
-          <Route
-            path="/admin"
-            element={[<AdminNavbar />, <AdminSidebar />, <CompanyRequest />]}
-          />
-          {/* <Route path="/admin" element={<AdminContainer />}/> */}
+          <Route path="/admin" element={<AdminDashboard />} />
+
           <Route
             path="/resetPassword"
             element={[<AdminNavbar />, <Resetpassword />]}
@@ -113,6 +111,7 @@ function App() {
 
           <Route path="/adminNavbar" element={<AdminNavbar />} />
           <Route path="/requestpage/:id" element={<RequestPage />} />
+          <Route path="/admincompanyDetails/:id" element={<ViewCompanyDetails />} />
 
           <Route path="/ipoform" element={<IpoForm />} />
           <Route path="/forgotpassword" element={<Forgotpassword />} />

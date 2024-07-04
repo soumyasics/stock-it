@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import "./viewCompanies.css";
+import "./adminViewAllCompanies.css";
 import { useNavigate } from "react-router-dom";
-import { UserNavbar } from "../userNavbar/userNavbar";
 import { Footer2 } from "../../common/footer2/footer2";
 import axiosInstance from "../../../apis/axiosInstance";
 import { Button } from "react-bootstrap";
-
-export const UserViewCompanies = () => {
+import AdminNavbar from "../../common/adminNavbar";
+import { IoReturnUpBack } from "react-icons/io5";
+export const AdminViewAllCompanies = () => {
   const navigate = useNavigate();
 
   const [allCompanies, setAllCompanies] = useState([]);
@@ -15,7 +15,8 @@ export const UserViewCompanies = () => {
     try {
       const res = await axiosInstance.post("viewCompanies");
       if (res.status === 200) {
-        const data = res.data?.data || [];
+        let data = res.data?.data || [];
+        data.reverse();
         setAllCompanies(data);
       } else {
         console.log("Error ", res);
@@ -31,18 +32,24 @@ export const UserViewCompanies = () => {
   }, []);
   return (
     <div>
-      <UserNavbar />
+      <AdminNavbar />
 
-      <div className="viewCompany-body ">
-        <div className="viewcomapany-head-box">
+      <div className="viewCompany-body">
+        <div className="viewcomapany-head-box d-flex align-items-center justify-content-between px-5">
+          <div
+            onClick={() => {
+              navigate("/admin");
+            }}
+            style={{ cursor: "pointer", color: "white", fontSize: "20px" }}
+          >
+            <IoReturnUpBack />
+          </div>
           <h4>Active companies List</h4>
+          <div></div>
         </div>
 
         <div className="comapnyRequest-first-box">
-          <div className="companyRequesest-second-box" role="group">
-        
-          </div>
- 
+          <div className="companyRequesest-second-box" role="group"></div>
         </div>
 
         <div className="viewCompany-table ">
@@ -68,7 +75,7 @@ export const UserViewCompanies = () => {
                   <td className="viewComapny-viewmore">
                     <Button
                       onClick={() => {
-                        navigate(`/companyDetails/${co._id}`);
+                        navigate(`/adminViewCompany/${co._id}`);
                       }}
                     >
                       View more

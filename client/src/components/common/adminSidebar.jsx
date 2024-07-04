@@ -24,14 +24,25 @@ function AdminSidebar({ changePage }) {
     navigate("/AdminLogin");
   };
 
+  const navigateToAllCompanies = () => {
+    navigate("/adminViewCompany");
+  };
+
+  const navigateToAllUsers = () => {
+    navigate("/adminViewUsers");
+  };
+
   return (
-    <div className="adminSidebar-main bg-danger">
+    <div className="adminSidebar-main2 w-100">
       <div className="adminSidebar-title-head">
         <img src={titleImg} alt="" />
       </div>
-      <div className="adminSidebar-content ">
+      <div>
         <div className="adminSidebar-user-grid">
-          <div className="clickable-item adminSidebar-user">
+          <div
+            className="clickable-item adminSidebar-user"
+            onClick={navigateToAllUsers}
+          >
             <img src={vector1} alt="" />
             <h4>User</h4>
           </div>
@@ -47,18 +58,12 @@ function AdminSidebar({ changePage }) {
                   <ul>
                     <li
                       onClick={() => {
-                        viewAllCompanyRequest("company-request");
+                        changePage("company-pending-request");
                       }}
                     >
-                      View all Requests
+                      Company Pending Requests
                     </li>
-                    <li
-                      onClick={() => {
-                        viewAllCompanyRequest("company-request");
-                      }}
-                    >
-                      View all Companies
-                    </li>
+                    <li onClick={navigateToAllCompanies}>View all Companies</li>
                     <li>View all Company Article</li>
                   </ul>
                 </div>

@@ -1,24 +1,31 @@
 import { useState } from "react";
 import AdminSidebar from "../../common/adminSidebar";
-import NewAdminsidebar from "../../AdminNewSidebar/newAdminsidebar";
 import { Col, Row } from "react-bootstrap";
+import { CompanyPendingRequest } from "../../company/CompanyRequest";
+import { Footer2 } from "../../common/footer2/footer2";
+import AdminNavbar from "../../common/adminNavbar";
 export const AdminDashboard = () => {
-  const [activePage, setActivePage] = useState("overview");
+  const [activePage, setActivePage] = useState("company-pending-request");
   const changePage = (value) => {
     setActivePage(value);
   };
   return (
-    <Row>
-      <Col md={3} className="bg-warning">
-        <AdminSidebar changePage={changePage} />
-      </Col>
-      <Col md={9} className="w-75 bg-primary">
-
-        <h1> teisttt </h1>
-        {activePage === "overview" && <h1>overvksjdfdksf df dfkdf dkf diew</h1>}
-        {activePage === "users" && <h1>overview</h1>}
-        {activePage === "company-request" && <h1>Company request</h1>}
-      </Col>
-    </Row>
+    <>
+    <AdminNavbar />
+      <Row>
+        <Col md={3} className="p-0">
+          <AdminSidebar changePage={changePage} />
+        </Col>
+        <Col md={9} className="p-0" style={{ backgroundColor: "#1F2937" }}>
+          {activePage === "overview" && <h1> overview </h1>}
+          {activePage === "company-pending-request" && (
+            <CompanyPendingRequest />
+          )}
+        </Col>
+      </Row>
+      <div>
+        <Footer2 />
+      </div>
+    </>
   );
 };
