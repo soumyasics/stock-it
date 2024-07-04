@@ -45,6 +45,9 @@ import AdminCount from "./components/Admin/Admincount/adminCount";
 import { CompanyAbout } from "./components/company/companyAbout/companyAbout";
 import { CompanyDashboard } from "./components/company/companyDashboard/companyDashboard";
 import { AdminDashboard } from "./components/Admin/adminDashboard/adminDashboard";
+import EtSignup from "./components/educational-tutors/et-signup/et-signup";
+import Etlogin from "./components/educational-tutors/et-login/et-login";
+
 function App() {
   return (
     <>
@@ -94,6 +97,8 @@ function App() {
 
           {/* new  */}
           <Route path="/newsidebar" element={<NewAdminsidebar />} />
+          <Route path="/etsignup" element={<EtSignup/>}/>
+          <Route path="/etlogin" element={<Etlogin/>}/>
 
           <Route path="/AdminDashboard" element={<AdminDashboard />} />
           <Route
@@ -126,5 +131,5 @@ function App() {
     </>
   );
 }
-
+  
 export default App;
