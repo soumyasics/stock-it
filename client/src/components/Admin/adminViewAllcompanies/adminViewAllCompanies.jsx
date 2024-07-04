@@ -61,6 +61,7 @@ export const AdminViewAllCompanies = () => {
               <th>Contact</th>
               <th>State</th>
               <th>Email</th>
+              <th>Approve Status</th>
               <th>View More</th>
             </tr>
             {allCompanies.map((co, i) => {
@@ -72,6 +73,13 @@ export const AdminViewAllCompanies = () => {
                   <td>{co.contact}</td>
                   <td> {co.state}</td>
                   <td>{co.email}</td>
+                  <td>
+                    {co.adminApproved ? (
+                      <p className="text-success"> Approved </p>
+                    ) : (
+                      <p className="text-danger">Not Approved</p>
+                    )}
+                  </td>
                   <td className="viewComapny-viewmore">
                     <Button
                       onClick={() => {

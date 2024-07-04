@@ -1,6 +1,6 @@
 export const AddminViewAllUsers = () => {
-    return <div>AddminViewAllUsers</div>;
-}
+  return <div>AddminViewAllUsers</div>;
+};
 
 import { useEffect, useState } from "react";
 import "../adminViewAllcompanies/adminViewAllCompanies.css";
@@ -20,7 +20,6 @@ export const AdminViewAllUsers = () => {
       const res = await axiosInstance.post("getAllUsers");
       if (res.status === 200) {
         let data = res.data?.data || [];
-        data.reverse();
         setAllUsers(data);
       } else {
         console.log("Error ", res);
@@ -48,7 +47,7 @@ export const AdminViewAllUsers = () => {
           >
             <IoReturnUpBack />
           </div>
-          <h4>All users</h4>
+          <h4>All Users</h4>
           <div></div>
         </div>
 
@@ -65,6 +64,7 @@ export const AdminViewAllUsers = () => {
               <th>Gender</th>
               <th>Contact </th>
               <th>Email</th>
+              <th>Status</th>
               <th>View More</th>
             </tr>
             {allUsers.map((u, i) => {
@@ -76,6 +76,13 @@ export const AdminViewAllUsers = () => {
                   <td>{u?.gender}</td>
                   <td> {u?.contactNumber}</td>
                   <td>{u.email}</td>
+                  <td>
+                    {u.isActive ? (
+                      <p className="text-success">Active</p>
+                    ) : (
+                      <p className="text-danger"> In active </p>
+                    )}
+                  </td>
                   <td className="viewComapny-viewmore">
                     <Button
                       onClick={() => {

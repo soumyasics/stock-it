@@ -1,43 +1,51 @@
-.admincount-main{
-    display: flex;
-width: 420px;
-align-items: flex-start;
-align-content: flex-start;
-gap: 52px 51px;
-flex-wrap: wrap;
+.admincount-main {
+  display: flex;
+  width: 75%;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 52px 51px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  margin-left: 40px;
 }
-.admincount-block{
-    width: 172px;
-height: 87px;
-flex-shrink: 0;
-border-radius: 10px;
-background: #374151;
-margin-top: 3px;
-margin-left: 8px;
+.admincount-block {
+  width: 250px;
+  height: 100px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #374151;
+  margin-top: 3px;
+  margin-left: 8px;
+  cursor: pointer;
 }
-.admincount-block img{
-    margin: 3% 0 0 3%;
+.admincount-block-image {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
 }
-.admincount-head{
-    text-align: center;
+.admincount-block img {
+  margin: 3% 0 0 3%;
 }
-h3{
-    margin-bottom: 0;
-    color: #FFF;
-text-align: center;
-font-family: "Noto Sans";
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+.admincount-head {
+  text-align: center;
 }
-p{
-    color: #FFF;
-    text-align: center;
-    font-family: "Noto Sans";
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    margin-bottom: 0;
+h3 {
+  margin-bottom: 0;
+  color: #fff;
+  text-align: center;
+  font-family: "Noto Sans";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+p {
+  color: #fff;
+  text-align: center;
+  font-family: "Noto Sans";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 0;
 }
