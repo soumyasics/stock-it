@@ -13,7 +13,7 @@ import Footer from "./components/common/userNavbar/Footer";
 import CompanyRegistration from "./components/company/CompanyRegistration";
 import AdminLogin from "./components/adminLogin/AdminLogin";
 import About from "./components/common/About";
-import CompanyRequest from "./components/company/CompanyRequest";
+import { CompanyPendingRequest } from "./components/company/CompanyRequest";
 import AdminSidebar from "./components/common/adminSidebar";
 
 import AdminNavbar from "./components/common/adminNavbar";
@@ -24,7 +24,6 @@ import { Toaster } from "react-hot-toast";
 import { UserRegistration } from "./components/user/userRegistration/userRegistration";
 import { UserHomePage } from "./components/user/userHome/userHome";
 import { UserLogin } from "./components/user/userLogin/userLogin";
-import { AdminContainer } from "./pages/admin/adminContainer/adminContainer";
 import { UserViewCompanies } from "./components/user/viewCompanies/viewCompanies";
 import { Footer2 } from "./components/common/footer2/footer2";
 import { UserNavbar } from "./components/user/userNavbar/userNavbar";
@@ -62,10 +61,7 @@ function App() {
             path="/CompanyRegistration"
             element={<CompanyRegistration />}
           />
-          <Route
-            path="/companyrequest"
-            element={[<AdminNavbar />, <AdminSidebar />, <CompanyRequest />]}
-          />
+          <Route path="/companyrequest" element={<CompanyPendingRequest />} />
           <Route
             path="/companylogin"
             element={[<CommonNavbar />, <CompanyLogin />]}
@@ -95,12 +91,8 @@ function App() {
           {/* new  */}
           <Route path="/newsidebar" element={<NewAdminsidebar />} />
 
-          <Route path="/AdminDashboard" element={<AdminDashboard />} />
-          <Route
-            path="/admin"
-            element={[<AdminNavbar />, <AdminSidebar />, <CompanyRequest />]}
-          />
-          {/* <Route path="/admin" element={<AdminContainer />}/> */}
+          <Route path="/admin" element={<AdminDashboard />} />
+
           <Route
             path="/resetPassword"
             element={[<AdminNavbar />, <Resetpassword />]}

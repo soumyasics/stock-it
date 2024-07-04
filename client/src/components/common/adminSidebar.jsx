@@ -25,11 +25,11 @@ function AdminSidebar({ changePage }) {
   };
 
   return (
-    <div className="adminSidebar-main bg-danger">
+    <div className="adminSidebar-main2 w-100">
       <div className="adminSidebar-title-head">
         <img src={titleImg} alt="" />
       </div>
-      <div className="adminSidebar-content ">
+      <div>
         <div className="adminSidebar-user-grid">
           <div className="clickable-item adminSidebar-user">
             <img src={vector1} alt="" />
@@ -47,14 +47,14 @@ function AdminSidebar({ changePage }) {
                   <ul>
                     <li
                       onClick={() => {
-                        viewAllCompanyRequest("company-request");
+                        changePage("company-pending-request");
                       }}
                     >
-                      View all Requests
+                      Company Pending Requests
                     </li>
                     <li
                       onClick={() => {
-                        viewAllCompanyRequest("company-request");
+                        changePage("company-request");
                       }}
                     >
                       View all Companies

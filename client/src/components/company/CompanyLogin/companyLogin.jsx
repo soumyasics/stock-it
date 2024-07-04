@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./companyLogin.css";
 import img1 from "../../../assets/images/shieldLogo.png";
-import CompanyRequest from "../CompanyRequest";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../../apis/axiosInstance";

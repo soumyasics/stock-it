@@ -15,9 +15,9 @@
   position: absolute;
   top: 55px;
 }
-.adminSidebar-main {
+.adminSidebar-main2 {
 
-  min-height: 100vh;
+  height: 102vh;
   background: #374151;
 }
 .adminSidebar-title-head {
@@ -225,4 +225,5 @@
 /* modification of sidebar */
 .clickable-item {
     cursor: pointer;
+    color: white;
 }

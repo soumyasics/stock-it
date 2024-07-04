@@ -3,13 +3,9 @@
 
 .companyRequest-body {
     min-height: 700px;
-    width: 80.3%;
     background-color: black;
     background-size: 100%;
     font-family: inter;
-    position: absolute;
-    left: 300px;
-    top: 93px;
 }
 
 .companyRequest-heading {
