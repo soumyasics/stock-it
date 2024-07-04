@@ -32,10 +32,31 @@ function AdminSidebar({ changePage }) {
     navigate("/adminViewUsers");
   };
 
+  const openCompaniesTab = () => {
+    setShow(!show);
+    setShow1(false);
+    setShow2(false);
+  };
+  const openIpoTab = () => {
+    setShow1(!show1);
+    setShow(false);
+    setShow2(false);
+  }
+
+  const openEdTab = () => {
+    setShow2(!show2);
+    setShow1(false);
+    setShow(false);
+  }
   return (
     <div className="adminSidebar-main2 w-100">
-      <div className="adminSidebar-title-head">
-        <img src={titleImg} alt="" />
+      <div
+        className="adminSidebar-title-head"
+        onClick={() => {
+          changePage("overview");
+        }}
+      >
+        <img src={titleImg} alt="dashboard" />
       </div>
       <div>
         <div className="adminSidebar-user-grid">
@@ -49,12 +70,12 @@ function AdminSidebar({ changePage }) {
           <div className="adminSidebar-companies">
             <div className="clickable-item sidebar-company-drop">
               <img src={vector2} alt="" />
-              <button type="button" onClick={() => setShow(!show)}>
+              <button type="button" onClick={openCompaniesTab}>
                 {" "}
                 Companies
               </button>
               {show && (
-                <div className="sidebar-drop-1">
+                <div className="sidebar-drop-10">
                   <ul>
                     <li
                       onClick={() => {
@@ -70,15 +91,15 @@ function AdminSidebar({ changePage }) {
               )}
             </div>
           </div>
-          <div className="adminSidebar-companyipos">
+          <div className="adminSidebar-companyipos mt-3">
             <div className="clickable-item sidebar-ipos-drop">
               <img src={vector3} alt="" />
-              <button type="button" onClick={() => setShow1(!show1)}>
+              <button type="button" onClick={openIpoTab}>
                 {" "}
                 Company IPOs{" "}
               </button>
               {show1 && (
-                <div className="sidebar-drop-2">
+                <div className="sidebar-drop-10">
                   <ul>
                     <li
                       onClick={() => {
@@ -96,11 +117,11 @@ function AdminSidebar({ changePage }) {
           <div className="adminSidebar-education">
             <div className="clickable-item sidebar-education-drop">
               <img src={vector4} alt="" />
-              <button type="button" onClick={() => setShow2(!show2)}>
+              <button type="button" onClick={openEdTab}>
                 Educational Tutors
               </button>
               {show2 && (
-                <div className="sidebar-drop-3">
+                <div className=" sidebar-drop-10">
                   <ul>
                     <li className="clickable-item">View all Request</li>
                     <li className="clickable-item">

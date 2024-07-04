@@ -4,20 +4,21 @@ import { Col, Row } from "react-bootstrap";
 import { CompanyPendingRequest } from "../../company/CompanyRequest";
 import { Footer2 } from "../../common/footer2/footer2";
 import AdminNavbar from "../../common/adminNavbar";
+import { AdminOverview } from "../adminOverview/adminOverview";
 export const AdminDashboard = () => {
-  const [activePage, setActivePage] = useState("company-pending-request");
+  const [activePage, setActivePage] = useState("overview");
   const changePage = (value) => {
     setActivePage(value);
   };
   return (
     <>
-    <AdminNavbar />
+      <AdminNavbar />
       <Row>
         <Col md={3} className="p-0">
           <AdminSidebar changePage={changePage} />
         </Col>
         <Col md={9} className="p-0" style={{ backgroundColor: "#1F2937" }}>
-          {activePage === "overview" && <h1> overview </h1>}
+          {activePage === "overview" && <AdminOverview />}
           {activePage === "company-pending-request" && (
             <CompanyPendingRequest />
           )}
