@@ -28,6 +28,10 @@ function AdminSidebar({ changePage }) {
     navigate("/adminViewCompany");
   };
 
+  const navigateToAllUsers = () => {
+    navigate("/adminViewUsers");
+  };
+
   return (
     <div className="adminSidebar-main2 w-100">
       <div className="adminSidebar-title-head">
@@ -35,7 +39,10 @@ function AdminSidebar({ changePage }) {
       </div>
       <div>
         <div className="adminSidebar-user-grid">
-          <div className="clickable-item adminSidebar-user">
+          <div
+            className="clickable-item adminSidebar-user"
+            onClick={navigateToAllUsers}
+          >
             <img src={vector1} alt="" />
             <h4>User</h4>
           </div>

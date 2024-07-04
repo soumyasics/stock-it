@@ -48,6 +48,7 @@ import EtSignup from "./components/educational-tutors/et-signup/et-signup";
 import Etlogin from "./components/educational-tutors/et-login/et-login";
 import { AdminViewAllCompanies } from "./components/Admin/adminViewAllcompanies/adminViewAllCompanies";
 import { AdminViewCompanyDetails } from "./components/Admin/adminViewCompanyDetails/adminViewCompanyDetails";
+import { AdminViewAllUsers } from "./components/Admin/adminViewAllusers/adminViewAllUsers";
 
 function App() {
   return (
@@ -93,6 +94,7 @@ function App() {
           <Route path="/commonNavbar" element={<CommonNavbar />} />
           <Route path="/landingheader" element={<LandingPageHeader />} />
           <Route path="/landingAbout" element={[<CommonNavbar />, <About />]} />
+          <Route path="/adminViewUsers" element={<AdminViewAllUsers />} />
           <Route path="/adminViewCompany" element={<AdminViewAllCompanies />} />
           <Route path="/adminViewCompany/:id" element={<AdminViewCompanyDetails />} />
           {/* new  */}
