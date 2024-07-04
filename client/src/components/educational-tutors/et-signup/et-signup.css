@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+.etRegistration {
+  width: 100%;
+  padding: 20px;
+  background: #1f2937;
+}
+
+.etRegistration-main {
+  width: 1220px;
+  height: 1100px;
+  background-color: #000;
+  margin: auto;
+  border-radius: 40px;
+  padding-top: 5%;
+}
+
+.etRegistration-content {
+  display: flex;
+}
+
+.etRegistration-head {
+  width: 100%;
+  height: 200px;
+}
+
+.etRegistration-main h1 {
+  color: #fff;
+  font-family: "Noto Sans";
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.etRegistration-logo {
+  margin-top: 5%;
+}
+
+.etRegistration-logo img {
+  width: 427px;
+  height: 411.593px;
+  flex-shrink: 0;
+}
+
+.etRegistration-profile {
+  text-align: right;
+  margin-right: 140px;
+  margin-top: 54px;
+}
+
+.etRegistration-profile img {
+  width: 106px;
+  height: 106px;
+  flex-shrink: 0;
+}
+
+.etRegistration-inputs {
+  width: 54%;
+  color: #fff;
+  font-family: "Noto Sans";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.etRegistration-inputs input {
+  border-radius: 15px;
+  background: #fff;
+}
+
+.etRegistration-input-1 {
+  padding-bottom: 10px;
+}
+
+.etRegistration-gender h2 {
+  color: #fff;
+  font-family: "Noto Sans";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.etRegistration-input-2 {
+  display: flex;
+}
+
+.etRegistration-gender {
+  width: 40%;
+}
+
+.etRegistration-gender input[type="radio"] {
+  border: 0px;
+  height: 25px;
+  width: 10x;
+}
+
+.form-group {
+  margin-left: 35%;
+}
+
+.form-group input,
+.form-group select {
+  width: 40%;
+  padding: 10px;
+  margin-left: 2px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f5;
+  color: #ffffff;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.etRegistration-input-3 {
+  margin-top: 2%;
+}
+
+.etRegistration-input-3 input {
+  width: 650px;
+  height: 42px;
+  flex-shrink: 0;
+}
+.etRegistration-content button {
+  display: flex;
+  margin-left: 40%;
+  margin-top: 20px;
+  width: 99px;
+  height: 33px;
+  padding: 6px 20px 10px 15px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10%;
+  border-radius: 10px;
+  color: #fff;
+  background: linear-gradient(109deg, #cacaca 7.86%, #787373 94.87%);
+}
+
+
+.login-link {
+  text-align: center;
+  margin-top: 15px;
+  color: #fff;
+  text-align: center;
+  font-family: "Noto Sans";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+
+.login-link a {
+  color: #5cb4e3;
+  font-family: "Noto Sans";
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
