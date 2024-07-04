@@ -9,8 +9,8 @@ export const Footer2 = () => {
   return (
     <div>
       <div className="footer2">
-        <div class="row ">
-          <div class="col ">
+        <div className="row ">
+          <div className="col ">
             <div className='left-footer-inner-box my-4'>
               <img src={img1} alt="" className='img-fluid' />
               <p className='my-2 footer-text'>The goal of a successful trader <br />
