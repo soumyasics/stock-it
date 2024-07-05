@@ -4,9 +4,14 @@ import "./et-signup.css";
 import CommonNavbar from "../../common/commonNavbar";
 import { Footer2 } from "../../common/footer2/footer2";
 import { toast } from "react-hot-toast";
-import { faL } from "@fortawesome/free-solid-svg-icons";
+import axiosMultipartInstance from "../../../apis/axiosMultipartInstance";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function EtSignup() {
+  const navigate = useNavigate();
+  const redirectToEtLogin = () => {
+    navigate("/etlogin");
+  };
   const [etData, setEtData] = useState({
     fullName: "",
     gender: "",
@@ -33,17 +38,17 @@ function EtSignup() {
 
   const validateFields = () => {
     const {
-        fullName,
-        gender,
-        qualification,
-        specification,
-        experience,
-        contactNumber,
-        email,
-        password,
-        confirmPassword,
-        photo,
-      } = etData;
+      fullName,
+      gender,
+      qualification,
+      specification,
+      experience,
+      contactNumber,
+      email,
+      password,
+      confirmPassword,
+      photo,
+    } = etData;
 
     if (!fullName) {
       toast.error("Full name is required");
@@ -70,39 +75,94 @@ function EtSignup() {
       toast.error("Contact Number is required");
       return false;
     }
+    if(contactNumber.length!==10){
+      toast.error("Contact Number should be 10 digits")
+      return false
+    }
     if (!email) {
-      toast.error("Eamil is required");
+      toast.error("Email is required");
       return false;
     }
     if (!password) {
       toast.error("Password is required");
       return false;
     }
-    if(password.length<8){
-        toast.error("Please Enter minimum 8 characters")
-        return false
+    if (password.length < 8) {
+      toast.error("Please Enter minimum 8 characters");
+      return false;
     }
     if (!confirmPassword) {
       toast.error("Confirm Password is required");
       return false;
     }
-    if(password!==confirmPassword){
-        toast.error("Passwords doesn't matches")
-        return false
+    if (password !== confirmPassword) {
+      toast.error("Passwords doesn't matches");
+      return false;
     }
     if (!photo) {
       toast.error("Photo is required");
       return false;
     }
+    return true;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(etData);
-  
-    console.log();
     if (!validateFields()) {
       return;
+    }
+    const {
+      fullName,
+      gender,
+      qualification,
+      specification,
+      experience,
+      contactNumber,
+      email,
+      password,
+      confirmPassword,
+      photo,
+    } = etData;
+
+    const formData = new FormData();
+    formData.append("fullName", fullName);
+    formData.append("gender", gender);
+    formData.append("qualification", qualification),
+    formData.append("specification", specification);
+    formData.append("experience", experience);
+    formData.append("contactNumber", contactNumber);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("confirmPassword", confirmPassword);
+    formData.append("photo", photo);
+    console.log(formData);
+    sendDataToServer(formData);
+  };
+  const sendDataToServer = async (formData) => {
+    console.log("working", formData);
+    try {
+      const response = await axiosMultipartInstance.post(
+        "/registerTutor",
+        formData
+      );
+      console.log("res reg", response);
+      if (response.status === 201) {
+        toast.success("Educational Tutor Registered successfully");
+        console.log(response);
+        redirectToEtLogin();
+      } else {
+        toast.error(response.data.data.msg);
+      }
+    } catch (error) {
+      const status = error.response?.status;
+      if (status == 409) {
+        toast.error("Email already used.");
+      } else {
+        console.error("There was an error registering the user!", error);
+        const msg = "Network issue";
+        toast.error(msg);
+      }
     }
   };
 
@@ -298,8 +358,10 @@ function EtSignup() {
                 <span>
                   <button type="submit">Register</button>
                   <p className="login-link">
-                    Already have an account?{" "}
-                    <span className="text-primary">Login Now </span>
+                    Already have an account?
+                    <span className="text-primary" style={{fontFamily: "Noto Sans", fontSize:"18px"}} onClick={redirectToEtLogin}>
+                      Login Now{" "}
+                    </span>
                   </p>
                 </span>
               </div>
