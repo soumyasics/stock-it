@@ -1,25 +1,11 @@
-import React, { useState } from "react";
-import "./companySidebar.css";
-import profilePic from "../../../assets/images/kfc.svg";
-import titleImg from "../../../assets/images/Group 398.png";
-import img1 from "../../../assets/images/ipos.png";
-import img2 from "../../../assets/images/divident.svg";
-import img3 from "../../../assets/images/orderIcon.svg";
-import img4 from "../../../assets/images/article.svg";
-import img5 from "../../../assets/images/action.png";
-import img6 from "../../../assets/images/logout.png";
-import { IoMdArrowBack } from "react-icons/io";
-import { useNavigate } from "react-router-dom";
-export const  CompanySidebar = ({ changePage }) => {
-  const [show, setShow] = useState(false);
-  const [show1, setShow1] = useState(false);
-  const navigate = useNavigate();
-  const redirectCompanyHome = () => {
-    navigate("/companyHome");
-  };
+import React from 'react'
+import './etsidebar.css'
+
+
+function Etsidebar() {
   return (
     <div>
-      <div className="companysidebar-main pt-5">
+          <div className="companysidebar-main pt-5">
         <p
           className="ms-5 mb-3"
           style={{ textAlign: "left", cursor: "pointer" }}
@@ -168,5 +154,7 @@ export const  CompanySidebar = ({ changePage }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
+
+export default Etsidebar
