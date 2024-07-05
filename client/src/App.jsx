@@ -48,6 +48,7 @@ import { AdminViewCompanyDetails } from "./components/Admin/adminViewCompanyDeta
 import { AdminViewAllUsers } from "./components/Admin/adminViewAllusers/adminViewAllUsers";
 import { AdminIPOPendingList } from "./components/Admin/adminIpoPending/adminIpoPending";
 import { AdminViewIPODetails } from "./components/Admin/adminViewIPODetails/adminViewIPODetails";
+import Etdashboard from "./components/educational-tutors/et-dashboard/et-dashboard";
 
 function App() {
   return (
@@ -108,6 +109,9 @@ function App() {
             path="/adminIPOPending/:id"
             element={<AdminViewIPODetails />}
           />
+
+          {/* et-new */}
+          <Route path="/etdashboard" element={<Etdashboard />} />
 
           {/* new  */}
           <Route path="/newsidebar" element={<NewAdminsidebar />} />
