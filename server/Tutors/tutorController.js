@@ -40,16 +40,16 @@ const registerTutor = async (req, res) => {
       email,
       password,
     } = req.body;
-    
+
     if (
-      !fullName || 
-      !gender || 
-      !qualification || 
-      !specification || 
-      !experience || 
-      !contactNumber || 
-      !email || 
-      !password  
+      !fullName ||
+      !gender ||
+      !qualification ||
+      !specification ||
+      !experience ||
+      !contactNumber ||
+      !email ||
+      !password
     ) {
       return res.status(400).json({ msg: "All fields are required" });
     }
@@ -68,10 +68,8 @@ const registerTutor = async (req, res) => {
       contactNumber,
       email,
       password,
-      photo: req.file
+      photo: req.file,
     });
-
-   
 
     await newTutor.save();
     return res.status(201).json({
@@ -92,6 +90,14 @@ const getAllTutors = async (req, res) => {
     res.status(500).json({ msg: error.message });
   }
 };
+const getAllPendingTutors = async (req, res) => {
+  try {
+    const tutors = await UserModel.find({ adminApproved: false });
+    return res.json({ message: "All pending tutuors", data: tutors });
+  } catch (error) {
+    res.status(500).json({ msg: error.message });
+  }
+};
 
 // Get tutor by ID
 const getTutorById = async (req, res) => {
@@ -100,7 +106,7 @@ const getTutorById = async (req, res) => {
     if (!tutor) {
       return res.status(404).json({ msg: "Tutor not found" });
     }
-    res.json(tutor);
+    return res.status(200).json({msg: "Tutorial by id", data: tutor });
   } catch (error) {
     res.status(500).json({ msg: error.message });
   }
@@ -267,5 +273,6 @@ module.exports = {
   loginTutor,
   requireAuth,
   upload,
+  getAllPendingTutors,
   searchTutorByName,
 };

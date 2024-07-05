@@ -58,6 +58,7 @@ router.post("/updateIpo/:id",IPO.updateIpo);
 router.post("/registerTutor",ET.upload, ET.registerTutor);
 router.post("/loginTutor", ET.loginTutor);
 router.post("/getAllTutors", ET.getAllTutors);
+router.get("/getAllPendingTutors", ET.getAllPendingTutors);
 router.post("/getTutorById/:id", ET.getTutorById);
 router.post("/updateTutorById/:id",ET.upload, ET.updateTutorById);
 router.post("/activateTutorById/:id", ET.activateTutorById);

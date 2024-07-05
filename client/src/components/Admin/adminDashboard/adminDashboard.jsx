@@ -5,6 +5,7 @@ import { CompanyPendingRequest } from "../../company/CompanyRequest";
 import { Footer2 } from "../../common/footer2/footer2";
 import AdminNavbar from "../../common/adminNavbar";
 import { AdminOverview } from "../adminOverview/adminOverview";
+import { ETPendingRequest } from "../adminViewAllETPendingRequests/viewAllETPendingRequest";
 export const AdminDashboard = () => {
   const [activePage, setActivePage] = useState("overview");
   const changePage = (value) => {
@@ -21,6 +22,9 @@ export const AdminDashboard = () => {
           {activePage === "overview" && <AdminOverview />}
           {activePage === "company-pending-request" && (
             <CompanyPendingRequest />
+          )}
+          {activePage === "et-pending-request" && (
+            <ETPendingRequest />
           )}
         </Col>
       </Row>
