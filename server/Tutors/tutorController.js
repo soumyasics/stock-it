@@ -40,7 +40,7 @@ const registerTutor = async (req, res) => {
       email,
       password,
     } = req.body;
-
+    
     if (
       !fullName || 
       !gender || 
@@ -49,7 +49,7 @@ const registerTutor = async (req, res) => {
       !experience || 
       !contactNumber || 
       !email || 
-      !password 
+      !password  
     ) {
       return res.status(400).json({ msg: "All fields are required" });
     }
@@ -68,7 +68,7 @@ const registerTutor = async (req, res) => {
       contactNumber,
       email,
       password,
-      photo: req.files[0]
+      photo: req.file
     });
 
    
