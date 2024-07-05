@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+.etsidebar-main {
+  width: 307px;
+  height: 100vh;
+  flex-shrink: 0;
+  background: #374151;
+  padding-top: 2%;
+}
+
+.etsidebar-profilebox {
+  width: 270px;
+  height: 63.269px;
+  transform: rotate(-0.01deg);
+  flex-shrink: 0;
+  border-radius: 15px;
+  background: #1f2937;
+  margin-left: 5%;
+  display: flex;
+}
+
+.etsidebarprofile{
+  width: 45.142px;
+  height: 45.305px;
+  flex-shrink: 0;
+  background-color: black;
+  border-radius: 50px;
+  margin: 10px 10px 30px;
+}
+.etsidebar-profile img{
+    width: 45.142px;
+    height: 45.305px;
+    flex-shrink: 0;
+    border-radius: 50px;
+    margin: 10px 10px 30px;
+}
+
+.etsidebarprofile-detail {
+  margin-top: 5%;
+  color: #fff;
+}
+
+.etsidebar-detail h6 {
+  width: 34px;
+  height: 20.072px;
+  color: #fff;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 0 !important;
+  text-transform: uppercase;
+}
+
+.etsidebar-detail p{
+  color: #fff;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.etsidebar-title {
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+}
+
+.etsidebar-content {
+  margin-left: 8%;
+  width: 250px;
+  padding-left: 20px;
+}
+
+.etsidebar-content h6 {
+  color: #fff;
+  font-family: "Noto Sans";
+  font-size: 15.818px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.etsidebar-content img {
+  margin-bottom: 5px;
+}
+
+
+.content-drop button {
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-family: "noto sans";
+  font-size: 15.818px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.etsidebar-drop {
+  margin-top: 10px;
+  background-color: #1f2937;
+  width: 226px;
+  height: 80%;
+}
+
+.etsidebar-drop ul {
+  list-style: none;
+  font-size: small;
+  margin-top: 10px;
+}
+
+.etsidebar-drop li {
+  padding: 5px;
+}
+.etsidebar-content-Article {
+  margin-left: 2px;
+  margin-right: 2px;
+}
+.etsidebar-content-Article button {
+  margin-left: 3px;
+}
+.etsidebar-content-subscriber img {
+  margin-left: 2px;
+  margin-right: 9px;
+}
+.etsidebar-content-logout img {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+
