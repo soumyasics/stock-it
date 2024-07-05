@@ -121,7 +121,7 @@ exports.getIpoById = async (req, res) => {
   try {
     const id = req.params.id;
 
-    const ipo = await Ipo.findById(req.params.id);
+    const ipo = await Ipo.findById(id).populate("companyId").exec();
     if (!ipo) {
       return res.status(404).json({ message: "IPO not found" });
     }
