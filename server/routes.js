@@ -63,7 +63,8 @@ router.post("/getTutorById/:id", ET.getTutorById);
 router.post("/updateTutorById/:id",ET.upload, ET.updateTutorById);
 router.post("/activateTutorById/:id", ET.activateTutorById);
 router.post("/deactivateTutorById/:id", ET.deactivateTutorById);
-router.post("/deactivateTutorById/:id", ET.approveTutorById);
+router.post("/adminApproveTutorById/:id", ET.adminApproveTutorById);
+router.post("/adminRejectTutorById/:id", ET.adminRejectTutorById);
 router.post("/deleteTutorById/:id", ET.deleteTutorById);
 
 module.exports = router;

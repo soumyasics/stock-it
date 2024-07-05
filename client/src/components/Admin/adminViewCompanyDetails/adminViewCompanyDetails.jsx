@@ -7,7 +7,6 @@ import { toast } from "react-hot-toast";
 import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseUrl";
 import AdminNavbar from "../../common/adminNavbar";
-    console.log("check", id);
 export const AdminViewCompanyDetails = () => {
   const [state, setState] = useState({ license: { filename: "" } });
   console.log("state", state)

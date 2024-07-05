@@ -187,11 +187,26 @@ const deactivateTutorById = async (req, res) => {
 };
 
 // Approve tutor by ID
-const approveTutorById = async (req, res) => {
+const adminApproveTutorById = async (req, res) => {
   try {
     const tutor = await UserModel.findByIdAndUpdate(
       req.params.id,
       { adminApproved: true },
+      { new: true }
+    );
+    if (!tutor) {
+      return res.status(404).json({ msg: "Tutor not found" });
+    }
+    res.json({ msg: "Tutor approved successfully", data: tutor });
+  } catch (error) {
+    res.status(500).json({ msg: error.message });
+  }
+};
+const adminRejectTutorById = async (req, res) => {
+  try {
+    const tutor = await UserModel.findByIdAndUpdate(
+      req.params.id,
+      { adminApproved: false },
       { new: true }
     );
     if (!tutor) {
@@ -269,7 +284,8 @@ module.exports = {
   deleteTutorById,
   activateTutorById,
   deactivateTutorById,
-  approveTutorById,
+  adminApproveTutorById,
+  adminRejectTutorById,
   loginTutor,
   requireAuth,
   upload,
