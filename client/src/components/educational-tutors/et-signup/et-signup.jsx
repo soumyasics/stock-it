@@ -105,7 +105,9 @@ function EtSignup() {
       return;
     }
 
-    
+    const formData = new FormData()
+    formData.append("fullName",fullName);
+    formData
   };
 
   return (
