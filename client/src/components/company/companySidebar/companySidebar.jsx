@@ -10,7 +10,7 @@ import img5 from "../../../assets/images/action.png";
 import img6 from "../../../assets/images/logout.png";
 import { IoMdArrowBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-export const CompanySidebar = ({ changePage }) => {
+export const  CompanySidebar = ({ changePage }) => {
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
   const navigate = useNavigate();
