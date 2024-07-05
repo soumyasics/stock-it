@@ -49,6 +49,7 @@ import { AdminViewAllUsers } from "./components/Admin/adminViewAllusers/adminVie
 import { AdminIPOPendingList } from "./components/Admin/adminIpoPending/adminIpoPending";
 import { AdminViewIPODetails } from "./components/Admin/adminViewIPODetails/adminViewIPODetails";
 import Etdashboard from "./components/educational-tutors/et-dashboard/et-dashboard";
+import { AdminETRequestDetails } from "./components/Admin/etRequestDetails/adminEtRequestDetails";
 
 function App() {
   return (
@@ -102,6 +103,11 @@ function App() {
           <Route
             path="/adminViewCompany/:id"
             element={<AdminViewCompanyDetails />}
+          />
+  
+          <Route
+            path="/adminETRequestDetails/:id"
+            element={<AdminETRequestDetails />}
           />
 
           <Route path="/adminIPOPending" element={<AdminIPOPendingList />} />

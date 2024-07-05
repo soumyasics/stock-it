@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from "react";
-import "./adminViewCompanyDetails.css";
-import img2 from "../../../assets/images/crossbtn.png"
+// import "./requestPage.css";
+import img2 from "../../../assets/images/crossbtn.png";
+import axiosInstance from "../../../apis/axiosInstance";
 import {  useParams } from "react-router-dom";
+import { BASE_URL } from "../../../apis/baseUrl";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
-import axiosInstance from "../../../apis/axiosInstance";
-import { BASE_URL } from "../../../apis/baseUrl";
 import AdminNavbar from "../../common/adminNavbar";
-    console.log("check", id);
-export const AdminViewCompanyDetails = () => {
+export const AdminETRequestDetails = () => {
   const [state, setState] = useState({ license: { filename: "" } });
-  console.log("state", state)
+  console.log("state", state);
   const { id } = useParams();
   const navigate = useNavigate();
+  
   useEffect(() => {
+    getETById();
+  }, []);
+
+  const getETById = () => {
     axiosInstance
-      .post(`/viewCompanyById/${id}`)
+      .post(`/getTutorById/${id}`)
       .then((response) => {
         console.log(response);
         setState(response.data.data);
@@ -23,8 +27,7 @@ export const AdminViewCompanyDetails = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
-
+  };
   const toAccept = (e) => {
     e.preventDefault();
     axiosInstance.post("/acceptCompanyById/" + id).then((response) => {
@@ -56,7 +59,7 @@ export const AdminViewCompanyDetails = () => {
   };
   return (
     <>
-    <AdminNavbar />
+      <AdminNavbar />
       <div className="w-100">
         <div className="requestpage-bg">
           <div className="requestpage-header">
@@ -143,12 +146,12 @@ export const AdminViewCompanyDetails = () => {
             </table>
           </div>
           <div className="requestpage-btn">
-            {/* <button class="btn" type="submit" value="submit" >
-              Buy
+            <button class="btn" type="submit" value="submit" onClick={toAccept}>
+              Accept
             </button>
-            <button class="btn" type="submit" value="submit">
-              Sell
-            </button> */}
+            <button class="btn" type="submit" value="submit" onClick={toDelete}>
+              Reject
+            </button>
           </div>
 
           {/* Modal page */}
@@ -196,5 +199,4 @@ export const AdminViewCompanyDetails = () => {
       </div>
     </>
   );
-}
-
+};

@@ -11,9 +11,8 @@ export const ETPendingRequest = () => {
   const pageVisited = pageNumber * userPerPage;
 
   const navigate = useNavigate();
-  const navigateToPeningCompanyRequest = (id) => {
-    console.log("check", id);
-    navigate(`/requestpage/${id}`);
+  const navigateToPeningETRequest = (id) => {
+    navigate(`/adminETRequestDetails/${id}`);
   };
 
   useEffect(() => {
@@ -61,7 +60,7 @@ export const ETPendingRequest = () => {
           <p
             className="companyRewquest-viewmore2 mt-3"
             onClick={() => {
-              navigateToPeningCompanyRequest(e._id);
+              navigateToPeningETRequest(e._id);
             }}
             style={{ cursor: "pointer" }}
           >

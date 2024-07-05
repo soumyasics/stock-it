@@ -106,7 +106,7 @@ const getTutorById = async (req, res) => {
     if (!tutor) {
       return res.status(404).json({ msg: "Tutor not found" });
     }
-    res.json(tutor);
+    return res.status(200).json({msg: "Tutorial by id", data: tutor });
   } catch (error) {
     res.status(500).json({ msg: error.message });
   }

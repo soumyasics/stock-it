@@ -32,7 +32,7 @@ function Etlogin() {
       return;
     }
     sendDataToServer({ email, password });
-    redirectToEtdashboard();
+    
   };
   const sendDataToServer = async (data) => {
     try {
@@ -40,6 +40,7 @@ function Etlogin() {
       console.log("reg res", response);
       if (response.status === 200) {
         toast.success(response.data.msg);
+        redirectToEtdashboard();
       } else {
         toast.error(response.data.msg);
       }
