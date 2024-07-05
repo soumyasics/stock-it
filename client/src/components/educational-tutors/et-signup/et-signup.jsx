@@ -104,6 +104,8 @@ function EtSignup() {
     if (!validateFields()) {
       return;
     }
+
+    
   };
 
   return (
