@@ -57,13 +57,18 @@ export const ViewIPOStatus = () => {
                 {" "}
                 <h6>
                   Current Status:{" "}
-                  {ipoStatus?.isAdminApproved ? (
+                  {ipoStatus?.adminApproved === "approved" ? (
                     <span className="capitalizeText text-success fw-bold">
                       {" "}
                       Approved
                     </span>
-                  ) : (
+                  ) : ipoStatus?.adminApproved === "rejected" ? (
                     <span className="capitalizeText text-danger fw-bold">
+                      {" "}
+                      Rejected
+                    </span>
+                  ) : (
+                    <span className="capitalizeText text-primary fw-bold">
                       {" "}
                       Pending
                     </span>

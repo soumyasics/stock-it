@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 function CommonNavbar() {
   const navigate = useNavigate();
   const redirectToAdminLogin = () => {
-    navigate("/AdminDashboard");
+    navigate("/admin");
   };
 
   const redirectToCompanyLogin = () => {

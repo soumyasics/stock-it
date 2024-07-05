@@ -5,8 +5,8 @@ import ipoImage1 from "../../../assets/images/ipo-1.png";
 import "./companyProfile.css";
 import coImg1 from "../../../assets/images/co-1.png";
 export const CompanyProfile = () => {
-  const [ipoStatus, setIpoStatus] = useState(null);
-  console.log("ipo", ipoStatus);
+  const [companyData, setcompanyData] = useState(null);
+  console.log("ipo", companyData);
   useEffect(() => {
     let companyId = localStorage.getItem("stock_it_companyId") || null;
 
@@ -21,17 +21,17 @@ export const CompanyProfile = () => {
 
   const getIpoData = async (companyId) => {
     try {
-      const response = await axiosInstance.get(
-        `/getIpoByCompanyId/${companyId}`
+      const response = await axiosInstance.post(
+        `/viewCompanyById/${companyId}`
       );
       console.log("resp", response);
       const data = response?.data?.data || null;
       if (data) {
-        setIpoStatus(data);
+        setcompanyData(data);
       } else {
         console.log("resposne", response);
       }
-      console.log("Response from getIpoStatus api", response.data.data);
+      console.log("Response from getcompanyData api", response.data.data);
     } catch (error) {
       console.log("Error getting compnaies ipo data", error);
     }
@@ -53,7 +53,7 @@ export const CompanyProfile = () => {
                   Company Name:{" "}
                   <span className="capitalizeText fw-bold ">
                     {" "}
-                    {ipoStatus?.companyId?.name?.substring(0, 20)}
+                    {companyData?.name?.substring(0, 20)}
                   </span>
                 </h6>
               </ListGroup.Item>
@@ -61,7 +61,7 @@ export const CompanyProfile = () => {
                 {" "}
                 <h6>
                   Current Status:{" "}
-                  {ipoStatus?.isAdminApproved ? (
+                  {companyData?.isAdminApproved ? (
                     <span className="capitalizeText text-success fw-bold">
                       {" "}
                       Approved
@@ -77,20 +77,20 @@ export const CompanyProfile = () => {
               <ListGroup.Item>
                 {" "}
                 <h6>
-                  Type: <span>{ipoStatus?.companyId?.companyType}</span>{" "}
+                  Type: <span>{companyData?.companyType}</span>{" "}
                 </h6>
               </ListGroup.Item>
               <ListGroup.Item>
                 {" "}
                 <h6>
-                  Contact: <span>{ipoStatus?.companyId?.contact}</span>{" "}
+                  Contact: <span>{companyData?.contact}</span>{" "}
                 </h6>
               </ListGroup.Item>
               <ListGroup.Item>
                 {" "}
                 <h6>
                   District:
-                  <span>{ipoStatus?.companyId?.district}</span>
+                  <span>{companyData?.district}</span>
                 </h6>
               </ListGroup.Item>
             </ListGroup>

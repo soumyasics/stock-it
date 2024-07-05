@@ -132,16 +132,38 @@ exports.getIpoById = async (req, res) => {
 };
 
 exports.approveIPOById = async (req, res) => {
+  const id = req.params.id;
   try {
-    const ipo = await Ipo.findByIdAndUpdate(
-      { _id: req.params.id },
-      { adminApproved: true }
-    );
+    const ipo = await Ipo.findById(id);
     if (!ipo) {
-      return res.status(404).json({ message: "IPO not found" });
+      return res.status(404).json({ msg: "IPO not found" });
     }
-    res.json(ipo);
+
+    const updateIPO = await Ipo.findByIdAndUpdate(
+      id,
+      { adminApproved: "approved" },
+      { new: true }
+    );
+    return res.json({ msg: "IPO approved.", data: updateIPO });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    return res.status(500).json({ msg: err.message });
+  }
+};
+exports.rejectIPOById = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const ipo = await Ipo.findById(id);
+    if (!ipo) {
+      return res.status(404).json({ msg: "IPO not found" });
+    }
+
+    const updateIPO = await Ipo.findByIdAndUpdate(
+      id,
+      { adminApproved: "rejected" },
+      { new: true }
+    );
+    return res.json({ msg: "IPO rejected.", data: updateIPO });
+  } catch (err) {
+    return res.status(500).json({ msg: err.message });
   }
 };
