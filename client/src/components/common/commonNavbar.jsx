@@ -25,6 +25,7 @@ function CommonNavbar() {
     // { value: "/", label: "Login" },
     { value: "/companylogin", label: "Company" },
     { value: "/userLogin", label: "User" },
+    { value: "/etlogin", label: "Educational Tutor" },
 
   ];
 
