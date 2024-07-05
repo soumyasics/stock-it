@@ -74,13 +74,13 @@ export const AdminIPOPendingList = () => {
                     <td>{u?.costPerShare}</td>
                     <td> {u?.capitation}</td>
                     <td>
-                      {u?.adminApproved ? <p> Approved</p> : <p>Pending </p>}
+                      {u?.adminApproved ? <p> Approved </p> : <p>Pending </p>}
                     </td>
                     <td>
                       <td className="viewComapny-viewmore">
                         <Button
                           onClick={() => {
-                            // navigate(`/adminViewCompany/${co._id}`);
+                            navigate(`/AdminViewIPODetails/${u?._id}`);
                           }}
                         >
                           View more

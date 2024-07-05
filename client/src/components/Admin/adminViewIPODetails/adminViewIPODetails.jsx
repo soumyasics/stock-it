@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./requestPage.css";
+import "../commonAdminStyles/detailsPageBasic.css";
 import img2 from "../../assets/images/crossbtn.png";
 import axiosInstance from "../../apis/axiosInstance";
 import { Link, useParams } from "react-router-dom";
@@ -8,23 +8,40 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import AdminNavbar from "../common/adminNavbar";
 export const AdminViewIPODetails = () => {
-  const [ipoData, setIPOData] = useState({ license: { filename: "" } });
-  console.log("state", state);
+  const [ipoData, setIPOData] = useState({
+    totalShares: "",
+    costPerShare: "",
+    companyId: {
+      name: "",
+      logo: {
+        filename: "",
+      },
+      _id: "",
+      license: {
+        filename: "",
+      },
+      companyType: "",
+      year: "",
+      regNo: "",
+    },
+    capitation: "",
+    adminApproved: false,
+    isActive: false,
+  });
   const { id } = useParams();
   const navigate = useNavigate();
   useEffect(() => {
     if (!id) {
       return;
     }
-
-    getIPODetailsById();
+     getIPODetailsById();
   }, [id]);
   const getIPODetailsById = async (req, res) => {
     try {
       const res = await axiosInstance.post(`/getIPOById/${id}`);
       const data = res?.data?.data || null;
       if (data) {
-        setState(res.data.data);
+        setIPOData(res.data.data);
       } else {
         console.log("ipo response", res);
       }
@@ -59,6 +76,7 @@ export const AdminViewIPODetails = () => {
     });
   };
 
+  console.log("ipo data", ipoData);
   const redirectBack = () => {
     navigate("/admin");
   };
@@ -68,9 +86,9 @@ export const AdminViewIPODetails = () => {
       <div className="w-100">
         <div className="requestpage-bg">
           <div className="requestpage-header">
-            <img src={`${BASE_URL}${state?.logo?.filename}`} alt="profile" />
+            <img src={`${BASE_URL}${ipoData?.logo?.filename}`} alt="profile" />
             <div className="requestpage-companyname">
-              <h2>{state.name}</h2>
+              <h2>{ipoData?.compnayId?.name}</h2>
             </div>
           </div>
           <div className="requestpage-crossbtn" onClick={redirectBack}>
@@ -78,50 +96,50 @@ export const AdminViewIPODetails = () => {
           </div>
           <div className="requestpage-paragraph">
             <p>
-              {state.name}-{state.description}
+              {ipoData.name}-{ipoData.description}
             </p>
           </div>
           <div className="requestpage-content">
             <table>
               <tr>
-                <td>Name</td>
+                <td>Company Name</td>
                 <td>-</td>
-                <td>{state.name}</td>
+                <td>{ipoData?.companyId?.name}</td>
               </tr>
               <tr>
                 <td>Company Type</td>
                 <td>-</td>
-                <td>{state.companyType} </td>
+                <td>{ipoData?.companyId?.companyType} </td>
               </tr>
               <tr>
                 <td>City</td>
                 <td>-</td>
-                <td>{state.district} </td>
+                <td>{ipoData?.companyId?.district} </td>
               </tr>
               <tr>
                 <td>State</td>
                 <td>-</td>
-                <td>{state.state} </td>
+                <td>{ipoData?.companyId?.state} </td>
               </tr>
               <tr>
                 <td>Pincode</td>
                 <td>-</td>
-                <td>{state.pincode}</td>
+                <td>{ipoData?.companyId?.pincode}</td>
               </tr>
               <tr>
                 <td>Contact Number</td>
                 <td>-</td>
-                <td>{state.contact}</td>
+                <td>{ipoData?.companyId?.contact}</td>
               </tr>
               <tr>
                 <td>Email Id</td>
                 <td>-</td>
-                <td>{state.email}</td>
+                <td>{ipoData?.companyId?.email}</td>
               </tr>
               <tr>
                 <td>Registration Number</td>
                 <td>-</td>
-                <td>{state.regNo} </td>
+                <td>{ipoData?.companyId?.regNo} </td>
               </tr>
               <tr>
                 <td>Company License</td>
@@ -138,24 +156,15 @@ export const AdminViewIPODetails = () => {
                   </button>
                 </td>
               </tr>
-              <tr>
-                <td>Year Founded</td>
-                <td>-</td>
-                <td>{state.year}</td>
-              </tr>
-              <tr>
-                <td>Company Website</td>
-                <td>-</td>
-                <td>{state.website}</td>
-              </tr>
+            
             </table>
           </div>
           <div className="requestpage-btn">
             <button class="btn" type="submit" value="submit" onClick={toAccept}>
-              Accept
+              Accept IPO
             </button>
             <button class="btn" type="submit" value="submit" onClick={toDelete}>
-              Reject
+              Reject IPO
             </button>
           </div>
 
@@ -184,7 +193,7 @@ export const AdminViewIPODetails = () => {
                 </div>
                 <div class="modal-body modal-image">
                   <img
-                    src={`${BASE_URL}${state?.license?.filename}`}
+                    src={`${BASE_URL}${ipoData?.license?.filename}`}
                     alt="profile"
                   />
                 </div>

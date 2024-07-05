@@ -9,7 +9,6 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import CommonNavbar from "./components/common/commonNavbar";
 import LandingPageHeader from "./components/common/landingPage-2";
 
-import Footer from "./components/common/userNavbar/Footer";
 import CompanyRegistration from "./components/company/CompanyRegistration";
 import AdminLogin from "./components/adminLogin/AdminLogin";
 import About from "./components/common/About";
@@ -25,8 +24,6 @@ import { UserRegistration } from "./components/user/userRegistration/userRegistr
 import { UserHomePage } from "./components/user/userHome/userHome";
 import { UserLogin } from "./components/user/userLogin/userLogin";
 import { UserViewCompanies } from "./components/user/viewCompanies/viewCompanies";
-import { Footer2 } from "./components/common/footer2/footer2";
-import { UserNavbar } from "./components/user/userNavbar/userNavbar";
 import { CompanyHome } from "./components/company/companyHome/companyHome";
 import NewAdminsidebar from "./components/AdminNewSidebar/newAdminsidebar";
 import { ViewCompanyDetails } from "./components/user/viewCompaniesDetails/viewCompaniesDetails";
@@ -50,6 +47,7 @@ import { AdminViewAllCompanies } from "./components/Admin/adminViewAllcompanies/
 import { AdminViewCompanyDetails } from "./components/Admin/adminViewCompanyDetails/adminViewCompanyDetails";
 import { AdminViewAllUsers } from "./components/Admin/adminViewAllusers/adminViewAllUsers";
 import { AdminIPOPendingList } from "./components/Admin/adminIpoPending/adminIpoPending";
+import { AdminViewIPODetails } from "./components/Admin/adminViewIPODetails/adminViewIPODetails";
 
 function App() {
   return (
@@ -68,13 +66,13 @@ function App() {
             path="/CompanyRegistration"
             element={<CompanyRegistration />}
           />
-          <Route path="/companyrequest" element={<CompanyPendingRequest />} />
           <Route
             path="/companylogin"
             element={[<CommonNavbar />, <CompanyLogin />]}
           />
+          <Route path="/companyrequest" element={<CompanyPendingRequest />} />
           <Route path="/companyDetails/:id" element={<ViewCompanyDetails />} />
-
+          <Route path="/requestpage/:id" element={<RequestPage />} />
           <Route path="/companysidebar" element={<CompanySidebar />} />
           <Route path="/company-dashboard" element={<CompanyDashboard />} />
 
@@ -96,13 +94,21 @@ function App() {
           <Route path="/landingAbout" element={[<CommonNavbar />, <About />]} />
           <Route path="/adminViewUsers" element={<AdminViewAllUsers />} />
           <Route path="/adminViewCompany" element={<AdminViewAllCompanies />} />
-          <Route path="/adminViewPendingIPOs" element={<AdminIPOPendingList />} />
+          <Route
+            path="/adminViewPendingIPOs"
+            element={<AdminIPOPendingList />}
+          />
           <Route
             path="/adminViewCompany/:id"
             element={<AdminViewCompanyDetails />}
           />
 
           <Route path="/adminIPOPending" element={<AdminIPOPendingList />} />
+          <Route
+            path="/adminIPOPending/:id"
+            element={<AdminViewIPODetails />}
+          />
+
           {/* new  */}
           <Route path="/newsidebar" element={<NewAdminsidebar />} />
           <Route path="/etsignup" element={<EtSignup />} />
@@ -116,7 +122,7 @@ function App() {
           />
 
           <Route path="/adminNavbar" element={<AdminNavbar />} />
-          <Route path="/requestpage/:id" element={<RequestPage />} />
+
           <Route
             path="/admincompanyDetails/:id"
             element={<ViewCompanyDetails />}
