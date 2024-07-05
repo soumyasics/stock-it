@@ -86,10 +86,10 @@ function AdminSidebar({ changePage }) {
                         changePage("company-pending-request");
                       }}
                     >
-                      Company Pending Requests
+                      Company pending requests
                     </li>
-                    <li onClick={navigateToAllCompanies}>View all Companies</li>
-                    <li>View all Company Article</li>
+                    <li onClick={navigateToAllCompanies}>View all companies</li>
+                    <li>View all company article</li>
                   </ul>
                 </div>
               )}
@@ -105,8 +105,8 @@ function AdminSidebar({ changePage }) {
               {show1 && (
                 <div className="sidebar-drop-10">
                   <ul>
-                    <li onClick={navigateIPOPending}>View all Request</li>
-                    <li>View all Company IPOs</li>
+                    <li onClick={navigateIPOPending}>View all request</li>
+                    <li>View all company IPOs</li>
                   </ul>
                 </div>
               )}
@@ -121,10 +121,17 @@ function AdminSidebar({ changePage }) {
               {show2 && (
                 <div className=" sidebar-drop-10">
                   <ul>
-                    <li className="clickable-item">View all Request</li>
+                    <li
+                      className="clickable-item"
+                      onClick={() => {
+                        changePage("et-pending-request");
+                      }}
+                    >
+                      View all request
+                    </li>
                     <li className="clickable-item">
                       {" "}
-                      View all Educational Tutors
+                      View all educational tutors
                     </li>
                   </ul>
                 </div>
