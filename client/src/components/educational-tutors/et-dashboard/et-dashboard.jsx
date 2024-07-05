@@ -1,8 +1,13 @@
 import React from 'react'
+import Etnavbar from '../et-navbar/etnavbar'
+import Etsidebar from '../et-sidebar/etsidebar'
 
 function Etdashboard() {
   return (
-    <div><h2>Et-dashboard</h2></div>
+    <div>
+        <Etnavbar/>
+        <Etsidebar/>
+    </div>
   )
 }
 

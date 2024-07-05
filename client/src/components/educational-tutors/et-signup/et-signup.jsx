@@ -359,7 +359,7 @@ function EtSignup() {
                   <button type="submit">Register</button>
                   <p className="login-link">
                     Already have an account?
-                    <span className="text-primary" style={{fontFamily: "Noto Sans", fontSize:"18px"}} onClick={redirectToEtLogin}>
+                    <span className="text-primary" style={{fontFamily: "Noto Sans", fontSize:"18px",   cursor: "pointer"}} onClick={redirectToEtLogin}>
                       Login Now{" "}
                     </span>
                   </p>

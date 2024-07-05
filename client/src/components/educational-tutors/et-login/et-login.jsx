@@ -15,6 +15,9 @@ function Etlogin() {
   const redirectToEtdashboard = () => {
     navigate("/etdashboard");
   };
+  const redirectToforgotPassword=()=>{
+    navigate("/etForgotpassword")
+  }
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const handleSubmit = (e) => {
@@ -105,9 +108,9 @@ function Etlogin() {
                       onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
-                  {/* <div className="forgot-password">
-                    <a href="">forgot password?</a>
-                  </div> */}
+                  <div className="forgot-password">
+                    <span onClick={redirectToforgotPassword}>forgot password?</span>
+                  </div>
                   <button
                     className="login-button mt-3"
                     value="submit"

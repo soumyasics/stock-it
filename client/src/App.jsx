@@ -51,6 +51,8 @@ import { AdminViewIPODetails } from "./components/Admin/adminViewIPODetails/admi
 import Etdashboard from "./components/educational-tutors/et-dashboard/et-dashboard";
 import { AdminETRequestDetails } from "./components/Admin/etRequestDetails/adminEtRequestDetails";
 import Etsidebar from "./components/educational-tutors/et-sidebar/etsidebar";
+import Etnavbar from "./components/educational-tutors/et-navbar/etnavbar";
+import EtForgotpassword from "./components/educational-tutors/et-forgotpassword/etForgotpassword";
 
 function App() {
   return (
@@ -120,6 +122,8 @@ function App() {
           {/* et-new */}
           <Route path="/etdashboard" element={<Etdashboard />} />
           <Route path="/etsidebar" element={<Etsidebar/>    }/>
+          <Route path="/etnavbar" element={<Etnavbar/>}/>
+          <Route path="/etForgotpassword" element={<EtForgotpassword/>}/>
 
           {/* new  */}
           <Route path="/newsidebar" element={<NewAdminsidebar />} />

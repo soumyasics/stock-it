@@ -1,122 +1,44 @@
-import React from 'react'
-import './etsidebar.css'
-
+import React, { useState } from "react";
+import "./etsidebar.css";
+import profile from "../../../assets/images/idprofile.png";
+import titleImg from "../../../assets/images/Group 398.png";
+import img1 from "../../../assets/images/article.svg";
+import img2 from "../../../assets/images/subcribericon.svg";
+import img3 from "../../../assets/images/logout.png";
+import { useNavigate } from "react-router-dom";
 
 function Etsidebar() {
+    const navigate=useNavigate()
+  const [show, setShow] = useState(false);
   return (
     <div>
-          <div className="companysidebar-main pt-5">
-        <p
-          className="ms-5 mb-3"
-          style={{ textAlign: "left", cursor: "pointer" }}
-          onClick={redirectCompanyHome}
-        >
-          <IoMdArrowBack /> &nbsp; Back to home{" "}
-        </p>
-        <div className="companysidebar-profile ">
-          <div className="companyprofile">
-            <img src={profilePic} alt="Profile" />
+        
+      <div className="etsidebar-main pt-5">
+        <div className="etsidebar-profilebox ">
+          <div className="etsidebar-profile">
+            <img src={profile} alt="Profile" />
           </div>
-          <div className="companyprofile-detail">
-            <h6>kfc</h6>
+          <div className="etsidebar-detail mt-3">
+            <h6>Laziqm</h6>
             <p>officilakfc@gmail.com</p>
           </div>
         </div>
-        <div className="companysidebar-title">
+        <div className="etsidebar-title">
           <img src={titleImg} alt="" />
         </div>
-        <div className="companysidebar-content">
-          <div
-            onClick={() => {
-              changePage("profile");
-            }}
-            className="companysidebar-items companysidebar-content-companyipos"
-          >
-            <tr className="">
-              <td>
-                <img src={img1} alt="icon" />
-              </td>
-              <td>
-                <h6>Profile</h6>
-              </td>
-            </tr>
-          </div>
-          <div
-            onClick={() => {
-              changePage("ipo-form");
-            }}
-            className="companysidebar-items companysidebar-content-companyipos"
-          >
-            <tr className="">
-              <td>
-                <img src={img1} alt="icon" />
-              </td>
-              <td>
-                <h6>Initiate IPO</h6>
-              </td>
-            </tr>
-          </div>
-          <div
-            onClick={() => {
-              changePage("ipo-status");
-            }}
-            className="companysidebar-items companysidebar-content-companyipos"
-          >
-            <tr className="">
-              <td>
-                <img src={img1} alt="icon" />
-              </td>
-              <td>
-                <h6>IPO Status</h6>
-              </td>
-            </tr>
-          </div>
-          <div className="companysidebar-items companysidebar-content-dividend">
+        <div className="etsidebar-content mt-5">
+          <div className="etsidebar-items etsidebar-content-Article">
             <tr>
               <td>
-                <img src={img2} alt="" />
+                <img src={img1} alt="" />
               </td>
               <td>
-                <h6>Dividend</h6>
-              </td>
-            </tr>
-          </div>
-          <div className="companysidebar-items companysidebar-content-receive">
-            <tr>
-              <td>
-                <img src={img3} alt="" />
-              </td>
-              <td>
-                <div className="company-content-drop">
+                <div className="content-drop">
                   <button type="button" onClick={() => setShow(!show)}>
-                    {" "}
-                    Receive Order
-                  </button>
-                  {show && (
-                    <div className="sidebar-drop">
-                      <ul>
-                        <li>Buy order</li>
-                        <li>Sell Order</li>
-                      </ul>
-                    </div>
-                  )}
-                </div>
-              </td>
-            </tr>
-          </div>
-          <div className="companysidebar-items companysidebar-content-Article">
-            <tr>
-              <td>
-                <img src={img4} alt="" />
-              </td>
-              <td>
-                <div className="company-content-drop">
-                  <button type="button" onClick={() => setShow1(!show1)}>
-                    {" "}
                     Articles
                   </button>
-                  {show1 && (
-                    <div className="sidebar-drop">
+                  {show && (
+                    <div className="etsidebar-drop">
                       <ul>
                         <li>Add Articles</li>
                         <li>View Articles</li>
@@ -127,24 +49,24 @@ function Etsidebar() {
               </td>
             </tr>
           </div>
-          <div className=" companysidebar-items company-content-complaint">
+          <div className=" etsidebar-items etsidebar-content-subscriber">
             <tr>
               <td>
-                <img src={img5} alt="icon" />
+                <img src={img2} alt="icon" />
               </td>
               <td>
-                <h6>Complaints</h6>
+                <h6>Subscribers</h6>
               </td>
             </tr>
           </div>
-          <div className="companysidebar-items company-content-logout">
+          <div className="etsidebar-items etsidebar-content-logout">
             <tr
               onClick={() => {
-                navigate("/companyLogin");
+                navigate("/AdminLogin");
               }}
             >
               <td>
-                <img src={img6} alt="icon" />
+                <img src={img3} alt="icon" />
               </td>
               <td>
                 <h6 className="text-danger fw-bold">Logout</h6>
@@ -154,7 +76,7 @@ function Etsidebar() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Etsidebar
+export default Etsidebar;
