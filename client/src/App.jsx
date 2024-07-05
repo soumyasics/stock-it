@@ -49,6 +49,7 @@ import Etlogin from "./components/educational-tutors/et-login/et-login";
 import { AdminViewAllCompanies } from "./components/Admin/adminViewAllcompanies/adminViewAllCompanies";
 import { AdminViewCompanyDetails } from "./components/Admin/adminViewCompanyDetails/adminViewCompanyDetails";
 import { AdminViewAllUsers } from "./components/Admin/adminViewAllusers/adminViewAllUsers";
+import { AdminIPOPendingList } from "./components/Admin/adminIpoPending/adminIpoPending";
 
 function App() {
   return (
@@ -62,7 +63,7 @@ function App() {
 
           <Route path="/companyHome" element={<CompanyHome />} />
           <Route path="/companyAbout" element={<CompanyAbout />} />
-
+          <Route path="/ipoform" element={<IpoForm />} />
           <Route
             path="/CompanyRegistration"
             element={<CompanyRegistration />}
@@ -83,7 +84,6 @@ function App() {
           <Route path="/userLogin" element={<UserLogin />} />
 
           <Route path="/userViewCompany" element={<UserViewCompanies />} />
-          
 
           <Route path="/userabout" element={<UserHomePage />} />
           <Route path="/et" element={<EtUserHomePage />} />
@@ -96,11 +96,17 @@ function App() {
           <Route path="/landingAbout" element={[<CommonNavbar />, <About />]} />
           <Route path="/adminViewUsers" element={<AdminViewAllUsers />} />
           <Route path="/adminViewCompany" element={<AdminViewAllCompanies />} />
-          <Route path="/adminViewCompany/:id" element={<AdminViewCompanyDetails />} />
+          <Route path="/adminViewPendingIPOs" element={<AdminIPOPendingList />} />
+          <Route
+            path="/adminViewCompany/:id"
+            element={<AdminViewCompanyDetails />}
+          />
+
+          <Route path="/adminIPOPending" element={<AdminIPOPendingList />} />
           {/* new  */}
           <Route path="/newsidebar" element={<NewAdminsidebar />} />
-          <Route path="/etsignup" element={<EtSignup/>}/>
-          <Route path="/etlogin" element={<Etlogin/>}/>
+          <Route path="/etsignup" element={<EtSignup />} />
+          <Route path="/etlogin" element={<Etlogin />} />
 
           <Route path="/admin" element={<AdminDashboard />} />
 
@@ -111,9 +117,11 @@ function App() {
 
           <Route path="/adminNavbar" element={<AdminNavbar />} />
           <Route path="/requestpage/:id" element={<RequestPage />} />
-          <Route path="/admincompanyDetails/:id" element={<ViewCompanyDetails />} />
+          <Route
+            path="/admincompanyDetails/:id"
+            element={<ViewCompanyDetails />}
+          />
 
-          <Route path="/ipoform" element={<IpoForm />} />
           <Route path="/forgotpassword" element={<Forgotpassword />} />
 
           {/* Admin components */}
@@ -130,5 +138,5 @@ function App() {
     </>
   );
 }
-  
+
 export default App;

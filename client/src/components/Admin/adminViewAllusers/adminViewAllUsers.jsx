@@ -1,7 +1,3 @@
-export const AddminViewAllUsers = () => {
-  return <div>AddminViewAllUsers</div>;
-};
-
 import { useEffect, useState } from "react";
 import "../adminViewAllcompanies/adminViewAllCompanies.css";
 import { useNavigate } from "react-router-dom";

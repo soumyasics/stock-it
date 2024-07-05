@@ -31,6 +31,9 @@ function AdminSidebar({ changePage }) {
   const navigateToAllUsers = () => {
     navigate("/adminViewUsers");
   };
+  const navigateIPOPending = () => {
+    navigate("/adminIPOPending");
+  };
 
   const openCompaniesTab = () => {
     setShow(!show);
@@ -41,16 +44,17 @@ function AdminSidebar({ changePage }) {
     setShow1(!show1);
     setShow(false);
     setShow2(false);
-  }
+  };
 
   const openEdTab = () => {
     setShow2(!show2);
     setShow1(false);
     setShow(false);
-  }
+  };
   return (
     <div className="adminSidebar-main2 w-100">
       <div
+        style={{ cursor: "pointer" }}
         className="adminSidebar-title-head"
         onClick={() => {
           changePage("overview");
@@ -101,13 +105,7 @@ function AdminSidebar({ changePage }) {
               {show1 && (
                 <div className="sidebar-drop-10">
                   <ul>
-                    <li
-                      onClick={() => {
-                        changePage("");
-                      }}
-                    >
-                      View all Request
-                    </li>
+                    <li onClick={navigateIPOPending}>View all Request</li>
                     <li>View all Company IPOs</li>
                   </ul>
                 </div>

@@ -7,22 +7,31 @@ import { BASE_URL } from "../../apis/baseUrl";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import AdminNavbar from "../common/adminNavbar";
-function RequestPage() {
-  const [state, setState] = useState({ license: { filename: "" } });
-  console.log("state", state)
+export const AdminViewIPODetails = () => {
+  const [ipoData, setIPOData] = useState({ license: { filename: "" } });
+  console.log("state", state);
   const { id } = useParams();
   const navigate = useNavigate();
   useEffect(() => {
-    axiosInstance
-      .post(`/viewCompanyById/${id}`)
-      .then((response) => {
-        console.log(response);
-        setState(response.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+    if (!id) {
+      return;
+    }
+
+    getIPODetailsById();
+  }, [id]);
+  const getIPODetailsById = async (req, res) => {
+    try {
+      const res = await axiosInstance.post(`/getIPOById/${id}`);
+      const data = res?.data?.data || null;
+      if (data) {
+        setState(res.data.data);
+      } else {
+        console.log("ipo response", res);
+      }
+    } catch (error) {
+      console.log("error on get ipo details", error);
+    }
+  };
 
   const toAccept = (e) => {
     e.preventDefault();
@@ -55,7 +64,7 @@ function RequestPage() {
   };
   return (
     <>
-    <AdminNavbar />
+      <AdminNavbar />
       <div className="w-100">
         <div className="requestpage-bg">
           <div className="requestpage-header">
@@ -195,6 +204,4 @@ function RequestPage() {
       </div>
     </>
   );
-}
-
-export default RequestPage;
+};

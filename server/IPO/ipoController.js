@@ -40,10 +40,10 @@ exports.createIpo = async (req, res) => {
 // Get all IPOs
 exports.getIpos = async (req, res) => {
   try {
-    const ipos = await Ipo.find({ adminApproved: true });
-    res.json(ipos);
+    const ipos = await Ipo.find().populate("companyId").exec();
+    return res.status(200).json({ message: "All IPOs", data: ipos });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    return res.status(500).json({ message: err.message });
   }
 };
 // Get all IPOs
@@ -59,13 +59,15 @@ exports.getIposForAdminApproval = async (req, res) => {
 exports.getIpoByCompanyId = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log("id", id)
+    console.log("id", id);
     const company = await CompanyModel.findById(id);
     if (!company) {
       return res.status(404).json({ message: "IPO not found" });
     }
-    const ipo = await Ipo.findOne({ companyId: id }).populate("companyId").exec();
-    console.log("ipp", ipo)
+    const ipo = await Ipo.findOne({ companyId: id })
+      .populate("companyId")
+      .exec();
+    console.log("ipp", ipo);
     if (!ipo) {
       return res.status(404).json({ message: "IPO not found" });
     }
@@ -123,9 +125,9 @@ exports.getIpoById = async (req, res) => {
     if (!ipo) {
       return res.status(404).json({ message: "IPO not found" });
     }
-    res.json(ipo);
+    return res.status(200).json({ data: ipo, message: "IPO details" });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    return res.status(500).json({ message: err.message });
   }
 };
 

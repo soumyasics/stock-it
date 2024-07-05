@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 function AdminNavbar() {
   const navigate = useNavigate();
   const redirectToAdminLogin = () => {
-    navigate("/AdminDashboard");
+    navigate("/admin  ");
   };
   return (
     <div className="adminNavbar">
