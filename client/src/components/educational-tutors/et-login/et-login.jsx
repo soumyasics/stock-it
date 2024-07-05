@@ -1,14 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './et-login.css'
 import img1 from "../../../assets/images/shieldLogo.png";
 import CommonNavbar from '../../common/commonNavbar';
 import { Footer2 } from '../../common/footer2/footer2';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
+
 function  Etlogin() {
   const navigate = useNavigate();
   const redirectToETRegister = () => {
     navigate('/etsignup')
   }
+ const [email,setEmail]=useState()
+ const[password,setPassword]=useState()
+  const handleSubmit=(e)=>{
+    e.preventDefault()
+    if(!email){
+      toast.error("Email is required")
+      return
+    }
+    if(!password){
+      toast.error("Password is required")
+      return
+    }
+    if(password.length<8){
+      toast.error("CheckPassword")
+      return
+    }
+    
+  }
+  const sendDataToServer=async()
   return (
     <div>
         <CommonNavbar/>
@@ -25,7 +46,7 @@ function  Etlogin() {
                     className="img-fluid my-4"
                   />
                 </div>
-                <form class="col-7 etlogin-inputs">
+                <form class="col-7 etlogin-inputs" onSubmit={handleSubmit}>
                   <div class="mb-3 etlogin-inner">
                     <label for="exampleFormControlInput1" class="form-label">
                       Email
@@ -35,6 +56,8 @@ function  Etlogin() {
                       class="form-control"
                       id="exampleFormControlInput1"
                       placeholder="Enter Email"
+                      name='email'
+        
                    
                     />
                   </div>
@@ -47,6 +70,7 @@ function  Etlogin() {
                       class="form-control"
                       id="exampleFormControlInput1"
                       placeholder="Enter Password"
+                      name='password'
                      
                     />
                   </div>
