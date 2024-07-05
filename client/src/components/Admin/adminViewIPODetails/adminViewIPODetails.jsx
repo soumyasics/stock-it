@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "../commonAdminStyles/detailsPageBasic.css";
-import img2 from "../../assets/images/crossbtn.png";
-import axiosInstance from "../../apis/axiosInstance";
+import img2 from "../../../assets/images/crossbtn.png";
+import axiosInstance from "../../../apis/axiosInstance";
 import { Link, useParams } from "react-router-dom";
-import { BASE_URL } from "../../apis/baseUrl";
+import { BASE_URL } from "../../../apis/baseUrl";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
-import AdminNavbar from "../common/adminNavbar";
+import AdminNavbar from "../../common/adminNavbar";
 export const AdminViewIPODetails = () => {
   const [ipoData, setIPOData] = useState({
     totalShares: "",
