@@ -141,7 +141,7 @@ exports.approveIPOById = async (req, res) => {
 
     const updateIPO = await Ipo.findByIdAndUpdate(
       id,
-      { adminApproved: true },
+      { adminApproved: "approved" },
       { new: true }
     );
     return res.json({ msg: "IPO approved.", data: updateIPO });
@@ -159,7 +159,7 @@ exports.rejectIPOById = async (req, res) => {
 
     const updateIPO = await Ipo.findByIdAndUpdate(
       id,
-      { adminApproved: false },
+      { adminApproved: "rejected" },
       { new: true }
     );
     return res.json({ msg: "IPO rejected.", data: updateIPO });
