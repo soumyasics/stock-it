@@ -34,7 +34,7 @@ export const AdminViewIPODetails = () => {
     if (!id) {
       return;
     }
-     getIPODetailsById();
+    getIPODetailsById();
   }, [id]);
   const getIPODetailsById = async (req, res) => {
     try {
@@ -52,43 +52,57 @@ export const AdminViewIPODetails = () => {
 
   const toAccept = (e) => {
     e.preventDefault();
-    axiosInstance.post("/acceptCompanyById/" + id).then((response) => {
-      console.log(response);
-      if (response.data.status == 200) {
-        toast.success(response.data.msg);
-        navigate("/AdminDashboard");
-      } else {
-        toast.error(response.data.msg);
-        navigate("/AdminDashboard");
-      }
-    });
+    axiosInstance
+      .post("/approveIPOById/" + id)
+      .then((response) => {
+        console.log(response);
+        if (response.status == 200) {
+          toast.success(response.data.msg);
+          navigate("/admin");
+        } else {
+          toast.error(response.data.msg);
+          navigate("/admin");
+        }
+      })
+      .catch((err) => {
+        console.log("Error on approve ipo by id", err);
+      });
   };
   const toDelete = (e) => {
     e.preventDefault();
-    axiosInstance.post(`deleteCompanyById/${id}`).then((res) => {
-      if (res.data.status == 200) {
-        toast.success(res.data.msg);
-        navigate("/AdminDashboard");
-      } else {
-        toast.error(res.data.msg);
-        navigate("/AdminDashboard");
-      }
-    });
+    axiosInstance
+      .post(`rejectIPOById/${id}`)
+      .then((res) => {
+        if (res.data.status == 200) {
+          toast.success(res.data.msg);
+          navigate("/admin");
+        } else {
+          toast.error(res.data.msg);
+          navigate("/admin");
+        }
+      })
+      .catch((err) => {
+        console.log("Error on reject ipo by id", err);
+      });
   };
 
   console.log("ipo data", ipoData);
   const redirectBack = () => {
     navigate("/admin");
   };
+
   return (
     <>
       <AdminNavbar />
       <div className="w-100">
         <div className="requestpage-bg">
           <div className="requestpage-header">
-            <img src={`${BASE_URL}${ipoData?.logo?.filename}`} alt="profile" />
+            <img
+              src={`${BASE_URL}${ipoData?.companyId?.logo?.filename}`}
+              alt="profile"
+            />
             <div className="requestpage-companyname">
-              <h2>{ipoData?.compnayId?.name}</h2>
+              <h2>{ipoData?.companyId?.name}</h2>
             </div>
           </div>
           <div className="requestpage-crossbtn" onClick={redirectBack}>
@@ -156,7 +170,6 @@ export const AdminViewIPODetails = () => {
                   </button>
                 </td>
               </tr>
-            
             </table>
           </div>
           <div className="requestpage-btn">

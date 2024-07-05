@@ -50,7 +50,8 @@ router.post("/deleteIpo/:id",IPO.deleteIpo);
 router.get("/getIpos",IPO.getIpos);
 router.post("/getIPOById/:id",IPO.getIpoById);
 router.post("/deleteIpo/:id",IPO.getIposForAdminApproval);
-router.post("/deleteIpo/:id",IPO.approveIPOById);
+router.post("/approveIPOById/:id",IPO.approveIPOById);
+router.post("/rejectIPOById/:id",IPO.rejectIPOById);
 router.post("/updateIpo/:id",IPO.updateIpo);
 
 // tutors 

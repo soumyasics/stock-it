@@ -30,10 +30,10 @@ function RequestPage() {
       console.log(response);
       if (response.data.status == 200) {
         toast.success(response.data.msg);
-        navigate("/AdminDashboard");
+        navigate("/admin");
       } else {
         toast.error(response.data.msg);
-        navigate("/AdminDashboard");
+        navigate("/admin");
       }
     });
   };
@@ -42,10 +42,10 @@ function RequestPage() {
     axiosInstance.post(`deleteCompanyById/${id}`).then((res) => {
       if (res.data.status == 200) {
         toast.success(res.data.msg);
-        navigate("/AdminDashboard");
+        navigate("/admin");
       } else {
         toast.error(res.data.msg);
-        navigate("/AdminDashboard");
+        navigate("/admin");
       }
     });
   };
