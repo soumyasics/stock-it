@@ -115,11 +115,11 @@ const viewCompanyById = async (req, res) => {
     if (!company) {
       return res.status(404).json({ msg: "Company not found" });
     }
-    res
+    return res
       .status(200)
       .json({ msg: "Company retrieved successfully", data: company });
   } catch (error) {
-    res.status(500).json({ msg: "Failed to retrieve company", error });
+    return res.status(500).json({ msg: "Failed to retrieve company", error });
   }
 };
 
