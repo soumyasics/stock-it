@@ -42,16 +42,21 @@ const registerTutor = async (req, res) => {
     } = req.body;
 
     if (
-      fullName || 
-      gender || 
-      qualification || 
-      specification || 
-      experience || 
-      contactNumber || 
-      email || 
-      password 
+      !fullName || 
+      !gender || 
+      !qualification || 
+      !specification || 
+      !experience || 
+      !contactNumber || 
+      !email || 
+      !password 
     ) {
       return res.status(400).json({ msg: "All fields are required" });
+    }
+
+    let existingTutor = await UserModel.findOne({ email });
+    if (existingTutor) {
+      return res.status(409).json({ msg: "Email already registered" });
     }
 
     const newTutor = new UserModel({
@@ -65,13 +70,10 @@ const registerTutor = async (req, res) => {
       password,
     });
 
-    let existingTutor = await UserModel.findOne({ email });
-    if (existingTutor) {
-      return res.status(409).json({ msg: "Email already registered" });
-    }
+   
 
     await newTutor.save();
-    res.status(201).json({
+    return res.status(201).json({
       msg: "Tutor registered successfully",
       data: newTutor,
     });
