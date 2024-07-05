@@ -68,6 +68,7 @@ const registerTutor = async (req, res) => {
       contactNumber,
       email,
       password,
+      photo: req.files[0]
     });
 
    

@@ -80,7 +80,7 @@ export const AdminIPOPendingList = () => {
                       <td className="viewComapny-viewmore">
                         <Button
                           onClick={() => {
-                            navigate(`/AdminViewIPODetails/${u?._id}`);
+                            navigate(`/adminIPOPending/${u?._id}`);
                           }}
                         >
                           View more

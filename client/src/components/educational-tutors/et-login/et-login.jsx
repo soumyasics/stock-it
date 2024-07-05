@@ -3,8 +3,12 @@ import './et-login.css'
 import img1 from "../../../assets/images/shieldLogo.png";
 import CommonNavbar from '../../common/commonNavbar';
 import { Footer2 } from '../../common/footer2/footer2';
-
+import { useNavigate } from 'react-router-dom';
 function  Etlogin() {
+  const navigate = useNavigate();
+  const redirectToETRegister = () => {
+    navigate('/etsignup')
+  }
   return (
     <div>
         <CommonNavbar/>
@@ -57,7 +61,7 @@ function  Etlogin() {
                     <span
                       className="fs-6 fw-bold ms-2"
                       style={{ cursor: "pointer" }}
-                    
+                     onClick={redirectToETRegister}
                     >
                       Register Now!
                     </span>

@@ -48,7 +48,7 @@ export const UserViewCompanies = () => {
         <div className="viewCompany-table ">
           <table border="1px">
             <tr className="viewCompancy-head-row">
-              <th> No</th>
+              <th>No</th>
               <th>Name</th>
               <th>Type</th>
               <th>Contact</th>
@@ -63,7 +63,7 @@ export const UserViewCompanies = () => {
                   <td>{co.name}</td>
                   <td>{co.companyType}</td>
                   <td>{co.contact}</td>
-                  <td> {co.state}</td>
+                  <td>{co.state}</td>
                   <td>{co.email}</td>
                   <td className="viewComapny-viewmore">
                     <Button
