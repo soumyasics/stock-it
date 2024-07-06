@@ -1,4 +1,4 @@
-const { UserModel } = require("./tutorSchema");
+const { TutorModel } = require("./tutorSchema");
 const jwt = require("jsonwebtoken");
 const multer = require("multer");
 
@@ -54,12 +54,12 @@ const registerTutor = async (req, res) => {
       return res.status(400).json({ msg: "All fields are required" });
     }
 
-    let existingTutor = await UserModel.findOne({ email });
+    let existingTutor = await TutorModel.findOne({ email });
     if (existingTutor) {
       return res.status(409).json({ msg: "Email already registered" });
     }
 
-    const newTutor = new UserModel({
+    const newTutor = new TutorModel({
       fullName,
       gender,
       qualification,
@@ -84,7 +84,7 @@ const registerTutor = async (req, res) => {
 // Get all tutors
 const getAllTutors = async (req, res) => {
   try {
-    const tutors = await UserModel.find();
+    const tutors = await TutorModel.find();
     res.json(tutors);
   } catch (error) {
     res.status(500).json({ msg: error.message });
@@ -92,7 +92,7 @@ const getAllTutors = async (req, res) => {
 };
 const getAllPendingTutors = async (req, res) => {
   try {
-    const tutors = await UserModel.find({ adminApproved: false });
+    const tutors = await TutorModel.find({ adminApproved: false });
     return res.json({ message: "All pending tutuors", data: tutors });
   } catch (error) {
     res.status(500).json({ msg: error.message });
@@ -102,7 +102,7 @@ const getAllPendingTutors = async (req, res) => {
 // Get tutor by ID
 const getTutorById = async (req, res) => {
   try {
-    const tutor = await UserModel.findById(req.params.id);
+    const tutor = await TutorModel.findById(req.params.id);
     if (!tutor) {
       return res.status(404).json({ msg: "Tutor not found" });
     }
@@ -124,7 +124,7 @@ const updateTutorById = async (req, res) => {
         updates.photo = req.file;
       }
 
-      const updatedTutor = await UserModel.findByIdAndUpdate(
+      const updatedTutor = await TutorModel.findByIdAndUpdate(
         req.params.id,
         updates,
         { new: true }
@@ -142,7 +142,7 @@ const updateTutorById = async (req, res) => {
 // Delete tutor by ID
 const deleteTutorById = async (req, res) => {
   try {
-    const deletedTutor = await UserModel.findByIdAndDelete(req.params.id);
+    const deletedTutor = await TutorModel.findByIdAndDelete(req.params.id);
     if (!deletedTutor) {
       return res.status(404).json({ msg: "Tutor not found" });
     }
@@ -155,7 +155,7 @@ const deleteTutorById = async (req, res) => {
 // Activate tutor by ID
 const activateTutorById = async (req, res) => {
   try {
-    const tutor = await UserModel.findByIdAndUpdate(
+    const tutor = await TutorModel.findByIdAndUpdate(
       req.params.id,
       { isActive: true },
       { new: true }
@@ -172,7 +172,7 @@ const activateTutorById = async (req, res) => {
 // Deactivate tutor by ID
 const deactivateTutorById = async (req, res) => {
   try {
-    const tutor = await UserModel.findByIdAndUpdate(
+    const tutor = await TutorModel.findByIdAndUpdate(
       req.params.id,
       { isActive: false },
       { new: true }
@@ -187,11 +187,26 @@ const deactivateTutorById = async (req, res) => {
 };
 
 // Approve tutor by ID
-const approveTutorById = async (req, res) => {
+const adminApproveTutorById = async (req, res) => {
   try {
-    const tutor = await UserModel.findByIdAndUpdate(
+    const tutor = await TutorModel.findByIdAndUpdate(
       req.params.id,
       { adminApproved: true },
+      { new: true }
+    );
+    if (!tutor) {
+      return res.status(404).json({ msg: "Tutor not found" });
+    }
+    res.json({ msg: "Tutor approved successfully", data: tutor });
+  } catch (error) {
+    res.status(500).json({ msg: error.message });
+  }
+};
+const adminRejectTutorById = async (req, res) => {
+  try {
+    const tutor = await TutorModel.findByIdAndUpdate(
+      req.params.id,
+      { adminApproved: false },
       { new: true }
     );
     if (!tutor) {
@@ -207,7 +222,7 @@ const approveTutorById = async (req, res) => {
 const loginTutor = async (req, res) => {
   try {
     const { email, password } = req.body;
-    const tutor = await UserModel.findOne({ email });
+    const tutor = await TutorModel.findOne({ email });
 
     if (!tutor) {
       return res.status(404).json({ msg: "Tutor not found" });
@@ -247,7 +262,7 @@ const requireAuth = (req, res, next) => {
 // Search tutors by name
 const searchTutorByName = async (req, res) => {
   try {
-    const tutors = await UserModel.find({
+    const tutors = await TutorModel.find({
       firstName: { $regex: req.params.name, $options: "i" },
     });
     if (tutors.length === 0) {
@@ -260,7 +275,26 @@ const searchTutorByName = async (req, res) => {
     res.status(500).json({ msg: "Server error", error });
   }
 };
+const forgotPassword = async (req, res) => {
+  try {
+    const { email, newPassword } = req.body;
+    if (!email) {
+      return res.status(400).json({ msg: "All fields are required" });
+    }
+    const user = await TutorModel.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ msg: "User does not exist" });
+    }
+    user.password = newPassword;
+    await user.save();
+    return res
+      .status(200)
+      .json({ msg: "Password reset successfully.", data: user });
 
+  } catch (error) {
+    return res.status(500).json({ msg: "Server error", error: error.message });
+  }
+};
 module.exports = {
   registerTutor,
   getAllTutors,
@@ -269,10 +303,12 @@ module.exports = {
   deleteTutorById,
   activateTutorById,
   deactivateTutorById,
-  approveTutorById,
+  adminApproveTutorById,
+  adminRejectTutorById,
   loginTutor,
   requireAuth,
   upload,
   getAllPendingTutors,
   searchTutorByName,
+  forgotPassword
 };

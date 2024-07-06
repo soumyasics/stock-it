@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 // import "./requestPage.css";
 import img2 from "../../../assets/images/crossbtn.png";
 import axiosInstance from "../../../apis/axiosInstance";
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { BASE_URL } from "../../../apis/baseUrl";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
@@ -12,7 +12,7 @@ export const AdminETRequestDetails = () => {
   console.log("state", state);
   const { id } = useParams();
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     getETById();
   }, []);
@@ -21,7 +21,7 @@ export const AdminETRequestDetails = () => {
     axiosInstance
       .post(`/getTutorById/${id}`)
       .then((response) => {
-        console.log(response);
+        console.log("tutor id ", response);
         setState(response.data.data);
       })
       .catch((error) => {
@@ -30,9 +30,9 @@ export const AdminETRequestDetails = () => {
   };
   const toAccept = (e) => {
     e.preventDefault();
-    axiosInstance.post("/acceptCompanyById/" + id).then((response) => {
+    axiosInstance.post("/adminApproveTutorById/" + id).then((response) => {
       console.log(response);
-      if (response.data.status == 200) {
+      if (response.status == 200) {
         toast.success(response.data.msg);
         navigate("/admin");
       } else {
@@ -43,8 +43,8 @@ export const AdminETRequestDetails = () => {
   };
   const toDelete = (e) => {
     e.preventDefault();
-    axiosInstance.post(`deleteCompanyById/${id}`).then((res) => {
-      if (res.data.status == 200) {
+    axiosInstance.post(`adminRejectTutorById/${id}`).then((res) => {
+      if (res.status == 200) {
         toast.success(res.data.msg);
         navigate("/admin");
       } else {
@@ -63,7 +63,7 @@ export const AdminETRequestDetails = () => {
       <div className="w-100">
         <div className="requestpage-bg">
           <div className="requestpage-header">
-            <img src={`${BASE_URL}${state?.logo?.filename}`} alt="profile" />
+            <img src={`${BASE_URL}${state?.photo?.filename}`} alt="profile" />
             <div className="requestpage-companyname">
               <h2>{state.name}</h2>
             </div>
@@ -81,68 +81,36 @@ export const AdminETRequestDetails = () => {
               <tr>
                 <td>Name</td>
                 <td>-</td>
-                <td>{state.name}</td>
+                <td>{state.fullName}</td>
               </tr>
               <tr>
-                <td>Company Type</td>
+                <td>Gender</td>
                 <td>-</td>
-                <td>{state.companyType} </td>
+                <td>{state.gender} </td>
               </tr>
               <tr>
-                <td>City</td>
+                <td>Experience</td>
                 <td>-</td>
-                <td>{state.district} </td>
+                <td>{state.experience} </td>
               </tr>
               <tr>
-                <td>State</td>
+                <td>Specefication</td>
                 <td>-</td>
-                <td>{state.state} </td>
+                <td>{state.specification} </td>
               </tr>
-              <tr>
-                <td>Pincode</td>
-                <td>-</td>
-                <td>{state.pincode}</td>
-              </tr>
+
               <tr>
                 <td>Contact Number</td>
                 <td>-</td>
-                <td>{state.contact}</td>
+                <td>{state.contactNumber}</td>
               </tr>
               <tr>
                 <td>Email Id</td>
                 <td>-</td>
                 <td>{state.email}</td>
               </tr>
-              <tr>
-                <td>Registration Number</td>
-                <td>-</td>
-                <td>{state.regNo} </td>
-              </tr>
-              <tr>
-                <td>Company License</td>
-                <td>-</td>
-                <td>
-                  <button
-                    className="btn-primary btn"
-                    type="button"
-                    class="modal-btn"
-                    data-bs-toggle="modal"
-                    data-bs-target="#staticBackdrop"
-                  >
-                    View License
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>Year Founded</td>
-                <td>-</td>
-                <td>{state.year}</td>
-              </tr>
-              <tr>
-                <td>Company Website</td>
-                <td>-</td>
-                <td>{state.website}</td>
-              </tr>
+
+             
             </table>
           </div>
           <div className="requestpage-btn">
