@@ -13,6 +13,9 @@ function CompanyLogin() {
   const redirectToComapanySignup = () => {
     navigate("/CompanyRegistration");
   };
+  const redirectToComapnyForgotpassword=()=>{
+    navigate("/companyForgotpassword")
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -77,7 +80,7 @@ function CompanyLogin() {
                 />
               </div>
               <div className="forgot-password">
-                <a href="">forgot password?</a>
+                <span onClick={redirectToComapnyForgotpassword} >forgot password?</span>
               </div>
               <button class="login-button" value="submit" type="submit">
                 Login

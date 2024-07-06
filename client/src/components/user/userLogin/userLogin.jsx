@@ -13,6 +13,9 @@ export const UserLogin = () => {
   const navigateToUserRegistration = () => {
     navigate("/userRegistration");
   };
+  const redirectToUserLogin=()=>{
+    navigate("/userForgotpassword")
+  }
   const redirectToHome = () => {
     navigate('/userHome')
   }
@@ -91,7 +94,7 @@ export const UserLogin = () => {
                     />
                   </div>
                   
-                    <span className="userforgot-password">forgot password?</span>
+                    <span className="userforgot-password" style={{ cursor: "pointer" }} onClick={redirectToUserLogin}>forgot password?</span>
                   
                   <button className="login-button mt-3" value="submit" type="submit">
                     Login

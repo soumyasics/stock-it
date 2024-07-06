@@ -54,6 +54,8 @@ import Etsidebar from "./components/educational-tutors/et-sidebar/etsidebar";
 import Etnavbar from "./components/educational-tutors/et-navbar/etnavbar";
 import EtForgotpassword from "./components/educational-tutors/et-forgotpassword/etForgotpassword";
 import { AdminViewAllETs } from "./components/Admin/adminViewAllEts/adminViewEts";
+import UserForgotpassword from "./components/user/userForgotpasword/userForgotpassword";
+import CompanyForgotpassword from "./components/company/companyForgotpassword/companyForgotpassword";
 
 function App() {
   return (
@@ -81,7 +83,11 @@ function App() {
           <Route path="/requestpage/:id" element={<RequestPage />} />
           <Route path="/companysidebar" element={<CompanySidebar />} />
           <Route path="/company-dashboard" element={<CompanyDashboard />} />
-
+          {/* company new */}
+          <Route
+            path="/companyForgotpassword"
+            element={<CompanyForgotpassword />}
+          />
           {/* user pages  */}
           <Route path="/userRegistration" element={<UserRegistration />} />
           <Route path="/userHome" element={<UserHomePage />} />
@@ -92,6 +98,8 @@ function App() {
           {/* <Route path="/userabout" element={<UserHomePage />} /> */}
           <Route path="/userabout" element={<EtUserHomePage />} />
           <Route path="/et" element={<EtUserHomePage />} />
+          {/* user new */}
+          <Route path="/userForgotpassword" element={<UserForgotpassword />} />
 
           {/* admin pages  */}
           <Route path="/admin" element={<AdminDashboard />} />
@@ -111,15 +119,12 @@ function App() {
             path="/adminViewPendingIPOs"
             element={<AdminIPOPendingList />}
           />
-          <Route
-            path="/adminViewAllETs"
-            element={<AdminViewAllETs />}
-          />
+          <Route path="/adminViewAllETs" element={<AdminViewAllETs />} />
           <Route
             path="/adminViewCompany/:id"
             element={<AdminViewCompanyDetails />}
           />
-  
+
           <Route
             path="/adminETRequestDetails/:id"
             element={<AdminETRequestDetails />}
@@ -133,16 +138,14 @@ function App() {
 
           {/* et-new */}
           <Route path="/etdashboard" element={<Etdashboard />} />
-          <Route path="/etsidebar" element={<Etsidebar/>    }/>
-          <Route path="/etnavbar" element={<Etnavbar/>}/>
-          <Route path="/etForgotpassword" element={<EtForgotpassword/>}/>
+          <Route path="/etsidebar" element={<Etsidebar />} />
+          <Route path="/etnavbar" element={<Etnavbar />} />
+          <Route path="/etForgotpassword" element={<EtForgotpassword />} />
 
           {/* new  */}
           <Route path="/newsidebar" element={<NewAdminsidebar />} />
           <Route path="/etsignup" element={<EtSignup />} />
           <Route path="/etlogin" element={<Etlogin />} />
-
-       
 
      
           <Route path="/adminNavbar" element={<AdminNavbar />} />
