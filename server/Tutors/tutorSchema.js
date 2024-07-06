@@ -53,6 +53,6 @@ const tSchema = new Schema({
   },
 });
 
-const UserModel = mongoose.model("tutors", tSchema);
+const TutorModel = mongoose.model("tutors", tSchema);
 
-module.exports = { UserModel };
+module.exports = { TutorModel };

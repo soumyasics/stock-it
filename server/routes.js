@@ -40,7 +40,7 @@ router.post("/getUserById/:id", userController.getUserById);
 router.post("/editUserById/:id",userController.upload, userController.editUserById);
 router.post("/activateUserById/:id", userController.activateUserById);
 router.post("/deActivateUserById/:id", userController.deActivateUserById);
-
+router.post("/user-forgot-password", userController.forgotPassword);
 
 
 //IPO routes
@@ -66,5 +66,5 @@ router.post("/deactivateTutorById/:id", ET.deactivateTutorById);
 router.post("/adminApproveTutorById/:id", ET.adminApproveTutorById);
 router.post("/adminRejectTutorById/:id", ET.adminRejectTutorById);
 router.post("/deleteTutorById/:id", ET.deleteTutorById);
-
+router.post("/tutor-forgot-password", ET.forgotPassword);
 module.exports = router;

@@ -119,6 +119,26 @@ const loginUser = async (req, res) => {
   }
 };
 
+const forgotPassword = async (req, res) => {
+  try {
+    const { email, newPassword } = req.body;
+    if (!email) {
+      return res.status(400).json({ msg: "All fields are required" });
+    }
+    const user = await UserModel.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ msg: "User does not exist" });
+    }
+    user.password = newPassword;
+    await user.save();
+    return res
+      .status(200)
+      .json({ msg: "Password reset successfully", data: user });
+
+  } catch (error) {
+    return res.status(500).json({ msg: "Server error", error: error.message });
+  }
+};
 const getAllUsers = async (req, res) => {
   try {
     const users = await UserModel.find();
@@ -144,10 +164,12 @@ const getUserById = async (req, res) => {
   }
 };
 
-
 const activateUserById = async (req, res) => {
   try {
-    const user = await UserModel.findByIdAndUpdate({_id:req.params.id},{isActive:true});
+    const user = await UserModel.findByIdAndUpdate(
+      { _id: req.params.id },
+      { isActive: true }
+    );
     if (!user) {
       return res.status(404).json({ msg: "User not found" });
     }
@@ -161,7 +183,10 @@ const activateUserById = async (req, res) => {
 
 const deActivateUserById = async (req, res) => {
   try {
-    const user = await UserModel.findByIdAndUpdate({_id:req.params.id},{isActive:false});
+    const user = await UserModel.findByIdAndUpdate(
+      { _id: req.params.id },
+      { isActive: false }
+    );
     if (!user) {
       return res.status(404).json({ msg: "User not found" });
     }
@@ -172,7 +197,6 @@ const deActivateUserById = async (req, res) => {
     return res.status(500).json({ msg: "Failed to retrieve user", error });
   }
 };
-
 
 // Edit User by ID
 const editUserById = async (req, res) => {
@@ -199,10 +223,10 @@ const editUserById = async (req, res) => {
       !dob ||
       !address ||
       !city ||
-      !state || 
-      !pincode || 
-      !contactNumber || 
-      !email || 
+      !state ||
+      !pincode ||
+      !contactNumber ||
+      !email ||
       !password
     ) {
       return res.status(400).json({ msg: "All fields are required" });
@@ -255,5 +279,5 @@ module.exports = {
   editUserById,
   deActivateUserById,
   activateUserById,
-  
+  forgotPassword
 };
