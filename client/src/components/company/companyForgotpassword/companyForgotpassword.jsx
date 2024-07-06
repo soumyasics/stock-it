@@ -47,7 +47,7 @@ function CompanyForgotpassword() {
   };
   const sendDataToServer = async (data) => {
     try {
-      const response = await axiosInstance.post("/user-forgot-password", data);
+      const response = await axiosInstance.post("/companyForgotPassword", data);
       console.log("forgot res", response);
       if (response.status === 200) {
         toast.success(response.data.msg);

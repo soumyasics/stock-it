@@ -135,7 +135,24 @@ function CompanyRegistration() {
         break;
       }
     }
-   
+    const {
+      password,
+      confirmPassword
+    }=companyData
+    if (password.length < 8) {
+      toast.error("Password needs minimum 8 characters");
+      return;
+    }
+    if (!confirmPassword) {
+      toast.error("Confirm password is required");
+      return;
+    }
+    if (password !== confirmPassword) {
+      toast.error("Passwords doesn't matches ");
+      return;
+    }
+
+
     if (formIsValid) {
       sendDataToServer(formData);
     }
