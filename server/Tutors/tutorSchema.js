@@ -48,7 +48,7 @@ const tSchema = new Schema({
     default: false,
   },
   adminApproved: {
-    type: Boolean,
+    type: String,
     default: false,
   },
 });
