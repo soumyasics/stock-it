@@ -6,7 +6,7 @@ import "./CompanyRegistration.css";
 import CommonNavbar from "../common/commonNavbar";
 import { Footer2 } from "../common/footer2/footer2";
 import { useNavigate } from "react-router-dom";
-import {toast} from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 function CompanyRegistration() {
   const navigate = useNavigate();
@@ -136,9 +136,34 @@ function CompanyRegistration() {
       }
     }
     const {
+      name,
+      pincode,
+      companyType,
+      year,
+      website,
+      state,
+      contact,
+      district,
+      email,
+      description,
+      regNo,
+      logo,
+      license,
       password,
-      confirmPassword
-    }=companyData
+      confirmPassword,
+    } = companyData;
+    if(pincode.length!==6){
+      toast.error("Please enter 6 digit pincode")
+      return;
+    }
+    if(year.length!==4){
+      toast.error("Invalid year")
+      return
+    }
+    if(regNo.length!==10){
+      toast.error("Please enter 10 digit registration number")
+      return;
+    }
     if (password.length < 8) {
       toast.error("Password needs minimum 8 characters");
       return;
@@ -151,7 +176,6 @@ function CompanyRegistration() {
       toast.error("Passwords doesn't matches ");
       return;
     }
-
 
     if (formIsValid) {
       sendDataToServer(formData);
