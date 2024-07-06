@@ -66,7 +66,6 @@ export const UserRegistration = () => {
     ifscCode: "",
   });
 
-
   const handleChanges = (e) => {
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
@@ -83,8 +82,7 @@ export const UserRegistration = () => {
   const redirectToLogin = () => {
     // navigate()
     navigate("/userLogin");
-
-  }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -146,6 +144,10 @@ export const UserRegistration = () => {
         toast.error("Pincode is required");
         return false;
       }
+      if (pincode.length !== 6) {
+        toast.error("Please enter 6 digit pincode");
+        return false;
+      }
       if (!contactNumber) {
         toast.error("Contact number is required");
         return false;
@@ -157,6 +159,10 @@ export const UserRegistration = () => {
       if (!password) {
         toast.error("Password is required");
         return false;
+      }
+      if (password.length < 8) {
+        toast.error("Password needs minimum 8 characters");
+        return;
       }
       if (!confirmPassword) {
         toast.error("Confirm password is required");
@@ -190,13 +196,13 @@ export const UserRegistration = () => {
         toast.error("Photo is required");
         return false;
       }
-      return true
+      return true;
     }
 
     if (!validateFields()) {
-      return
-      }
-    
+      return;
+    }
+
     const formData = new FormData();
     formData.append("firstName", firstName);
     formData.append("lastName", lastName);
@@ -229,7 +235,7 @@ export const UserRegistration = () => {
       console.log("resg respo", response);
       if (response.status === 200) {
         toast.success("User registered successfully");
-        console.log("resp", response)
+        console.log("resp", response);
         redirectToLogin();
       } else {
         // toast.error(response.data.data.msg);
@@ -438,7 +444,6 @@ export const UserRegistration = () => {
                         name="password"
                         value={userData.password}
                       />
-                      
                     </div>
                     <div className="col">
                       <label htmlFor="confirmpassword">Confirm Password</label>
