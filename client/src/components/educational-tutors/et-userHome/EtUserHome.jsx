@@ -10,9 +10,9 @@ export const EtUserHomePage = () => {
   return (
     <div>
       <UserNavbar />
-      <UserWelcome />
       <UserHomePart2 />
       <UserHomeTable />
+      <UserWelcome />
       <UserHomeDescription />
       <UserHomeGif />
       <Footer2 />

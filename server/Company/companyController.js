@@ -285,6 +285,27 @@ const searchcompanyByName = (req, res) => {
       res.status(500).json({ message: "Server Error" });
     });
 };
+
+const forgotPassword = async (req, res) => {
+  try {
+    const { email, newPassword } = req.body;
+    if (!email) {
+      return res.status(400).json({ msg: "All fields are required" });
+    }
+    const user = await Company.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ msg: "User does not exist" });
+    }
+    user.password = newPassword;
+    await user.save();
+    return res
+      .status(200)
+      .json({ msg: "Password reset successfully.", data: user });
+
+  } catch (error) {
+    return res.status(500).json({ msg: "Server error", error: error.message });
+  }
+};
 module.exports = {
   registerCompany,
   viewCompanies,
@@ -299,4 +320,5 @@ module.exports = {
   acceptCompanyById,
   deleteCompanyById,
   searchcompanyByName,
+  forgotPassword
 };

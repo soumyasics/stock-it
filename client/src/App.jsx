@@ -95,7 +95,8 @@ function App() {
 
           <Route path="/userViewCompany" element={<UserViewCompanies />} />
 
-          <Route path="/userabout" element={<UserHomePage />} />
+          {/* <Route path="/userabout" element={<UserHomePage />} /> */}
+          <Route path="/userabout" element={<EtUserHomePage />} />
           <Route path="/et" element={<EtUserHomePage />} />
           {/* user new */}
           <Route path="/userForgotpassword" element={<UserForgotpassword />} />
@@ -103,6 +104,11 @@ function App() {
           {/* admin pages  */}
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/AdminLogin" element={<AdminLogin />} />
+          <Route
+            path="/admin-resetPassword"
+            element={[<AdminNavbar />, <Resetpassword />]}
+          />
+
           <Route path="/adminsidebar" element={<AdminSidebar />} />
           <Route path="/commonNavbar" element={<CommonNavbar />} />
           <Route path="/landingheader" element={<LandingPageHeader />} />
@@ -141,11 +147,7 @@ function App() {
           <Route path="/etsignup" element={<EtSignup />} />
           <Route path="/etlogin" element={<Etlogin />} />
 
-          <Route
-            path="/resetPassword"
-            element={[<AdminNavbar />, <Resetpassword />]}
-          />
-
+     
           <Route path="/adminNavbar" element={<AdminNavbar />} />
 
           <Route
