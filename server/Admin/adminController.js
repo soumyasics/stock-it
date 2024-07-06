@@ -2,14 +2,14 @@ const admin = require("./adminSchema");
 
 const resetPwd = async (req, res) => {
   try {
-    const { email, newPassword } = req.body;
+    const { email,newpassword } = req.body;
 
     const data = await admin.findOne({ email: "admin@gmail.com" });
 
     if (!data) {
       const newAdmin = new admin({
         email: "admin@gmail.com",
-        password: newPassword,
+        password: newpassword,
       });
       await newAdmin.save();
       return res.json({
@@ -17,7 +17,7 @@ const resetPwd = async (req, res) => {
         msg: "Password reset successfully",
       });
     } else {
-      data.password = newPassword;
+      data.password = newpassword;
       await data.save();
       return res.json({
         status: 200,
