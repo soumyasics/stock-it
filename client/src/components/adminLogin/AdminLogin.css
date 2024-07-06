@@ -9,7 +9,7 @@
 .AdminLogin-box {
     height: 60%;
     width: 43%;
-    background-color:#111827;
+    background-color:#0c0c0c;
     position: absolute;
     top: 53%;
     left: 50%;
@@ -21,13 +21,14 @@
 
 .AdminLogin-heading {
     color: #FFF;
-
+    font-size: 20px;
     font-family: 'Noto Sans', sans-serif;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     text-align: center;
     margin-top: 6.5%;
+    padding-top: 3%;
 }
 .AdminLogin-left-inner-box
 {

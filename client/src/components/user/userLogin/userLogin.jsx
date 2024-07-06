@@ -1,4 +1,5 @@
 import CommonNavbar from "../../common/commonNavbar";
+import './userLogin.css'
 import { Footer2 } from "../../common/footer2/footer2";
 import img1 from "../../../assets/images/shieldLogo.png";
 import { useNavigate } from "react-router-dom";
@@ -53,19 +54,19 @@ export const UserLogin = () => {
       <CommonNavbar />
       <div style={{ minHeight: "500px" }}>
         <div>
-          <div className="companylogin-background">
-            <div className="companylogin-box">
+          <div className="userlogin-background">
+            <div className="userlogin-box">
               <h3 className="resetpassword-heading">User Login</h3>
               <div class="row">
-                <div class="col-5 companylogin-logo">
+                <div class="col-5 userlogin-logo">
                   <img
                     src={img1}
                     alt="loginPage logo"
                     className="img-fluid my-4"
                   />
                 </div>
-                <form class="col-7 companylogin-inputs" onSubmit={handleSubmit}>
-                  <div class="mb-3 companylogin-inner">
+                <form class="col-7 userlogin-inputs" onSubmit={handleSubmit}>
+                  <div class="mb-3 userlogin-inner">
                     <label for="exampleFormControlInput1" class="form-label">
                       Email
                     </label>
@@ -77,7 +78,7 @@ export const UserLogin = () => {
                       onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
-                  <div class="mb-3 companylogin-inner">
+                  <div class="mb-3 userlogin-inner">
                     <label for="exampleFormControlInput1" class="form-label">
                       Password
                     </label>
@@ -89,9 +90,9 @@ export const UserLogin = () => {
                       onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
-                  {/* <div className="forgot-password">
-                    <a href="">forgot password?</a>
-                  </div> */}
+                  
+                    <span className="userforgot-password">forgot password?</span>
+                  
                   <button className="login-button mt-3" value="submit" type="submit">
                     Login
                   </button>

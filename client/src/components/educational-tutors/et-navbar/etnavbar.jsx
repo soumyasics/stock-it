@@ -6,7 +6,7 @@ function Etnavbar() {
     <div>
           <div className="etNavbar">
       <nav className="navbar">
-        <div className="container-fluid navlogo">
+        <div className="container-fluid etnavlogo">
           <img src={logo} alt="" />
         </div>
       </nav>
