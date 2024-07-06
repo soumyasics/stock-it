@@ -2,21 +2,29 @@ const admin = require("./adminSchema");
 
 const resetPwd = async (req, res) => {
   try {
-    const { newPassword } = req.body;
+    const { email, newPassword } = req.body;
+
     const data = await admin.findOne({ email: "admin@gmail.com" });
+
     if (!data) {
+      const newAdmin = new admin({
+        email: "admin@gmail.com",
+        password: newPassword,
+      });
+      await newAdmin.save();
       return res.json({
-        status: 405,
-        msg: "Invalid credentials",
+        status: 200,
+        msg: "Password reset successfully",
+      });
+    } else {
+      data.password = newPassword;
+      await data.save();
+      return res.json({
+        status: 200,
+        msg: "Password reset successfully",
       });
     }
-    data.password = newPassword
-    await data.save();
-    return res.json({
-      status: 200,
-      msg: "Password reset successfully",
-    });
-  }catch(e) {
+  } catch (e) {
     return res.json({ error: e.message });
   }
 };
