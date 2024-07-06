@@ -62,7 +62,7 @@ function Etsidebar() {
           <div className="etsidebar-items etsidebar-content-logout">
             <tr
               onClick={() => {
-                navigate("/AdminLogin");
+                navigate("/etLogin");
               }}
             >
               <td>

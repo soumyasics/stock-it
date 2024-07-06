@@ -108,7 +108,7 @@ function Etlogin() {
                       onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
-                  <div className="forgot-password">
+                  <div className="etforgot-password">
                     <span onClick={redirectToforgotPassword}>forgot password?</span>
                   </div>
                   <button

@@ -20,22 +20,29 @@ function AdminLogin() {
   const btnsubmit = (e) => {
     e.preventDefault();
     console.log(state);
-    axiosInstance
-      .post("/loginAdmin", state)
-      .then((res) => {
-        console.log(res);
-        if (res.data.status === 200) {
-          toast.success("Login Successfully");
-          localStorage.setItem("stock_it_admin_login", true);
-          navigate("/admin");
-        } else {
-          toast.error(res.data.msg);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
+    if (state.email === "admin@gmail.com" && state.password === "admin@123") {
+      toast.success("Login success")
+      navigate("/admin");
+    }else {
+      toast.error("Login failed")
+
+    }
+    // axiosInstance
+    //   .post("/loginAdmin", state)
+    //   .then((res) => {
+    //     console.log(res);
+    //     if (res.data.status === 200) {
+    //       toast.success("Login Successfully");
+    //       localStorage.setItem("stock_it_admin_login", true);
+    //       navigate("/admin");
+    //     } else {
+    //       toast.error(res.data.msg);
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
         
-      });
+    //   });
   };
 
   return (
