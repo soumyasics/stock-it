@@ -85,9 +85,9 @@ const registerTutor = async (req, res) => {
 const getAllTutors = async (req, res) => {
   try {
     const tutors = await TutorModel.find();
-    res.json(tutors);
+    return res.status(200).json({msg: "All tutors", data: tutors });
   } catch (error) {
-    res.status(500).json({ msg: error.message });
+    return res.status(500).json({ msg: error.message });
   }
 };
 const getAllPendingTutors = async (req, res) => {
@@ -191,7 +191,7 @@ const adminApproveTutorById = async (req, res) => {
   try {
     const tutor = await TutorModel.findByIdAndUpdate(
       req.params.id,
-      { adminApproved: true },
+      { adminApproved: "approved" },
       { new: true }
     );
     if (!tutor) {
@@ -206,7 +206,7 @@ const adminRejectTutorById = async (req, res) => {
   try {
     const tutor = await TutorModel.findByIdAndUpdate(
       req.params.id,
-      { adminApproved: false },
+      { adminApproved: "rejected" },
       { new: true }
     );
     if (!tutor) {

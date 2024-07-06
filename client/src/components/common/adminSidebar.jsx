@@ -129,7 +129,12 @@ function AdminSidebar({ changePage }) {
                     >
                       View all request
                     </li>
-                    <li className="clickable-item">
+                    <li
+                      className="clickable-item"
+                      onClick={() => {
+                        // changePage("adminViewAllETs");
+                      }}
+                    >
                       {" "}
                       View all educational tutors
                     </li>

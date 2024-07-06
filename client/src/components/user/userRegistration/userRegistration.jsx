@@ -404,7 +404,7 @@ export const UserRegistration = () => {
                       <input
                         type="email"
                         className="form-control"
-                        placeholder="First name"
+                        placeholder="Enter email"
                         name="email"
                         value={userData.email}
                         onChange={handleChanges}

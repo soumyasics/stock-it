@@ -74,7 +74,13 @@ export const AdminIPOPendingList = () => {
                     <td>{u?.costPerShare}</td>
                     <td> {u?.capitation}</td>
                     <td>
-                      {u?.adminApproved ? <p> Approved </p> : <p>Pending </p>}
+                      {u?.adminApproved === "approved" ? (
+                        <p className="text-success"> Approved </p>
+                      ) : u?.adminApproved === "rejected" ? (
+                        <p className="text-danger"> Rejected</p>
+                      ) : (
+                        <p>Pending </p>
+                      )}
                     </td>
                     <td>
                       <td className="viewComapny-viewmore">

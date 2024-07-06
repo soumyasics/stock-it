@@ -57,7 +57,7 @@ export const CompanyProfile = () => {
                   </span>
                 </h6>
               </ListGroup.Item>
-              <ListGroup.Item>
+              {/* <ListGroup.Item>
                 {" "}
                 <h6>
                   Current Status:{" "}
@@ -73,7 +73,7 @@ export const CompanyProfile = () => {
                     </span>
                   )}
                 </h6>
-              </ListGroup.Item>
+              </ListGroup.Item> */}
               <ListGroup.Item>
                 {" "}
                 <h6>

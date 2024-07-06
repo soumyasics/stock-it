@@ -144,6 +144,7 @@ exports.approveIPOById = async (req, res) => {
       { adminApproved: "approved" },
       { new: true }
     );
+    console.log("update ipo", updateIPO);
     return res.json({ msg: "IPO approved.", data: updateIPO });
   } catch (err) {
     return res.status(500).json({ msg: err.message });

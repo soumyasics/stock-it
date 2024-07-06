@@ -53,6 +53,7 @@ import { AdminETRequestDetails } from "./components/Admin/etRequestDetails/admin
 import Etsidebar from "./components/educational-tutors/et-sidebar/etsidebar";
 import Etnavbar from "./components/educational-tutors/et-navbar/etnavbar";
 import EtForgotpassword from "./components/educational-tutors/et-forgotpassword/etForgotpassword";
+import { AdminViewAllETs } from "./components/Admin/adminViewAllEts/adminViewEts";
 
 function App() {
   return (
@@ -85,13 +86,14 @@ function App() {
           <Route path="/userRegistration" element={<UserRegistration />} />
           <Route path="/userHome" element={<UserHomePage />} />
           <Route path="/userLogin" element={<UserLogin />} />
-            
+
           <Route path="/userViewCompany" element={<UserViewCompanies />} />
 
           <Route path="/userabout" element={<UserHomePage />} />
           <Route path="/et" element={<EtUserHomePage />} />
 
           {/* admin pages  */}
+          <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/AdminLogin" element={<AdminLogin />} />
           <Route path="/adminsidebar" element={<AdminSidebar />} />
           <Route path="/commonNavbar" element={<CommonNavbar />} />
@@ -102,6 +104,10 @@ function App() {
           <Route
             path="/adminViewPendingIPOs"
             element={<AdminIPOPendingList />}
+          />
+          <Route
+            path="/adminViewAllETs"
+            element={<AdminViewAllETs />}
           />
           <Route
             path="/adminViewCompany/:id"
@@ -130,7 +136,7 @@ function App() {
           <Route path="/etsignup" element={<EtSignup />} />
           <Route path="/etlogin" element={<Etlogin />} />
 
-          <Route path="/admin" element={<AdminDashboard />} />
+       
 
           <Route
             path="/resetPassword"
