@@ -1,4 +1,16 @@
 const { ArticleModel } = require("./articleSchema");
+const multer = require("multer");
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./upload");
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  },
+});
+
+const uploadVideo = multer({ storage: storage }).any();
 
 const createArticle = async (req, res) => {
   try {
@@ -22,6 +34,8 @@ const createArticle = async (req, res) => {
       category,
       content,
       conclusion,
+      thumbnail: req.files[0],
+      video: req.files[0],
     });
     await newArticle.save();
     res
@@ -105,4 +119,5 @@ module.exports = {
   getArticleByTutorId,
   updateArticleById,
   deleteArticleById,
+  uploadVideo,
 };

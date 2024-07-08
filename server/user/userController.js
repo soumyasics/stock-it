@@ -111,6 +111,9 @@ const loginUser = async (req, res) => {
     if (user.password !== password) {
       return res.status(400).json({ msg: "Invalid credentials" });
     }
+    if (!user.isActive) {
+      return res.status(400).json({ msg: "Your account is deactivated" });
+    }
     return res
       .status(200)
       .json({ msg: "User logged in successfully", data: user });

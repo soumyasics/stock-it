@@ -27,8 +27,6 @@ const upload = multer({ storage: storage }).single("photo");
 
 // Register Tutor
 const registerTutor = async (req, res) => {
-  console.log("file", req.file, "", req.body);
-
   try {
     const {
       fullName,
@@ -85,14 +83,14 @@ const registerTutor = async (req, res) => {
 const getAllTutors = async (req, res) => {
   try {
     const tutors = await TutorModel.find();
-    return res.status(200).json({msg: "All tutors", data: tutors });
+    return res.status(200).json({ msg: "All tutors", data: tutors });
   } catch (error) {
     return res.status(500).json({ msg: error.message });
   }
 };
 const getAllPendingTutors = async (req, res) => {
   try {
-    const tutors = await TutorModel.find({ adminApproved: false });
+    const tutors = await TutorModel.find({ adminApproved: "pending" });
     return res.json({ message: "All pending tutuors", data: tutors });
   } catch (error) {
     res.status(500).json({ msg: error.message });
@@ -106,7 +104,7 @@ const getTutorById = async (req, res) => {
     if (!tutor) {
       return res.status(404).json({ msg: "Tutor not found" });
     }
-    return res.status(200).json({msg: "Tutorial by id", data: tutor });
+    return res.status(200).json({ msg: "Tutorial by id", data: tutor });
   } catch (error) {
     res.status(500).json({ msg: error.message });
   }
@@ -191,7 +189,7 @@ const adminApproveTutorById = async (req, res) => {
   try {
     const tutor = await TutorModel.findByIdAndUpdate(
       req.params.id,
-      { adminApproved: "approved" },
+      { adminApproved: "approve" },
       { new: true }
     );
     if (!tutor) {
@@ -206,7 +204,7 @@ const adminRejectTutorById = async (req, res) => {
   try {
     const tutor = await TutorModel.findByIdAndUpdate(
       req.params.id,
-      { adminApproved: "rejected" },
+      { adminApproved: "reject" },
       { new: true }
     );
     if (!tutor) {
@@ -230,8 +228,11 @@ const loginTutor = async (req, res) => {
     if (tutor.password !== password) {
       return res.status(401).json({ msg: "Password mismatch" });
     }
-    if (!tutor.adminApproved) {
+    if (tutor.adminApproved === "pending") {
       return res.status(401).json({ msg: "Tutor not approved by admin" });
+    }
+    if (tutor.adminApproved === "reject") {
+      return res.status(401).json({ msg: "Your account rejected by admin" });
     }
     const token = jwt.sign({ tutorId: tutor._id }, secret, {
       expiresIn: "1h",
@@ -290,13 +291,13 @@ const forgotPassword = async (req, res) => {
     return res
       .status(200)
       .json({ msg: "Password reset successfully.", data: user });
-
   } catch (error) {
     return res.status(500).json({ msg: "Server error", error: error.message });
   }
 };
 module.exports = {
   registerTutor,
+  loginTutor,
   getAllTutors,
   getTutorById,
   updateTutorById,
@@ -305,10 +306,9 @@ module.exports = {
   deactivateTutorById,
   adminApproveTutorById,
   adminRejectTutorById,
-  loginTutor,
   requireAuth,
   upload,
   getAllPendingTutors,
   searchTutorByName,
-  forgotPassword
+  forgotPassword,
 };
