@@ -24,10 +24,12 @@ export const CompanyPendingRequest = () => {
 
   useEffect(() => {
     axiosInstance
-      .post("/viewCompanies")
+      .post("/viewPendingCompanies")
       .then((res) => {
-        console.log(res);
-        setState(res.data.data);
+        if (res.data.status === 200) {
+          setState(res.data.data);
+        }
+        console.log("pending co.",res);
       })
       .catch((err) => {
         console.log(err);
