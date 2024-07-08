@@ -57,6 +57,7 @@ import { AdminViewAllETs } from "./components/Admin/adminViewAllEts/adminViewEts
 import UserForgotpassword from "./components/user/userForgotpasword/userForgotpassword";
 import CompanyForgotpassword from "./components/company/companyForgotpassword/companyForgotpassword";
 import AdminViewUserDetail from "./components/Admin/AdminViewUserDetail/adminViewUserDetail";
+import EtAddArticle from "./components/educational-tutors/et-AddArticle/etAddArticle";
 
 function App() {
   return (
@@ -143,6 +144,7 @@ function App() {
           <Route path="/etsidebar" element={<Etsidebar />} />
           <Route path="/etnavbar" element={<Etnavbar />} />
           <Route path="/etForgotpassword" element={<EtForgotpassword />} />
+          <Route path="/addArticle" element={<EtAddArticle/>}/>
 
           {/* new  */}
           <Route path="/newsidebar" element={<NewAdminsidebar />} />
