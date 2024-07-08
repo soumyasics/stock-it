@@ -56,6 +56,7 @@ import EtForgotpassword from "./components/educational-tutors/et-forgotpassword/
 import { AdminViewAllETs } from "./components/Admin/adminViewAllEts/adminViewEts";
 import UserForgotpassword from "./components/user/userForgotpasword/userForgotpassword";
 import CompanyForgotpassword from "./components/company/companyForgotpassword/companyForgotpassword";
+import AdminViewUserDetail from "./components/Admin/AdminViewUserDetail/adminViewUserDetail";
 
 function App() {
   return (
@@ -135,6 +136,7 @@ function App() {
             path="/adminIPOPending/:id"
             element={<AdminViewIPODetails />}
           />
+          <Route path="/adminVIewUserDetail/:id" element={<AdminViewUserDetail/>}/>
 
           {/* et-new */}
           <Route path="/etdashboard" element={<Etdashboard />} />
