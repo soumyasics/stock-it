@@ -40,7 +40,7 @@ const redirectToUserView=()=>{
       }
     });
   };
-  const toDelete=(e)=>{
+  const toDelete=()=>{
     axiosInstance.post(`/deActivateUserById/${id}`)
     .then((response)=>{
       console.log("res",response);

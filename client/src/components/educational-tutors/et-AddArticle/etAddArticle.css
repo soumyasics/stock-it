@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+.etAddArticle {
+  width: 733px;
+  height: 358px;
+  border-radius: 25px;
+  background: #374151;
+  padding-top: 1%;
+}
+.etBackBtn {
+  font-size: 25px;
+  color: #fff;
+  margin-left: 2%;
+}
+.etAddArticle-inputs {
+  color: #fff;
+  font-family: "Noto Sans";
+  font-size: 15.017px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.etAddArticle-inputs input {
+  width: 80%;
+  height: 30px;
+  margin: auto;
+  border-radius: 14.078px;
+  background: #fff;
+}
+.etAddArticle-inputs ::placeholder {
+  color: #1f2937;
+  font-family: "Noto Sans";
+  font-size: 12.201px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.etAddArticle-inputs label {
+  margin-left: 10%;
+  margin-bottom: 1%;
+}
+.etAddArticle-textarea {
+  margin-left: 5%;
+  color: #fff;
+  font-family: "Noto Sans";
+  font-size: 15.017px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.etAddArticle-textarea input {
+  width: 95%;
+  height: 100px;
+}
+.etAddArticle-btn button {
+    color: #fff;
+    font-family: "Noto sans";
+  width: 81.744px;
+  height: 29.194px;
+  flex-shrink: 0;
+  margin: 1% 45%;
+  border-radius: 13.222px;
+  background: #374151;
+  box-shadow: 0px 2.644px 2.644px 0px rgba(0, 0, 0, 0.25);
+}
