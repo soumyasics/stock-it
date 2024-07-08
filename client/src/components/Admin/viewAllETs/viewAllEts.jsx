@@ -88,7 +88,7 @@ export const AdminViewAllETs = () => {
                   <td className="viewComapny-viewmore">
                     <Button
                       onClick={() => {
-                        // navigate(`/adminViewCompany/${co._id}`);
+                        navigate(`/adminViewAllETs/${co._id}`);
                       }}
                     >
                       View more

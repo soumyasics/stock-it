@@ -57,6 +57,7 @@ import UserForgotpassword from "./components/user/userForgotpasword/userForgotpa
 import CompanyForgotpassword from "./components/company/companyForgotpassword/companyForgotpassword";
 import AdminViewUserDetail from "./components/Admin/AdminViewUserDetail/adminViewUserDetail";
 import { AdminViewAllETs } from "./components/Admin/viewAllETs/viewAllEts";
+import { AdminViewETDetails } from "./components/Admin/viewEtDetails/viewEtDetails";
 
 function App() {
   return (
@@ -121,6 +122,8 @@ function App() {
             element={<AdminIPOPendingList />}
           />
           <Route path="/adminViewAllETs" element={<AdminViewAllETs />} />
+          <Route path="/adminViewAllETs/:id" element={<AdminViewETDetails />} />
+
           <Route
             path="/adminViewCompany/:id"
             element={<AdminViewCompanyDetails />}

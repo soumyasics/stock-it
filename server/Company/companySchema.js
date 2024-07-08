@@ -65,7 +65,7 @@ const companySchema = mongoose.Schema({
     },
     isActive:{
         type:Boolean,
-        default:false
+        default:true
     }
 })
 module.exports = mongoose.model('companies', companySchema)

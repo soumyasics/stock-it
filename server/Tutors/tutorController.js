@@ -234,6 +234,9 @@ const loginTutor = async (req, res) => {
     if (tutor.adminApproved === "reject") {
       return res.status(401).json({ msg: "Your account rejected by admin" });
     }
+    if (!tutor.isActive) {
+      return res.status(401).json({ msg: "Your account rejected by admin" });
+    }
     const token = jwt.sign({ tutorId: tutor._id }, secret, {
       expiresIn: "1h",
     });
