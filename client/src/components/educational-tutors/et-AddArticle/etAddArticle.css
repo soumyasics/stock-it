@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
 .etAddArticle {
-  width: 733px;
-  height: 358px;
+  width: 900px;
+  height: 458px;
   border-radius: 25px;
   background: #374151;
   padding-top: 1%;
@@ -11,6 +11,9 @@
   font-size: 25px;
   color: #fff;
   margin-left: 2%;
+  display: flex;
+  justify-content: flex-start;
+  padding-bottom: 1%;
 }
 .etAddArticle-inputs {
   color: #fff;
