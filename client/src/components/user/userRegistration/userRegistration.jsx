@@ -30,7 +30,7 @@ export const UserRegistration = () => {
   //   lastName: "lname",
   //   gender: "male",
   //   dob: "24-02-2024",
-  //   address: "my-address",
+  //   address: "my-address"
   //   city: "city",
   //   state: "state",
   //   pincode: "123456",

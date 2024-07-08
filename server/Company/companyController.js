@@ -38,7 +38,6 @@ const upload = multer({ storage: storage }).array("files");
         contact,
         district,
         email,
-        city,
         description,
         regNo,
       } = req.body;
@@ -53,7 +52,6 @@ const upload = multer({ storage: storage }).array("files");
         !contact ||
         !district ||
         !email ||
-        !city ||
         !description ||
         !regNo
       ) {
@@ -70,7 +68,6 @@ const upload = multer({ storage: storage }).array("files");
         contact,
         district,
         email,
-        city,
         logo: req.files[0],
         license: req.files[1],
         description,
@@ -101,6 +98,20 @@ const viewCompanies = async (req, res) => {
     return res.json({
       status: 200,
       msg: "Companies retrieved successfully",
+      data: companies,
+    });
+  } catch (error) {
+    res.json({ status: 500, msg: "Failed to retrieve companies", error });
+  }
+};
+const viewPendingCompanies = async (req, res) => {
+  try {
+    const companies = await Company.find({
+      adminApproved: false
+    });
+    return res.json({
+      status: 200,
+      msg: "Pending Companies retrieved successfully",
       data: companies,
     });
   } catch (error) {
@@ -320,5 +331,6 @@ module.exports = {
   acceptCompanyById,
   deleteCompanyById,
   searchcompanyByName,
-  forgotPassword
+  forgotPassword,
+  viewPendingCompanies
 };

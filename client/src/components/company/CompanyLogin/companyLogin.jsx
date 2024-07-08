@@ -18,6 +18,21 @@ function CompanyLogin() {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!email || !password) {
+      toast.error("Please enter email and password");
+      return;
+    }
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+      toast.error("Email is not valid");
+      return;
+    }
+
+    if (password.length < 8) {
+      toast.error("Password must be at least 8 characters long");
+      return;
+    }
 
     sendDataToServer();
   };

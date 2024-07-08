@@ -67,7 +67,6 @@ exports.getIpoByCompanyId = async (req, res) => {
     const ipo = await Ipo.findOne({ companyId: id })
       .populate("companyId")
       .exec();
-    console.log("ipp", ipo);
     if (!ipo) {
       return res.status(404).json({ message: "IPO not found" });
     }

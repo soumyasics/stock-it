@@ -30,11 +30,6 @@ const companySchema = mongoose.Schema({
         type: String,
         require: true,
     },
-    city:{
-        type: String,
-        require: true,
-    }
-    ,
     contact: {
         type: Number,
         require: true,
@@ -42,10 +37,6 @@ const companySchema = mongoose.Schema({
     district: {
         type: String,
         require: true,
-    },
-    city:{
-        type:String,
-        require:true,
     },
     email: {
         type: String,

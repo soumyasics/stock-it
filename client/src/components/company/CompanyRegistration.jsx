@@ -56,7 +56,6 @@ function CompanyRegistration() {
   //   website: "https://www.google.com",
   //   state: "state",
   //   contact: "1234132412",
-  //   district: "city",
   //   email: "abc@gmail.com",
   //   description: "description",
   //   regNo: "1234123412",
@@ -101,7 +100,6 @@ function CompanyRegistration() {
     formData.append("description", companyData.description);
     formData.append("regNo", companyData.regNo);
     formData.append("password", companyData.password);
-    formData.append("city", companyData.city);
     formData.append("files", companyData.logo);
     formData.append("files", companyData.license);
     try {
@@ -152,30 +150,65 @@ function CompanyRegistration() {
       password,
       confirmPassword,
     } = companyData;
+
+    if (!name) {
+      toast.error("Company name is required");
+      formIsValid = false;
+      return;
+    }
+    if (!district) {
+      toast.error("District is required");
+      formIsValid = false;
+      return;
+    }
+
     if(pincode.length!==6){
       toast.error("Please enter 6 digit pincode")
+      formIsValid = false;
       return;
     }
     if(year.length!==4){
-      toast.error("Invalid year")
+      toast.error("Year should be 4 digit")
+      formIsValid = false;
       return
     }
     if(regNo.length!==10){
       toast.error("Please enter 10 digit registration number")
+      formIsValid = false;
       return;
     }
     if (password.length < 8) {
       toast.error("Password needs minimum 8 characters");
+      formIsValid = false;
       return;
     }
     if (!confirmPassword) {
       toast.error("Confirm password is required");
+      formIsValid = false;
       return;
     }
     if (password !== confirmPassword) {
       toast.error("Passwords doesn't matches ");
+      formIsValid = false;
       return;
     }
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+      toast.error("Email is not valid");
+      formIsValid = false;
+      return;
+    }
+    if (!logo) {
+      toast.error("Logo is required");
+      formIsValid = false;
+      return;
+    }
+    if (!license) {
+      toast.error("License is required");
+      formIsValid = false;
+      return;
+    }
+    
 
     if (formIsValid) {
       sendDataToServer(formData);
@@ -229,12 +262,12 @@ function CompanyRegistration() {
                   </div>
                   <div className="row g-3">
                     <div className="col-md-6">
-                      <label className="form-label">City</label>
+                      <label className="form-label">District</label>
                       <input
                         type="text"
                         name="district"
                         className="form-control CompanyRegistration-inp"
-                        placeholder="Enter City"
+                        placeholder="Enter district"
                         value={companyData.district}
                         onChange={handleChange}
                       />
