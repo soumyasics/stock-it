@@ -19,6 +19,10 @@ function CompanyForgotpassword() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if(!email){
+      toast.error("Please enter email Id")
+      return
+    }
     if (!emailRegex.test(email)) {
       toast.error("Please enter a valid email address");
       return false;
