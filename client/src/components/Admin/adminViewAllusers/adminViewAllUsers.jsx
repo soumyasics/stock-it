@@ -29,6 +29,11 @@ export const AdminViewAllUsers = () => {
   useEffect(() => {
     getAllUsers();
   }, []);
+
+  const navigateToViewUserDetail=(id)=>{
+    console.log("check",id);
+    navigate(`/adminVIewUserDetail/${id}`)
+  }
   return (
     <div>
       <AdminNavbar />
@@ -81,8 +86,8 @@ export const AdminViewAllUsers = () => {
                   </td>
                   <td className="viewComapny-viewmore">
                     <Button
-                      onClick={() => {
-                        // navigate(`/adminViewCompany/${co._id}`);
+                      onClick={()=>{
+                        navigateToViewUserDetail(u._id);
                       }}
                     >
                       View more
