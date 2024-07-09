@@ -40,7 +40,7 @@ const redirectToUserView=()=>{
       }
     });
   };
-  const toDelete=(e)=>{
+  const toDelete=()=>{
     axiosInstance.post(`/deActivateUserById/${id}`)
     .then((response)=>{
       console.log("res",response);
@@ -73,42 +73,42 @@ const redirectToUserView=()=>{
               <tr>
                 <td>First Name</td>
                 <td>-</td>
-                <td>{userData.firstName}</td>
+                <td>{userData?.firstName}</td>
               </tr>
               <tr>
                 <td>Last Name</td>
                 <td>-</td>
-                <td>{userData.lastName}</td>
+                <td>{userData?.lastName}</td>
               </tr>
               <tr>
                 <td>Gender</td>
                 <td>-</td>
-                <td>{userData.gender} </td>
+                <td>{userData?.gender} </td>
               </tr>
               <tr>
                 <td>DOB</td>
                 <td>-</td>
-                <td>{userData.dob} </td>
+                <td>{userData?.dob} </td>
               </tr>
               <tr>
                 <td>Address</td>
                 <td>-</td>
-                <td>{userData.address} </td>
+                <td>{userData?.address} </td>
               </tr>
               <tr>
                 <td>City</td>
                 <td>-</td>
-                <td>{userData.city} </td>
+                <td>{userData?.city} </td>
               </tr>
               <tr>
                 <td>State</td>
                 <td>-</td>
-                <td>{userData.state} </td>
+                <td>{userData?.state} </td>
               </tr>
               <tr>
                 <td>Pincode</td>
                 <td>-</td>
-                <td>{userData.pincode} </td>
+                <td>{userData?.pincode} </td>
               </tr>
 
               <tr>
@@ -119,7 +119,7 @@ const redirectToUserView=()=>{
               <tr>
                 <td>Email ID</td>
                 <td>-</td>
-                <td>{userData.email} </td>
+                <td>{userData?.email} </td>
               </tr>
               <tr>
                 <td>Id Proof</td>

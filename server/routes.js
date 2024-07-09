@@ -78,6 +78,7 @@ router.post(
   ArtilceRoutes.uploadVideo,
   ArtilceRoutes.createArticle
 );
+
 router.get("/getAllArticles", ArtilceRoutes.getAllArticles);
 router.post("/getArticleById/:id", ArtilceRoutes.getArticleById);
 router.post("/updateArticleById/:id", ArtilceRoutes.updateArticleById);

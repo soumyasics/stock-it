@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
+
 const articleSchema = new Schema({
   tutorId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -26,7 +27,6 @@ const articleSchema = new Schema({
     type: String,
     required: true,
   },
-
   thumbnail: {
     type: Object,
     required: true,
@@ -35,6 +35,7 @@ const articleSchema = new Schema({
     type: Object,
     required: true,
   },
+
 });
 const ArticleModel = model("Article", articleSchema);
 

@@ -9,7 +9,8 @@ import { useNavigate } from "react-router-dom";
 import AdminNavbar from "../common/adminNavbar";
 import { Footer2 } from "../common/footer2/footer2";
 
-export const CompanyPendingRequest = () => {
+export const 
+CompanyPendingRequest = () => {
   const [state, setState] = useState([]);
 
   const [pageNumber, setPageNumber] = useState(0);
