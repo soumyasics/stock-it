@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
 .adminViewUserDetail-bg {
-    height: 100vh;
+    height: 150vh;
     flex-shrink: 0;
     background: #1F2937;
     margin: auto;

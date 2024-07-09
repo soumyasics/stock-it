@@ -319,11 +319,11 @@ const forgotPassword = async (req, res) => {
 };
 module.exports = {
   registerCompany,
+  login,
   viewCompanies,
   viewCompanyById,
   updateCompanyById,
   deleteCompanyById,
-  login,
   requireAuth,
   upload,
   activateCompanyById,

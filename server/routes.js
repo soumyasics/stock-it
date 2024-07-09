@@ -73,7 +73,12 @@ router.post("/deleteTutorById/:id", ET.deleteTutorById);
 router.post("/tutor-forgot-password", ET.forgotPassword);
 
 // Article routes
-router.post("/createArticle", ArtilceRoutes.createArticle);
+router.post(
+  "/createArticle",
+  ArtilceRoutes.uploadVideo,
+  ArtilceRoutes.createArticle
+);
+
 router.get("/getAllArticles", ArtilceRoutes.getAllArticles);
 router.post("/getArticleById/:id", ArtilceRoutes.getArticleById);
 router.post("/updateArticleById/:id", ArtilceRoutes.updateArticleById);
