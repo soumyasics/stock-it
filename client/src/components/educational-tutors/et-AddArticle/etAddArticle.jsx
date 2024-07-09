@@ -18,6 +18,7 @@ function EtAddArticle() {
     const { name, value } = e.target;
     setArticle({ ...article, [name]: value });
   };
+  console.log("arti", article)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -75,7 +76,7 @@ function EtAddArticle() {
   };
   const sendDataToServer=async (data)=>{
     try{
-      const response=await axiosMultipartInstance.post("/createArticle",data)
+      const response=await axiosMultipartInstance.post("createArticle",data)
       console.log(response);
     if(response.status==200){
       toast.success("Article upload successful")
