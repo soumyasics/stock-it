@@ -1,33 +1,50 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./etAddArticle.css";
 import { TiArrowBackOutline } from "react-icons/ti";
 import toast from "react-hot-toast";
 import axiosMultipartInstance from "../../../apis/axiosMultipartInstance";
-
+import { useNavigate } from "react-router-dom";
 function EtAddArticle() {
   const [article, setArticle] = useState({
     title: "",
     subTitle: "",
     content: "",
     category: "",
+    tutorId: "",
     thumbnail: null,
     video: null,
     conclusion: "",
   });
+  const navigate = useNavigate()
   const handleChanges = (e) => {
     const { name, value } = e.target;
     setArticle({ ...article, [name]: value });
+
   };
-  console.log("arti", article)
+
+  useEffect(() => {
+    const tutorId =
+      JSON.parse(localStorage.getItem("stock_it_tutorId")) || null;
+    if (tutorId) {
+      setArticle((prev) => ({
+        ...prev,
+        tutorId: tutorId,
+      }));
+    }else {
+      // todo => navigate to to tutor login
+      // show toast please login again. 
+      navigate('/etlogin')
+    }
+  }, []);
+  console.log("arti", article);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("data", article);
-    const { title, subTitle, content, category, thumbnail, video, conclusion } =
+    const { title, subTitle, content, category, tutorId, thumbnail, video, conclusion } =
       article;
 
     const valitadeFields = () => {
-      
       if (!title) {
         toast.error("Enter title");
         return false;
@@ -36,28 +53,27 @@ function EtAddArticle() {
         toast.error("Enter subtilte");
         return false;
       }
-      if(!content){
-        toast.error("Enter content")
-        return false
+      if (!content) {
+        toast.error("Enter content");
+        return false;
       }
-      if(!category){
-        toast.error("Select category")
-        return false
+      if (!category) {
+        toast.error("Select category");
+        return false;
       }
-      if(!thumbnail){
-        toast.error("Please upload thumbnail")
-        return false
+      if (!thumbnail) {
+        toast.error("Please upload thumbnail");
+        return false;
       }
-      if(!video){
-        toast.error("Please upload video")
-        return false
+      if (!video) {
+        toast.error("Please upload video");
+        return false;
       }
-      if(!conclusion){
-        toast.error("Enter conclusion")
-        return false
+      if (!conclusion) {
+        toast.error("Enter conclusion");
+        return false;
       }
       return true;
-      
     };
     if (!valitadeFields()) {
       return;
@@ -69,24 +85,25 @@ function EtAddArticle() {
     formData.append("category", category);
     formData.append("thumbnail", thumbnail);
     formData.append("video", video);
+    formData.append("tutorId", tutorId);
     formData.append("conclusion", conclusion);
 
     console.log("formdata", formData);
-   sendDataToServer(formData)
+    sendDataToServer(formData);
   };
-  const sendDataToServer=async (data)=>{
-    try{
-      const response=await axiosMultipartInstance.post("createArticle",data)
+  const sendDataToServer = async (data) => {
+    try {
+      const response = await axiosMultipartInstance.post("createArticle", data);
       console.log(response);
-    if(response.status==200){
-      toast.success("Article upload successful")
-    }else{
-      toast.error(response.data.msg)
+      if (response.status == 201) {
+        toast.success("Article upload successful");
+      } else {
+        toast.error(response.data.msg);
+      }
+    } catch (error) {
+      console.error("network issue");
     }
-    }catch(error){
-      console.error("network issue")
-    }
-  }
+  };
 
   return (
     <div>
@@ -101,18 +118,18 @@ function EtAddArticle() {
               <label htmlFor="title">Title</label>
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 placeholder="Enter Article Title"
                 name="title"
                 value={article.title}
                 onChange={handleChanges}
               />
             </div>
-            <div class="col">
+            <div className="col">
               <label htmlFor="Episode Title">Subtitle </label>
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 placeholder="Enter Article subtitle"
                 name="subTitle"
                 value={article.subTitle}
@@ -125,7 +142,7 @@ function EtAddArticle() {
               <label htmlFor="title">Content</label>
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 placeholder="Enter Article Content "
                 name="content"
                 value={article.content}
@@ -156,12 +173,12 @@ function EtAddArticle() {
           </div>
           <div className="row pt-2">
             <div className="col">
-              <div class="mb-3">
-                <label for="formFileSm" class="form-label">
+              <div className="mb-3">
+                <label for="formFileSm" className="form-label">
                   Thumbnail
                 </label>
                 <input
-                  class="form-control form-control-sm"
+                  className="form-control form-control-sm"
                   id="formFileSm"
                   type="file"
                   name="thumbnail"
@@ -171,13 +188,13 @@ function EtAddArticle() {
                 />
               </div>
             </div>
-            <div class="col">
-              <div class="mb-3">
-                <label for="formFileSm" class="form-label">
+            <div className="col">
+              <div className="mb-3">
+                <label for="formFileSm" className="form-label">
                   Video
                 </label>
                 <input
-                  class="form-control form-control-sm"
+                  className="form-control form-control-sm"
                   id="formFileSm"
                   type="file"
                   name="video"
