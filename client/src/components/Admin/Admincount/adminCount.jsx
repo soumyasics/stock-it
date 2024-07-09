@@ -39,7 +39,7 @@ function AdminCount() {
           return i?.isActive === true;
         });
         const len = activeUsers.length;
-        setUsersLength(len);
+        setUsersLength(data.length);
       } else {
         console.log("Error ", res);
       }
@@ -57,7 +57,7 @@ function AdminCount() {
           return i?.isActive === true;
         });
         const len = activeUsers.length;
-        setTutLength(len);
+        setTutLength(data.length);
       } else {
         console.log("Error ", res);
       }
@@ -105,7 +105,9 @@ function AdminCount() {
             <p>{coLength}</p>
           </div>
         </div>
-        <div className="admincount-block">
+        <div className="admincount-block" onClick={() => {
+          navigate("/adminViewAllETs");
+        }}>
           <div className="admincount-block-image">
             <img src={Eduimg} alt="edu" />
           </div>

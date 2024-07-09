@@ -49,7 +49,8 @@ const tSchema = new Schema({
   },
   adminApproved: {
     type: String,
-    default: false,
+    enum: ["pending", "approve", "reject"],
+    default: "pending",
   },
 });
 

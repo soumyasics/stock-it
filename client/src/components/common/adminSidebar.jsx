@@ -35,6 +35,10 @@ function AdminSidebar({ changePage }) {
     navigate("/adminIPOPending");
   };
 
+  const navigateToViewAllEts = () => {
+    navigate("/adminViewAllETs")
+  }
+
   const openCompaniesTab = () => {
     setShow(!show);
     setShow1(false);
@@ -88,7 +92,7 @@ function AdminSidebar({ changePage }) {
                     >
                       Company pending requests
                     </li>
-                    <li onClick={navigateToAllCompanies}>View all companies</li>
+                    <li onClick={navigateToAllCompanies}>View active companies</li>
                     <li>View all company article</li>
                   </ul>
                 </div>
@@ -131,9 +135,7 @@ function AdminSidebar({ changePage }) {
                     </li>
                     <li
                       className="clickable-item"
-                      onClick={() => {
-                        // changePage("adminViewAllETs");
-                      }}
+                      onClick={navigateToViewAllEts}
                     >
                       {" "}
                       View all educational tutors

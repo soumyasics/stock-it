@@ -53,10 +53,12 @@ import { AdminETRequestDetails } from "./components/Admin/etRequestDetails/admin
 import Etsidebar from "./components/educational-tutors/et-sidebar/etsidebar";
 import Etnavbar from "./components/educational-tutors/et-navbar/etnavbar";
 import EtForgotpassword from "./components/educational-tutors/et-forgotpassword/etForgotpassword";
-import { AdminViewAllETs } from "./components/Admin/adminViewAllEts/adminViewEts";
 import UserForgotpassword from "./components/user/userForgotpasword/userForgotpassword";
 import CompanyForgotpassword from "./components/company/companyForgotpassword/companyForgotpassword";
 import AdminViewUserDetail from "./components/Admin/AdminViewUserDetail/adminViewUserDetail";
+
+import { AdminViewAllETs } from "./components/Admin/viewAllETs/viewAllEts";
+import { AdminViewETDetails } from "./components/Admin/viewEtDetails/viewEtDetails";
 import EtAddArticle from "./components/educational-tutors/et-AddArticle/etAddArticle";
 
 function App() {
@@ -122,6 +124,8 @@ function App() {
             element={<AdminIPOPendingList />}
           />
           <Route path="/adminViewAllETs" element={<AdminViewAllETs />} />
+          <Route path="/adminViewAllETs/:id" element={<AdminViewETDetails />} />
+
           <Route
             path="/adminViewCompany/:id"
             element={<AdminViewCompanyDetails />}

@@ -73,7 +73,7 @@ export const ETPendingRequest = () => {
   return (
     <div className="companyRequest-body">
       <div className="companyRequest-heading">
-        <p>Educational Trainers Requests</p>
+        <p>Educational Tutors Requests</p>
       </div>
       {
         <div
