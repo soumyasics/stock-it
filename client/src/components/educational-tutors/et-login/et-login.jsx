@@ -39,11 +39,18 @@ function Etlogin() {
   };
   const sendDataToServer = async (data) => {
     try {
-      const response = await axiosInstance.post("/loginTutor", data);
-      console.log("reg res", response);
+      const response = await axiosInstance.post("loginTutor", data);
       if (response.status === 200) {
+        
+        const tutorId = response.data?.data?._id || null;
+        
+        if (tutorId) {
+          localStorage.setItem("stock_it_tutorId", JSON.stringify(tutorId));
+
+        }
         toast.success(response.data.msg);
         redirectToEtdashboard();
+        
       } else {
         toast.error(response.data.msg);
       }
