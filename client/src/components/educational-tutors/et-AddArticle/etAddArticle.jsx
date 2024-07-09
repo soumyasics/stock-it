@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./etAddArticle.css";
 import { TiArrowBackOutline } from "react-icons/ti";
+import toast from "react-hot-toast";
+import axiosMultipartInstance from "../../../apis/axiosMultipartInstance";
 
 function EtAddArticle() {
   const [article, setArticle] = useState({
@@ -10,16 +12,80 @@ function EtAddArticle() {
     category: "",
     thumbnail: null,
     video: null,
-    consulsion: "",
+    conclusion: "",
   });
-  const handleChanges=(e)=>{
-    const{name,value}=e.target;
-    setArticle({...article,[name]:value})
-  }
+  const handleChanges = (e) => {
+    const { name, value } = e.target;
+    setArticle({ ...article, [name]: value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("data", article);
+    const { title, subTitle, content, category, thumbnail, video, conclusion } =
+      article;
+
+    const valitadeFields = () => {
+      
+      if (!title) {
+        toast.error("Enter title");
+        return false;
+      }
+      if (!subTitle) {
+        toast.error("Enter subtilte");
+        return false;
+      }
+      if(!content){
+        toast.error("Enter content")
+        return false
+      }
+      if(!category){
+        toast.error("Select category")
+        return false
+      }
+      if(!thumbnail){
+        toast.error("Please upload thumbnail")
+        return false
+      }
+      if(!video){
+        toast.error("Please upload video")
+        return false
+      }
+      if(!conclusion){
+        toast.error("Enter conclusion")
+        return false
+      }
+      return true;
+      
+    };
+    if (!valitadeFields()) {
+      return;
+    }
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("subTitle", subTitle);
+    formData.append("content", content);
+    formData.append("category", category);
+    formData.append("thumbnail", thumbnail);
+    formData.append("video", video);
+    formData.append("conclusion", conclusion);
+
+    console.log("formdata", formData);
+   sendDataToServer(formData)
   };
+  const sendDataToServer=async (data)=>{
+    try{
+      const response=await axiosMultipartInstance.post("/createArticle",data)
+      console.log(response);
+    if(response.status==200){
+      toast.success("Article upload successful")
+    }else{
+      toast.error(response.data.msg)
+    }
+    }catch(error){
+      console.error("network issue")
+    }
+  }
 
   return (
     <div>
@@ -28,7 +94,7 @@ function EtAddArticle() {
           <TiArrowBackOutline />
           <div className="etAddArticle-head ms-1">Article</div>
         </div>
-        <form onClick={handleSubmit} className="etAddArticle-inputs">
+        <form onSubmit={handleSubmit} className="etAddArticle-inputs">
           <div className="row">
             <div className="col">
               <label htmlFor="title">Title</label>
@@ -47,7 +113,7 @@ function EtAddArticle() {
                 type="text"
                 class="form-control"
                 placeholder="Enter Article subtitle"
-                name="subtitle"
+                name="subTitle"
                 value={article.subTitle}
                 onChange={handleChanges}
               />
@@ -98,7 +164,9 @@ function EtAddArticle() {
                   id="formFileSm"
                   type="file"
                   name="thumbnail"
-                  onChange={}
+                  onChange={(e) => {
+                    setArticle({ ...article, thumbnail: e.target.files[0] });
+                  }}
                 />
               </div>
             </div>
@@ -112,20 +180,22 @@ function EtAddArticle() {
                   id="formFileSm"
                   type="file"
                   name="video"
-                  onChange={(e)=>{
-                    setArticle({...article,video:e.target.files[0]})
+                  onChange={(e) => {
+                    setArticle({ ...article, video: e.target.files[0] });
                   }}
                 />
               </div>
             </div>
           </div>
           <div className="etAddArticle-textarea pt-2">
-            Conslusion
+            Conclusion
             <br />
-            <input type="textarea" 
-            placeholder="Enter consulsion"
-            name="consulsion"
-            value={article.consulsion}
+            <input
+              type="textarea"
+              placeholder="Enter conclusion"
+              name="conclusion"
+              value={article.conclusion}
+              onChange={handleChanges}
             />
           </div>
           <div className="etAddArticle-btn">
