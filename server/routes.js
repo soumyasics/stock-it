@@ -18,7 +18,7 @@ router.post("/resetPwd", admin.resetPwd);
 router.post("/registerCompany", company.upload, company.registerCompany);
 router.post("/viewCompanies", company.viewCompanies);
 router.post("/viewPendingCompanies", company.viewPendingCompanies);
-
+router.post("/add-ticker", company.addTicker);
 router.post("/loginCompany", company.login);
 router.post("/viewCompanyById/:id", company.viewCompanyById);
 router.post("/acceptCompanyById/:id", company.acceptCompanyById);

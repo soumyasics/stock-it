@@ -7,7 +7,9 @@ import { BASE_URL } from "../../../apis/baseUrl";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import AdminNavbar from "../../common/adminNavbar";
+import { TickerBox } from "./tickerBox";
 export const AdminViewIPODetails = () => {
+  const [show, setShow] = useState(false);
   const [ipoData, setIPOData] = useState({
     totalShares: "",
     costPerShare: "",
@@ -86,13 +88,19 @@ export const AdminViewIPODetails = () => {
       });
   };
 
-  console.log("ipo data", ipoData);
   const redirectBack = () => {
     navigate("/admin");
   };
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => {
+    setShow(true)
+    
+  };
+
   return (
     <>
+      <TickerBox handleClose={handleClose} show={show} toAccept={toAccept} />
       <AdminNavbar />
       <div className="w-100">
         <div className="requestpage-bg">
@@ -115,6 +123,25 @@ export const AdminViewIPODetails = () => {
           </div>
           <div className="requestpage-content">
             <table>
+              <h6 style={{ color: "white" }}>IPO Details</h6>
+              <tr>
+                <td>Total Shares</td>
+                <td>-</td>
+                <td>{ipoData?.totalShares}</td>
+              </tr>
+              <tr>
+                <td>Cost per share</td>
+                <td>-</td>
+                <td>{ipoData?.costPerShare} </td>
+              </tr>
+              <tr>
+                <td>Market capitalization</td>
+                <td>-</td>
+                <td>{ipoData?.capitation} </td>
+              </tr>
+              <br />
+              <br />
+              <h6 style={{ color: "white" }}>Company Details</h6>
               <tr>
                 <td>Company Name</td>
                 <td>-</td>
@@ -173,7 +200,12 @@ export const AdminViewIPODetails = () => {
             </table>
           </div>
           <div className="requestpage-btn">
-            <button class="btn" type="submit" value="submit" onClick={toAccept}>
+            <button
+              class="btn"
+              type="submit"
+              value="submit"
+              onClick={handleShow}
+            >
               Accept IPO
             </button>
             <button class="btn" type="submit" value="submit" onClick={toDelete}>

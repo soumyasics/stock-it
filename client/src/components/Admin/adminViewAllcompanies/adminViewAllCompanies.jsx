@@ -44,7 +44,7 @@ export const AdminViewAllCompanies = () => {
           >
             <IoReturnUpBack />
           </div>
-          <h4>Active companies List</h4>
+          <h4>Active companies list</h4>
           <div></div>
         </div>
 

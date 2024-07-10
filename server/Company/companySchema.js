@@ -55,6 +55,10 @@ const companySchema = mongoose.Schema({
         type: String,
         require: true,
     },
+    ticker: {
+        type: String,
+        default: "",
+    },
     regNo: {
         type: String,
         require: true,
