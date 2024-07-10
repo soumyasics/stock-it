@@ -6,6 +6,7 @@ import { useState } from "react";
 
 export const UserNavbar = () => {
   const [companiesDropdown, setCompaniesDropdown] = useState(false);
+  const [stocksDropdown, setStocksDropdown] = useState(false);
   const navigate = useNavigate();
   const userLogout = () => {
     navigate("/userLogin");
@@ -29,8 +30,22 @@ export const UserNavbar = () => {
   };
 
   const toggleCompanyDropdown = () => {
+    setStocksDropdown(false)
     setCompaniesDropdown(!companiesDropdown);
   };
+
+  const toggleStockDropdown = () => {
+    setCompaniesDropdown(false)
+    setStocksDropdown(!stocksDropdown);
+  }
+
+  const redirectBuyStocks = () => {
+    navigate('/buyStocks')
+  }
+  
+  const redirectPortfolio = () => {
+
+  }
 
   return (
     <div>
@@ -78,6 +93,28 @@ export const UserNavbar = () => {
               </div>
             )}
 
+            <h6 className="text-light fw-bold" onClick={toggleStockDropdown}>
+              Stocks
+            </h6>
+
+            {stocksDropdown && (
+              <div className="position-relative">
+                <div className="position-absolute text-light user-home-nav-drop d-flex flex-column">
+                  <div
+                    className="user-home-nav-drop-down"
+                    onClick={redirectBuyStocks}
+                  >
+                    Buy Stocks
+                  </div>
+                  <div
+                    className="user-home-nav-drop-down"
+                    onClick={redirectPortfolio}
+                  >
+                    Portfolio
+                  </div>
+                </div>
+              </div>
+            )}
             <h6 className="text-light fw-bold" onClick={redirectUserAbout}>
               About
             </h6>

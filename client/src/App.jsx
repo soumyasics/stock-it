@@ -62,6 +62,7 @@ import { AdminViewETDetails } from "./components/Admin/viewEtDetails/viewEtDetai
 import EtAddArticle from "./components/educational-tutors/et-AddArticle/etAddArticle";
 import { UpcomingCompanies } from "./components/user/viewUpcomingCompanies/upcomingCompanies";
 import { ListedCompanies } from "./components/user/viewUpcomingCompanies/listedCompanies";
+import { BuyStocks } from "./components/user/buyStocks/buyStocks";
 
 function App() {
   return (
@@ -102,6 +103,7 @@ function App() {
           <Route path="/userViewCompany" element={<UserViewCompanies />} />
           <Route path="/upComingCompanies" element={<UpcomingCompanies />} />
           <Route path="/listedCompanies" element={<ListedCompanies />} />
+          <Route path="/buyStocks" element={<BuyStocks />} />
 
           {/* <Route path="/userabout" element={<UserHomePage />} /> */}
           <Route path="/userabout" element={<EtUserHomePage />} />
