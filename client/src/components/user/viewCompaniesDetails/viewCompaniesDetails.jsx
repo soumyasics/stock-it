@@ -141,14 +141,6 @@ export const ViewCompanyDetails = () => {
               </tr>
             </table>
           </div>
-          <div className="requestpage-btn">
-            <button class="btn" type="submit" value="submit" >
-              Buy
-            </button>
-            <button class="btn" type="submit" value="submit">
-              Sell
-            </button>
-          </div>
 
           {/* Modal page */}
           <div

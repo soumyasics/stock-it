@@ -76,33 +76,38 @@ exports.getIpoByCompanyId = async (req, res) => {
   }
 };
 
-// Update an existing IPO
-exports.updateIpo = async (req, res) => {
+exports.getAllPendingIPOs = async (req, res) => {
   try {
-    const { totalShares, costPerShare, companyId, capitation } = req.body;
-    const updatedIpo = await Ipo.findByIdAndUpdate(
-      req.params.id,
-      {
-        totalShares,
-        costPerShare,
-        companyId,
-        capitation,
-      },
-      { new: true }
-    );
-    if (!updatedIpo) {
-      return res.status(404).json({ message: "IPO not found" });
-    }
-    res.json(updatedIpo);
-    await Ipo.findByIdAndUpdate(
-      { _id: req.params.id },
-      { adminApproved: false }
-    );
+    const ipos = await Ipo.find({ adminApproved: "pending" })
+      .populate("companyId")
+      .exec();
+    return res.json({ message: "All pending IPOs", data: ipos });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
 
+exports.getAllApprovedIPOs = async (req, res) => {
+  try {
+    const ipos = await Ipo.find({ adminApproved: "approved" })
+      .populate("companyId")
+      .exec();
+    return res.json({ message: "All approved IPOs", data: ipos });
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
+};
+
+exports.getAllRejectedIPOs = async (req, res) => {
+  try {
+    const ipos = await Ipo.find({ adminApproved: "rejected" })
+      .populate("companyId")
+      .exec();
+    return res.json({ message: "All rejected IPOs", data: ipos });
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
+};
 // Delete an IPO
 exports.deleteIpo = async (req, res) => {
   try {
@@ -115,6 +120,7 @@ exports.deleteIpo = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
 // Get a single IPO by ID
 exports.getIpoById = async (req, res) => {
   try {
@@ -143,7 +149,6 @@ exports.approveIPOById = async (req, res) => {
       { adminApproved: "approved" },
       { new: true }
     );
-    console.log("update ipo", updateIPO);
     return res.json({ msg: "IPO approved.", data: updateIPO });
   } catch (err) {
     return res.status(500).json({ msg: err.message });

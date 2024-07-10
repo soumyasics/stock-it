@@ -20,7 +20,7 @@ const ipoSchema = mongoose.Schema({
   },
   adminApproved: {
     type: String,
-    enum: ["pending", "approoved", "rejected"],
+    enum: ["pending", "approved", "rejected"],
     default: "pending",
   },
   isActive: {
