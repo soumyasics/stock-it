@@ -40,7 +40,7 @@ export const AdminViewIPODetails = () => {
   }, [id]);
   const getIPODetailsById = async (req, res) => {
     try {
-      const res = await axiosInstance.post(`/getIPOById/${id}`);
+      const res = await axiosInstance.post(`getIPOById/${id}`);
       const data = res?.data?.data || null;
       if (data) {
         setIPOData(res.data.data);
@@ -52,18 +52,18 @@ export const AdminViewIPODetails = () => {
     }
   };
 
-  const toAccept = (e) => {
-    e.preventDefault();
+  const toAccept = () => {
     axiosInstance
-      .post("/approveIPOById/" + id)
+      .post("approveIPOById/" + id)
       .then((response) => {
         console.log(response);
         if (response.status == 200) {
           toast.success(response.data.msg);
-          navigate("/admin");
+          getIPODetailsById();
+          // navigate("/admin");
         } else {
           toast.error(response.data.msg);
-          navigate("/admin");
+          // navigate("/admin");
         }
       })
       .catch((err) => {
@@ -75,12 +75,12 @@ export const AdminViewIPODetails = () => {
     axiosInstance
       .post(`rejectIPOById/${id}`)
       .then((res) => {
-        if (res.data.status == 200) {
+        if (res.status == 200) {
           toast.success(res.data.msg);
-          navigate("/admin");
+          console.log("respon rej", res)
+          getIPODetailsById();
         } else {
           toast.error(res.data.msg);
-          navigate("/admin");
         }
       })
       .catch((err) => {
@@ -94,13 +94,17 @@ export const AdminViewIPODetails = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => {
-    setShow(true)
-    
+    setShow(true);
   };
 
   return (
     <>
-      <TickerBox handleClose={handleClose} show={show} toAccept={toAccept} />
+      <TickerBox
+        companyId={ipoData?.companyId?._id}
+        handleClose={handleClose}
+        show={show}
+        toAccept={toAccept}
+      />
       <AdminNavbar />
       <div className="w-100">
         <div className="requestpage-bg">
@@ -182,36 +186,40 @@ export const AdminViewIPODetails = () => {
                 <td>-</td>
                 <td>{ipoData?.companyId?.regNo} </td>
               </tr>
-              <tr>
-                <td>Company License</td>
-                <td>-</td>
-                <td>
-                  <button
-                    className="btn-primary btn"
-                    type="button"
-                    class="modal-btn"
-                    data-bs-toggle="modal"
-                    data-bs-target="#staticBackdrop"
-                  >
-                    View License
-                  </button>
-                </td>
-              </tr>
             </table>
           </div>
-          <div className="requestpage-btn">
-            <button
-              class="btn"
-              type="submit"
-              value="submit"
-              onClick={handleShow}
-            >
-              Accept IPO
-            </button>
-            <button class="btn" type="submit" value="submit" onClick={toDelete}>
-              Reject IPO
-            </button>
-          </div>
+          {ipoData?.adminApproved === "approved" ? (
+            <div className="mt-5">
+              <p className="requestpage-paragraph text-success">
+                IPO has been approved
+              </p>{" "}
+            </div>
+          ) : ipoData?.adminApproved === "rejected" ? (
+            <div className="mt-5">
+              <p className="requestpage-paragraph text-danger">
+                IPO has been rejected
+              </p>{" "}
+            </div>
+          ) : (
+            <div className="requestpage-btn mt-5">
+              <button
+                class="btn"
+                type="submit"
+                value="submit"
+                onClick={handleShow}
+              >
+                Accept IPO
+              </button>
+              <button
+                class="btn"
+                type="submit"
+                value="submit"
+                onClick={toDelete}
+              >
+                Reject IPO
+              </button>
+            </div>
+          )}
 
           {/* Modal page */}
           <div

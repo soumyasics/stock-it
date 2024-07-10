@@ -97,13 +97,13 @@ const addTicker = async (req, res) => {
     
     const company = await Company.findById(companyId);
     if (!company) {
-      return res.status(404).json({ message: "Company not found" });
+      return res.status(404).json({ msg: "Company not found" });
     }
     company.ticker = ticker;
     await company.save();
-    return res.status(200).json({ message: "Ticker added successfully" });
+    return res.status(200).json({ msg: "Ticker added successfully" });
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    return res.status(500).json({ msg: error.message });
   }
 };
 // View all Companies
