@@ -38,8 +38,9 @@ export const UserLogin = () => {
         "/loginUser",
         formData
       );
-      console.log("resg respo", response);
       if (response.status === 200) {
+        const userId = response.data.data._id || null;
+        localStorage.setItem("stock_it_userId", userId);
         toast.success("User login successful.");
         redirectToHome();
       } else {

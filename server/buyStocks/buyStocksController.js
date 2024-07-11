@@ -10,8 +10,6 @@ const buyStocks = async (req, res) => {
       costPerShare,
       totalCost,
       numberOfSharesBought,
-      currentProfit,
-      currentLoss,
       cardHolderName,
       cardNumber,
       cvv,
@@ -25,8 +23,6 @@ const buyStocks = async (req, res) => {
       !costPerShare ||
       !totalCost ||
       !numberOfSharesBought ||
-      !currentProfit ||
-      !currentLoss ||
       !cardHolderName ||
       !cardNumber ||
       !cvv ||
