@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
 import { BASE_URL } from "../../../apis/baseUrl";
 import "./stockCard.css";
+import { useNavigate } from "react-router-dom";
 export const StockCard = ({ data }) => {
   const [logo, setLogo] = useState("");
+  const navigate = useNavigate()
   useEffect(() => {
     const filename = data?.companyId?.logo?.filename || null;
     if (filename) {
@@ -41,6 +43,7 @@ export const StockCard = ({ data }) => {
       <h6
         className="mt-4 companyRewquest-viewmore2 mt-3"
         style={{ cursor: "pointer" }}
+        onClick={() => navigate(`/buyStocks/${data?._id}`)} 
       >
         View more
       </h6>
