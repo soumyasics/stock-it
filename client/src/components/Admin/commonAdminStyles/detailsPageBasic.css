@@ -9,7 +9,8 @@
 }
 
 .requestpage-bg {
-  height: 614px;
+  height: auto;
+  padding-bottom: 150px;
   flex-shrink: 0;
   background: #1f2937;
   margin: auto;

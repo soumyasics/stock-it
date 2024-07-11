@@ -1,0 +1,10 @@
+.ticker-modal {
+    background-color: #1f2937;
+
+}
+
+.ticker-modal button {
+    border-radius: 30px;
+    width: 101px;
+    height: 31px;
+}

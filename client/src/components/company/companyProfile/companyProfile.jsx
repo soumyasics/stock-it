@@ -40,12 +40,15 @@ export const CompanyProfile = () => {
     <div className="text-light pt-5">
       <h4 className="text-center">Profile </h4>
       <Row className=" mx-auto mt-5" style={{ width: "90%" }}>
-      <Col md={6}>
+        <Col md={6}>
           <Image className="w-75" src={coImg1} alt="ipo" />
         </Col>
         <Col md={6} className="company-ipo-status shadow p-3">
           <Card style={{ width: "18rem" }}>
-            <Card.Header className="capitalizeText text-center fw-bold"> Company Details</Card.Header>
+            <Card.Header className="capitalizeText text-center fw-bold">
+              {" "}
+              Company Details
+            </Card.Header>
             <ListGroup variant="flush">
               <ListGroup.Item>
                 {" "}
@@ -89,14 +92,34 @@ export const CompanyProfile = () => {
               <ListGroup.Item>
                 {" "}
                 <h6>
+                  Website:
+                  <span>{companyData?.website}</span>
+                </h6>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                {" "}
+                <h6>
                   District:
                   <span>{companyData?.district}</span>
+                </h6>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                {" "}
+                <h6>
+                  State:
+                  <span>{companyData?.state}</span>
+                </h6>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                {" "}
+                <h6>
+                  Description:
+                  <span>{companyData?.description}</span>
                 </h6>
               </ListGroup.Item>
             </ListGroup>
           </Card>
         </Col>
-    
       </Row>
     </div>
   );

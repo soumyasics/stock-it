@@ -25,72 +25,87 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage }).array("files");
 // Register Company
-  const registerCompany = async (req, res) => {
-    try {
-      const {
-        name,
-        pincode,
-        companyType,
-        year,
-        password,
-        website,
-        state,
-        contact,
-        district,
-        email,
-        description,
-        regNo,
-      } = req.body;
-      if (
-        !name ||
-        !pincode ||
-        !companyType ||
-        !year ||
-        !password ||
-        !website ||
-        !state ||
-        !contact ||
-        !district ||
-        !email ||
-        !description ||
-        !regNo
-      ) {
-        return res.json({ status: 400, msg: "All fields are required" });
-      }
-      const newCompany = new Company({
-        name,
-        pincode,
-        companyType,
-        year,
-        password,
-        website,
-        state,
-        contact,
-        district,
-        email,
-        logo: req.files[0],
-        license: req.files[1],
-        description,
-        regNo,
-      });
-
-      let existingCompany = await Company.findOne({ email });
-      if (existingCompany) {
-        return res.json({ status: 409, msg: "Email already registered" });
-      }
-
-      await newCompany.save();
-      res.json({
-        status: 200,
-        msg: "Company registered successfully",
-        data: newCompany,
-      });
-    } catch (error) {
-      console.log(error);
-      res.json({ status: 500, msg: error });
+const registerCompany = async (req, res) => {
+  try {
+    const {
+      name,
+      pincode,
+      companyType,
+      year,
+      password,
+      website,
+      state,
+      contact,
+      district,
+      email,
+      description,
+      regNo,
+    } = req.body;
+    if (
+      !name ||
+      !pincode ||
+      !companyType ||
+      !year ||
+      !password ||
+      !website ||
+      !state ||
+      !contact ||
+      !district ||
+      !email ||
+      !description ||
+      !regNo
+    ) {
+      return res.json({ status: 400, msg: "All fields are required" });
     }
-  };
+    const newCompany = new Company({
+      name,
+      pincode,
+      companyType,
+      year,
+      password,
+      website,
+      state,
+      contact,
+      district,
+      email,
+      logo: req.files[0],
+      license: req.files[1],
+      description,
+      regNo,
+    });
 
+    let existingCompany = await Company.findOne({ email });
+    if (existingCompany) {
+      return res.json({ status: 409, msg: "Email already registered" });
+    }
+
+    await newCompany.save();
+    res.json({
+      status: 200,
+      msg: "Company registered successfully",
+      data: newCompany,
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({ status: 500, msg: error });
+  }
+};
+
+const addTicker = async (req, res) => {
+  try {
+    const {companyId, ticker} = req.body;
+    
+    const company = await Company.findById(companyId);
+    if (!company) {
+      return res.status(404).json({ msg: "Company not found" });
+    }
+    company.ticker = ticker;
+    await company.save();
+    return res.status(200).json({ msg: "Ticker added successfully" });
+  } catch (error) {
+    return res.status(500).json({ msg: error.message });
+  }
+};
 // View all Companies
 const viewCompanies = async (req, res) => {
   try {
@@ -107,7 +122,7 @@ const viewCompanies = async (req, res) => {
 const viewPendingCompanies = async (req, res) => {
   try {
     const companies = await Company.find({
-      adminApproved: false
+      adminApproved: false,
     });
     return res.json({
       status: 200,
@@ -185,9 +200,9 @@ const deleteCompanyById = async (req, res) => {
 const acceptCompanyById = async (req, res) => {
   try {
     const company = await Company.findByIdAndUpdate(
-      req.params.id, 
+      req.params.id,
       { adminApproved: true },
-      { new: true } 
+      { new: true }
     );
 
     if (!company) {
@@ -312,7 +327,6 @@ const forgotPassword = async (req, res) => {
     return res
       .status(200)
       .json({ msg: "Password reset successfully.", data: user });
-
   } catch (error) {
     return res.status(500).json({ msg: "Server error", error: error.message });
   }
@@ -332,5 +346,6 @@ module.exports = {
   deleteCompanyById,
   searchcompanyByName,
   forgotPassword,
-  viewPendingCompanies
+  viewPendingCompanies,
+  addTicker
 };
