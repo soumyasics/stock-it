@@ -6,6 +6,7 @@ const { isEmailUnique } = require("./middlewares/isEmailUnique");
 const IPO = require("./IPO/ipoController");
 const ET = require("./Tutors/tutorController");
 const ArtilceRoutes = require("./article/articleController");
+const buyStockController = require("./buyStocks/buyStocksController");
 
 router.get("/", (req, res) => {
   return res.send({ message: "Stock it Server working" });
@@ -84,5 +85,12 @@ router.get("/getAllArticles", ArtilceRoutes.getAllArticles);
 router.post("/getArticleById/:id", ArtilceRoutes.getArticleById);
 router.post("/updateArticleById/:id", ArtilceRoutes.updateArticleById);
 router.post("/deleteArticleById/:id", ArtilceRoutes.deleteArticleById);
+
+// buy stocks 
+router.post("/buyStocks", buyStockController.buyStocks);
+router.get("/allBuyStocks", buyStockController.allBuyStocks);
+router.get("/getBoughtStockById/:id", buyStockController.getBoughtStockById);
+router.get("/getAllBoughtStocksByUserId/:id", buyStockController.getAllBoughtStocksByUserId);
+router.get("/getAllBoughtStocksByCompanyId/:id", buyStockController.getAllBoughtStocksByCompanyId);
 
 module.exports = router;
