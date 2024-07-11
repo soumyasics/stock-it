@@ -32,14 +32,7 @@ const buyStocksSchema = new mongoose.Schema(
       type: Number,
       requied: true,
     },
-    currentProfit: {
-      type: Number,
-      default: 0,
-    },
-    currentLoss: {
-      type: Number,
-      default: 0,
-    },
+
     cardHolderName: {
       type: String,
       required: true,
@@ -55,11 +48,23 @@ const buyStocksSchema = new mongoose.Schema(
     expiry: {
       type: String,
       required: true,
-    }
+    },
+    currentProfit: {
+      type: Number,
+      default: 0,
+    },
+    currentLoss: {
+      type: Number,
+      default: 0,
+    },
+    isActive: {
+      type: Boolean,
+      default: true,
+    },
   },
   {
     timestamps: true,
   }
 );
 const BuyStocksModel = mongoose.model("buyStocks", buyStocksSchema);
-module.exports = {BuyStocksModel};
+module.exports = { BuyStocksModel };

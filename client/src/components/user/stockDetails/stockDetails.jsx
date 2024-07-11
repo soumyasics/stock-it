@@ -13,6 +13,8 @@ export const StockDetails = () => {
   const [stockData, setStockData] = useState({});
   const [totalBoughtShares, setTotalBoughtShares] = useState(0);
   const [totalPurchasePrice, setTotalPurchasePrice] = useState(0);
+    const [userId, setUserId] = useState("");
+
   const [logo, setLogo] = useState("");
   const [show, setShow] = useState(false);
 
@@ -22,8 +24,12 @@ export const StockDetails = () => {
   useEffect(() => {
     if (id) {
       getStockData();
+      const userIdentification = localStorage.getItem("stock_it_userId") || null;
+      if (userIdentification) {
+        setUserId(userIdentification);
+      }
     }
-  }, []);
+  }, [id]);
 
   const getStockData = async () => {
     try {
@@ -56,6 +62,33 @@ export const StockDetails = () => {
     }
     handleShow();
   };
+
+  const buyStocks = async () => {
+    const data = {
+        IPOId: id,
+        companyId: id?.companyId,
+        userId,
+        totalShares: totalBoughtShares,
+        totalPurchasePrice,
+        costPerShare: stockData.costPerShare,
+        
+    }
+
+
+  };
+
+  const sendDataToServer = async (data) => {
+    try {
+        const response = await axiosInstance.post("buyStocks", data);
+        if (response.status === 200) {
+          toast.success("Stocks bought successfully");
+        //   navigate to portfolio
+        }
+      } catch (error) {
+        console.log("Error on buy stocks", error);
+      }
+    }
+  
   return (
     <>
       <PaymentModal handleClose={handleClose} show={show} />
