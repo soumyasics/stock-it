@@ -60,6 +60,10 @@ import AdminViewUserDetail from "./components/Admin/AdminViewUserDetail/adminVie
 import { AdminViewAllETs } from "./components/Admin/viewAllETs/viewAllEts";
 import { AdminViewETDetails } from "./components/Admin/viewEtDetails/viewEtDetails";
 import EtAddArticle from "./components/educational-tutors/et-AddArticle/etAddArticle";
+import { UpcomingCompanies } from "./components/user/viewUpcomingCompanies/upcomingCompanies";
+import { ListedCompanies } from "./components/user/viewUpcomingCompanies/listedCompanies";
+import { BuyStocks } from "./components/user/buyStocks/buyStocks";
+import { StockDetails } from "./components/user/stockDetails/stockDetails";
 
 function App() {
   return (
@@ -98,6 +102,10 @@ function App() {
           <Route path="/userLogin" element={<UserLogin />} />
 
           <Route path="/userViewCompany" element={<UserViewCompanies />} />
+          <Route path="/upComingCompanies" element={<UpcomingCompanies />} />
+          <Route path="/listedCompanies" element={<ListedCompanies />} />
+          <Route path="/buyStocks" element={<BuyStocks />} />
+          <Route path="/buyStocks/:id" element={<StockDetails />} />
 
           {/* <Route path="/userabout" element={<UserHomePage />} /> */}
           <Route path="/userabout" element={<EtUserHomePage />} />

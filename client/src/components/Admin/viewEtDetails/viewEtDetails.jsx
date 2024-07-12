@@ -29,7 +29,7 @@ export const AdminViewETDetails = () => {
     navigate("/adminViewAllETs");
   };
   const redirectToUserView = () => {
-    navigate("/adminViewUsers");
+    navigate(-1);
   };
   const toAccept = () => {
     axiosInstance.post(`/activateTutorById/${id}`).then((response) => {

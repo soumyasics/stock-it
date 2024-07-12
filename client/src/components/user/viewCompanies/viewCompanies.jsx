@@ -35,7 +35,7 @@ export const UserViewCompanies = () => {
 
       <div className="viewCompany-body ">
         <div className="viewcomapany-head-box">
-          <h4>Active companies List</h4>
+          <h4>Active companies list</h4>
         </div>
 
         <div className="comapnyRequest-first-box">

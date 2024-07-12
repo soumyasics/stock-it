@@ -7,7 +7,9 @@ import { BASE_URL } from "../../../apis/baseUrl";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import AdminNavbar from "../../common/adminNavbar";
+import { TickerBox } from "./tickerBox";
 export const AdminViewIPODetails = () => {
+  const [show, setShow] = useState(false);
   const [ipoData, setIPOData] = useState({
     totalShares: "",
     costPerShare: "",
@@ -38,7 +40,7 @@ export const AdminViewIPODetails = () => {
   }, [id]);
   const getIPODetailsById = async (req, res) => {
     try {
-      const res = await axiosInstance.post(`/getIPOById/${id}`);
+      const res = await axiosInstance.post(`getIPOById/${id}`);
       const data = res?.data?.data || null;
       if (data) {
         setIPOData(res.data.data);
@@ -50,18 +52,18 @@ export const AdminViewIPODetails = () => {
     }
   };
 
-  const toAccept = (e) => {
-    e.preventDefault();
+  const toAccept = () => {
     axiosInstance
-      .post("/approveIPOById/" + id)
+      .post("approveIPOById/" + id)
       .then((response) => {
         console.log(response);
         if (response.status == 200) {
           toast.success(response.data.msg);
-          navigate("/admin");
+          getIPODetailsById();
+          // navigate("/admin");
         } else {
           toast.error(response.data.msg);
-          navigate("/admin");
+          // navigate("/admin");
         }
       })
       .catch((err) => {
@@ -73,12 +75,12 @@ export const AdminViewIPODetails = () => {
     axiosInstance
       .post(`rejectIPOById/${id}`)
       .then((res) => {
-        if (res.data.status == 200) {
+        if (res.status == 200) {
           toast.success(res.data.msg);
-          navigate("/admin");
+          console.log("respon rej", res)
+          getIPODetailsById();
         } else {
           toast.error(res.data.msg);
-          navigate("/admin");
         }
       })
       .catch((err) => {
@@ -86,13 +88,23 @@ export const AdminViewIPODetails = () => {
       });
   };
 
-  console.log("ipo data", ipoData);
   const redirectBack = () => {
     navigate("/admin");
   };
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => {
+    setShow(true);
+  };
+
   return (
     <>
+      <TickerBox
+        companyId={ipoData?.companyId?._id}
+        handleClose={handleClose}
+        show={show}
+        toAccept={toAccept}
+      />
       <AdminNavbar />
       <div className="w-100">
         <div className="requestpage-bg">
@@ -115,6 +127,25 @@ export const AdminViewIPODetails = () => {
           </div>
           <div className="requestpage-content">
             <table>
+              <h6 style={{ color: "white" }}>IPO Details</h6>
+              <tr>
+                <td>Total Shares</td>
+                <td>-</td>
+                <td>{ipoData?.totalShares}</td>
+              </tr>
+              <tr>
+                <td>Cost per share</td>
+                <td>-</td>
+                <td>{ipoData?.costPerShare} </td>
+              </tr>
+              <tr>
+                <td>Market capitalization</td>
+                <td>-</td>
+                <td>{ipoData?.capitation} </td>
+              </tr>
+              <br />
+              <br />
+              <h6 style={{ color: "white" }}>Company Details</h6>
               <tr>
                 <td>Company Name</td>
                 <td>-</td>
@@ -155,31 +186,40 @@ export const AdminViewIPODetails = () => {
                 <td>-</td>
                 <td>{ipoData?.companyId?.regNo} </td>
               </tr>
-              <tr>
-                <td>Company License</td>
-                <td>-</td>
-                <td>
-                  <button
-                    className="btn-primary btn"
-                    type="button"
-                    class="modal-btn"
-                    data-bs-toggle="modal"
-                    data-bs-target="#staticBackdrop"
-                  >
-                    View License
-                  </button>
-                </td>
-              </tr>
             </table>
           </div>
-          <div className="requestpage-btn">
-            <button class="btn" type="submit" value="submit" onClick={toAccept}>
-              Accept IPO
-            </button>
-            <button class="btn" type="submit" value="submit" onClick={toDelete}>
-              Reject IPO
-            </button>
-          </div>
+          {ipoData?.adminApproved === "approved" ? (
+            <div className="mt-5">
+              <p className="requestpage-paragraph text-success">
+                IPO has been approved
+              </p>{" "}
+            </div>
+          ) : ipoData?.adminApproved === "rejected" ? (
+            <div className="mt-5">
+              <p className="requestpage-paragraph text-danger">
+                IPO has been rejected
+              </p>{" "}
+            </div>
+          ) : (
+            <div className="requestpage-btn mt-5">
+              <button
+                class="btn"
+                type="submit"
+                value="submit"
+                onClick={handleShow}
+              >
+                Accept IPO
+              </button>
+              <button
+                class="btn"
+                type="submit"
+                value="submit"
+                onClick={toDelete}
+              >
+                Reject IPO
+              </button>
+            </div>
+          )}
 
           {/* Modal page */}
           <div

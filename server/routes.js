@@ -6,6 +6,7 @@ const { isEmailUnique } = require("./middlewares/isEmailUnique");
 const IPO = require("./IPO/ipoController");
 const ET = require("./Tutors/tutorController");
 const ArtilceRoutes = require("./article/articleController");
+const buyStockController = require("./buyStocks/buyStocksController");
 
 router.get("/", (req, res) => {
   return res.send({ message: "Stock it Server working" });
@@ -18,7 +19,7 @@ router.post("/resetPwd", admin.resetPwd);
 router.post("/registerCompany", company.upload, company.registerCompany);
 router.post("/viewCompanies", company.viewCompanies);
 router.post("/viewPendingCompanies", company.viewPendingCompanies);
-
+router.post("/add-ticker", company.addTicker);
 router.post("/loginCompany", company.login);
 router.post("/viewCompanyById/:id", company.viewCompanyById);
 router.post("/acceptCompanyById/:id", company.acceptCompanyById);
@@ -56,8 +57,9 @@ router.post("/getIPOById/:id", IPO.getIpoById);
 router.post("/deleteIpo/:id", IPO.getIposForAdminApproval);
 router.post("/approveIPOById/:id", IPO.approveIPOById);
 router.post("/rejectIPOById/:id", IPO.rejectIPOById);
-router.post("/updateIpo/:id", IPO.updateIpo);
-
+router.get("/getAllPendingIPOs", IPO.getAllPendingIPOs);
+router.get("/getAllApprovedIPOs", IPO.getAllApprovedIPOs);
+router.get("/getAllRejectedIPOs", IPO.getAllRejectedIPOs);
 // tutors
 router.post("/registerTutor", ET.upload, ET.registerTutor);
 router.post("/loginTutor", ET.loginTutor);
@@ -83,5 +85,12 @@ router.get("/getAllArticles", ArtilceRoutes.getAllArticles);
 router.post("/getArticleById/:id", ArtilceRoutes.getArticleById);
 router.post("/updateArticleById/:id", ArtilceRoutes.updateArticleById);
 router.post("/deleteArticleById/:id", ArtilceRoutes.deleteArticleById);
+
+// buy stocks 
+router.post("/buyStocks", buyStockController.buyStocks);
+router.get("/allBuyStocks", buyStockController.allBuyStocks);
+router.get("/getBoughtStockById/:id", buyStockController.getBoughtStockById);
+router.get("/getAllBoughtStocksByUserId/:id", buyStockController.getAllBoughtStocksByUserId);
+router.get("/getAllBoughtStocksByCompanyId/:id", buyStockController.getAllBoughtStocksByCompanyId);
 
 module.exports = router;

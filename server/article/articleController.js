@@ -36,16 +36,16 @@ const createArticle = async (req, res) => {
       category,
       content,
       conclusion,
-
       thumbnail: req.files[0],
       video: req.files[0],
-
     });
     await newArticle.save();
-    res
+    return res
       .status(201)
       .json({ msg: "Article created successfully", data: newArticle });
-  } catch (error) {}
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
 };
 
 const getAllArticles = async (req, res) => {
