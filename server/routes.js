@@ -85,7 +85,7 @@ router.get("/getAllArticles", ArtilceRoutes.getAllArticles);
 router.post("/getArticleById/:id", ArtilceRoutes.getArticleById);
 router.post("/updateArticleById/:id", ArtilceRoutes.updateArticleById);
 router.post("/deleteArticleById/:id", ArtilceRoutes.deleteArticleById);
-
+router.get("/getArticleByTutorId/:id", ArtilceRoutes.getArticleByTutorId);
 // buy stocks 
 router.post("/buyStocks", buyStockController.buyStocks);
 router.get("/allBuyStocks", buyStockController.allBuyStocks);
