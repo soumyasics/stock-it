@@ -19,8 +19,9 @@
     box-shadow:  33px 33px 66px #1a232f,
                  -33px -33px 66px #242f3f;
 }
-.etViewArticle-box2{
-    width: 0%;
+#etViewVideoTable{
+    margin: auto;
+    width: 100%;
 }
 .etViewArticle-btn{
  margin-top: 20%;

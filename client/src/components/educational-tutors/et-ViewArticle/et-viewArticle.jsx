@@ -40,7 +40,7 @@ function EtviewArticle() {
               Description
             </div>
             <div className="etViewArticle-box2">
-              <table className="mt-5">
+              <table className="mt-4" id="etViewVideoTable">
                 <tbody>
                   <tr>
                     <td>Title</td>
@@ -55,7 +55,7 @@ function EtviewArticle() {
                   <tr>
                     <td>Content</td>
                     <td>-</td>
-                    <td>fqhlfalhfilajfjaopfiaoifhalalfhqilfaklhjjpdio</td>
+                    <td>fqhlfalhfilajfjaopfiaoifhalalfhqilfakjkhllhjjpdio</td>
                   </tr>
                   <tr>
                     <td>Category</td>
@@ -65,7 +65,7 @@ function EtviewArticle() {
                   <tr>
                     <td>Conclusion</td>
                     <td>-</td>
-                    <td>fquhfaaaaaaaijqogjqgfiyhaflakjifalkkkklof</td>
+                    <td>fquhfaaaaaaaijqogjqgfiyhaffffffffffffffffffddddddddddddd  lakjifalkkkklof</td>
                   </tr>
                 </tbody>
               </table>
@@ -73,12 +73,12 @@ function EtviewArticle() {
 
             <div className="etViewArticle-btn d-flex gap-3">
               <div className="etArticle-editbtn">
-                <button type="button" class="btn btn-outline-primary">
+                <button type="button" class="btn btn-outline-success">
                   Edit
                 </button>
               </div>
               <div className="etArticle-deletebtn">
-                <button type="button" class="btn btn-outline-primary">
+                <button type="button" class="btn btn-outline-success">
                   Delete
                 </button>
               </div>
