@@ -2,11 +2,11 @@ import { useState } from "react";
 import { Form, Col, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import "./PaymentModal.css"; // Custom CSS file for additional styling
+import "./PaymentModal.css"; 
 
 export const PaymentModal = ({ show, handleClose }) => {
   return (
-    <>
+    <div id="my-unique-paymennt">
       <Modal
         show={show}
         onHide={handleClose}
@@ -64,6 +64,6 @@ export const PaymentModal = ({ show, handleClose }) => {
           </Form>
         </Modal.Body>
       </Modal>
-    </>
+    </div>
   );
 };
