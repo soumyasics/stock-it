@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 
 .etsidebar-main {
-  width: 307px;
+  width: 100%;
   height: 100vh;
   flex-shrink: 0;
   background: #374151;
@@ -9,7 +9,7 @@
 }
 
 .etsidebar-profilebox {
-  width: 270px;
+  width: 80%;
   height: 63.269px;
   transform: rotate(-0.01deg);
   flex-shrink: 0;
@@ -17,6 +17,7 @@
   background: #1f2937;
   margin-left: 5%;
   display: flex;
+  margin-left: 10%;
 }
 
 .etsidebarprofile{
@@ -120,7 +121,7 @@
   margin-right: 2px;
 }
 .etsidebar-content-Article button {
-  margin-left: 3px;
+  margin-left: 5px;
 }
 .etsidebar-content-subscriber img {
   margin-left: 2px;

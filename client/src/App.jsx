@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -64,6 +64,8 @@ import { UpcomingCompanies } from "./components/user/viewUpcomingCompanies/upcom
 import { ListedCompanies } from "./components/user/viewUpcomingCompanies/listedCompanies";
 import { BuyStocks } from "./components/user/buyStocks/buyStocks";
 import { StockDetails } from "./components/user/stockDetails/stockDetails";
+import EtviewArticleList from "./components/educational-tutors/et-ViewArticleList/et-viewArticleList";
+import EtviewArticle from "./components/educational-tutors/et-viewArticle/et-viewArticle";
 
 function App() {
   return (
@@ -149,21 +151,25 @@ function App() {
             path="/adminIPOPending/:id"
             element={<AdminViewIPODetails />}
           />
-          <Route path="/adminVIewUserDetail/:id" element={<AdminViewUserDetail/>}/>
+          <Route
+            path="/adminVIewUserDetail/:id"
+            element={<AdminViewUserDetail />}
+          />
 
           {/* et-new */}
           <Route path="/etdashboard" element={<Etdashboard />} />
           <Route path="/etsidebar" element={<Etsidebar />} />
           <Route path="/etnavbar" element={<Etnavbar />} />
           <Route path="/etForgotpassword" element={<EtForgotpassword />} />
-          <Route path="/addArticle" element={<EtAddArticle/>}/>
+          <Route path="/addArticle" element={<EtAddArticle />} />
+          <Route path="/viewArticleList" element={<EtviewArticleList />} />
+          <Route path="/viewArticles" element={<EtviewArticle />} />
 
           {/* new  */}
           <Route path="/newsidebar" element={<NewAdminsidebar />} />
           <Route path="/etsignup" element={<EtSignup />} />
           <Route path="/etlogin" element={<Etlogin />} />
 
-     
           <Route path="/adminNavbar" element={<AdminNavbar />} />
 
           <Route

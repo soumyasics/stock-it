@@ -7,14 +7,14 @@ import img2 from "../../../assets/images/subcribericon.svg";
 import img3 from "../../../assets/images/logout.png";
 import { useNavigate } from "react-router-dom";
 
-function Etsidebar() {
+function Etsidebar({changePage} ) {
     const navigate=useNavigate()
   const [show, setShow] = useState(false);
   return (
     <div>
         
       <div className="etsidebar-main pt-5">
-        <div className="etsidebar-profilebox ">
+        <div className="etsidebar-profilebox">
           <div className="etsidebar-profile">
             <img src={profile} alt="Profile" />
           </div>
@@ -29,19 +29,23 @@ function Etsidebar() {
         <div className="etsidebar-content mt-5">
           <div className="etsidebar-items etsidebar-content-Article">
             <tr>
-              <td>
+              <td className="ms-9 ">
                 <img src={img1} alt="" />
               </td>
               <td>
-                <div className="content-drop">
+                <div className="content-drop ">
                   <button type="button" onClick={() => setShow(!show)}>
                     Articles
                   </button>
                   {show && (
                     <div className="etsidebar-drop">
                       <ul>
-                        <li>Add Articles</li>
-                        <li>View Articles</li>
+                        <li onClick={()=>{
+                          changePage("addArticles")
+                        }}>Add Articles</li>
+                        <li onClick={()=>{
+                          changePage("viewArticles")
+                        }}>View Articles</li>
                       </ul>
                     </div>
                   )}

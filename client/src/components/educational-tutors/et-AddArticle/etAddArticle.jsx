@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./etAddArticle.css";
-import { TiArrowBackOutline } from "react-icons/ti";
 import toast from "react-hot-toast";
 import axiosMultipartInstance from "../../../apis/axiosMultipartInstance";
 import { useNavigate } from "react-router-dom";
@@ -109,7 +108,7 @@ function EtAddArticle() {
     <div>
       <div className="etAddArticle">
         <div className="etBackBtn">
-          <TiArrowBackOutline />
+        
           <div className="etAddArticle-head ms-1">Article</div>
         </div>
         <form onSubmit={handleSubmit} className="etAddArticle-inputs">
