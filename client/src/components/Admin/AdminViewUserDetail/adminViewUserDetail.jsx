@@ -14,7 +14,7 @@ function AdminViewUserDetail() {
   const navigate = useNavigate();
   useEffect(() => {
     axiosInstance
-      .post(`/getUserById/${id}`)
+      .post(`/getUserById/${id}`)   
       .then((response) => {
         console.log(response);
         setUserData(response.data.data);

@@ -222,6 +222,8 @@ const loginTutor = async (req, res) => {
     const { email, password } = req.body;
     const tutor = await TutorModel.findOne({ email });
 
+    console.log("tutor ", tutor)
+
     if (!tutor) {
       return res.status(404).json({ msg: "Tutor not found" });
     }
@@ -235,7 +237,7 @@ const loginTutor = async (req, res) => {
       return res.status(401).json({ msg: "Your account rejected by admin" });
     }
     if (!tutor.isActive) {
-      return res.status(401).json({ msg: "Your account rejected by admin" });
+      return res.status(401).json({ msg: "Your account is deactivated" });
     }
     const token = jwt.sign({ tutorId: tutor._id }, secret, {
       expiresIn: "1h",
