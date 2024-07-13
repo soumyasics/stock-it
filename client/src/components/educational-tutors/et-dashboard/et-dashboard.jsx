@@ -10,6 +10,10 @@ function Etdashboard() {
   const changePage = (value) => {
     setActivePage(value);
   };
+
+  const navigateToviewArticle=()=>{
+    setActivePage("viewArticles")
+  }
   return (
     <>
       <Etnavbar />
@@ -18,7 +22,7 @@ function Etdashboard() {
           <Etsidebar changePage={changePage} />
         </Col>
         <Col md={9} className="p-0" style={{ backgroundColor: "#1F2937" }}>
-          {activePage === "addArticles" && <EtAddArticle />}
+          {activePage === "addArticles" && <EtAddArticle navigateToviewArticle={navigateToviewArticle}/>}
           {activePage === "viewArticles" && <EtviewArticle />}
         </Col>
       </Row>

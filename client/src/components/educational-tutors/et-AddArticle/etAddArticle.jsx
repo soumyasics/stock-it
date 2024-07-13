@@ -3,7 +3,7 @@ import "./etAddArticle.css";
 import toast from "react-hot-toast";
 import axiosMultipartInstance from "../../../apis/axiosMultipartInstance";
 import { useNavigate } from "react-router-dom";
-function EtAddArticle() {
+function EtAddArticle({navigateToviewArticle}) {
   const [article, setArticle] = useState({
     title: "",
     subTitle: "",
@@ -96,6 +96,7 @@ function EtAddArticle() {
       console.log(response);
       if (response.status == 201) {
         toast.success("Article upload successful");
+        navigateToviewArticle()
       } else {
         toast.error(response.data.msg);
       }
@@ -164,9 +165,10 @@ function EtAddArticle() {
                 onChange={handleChanges}
               >
                 <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option value="Education">Education</option>
+                <option value="Company Updates">Company Updates</option>
+                <option value="Upcoming IPOs">Upcoming IPOs</option>
+                <option value="Stock Analysis">Stock Analysis</option>
               </select>
             </div>
           </div>
@@ -181,6 +183,7 @@ function EtAddArticle() {
                   id="formFileSm"
                   type="file"
                   name="thumbnail"
+                  accept="image/*"
                   onChange={(e) => {
                     setArticle({ ...article, thumbnail: e.target.files[0] });
                   }}
@@ -197,6 +200,7 @@ function EtAddArticle() {
                   id="formFileSm"
                   type="file"
                   name="video"
+                  accept="video/*"
                   onChange={(e) => {
                     setArticle({ ...article, video: e.target.files[0] });
                   }}
