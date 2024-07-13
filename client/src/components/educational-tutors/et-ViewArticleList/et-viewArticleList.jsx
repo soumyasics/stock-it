@@ -7,15 +7,33 @@ import { BASE_URL } from "../../../apis/baseUrl";
 
 function EtviewArticleList() {
   const navigate = useNavigate();
+  const toViewArticleById=(id)=>{
+    navigate(`/viewArticles/${id}`)
+  }
+
   const [viewArticle, setViewArticle] = useState([]);
+  // const [tutorId,setTutorId]=useState("")
+
   useEffect(() => {
-    axiosInstance.get("/getAllArticles").then((response) => {
-      console.log(response);
-      if (response.status == 200) {
-        setViewArticle(response.data.data);
-      }
-    });
+    const tutorId =
+      JSON.parse(localStorage.getItem("stock_it_tutorId")) || null;
+    if (tutorId) {
+      console.log("tutorId", tutorId);
+      getArticlesByTutorId(tutorId);
+    }
   }, []);
+
+  const getArticlesByTutorId = (id) => {
+    try {
+      axiosInstance.get(`getArticleByTutorId/${id}`).then((response) => {
+        if (response.status === 200) {
+          setViewArticle(response.data.data);
+        }
+      });
+    } catch (error) {
+      console.error("network issue");
+    }
+  };
 
   return (
     <div>
@@ -32,7 +50,10 @@ function EtviewArticleList() {
           <h4>Articles List</h4>
           <div></div>
         </div>
-        <div className=" text-center p-5" style={{height: "618px", overflowY: 'scroll'}}>
+        <div
+          className=" text-center p-5"
+          style={{ height: "618px", overflowY: "scroll" }}
+        >
           <div className="row gap-5">
             {viewArticle.map((e) => {
               const thumbnailUrl = e?.thumbnail?.filename || null;
@@ -52,9 +73,9 @@ function EtviewArticleList() {
                   </div>
                   <p
                     className="viewArticleList-btn text-primary text-decoration-underline"
-                    // onClick={() => {
-                    //   navigateToPeningCompanyRequest(e._id);
-                    // }}
+                    onClick={() => {
+                      toViewArticleById(e._id);
+                    }}
                     style={{ cursor: "pointer" }}
                   >
                     View more
