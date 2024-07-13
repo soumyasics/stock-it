@@ -71,6 +71,7 @@ import EtviewArticle from "./components/educational-tutors/et-ViewArticle/et-vie
 import UserViewEtArticle from "./components/user/userViewEtArticles/userViewEtArticle";
 import CompanyArticleList from "./components/company/companyArticleList/companyArticleList";
 import CompanyAddArticle from "./components/company/companyAddArticles/companyAddArticle";
+import { MyPortfolio } from "./components/user/viewPortfolio/viewPortfolio";
 
 
 function App() {
@@ -116,7 +117,9 @@ function App() {
           <Route path="/listedCompanies" element={<ListedCompanies />} />
           <Route path="/buyStocks" element={<BuyStocks />} />
           <Route path="/buyStocks/:id" element={<StockDetails />} />
+          <Route path="/viewPortfolio" element={<MyPortfolio />} />
 
+          {/* <Route path="/usersidebar" element={<UserSidebar />} /> */}
           {/* <Route path="/userabout" element={<UserHomePage />} /> */}
           <Route path="/userabout" element={<EtUserHomePage />} />
           <Route path="/et" element={<EtUserHomePage />} />

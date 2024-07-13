@@ -21,7 +21,6 @@ export const AdminETRequestDetails = () => {
     axiosInstance
       .post(`/getTutorById/${id}`)
       .then((response) => {
-        console.log("tutor id ", response);
         setState(response.data.data);
       })
       .catch((error) => {

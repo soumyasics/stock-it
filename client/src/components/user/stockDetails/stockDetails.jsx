@@ -14,9 +14,22 @@ export const StockDetails = () => {
   const [totalBoughtShares, setTotalBoughtShares] = useState(0);
   const [totalPurchasePrice, setTotalPurchasePrice] = useState(0);
   const [userId, setUserId] = useState("");
-
+  const [paymentData, setPaymentData] = useState({
+    cardHolderName: "",
+    cardNumber: "",
+    cvv: "",
+    expiry: "",
+  });
   const [logo, setLogo] = useState("");
   const [show, setShow] = useState(false);
+
+  const handlePaymentDataChange = (e) => {
+    const { name, value } = e.target;
+    setPaymentData({
+      ...paymentData,
+      [name]: value,
+    });
+  };
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -31,6 +44,8 @@ export const StockDetails = () => {
       }
     }
   }, [id]);
+
+  console.log("stock data", stockData);
 
   const getStockData = async () => {
     try {
@@ -64,32 +79,74 @@ export const StockDetails = () => {
     handleShow();
   };
 
-  const buyStocks = async () => {
+  const buyStocks = async (e) => {
+    e.preventDefault();
     const data = {
-      IPOId: id,
-      companyId: id?.companyId,
       userId,
-      totalShares: totalBoughtShares,
-      totalPurchasePrice,
+      IPOId: id,
+      companyId: stockData?.companyId?._id,
+      totalQuantity: totalBoughtShares,
+      numberOfSharesBought: totalBoughtShares,
       costPerShare: stockData.costPerShare,
+      totalCost: totalPurchasePrice,
+      ...paymentData,
     };
+    sendDataToServer(data);
   };
 
   const sendDataToServer = async (data) => {
+    const {
+      userId,
+      IPOId,
+      companyId,
+      totalQuantity,
+      numberOfSharesBought,
+      costPerShare,
+      totalCost,
+      cardHolderName,
+      cardNumber,
+      cvv,
+      expiry,
+    } = data;
+
+    if (
+      !userId ||
+      !IPOId ||
+      !companyId ||
+      !totalQuantity ||
+      !numberOfSharesBought ||
+      !costPerShare ||
+      !totalCost ||
+      !cardHolderName ||
+      !cardNumber ||
+      !cvv ||
+      !expiry
+    ) {
+      console.log("All data needed", data);
+      return;
+    }
+
     try {
       const response = await axiosInstance.post("buyStocks", data);
-      if (response.status === 200) {
+      if (response.status === 201) {
         toast.success("Stocks bought successfully");
         //   navigate to portfolio
       }
     } catch (error) {
       console.log("Error on buy stocks", error);
+    }finally {
+      handleClose()
     }
   };
 
   return (
     <>
-      <PaymentModal handleClose={handleClose} show={show} />
+      <PaymentModal
+        handleClose={handleClose}
+        show={show}
+        handlePaymentDataChange={handlePaymentDataChange}
+        buyStocks={buyStocks}
+      />
       <div id="stock-details-container">
         <div
           style={{ fontSize: "20px", cursor: "pointer" }}

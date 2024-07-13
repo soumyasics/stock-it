@@ -49,19 +49,19 @@ function AdminLogin() {
         <div className="AdminLogin-background">
           <div className="AdminLogin-box">
             <h3 className="AdminLogin-heading display-7">Admin Login</h3>
-            <div class="row">
-              <div class="col-5 AdminLogin-left-box">
+            <div className="row">
+              <div className="col-5 AdminLogin-left-box">
                 <img
                   src={img6}
                   alt="loginPage logo"
                   className="img-fluid my-4 adminLogin-image"
                 />
               </div>
-              <div class="col-7 AdminLogin-left-box">
+              <div className="col-7 AdminLogin-left-box">
                 <div className="AdminLogin-left-inner-box my-5">
                   <form action="" onSubmit={btnsubmit}>
-                    <div class="mb-3">
-                      <label for="formGroupExampleInput" class="form-label">
+                    <div className="mb-3">
+                      <label for="formGroupExampleInput" className="form-label">
                         Email
                       </label>
                       <input
@@ -73,8 +73,8 @@ function AdminLogin() {
                         name="email"
                       />
                     </div>
-                    <div class="mb-3">
-                      <label for="formGroupExampleInput2" class="form-label">
+                    <div className="mb-3">
+                      <label for="formGroupExampleInput2" className="form-label">
                         Password
                       </label>
                       <input
@@ -98,7 +98,7 @@ function AdminLogin() {
                     <button
                       type="submit"
                       value="submit"
-                      class="btn btn-primary AdminLogin-button my-4 "
+                      className="btn btn-primary AdminLogin-button my-4 "
                     >
                       Login
                     </button>
