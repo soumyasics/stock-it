@@ -182,8 +182,16 @@ export const CompanySidebar = ({ changePage }) => {
                   {show1 && (
                     <div className="sidebar-drop">
                       <ul>
-                        <li>Add Articles</li>
-                        <li>View Articles</li>
+                        <li
+                        onClick={()=>{
+                          changePage("add-Articles")
+                        }}
+                        >Add Articles</li>
+                        <li
+                         onClick={()=>{
+                          changePage("view-Articles")
+                        }}
+                        >View Articles</li>
                       </ul>
                     </div>
                   )}

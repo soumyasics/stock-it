@@ -3,10 +3,12 @@ import img1 from "../../../assets/images/Frame 339.png";
 import img2 from "../../../assets/images/navbarLogo.svg";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { faL } from "@fortawesome/free-solid-svg-icons";
 
 export const UserNavbar = () => {
   const [companiesDropdown, setCompaniesDropdown] = useState(false);
   const [stocksDropdown, setStocksDropdown] = useState(false);
+  const [articleDropdown, setArticleDropdown] = useState(false);
   const navigate = useNavigate();
   const userLogout = () => {
     navigate("/userLogin");
@@ -31,12 +33,19 @@ export const UserNavbar = () => {
 
   const toggleCompanyDropdown = () => {
     setStocksDropdown(false)
+    setArticleDropdown(false)
     setCompaniesDropdown(!companiesDropdown);
   };
 
   const toggleStockDropdown = () => {
     setCompaniesDropdown(false)
+    setArticleDropdown(false)
     setStocksDropdown(!stocksDropdown);
+  }
+  const toggleArticleDropdown=()=>{
+    setStocksDropdown(false)
+    setCompaniesDropdown(false)
+    setArticleDropdown(!articleDropdown)
   }
 
   const redirectBuyStocks = () => {
@@ -46,7 +55,9 @@ export const UserNavbar = () => {
   const redirectPortfolio = () => {
 
   }
-
+const reDirectToTutorArticle=()=>{
+  navigate("/tutorArticle")
+}
   return (
     <div>
       <nav className="navbar commonNavbar">
@@ -115,6 +126,30 @@ export const UserNavbar = () => {
                 </div>
               </div>
             )}
+            
+            <h6 className="text-light fw-bold" onClick={toggleArticleDropdown}>
+              Articles
+            </h6>
+
+            {articleDropdown && (
+              <div className="position-relative">
+                <div className="position-absolute text-light user-home-nav-drop d-flex flex-column">
+                  <div
+                    className="user-home-nav-drop-down"
+                    onClick={reDirectToTutorArticle}
+                  >
+                    Tutor Articles
+                  </div>
+                  <div
+                    className="user-home-nav-drop-down"
+                    // onClick={redirectPortfolio}
+                  >
+                    Company Articles
+                  </div>
+                </div>
+              </div>
+            )}
+
             <h6 className="text-light fw-bold" onClick={redirectUserAbout}>
               About
             </h6>
