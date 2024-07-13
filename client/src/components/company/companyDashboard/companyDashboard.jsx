@@ -3,6 +3,8 @@ import { CompanySidebar } from "../companySidebar/companySidebar";
 import { IpoForm } from "../Ipoform/ipoForm";
 import { ViewIPOStatus } from "../viewIPOStatus/viewIPOStatus";
 import { CompanyProfile } from "../companyProfile/companyProfile";
+import CompanyArticleList from "../companyArticleList/companyArticleList";
+import CompanyAddArticle from "../companyAddArticles/companyAddArticle";
 
 export const CompanyDashboard = () => {
   const [activePage, setActivePage] = useState("profile");
@@ -19,6 +21,9 @@ export const CompanyDashboard = () => {
         {activePage === "profile" && <CompanyProfile />}
         {activePage === "ipo-form" && <IpoForm />}
         {activePage === "ipo-status" && <ViewIPOStatus />}
+        {activePage === "view-Articles" && <CompanyArticleList/>}
+        {activePage === "add-Articles" && <CompanyAddArticle/>}
+
       </div>
     </div>
   );

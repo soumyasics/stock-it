@@ -7,24 +7,24 @@
     font-size: 16px;   
 }
 
-.form-label,
-.form-control {
+#my-unique-payment .form-label,
+#my-unique-payment .form-control {
   color: white;
   background-color: #34495e;
   border: none;
 }
 
-.form-control::placeholder {
+#my-unique-payment .form-control::placeholder {
   color: #7f8c8d;
 }
 
-.form-control:focus {
+#my-unique-payment .form-control:focus {
   box-shadow: none;
   background-color: #34495e;
   color: white;
 }
 
-button.btn-primary {
+#my-unique-payment button.btn-primary {
   background-color: #1abc9c;
   border: none;
 }

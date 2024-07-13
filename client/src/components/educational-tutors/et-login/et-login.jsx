@@ -59,7 +59,7 @@ function Etlogin() {
       if (status == 401) {
         const msg =
           error?.response?.data?.msg ||
-          "Please chcek your email Id and password";
+          "Please check your email Id and password";
         toast.error(msg);
       } else if (status == 404) {
         const msg = error?.response?.data?.msg || "Password mismatch";
