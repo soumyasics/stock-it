@@ -162,8 +162,8 @@ function App() {
           <Route path="/etnavbar" element={<Etnavbar />} />
           <Route path="/etForgotpassword" element={<EtForgotpassword />} />
           <Route path="/addArticle" element={<EtAddArticle />} />
-          <Route path="/viewArticleList" element={<EtviewArticleList />} />
-          <Route path="/viewArticles" element={<EtviewArticle />} />
+          <Route path="/viewArticleList/:id" element={<EtviewArticleList />} />
+          <Route path="/viewArticles/:id" element={<EtviewArticle />} />
 
           {/* new  */}
           <Route path="/newsidebar" element={<NewAdminsidebar />} />

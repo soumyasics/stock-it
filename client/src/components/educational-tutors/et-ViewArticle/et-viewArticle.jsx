@@ -1,12 +1,69 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./et-viewArticle.css";
 import { IoReturnUpBack } from "react-icons/io5";
 import { Col, Row } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import axiosInstance from "../../../apis/axiosInstance";
+import { BASE_URL } from "../../../apis/baseUrl";
 
 function EtviewArticle() {
   const navigate = useNavigate();
-  const [data, setdata] = useState();
+  const [viewArticle, setViewArticle] = useState(null);
+  const { id } = useParams();
+  const [videoUrl, setVideoUrl] = useState(null);
+  useEffect(() => {
+    if (viewArticle) {
+      let tutorialVideoLink = viewArticle?.video?.filename || null;
+      if (tutorialVideoLink) {
+        let URL = `${BASE_URL}${tutorialVideoLink}`;
+        // validate if it's a valid video URL
+        if (isValidVideoURL(URL)) {
+          setVideoUrl(URL);
+        } else {
+          console.log("Video url might be wrong.");
+          setVideoUrl(null);
+        }
+      } else {
+        console.log("Video url might be wrong.");
+        setVideoUrl(null);
+      }
+    }
+  }, [viewArticle]);
+
+  function isValidVideoURL(url) {
+    const videoExtensions = [
+      ".mp4",
+      ".avi",
+      ".mov",
+      ".wmv",
+      ".mkv",
+      ".flv",
+      ".webm",
+      ".ogg",
+      ".m4v",
+    ];
+    let fileExtension = url.substring(url.lastIndexOf(".")).toLowerCase();
+    return videoExtensions.includes(fileExtension);
+  }
+
+  useEffect(() => {
+    // const tutorId=JSON.parse(localStorage.getItem("stock_it_tutorId"))||null
+    if (id) {
+      getArticle();
+    }
+  }, []);
+  const getArticle = async () => {
+    try {
+      const response = await axiosInstance.post(`getArticleById/${id}`);
+      if (response.status === 200) {
+        setViewArticle(response.data.data);
+        console.log("data", response.data.data);
+      }
+    } catch (error) {
+      console.error("Network Issue");
+    }
+  };
+
   return (
     <div>
       <div className="etViewArticle-main">
@@ -19,21 +76,21 @@ function EtviewArticle() {
           >
             <IoReturnUpBack />
           </div>
-          Article Title
+          {viewArticle?.title}
         </div>
         <Row>
           <Col md={8} className="etViewArticle-video">
-            <iframe
-              width="90%"
-              height="500px"
-              src={
-                "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
-              }
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+            {videoUrl && (
+              <iframe
+                width="90%"
+                height="500px"
+                src={videoUrl}
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            )}
           </Col>
           <Col md={4} className="etViewArticle-description">
             <div className="text-success text-center mt-5 fs-3">
@@ -45,27 +102,27 @@ function EtviewArticle() {
                   <tr>
                     <td>Title</td>
                     <td>-</td>
-                    <td>fhkuhdhjfajljskflaj</td>
+                    <td className="fs-5">{viewArticle?.title}</td>
                   </tr>
                   <tr>
                     <td>SubTitle</td>
                     <td>-</td>
-                    <td>fahja</td>
+                    <td>{viewArticle?.subTitle}</td>
                   </tr>
                   <tr>
                     <td>Content</td>
                     <td>-</td>
-                    <td>fqhlfalhfilajfjaopfiaoifhalalfhqilfakjkhllhjjpdio</td>
+                    <td>{viewArticle?.content}</td>
                   </tr>
                   <tr>
                     <td>Category</td>
                     <td>-</td>
-                    <td>fuahfllllojk </td>
+                    <td>{viewArticle?.category}</td>
                   </tr>
                   <tr>
                     <td>Conclusion</td>
                     <td>-</td>
-                    <td>fquhfaaaaaaaijqogjqgfiyhaffffffffffffffffffddddddddddddd  lakjifalkkkklof</td>
+                    <td>{viewArticle?.conclusion}</td>
                   </tr>
                 </tbody>
               </table>
