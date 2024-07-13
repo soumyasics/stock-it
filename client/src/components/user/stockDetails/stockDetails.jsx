@@ -13,7 +13,7 @@ export const StockDetails = () => {
   const [stockData, setStockData] = useState({});
   const [totalBoughtShares, setTotalBoughtShares] = useState(0);
   const [totalPurchasePrice, setTotalPurchasePrice] = useState(0);
-    const [userId, setUserId] = useState("");
+  const [userId, setUserId] = useState("");
 
   const [logo, setLogo] = useState("");
   const [show, setShow] = useState(false);
@@ -24,7 +24,8 @@ export const StockDetails = () => {
   useEffect(() => {
     if (id) {
       getStockData();
-      const userIdentification = localStorage.getItem("stock_it_userId") || null;
+      const userIdentification =
+        localStorage.getItem("stock_it_userId") || null;
       if (userIdentification) {
         setUserId(userIdentification);
       }
@@ -65,30 +66,27 @@ export const StockDetails = () => {
 
   const buyStocks = async () => {
     const data = {
-        IPOId: id,
-        companyId: id?.companyId,
-        userId,
-        totalShares: totalBoughtShares,
-        totalPurchasePrice,
-        costPerShare: stockData.costPerShare,
-        
-    }
-
-
+      IPOId: id,
+      companyId: id?.companyId,
+      userId,
+      totalShares: totalBoughtShares,
+      totalPurchasePrice,
+      costPerShare: stockData.costPerShare,
+    };
   };
 
   const sendDataToServer = async (data) => {
     try {
-        const response = await axiosInstance.post("buyStocks", data);
-        if (response.status === 200) {
-          toast.success("Stocks bought successfully");
+      const response = await axiosInstance.post("buyStocks", data);
+      if (response.status === 200) {
+        toast.success("Stocks bought successfully");
         //   navigate to portfolio
-        }
-      } catch (error) {
-        console.log("Error on buy stocks", error);
       }
+    } catch (error) {
+      console.log("Error on buy stocks", error);
     }
-  
+  };
+
   return (
     <>
       <PaymentModal handleClose={handleClose} show={show} />
@@ -109,7 +107,7 @@ export const StockDetails = () => {
             {`${stockData?.companyId?.name} (${stockData?.companyId?.ticker})`}
           </h3>
         </div>
-        <Row className="stock-details-row  ">
+        <Row className="stock-details-row">
           <Col>Total Shares</Col>
           <Col md={1}>:</Col>
           <Col>{stockData.totalShares}</Col>

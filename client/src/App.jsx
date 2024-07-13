@@ -65,7 +65,7 @@ import { ListedCompanies } from "./components/user/viewUpcomingCompanies/listedC
 import { BuyStocks } from "./components/user/buyStocks/buyStocks";
 import { StockDetails } from "./components/user/stockDetails/stockDetails";
 import EtviewArticleList from "./components/educational-tutors/et-ViewArticleList/et-viewArticleList";
-import EtviewArticle from "./components/educational-tutors/et-viewArticle/et-viewArticle";
+import EtviewArticle from "./components/educational-tutors/et-ViewArticle/et-viewArticle";
 
 function App() {
   return (

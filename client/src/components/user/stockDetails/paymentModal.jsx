@@ -6,7 +6,7 @@ import "./PaymentModal.css";
 
 export const PaymentModal = ({ show, handleClose }) => {
   return (
-    <div id="my-unique-paymennt">
+    <div id="my-unique-payment">
       <Modal
         show={show}
         onHide={handleClose}
