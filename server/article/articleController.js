@@ -37,7 +37,7 @@ const createArticle = async (req, res) => {
       content,
       conclusion,
       thumbnail: req.files[0],
-      video: req.files[0],
+      video: req.files[1],
     });
     await newArticle.save();
     return res
