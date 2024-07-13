@@ -12,7 +12,7 @@ function EtviewArticle() {
   const { id } = useParams();
   const [videoUrl, setVideoUrl] = useState(null);
   useEffect(() => {
-    if (viewArticle) {
+    if (viewArticle) {                  
       let tutorialVideoLink = viewArticle?.video?.filename || null;
       if (tutorialVideoLink) {
         let URL = `${BASE_URL}${tutorialVideoLink}`;
