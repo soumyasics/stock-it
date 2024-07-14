@@ -46,11 +46,11 @@ export const PortfolioCard = ({ data }) => {
             <td>:</td>
             <td className="companyRequest-data">{data?.totalCost}</td>
           </tr>
-          <tr>
+         <tr>
             <td>Current Market Valuation</td>
             <td>:</td>
             <td className="companyRequest-data">{currentMarektValue}</td>
-          </tr>
+          </tr> 
           <tr>
             <td>Net P&L</td>
             <td>:</td>
@@ -69,7 +69,7 @@ export const PortfolioCard = ({ data }) => {
       <h6
         className="mt-4 companyRewquest-viewmore2 mt-5"
         style={{ cursor: "pointer" }}
-        onClick={() => navigate(`/buyStocks/${data?._id}`)}
+        onClick={() => navigate(`/viewPortfolio/${data?._id}`)}
       >
         View more
       </h6>

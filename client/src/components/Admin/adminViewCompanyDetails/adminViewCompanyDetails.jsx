@@ -119,9 +119,8 @@ export const AdminViewCompanyDetails = () => {
                 <td>-</td>
                 <td>
                   <button
-                    className="btn-primary btn"
+                    className="modal-btn btn-primary btn"
                     type="button"
-                    className="modal-btn"
                     data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop"
                   >
@@ -161,7 +160,7 @@ export const AdminViewCompanyDetails = () => {
             aria-hidden="true"
           >
             <div className="modal-dialog modal-xl">
-              <div className="modal-content">
+              <div class="modal-content">
                 <div className="modal-header">
                   <h1 className="modal-title fs-5" id="staticBackdropLabel">
                     Company License

@@ -1,6 +1,6 @@
 const { BuyStocksModel } = require("./buyStocksSchema");
 const IPOModel = require("../IPO/ipoSchema");
-
+const mongoose = require("mongoose")
 const buyStocks = async (req, res) => {
   try {
     const {
@@ -41,15 +41,17 @@ const buyStocks = async (req, res) => {
         .status(400)
         .json({ msg: "You can't buy more shares than available" });
     }
-    
+
     // when user buy stocks decrease the available shares
     stock.availableShares = stock.availableShares - totalQuantity;
-    
+
     // increase the currentMarketPrice of the stock
     const onePercentageOfCMP = Math.round(stock.currentMarketPrice * 0.01);
-    stock.currentMarketPrice = Math.round(onePercentageOfCMP + stock.currentMarketPrice);
+    stock.currentMarketPrice = Math.round(
+      onePercentageOfCMP + stock.currentMarketPrice
+    );
     await stock.save();
-    
+
     const buyStocks = new BuyStocksModel({
       userId,
       IPOId,
@@ -68,7 +70,7 @@ const buyStocks = async (req, res) => {
       .status(201)
       .json({ msg: "Stock bought successfully", data: buyStocks });
   } catch (error) {
-    return res.status(500).json({ msg: "Server error",error: error.message });
+    return res.status(500).json({ msg: "Server error", error: error.message });
   }
 };
 
@@ -117,14 +119,20 @@ const getAllBoughtStocksByCompanyId = async (req, res) => {
 
 const getBoughtStockById = async (req, res) => {
   try {
-    const boughtStock = await BuyStocksModel.findById(req.params.id);
-    return res
-      .status(200)
-      .json({ msg: "Bought stock by id", data: boughtStock })
+    const  id  = req.params.id;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ msg: "Id is required" });
+    }
+    const boughtStock = await BuyStocksModel.findById(req.params.id)
       .populate("userId")
       .populate("IPOId")
       .populate("companyId")
       .exec();
+
+    return res
+      .status(200)
+      .json({ msg: "Bought stock by id", data: boughtStock });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
