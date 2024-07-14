@@ -7,6 +7,7 @@ const IPO = require("./IPO/ipoController");
 const ET = require("./Tutors/tutorController");
 const ArtilceRoutes = require("./article/articleController");
 const buyStockController = require("./buyStocks/buyStocksController");
+const CompanyArticleController = require("./companyArticle/articleController")
 
 router.get("/", (req, res) => {
   return res.send({ message: "Stock it Server working" });
@@ -86,6 +87,20 @@ router.post("/getArticleById/:id", ArtilceRoutes.getArticleById);
 router.post("/updateArticleById/:id", ArtilceRoutes.updateArticleById);
 router.post("/deleteArticleById/:id", ArtilceRoutes.deleteArticleById);
 router.get("/getArticleByTutorId/:id", ArtilceRoutes.getArticleByTutorId);
+
+// company article routes 
+router.post(
+  "/co-createArticle",
+  CompanyArticleController.uploadVideo,
+  CompanyArticleController.createArticle
+);
+
+router.get("/co-getAllArticles", CompanyArticleController.getAllArticles);
+router.post("/co-getArticleById/:id", CompanyArticleController.getArticleById);
+router.post("/co-updateArticleById/:id", CompanyArticleController.updateArticleById);
+router.post("/co-deleteArticleById/:id", CompanyArticleController.deleteArticleById);
+router.get("/co-getArticleByCompanyId/:id", CompanyArticleController.getArticleByTutorId);
+
 // buy stocks 
 router.post("/buyStocks", buyStockController.buyStocks);
 router.get("/allBuyStocks", buyStockController.allBuyStocks);
