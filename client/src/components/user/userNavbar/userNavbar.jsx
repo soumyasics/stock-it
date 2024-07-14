@@ -53,7 +53,7 @@ export const UserNavbar = () => {
   }
   
   const redirectPortfolio = () => {
-
+    navigate('/viewPortfolio')
   }
 const reDirectToTutorArticle=()=>{
   navigate("/tutorArticle")

@@ -37,7 +37,7 @@ function LandingPageHeader() {
                 where informed decision meet seamless transaction
               </p>
               <div className="landingheader-left-btn">
-                <button type="button" class="btn btn-primary">
+                <button type="button" className="btn btn-primary">
                   Get Started
                 </button>
               </div>

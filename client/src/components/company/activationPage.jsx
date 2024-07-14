@@ -158,7 +158,7 @@ function ActivationPage() {
                             <tr>
                                 <td>Company License</td>
                                 <td>-</td>
-                                <td><button type="button" class="modal-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                <td><button type="button" className="modal-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                     View License
                                 </button></td>
                             </tr>
@@ -189,18 +189,18 @@ function ActivationPage() {
                     </div>
 
                     {/* Modal page */}
-                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-xl">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Company License</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div className="modal-dialog modal-xl">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h1 className="modal-title fs-5" id="staticBackdropLabel">Company License</h1>
+                                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body modal-image">
+                                <div className="modal-body modal-image">
                                     <img src={`${BASE_URL}${state?.logo?.filename}`} alt="profile" />
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <div className="modal-footer">
+                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </div>

@@ -4,8 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
+
 import CommonNavbar from "./components/common/commonNavbar";
 import LandingPageHeader from "./components/common/landingPage-2";
 
@@ -65,10 +64,16 @@ import { ListedCompanies } from "./components/user/viewUpcomingCompanies/listedC
 import { BuyStocks } from "./components/user/buyStocks/buyStocks";
 import { StockDetails } from "./components/user/stockDetails/stockDetails";
 import EtviewArticleList from "./components/educational-tutors/et-ViewArticleList/et-viewArticleList";
-import EtviewArticle from "./components/educational-tutors/et-viewArticle/et-viewArticle";
+
+import EtviewArticle from "./components/educational-tutors/et-ViewArticle/et-viewArticle";
+
+// import EtviewArticle from "./components/educational-tutors/et-ViewArticle/et-viewArticle";
 import UserViewEtArticle from "./components/user/userViewEtArticles/userViewEtArticle";
 import CompanyArticleList from "./components/company/companyArticleList/companyArticleList";
 import CompanyAddArticle from "./components/company/companyAddArticles/companyAddArticle";
+import { MyPortfolio } from "./components/user/viewPortfolio/viewPortfolio";
+import { PortfolioDetails } from "./components/user/viewPortfolio/portfolioDetails";
+
 
 function App() {
   return (
@@ -113,7 +118,10 @@ function App() {
           <Route path="/listedCompanies" element={<ListedCompanies />} />
           <Route path="/buyStocks" element={<BuyStocks />} />
           <Route path="/buyStocks/:id" element={<StockDetails />} />
+          <Route path="/viewPortfolio" element={<MyPortfolio />} />
+          <Route path="/viewPortfolio/:id" element={<PortfolioDetails />} />
 
+          {/* <Route path="/usersidebar" element={<UserSidebar />} /> */}
           {/* <Route path="/userabout" element={<UserHomePage />} /> */}
           <Route path="/userabout" element={<EtUserHomePage />} />
           <Route path="/et" element={<EtUserHomePage />} />

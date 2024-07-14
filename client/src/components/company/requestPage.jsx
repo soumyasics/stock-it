@@ -119,9 +119,8 @@ function RequestPage() {
                 <td>-</td>
                 <td>
                   <button
-                    className="btn-primary btn"
+                    className="modal-btn btn-primary btn"
                     type="button"
-                    class="modal-btn"
                     data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop"
                   >
@@ -142,17 +141,17 @@ function RequestPage() {
             </table>
           </div>
           <div className="requestpage-btn">
-            <button class="btn" type="submit" value="submit" onClick={toAccept}>
+            <button className="btn" type="submit" value="submit" onClick={toAccept}>
               Accept
             </button>
-            <button class="btn" type="submit" value="submit" onClick={toDelete}>
+            <button className="btn" type="submit" value="submit" onClick={toDelete}>
               Reject
             </button>
           </div>
 
           {/* Modal page */}
           <div
-            class="modal fade"
+            className="modal fade"
             id="staticBackdrop"
             data-bs-backdrop="static"
             data-bs-keyboard="false"
@@ -160,29 +159,29 @@ function RequestPage() {
             aria-labelledby="staticBackdropLabel"
             aria-hidden="true"
           >
-            <div class="modal-dialog modal-xl">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="staticBackdropLabel">
+            <div className="modal-dialog modal-xl">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h1 className="modal-title fs-5" id="staticBackdropLabel">
                     Company License
                   </h1>
                   <button
                     type="button"
-                    class="btn-close"
+                    className="btn-close"
                     data-bs-dismiss="modal"
                     aria-label="Close"
                   ></button>
                 </div>
-                <div class="modal-body modal-image">
+                <div className="modal-body modal-image">
                   <img
                     src={`${BASE_URL}${state?.license?.filename}`}
                     alt="profile"
                   />
                 </div>
-                <div class="modal-footer">
+                <div className="modal-footer">
                   <button
                     type="button"
-                    class="btn btn-secondary"
+                    className="btn btn-secondary"
                     data-bs-dismiss="modal"
                   >
                     Close

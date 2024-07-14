@@ -11,46 +11,46 @@ function Forgotpassword() {
             <div className='forgotpassword'>
                 <div className="forgotpassword-box">
                     <h3 className="resetpassword-heading">Forgot Password</h3>
-                    <div class="row">
-                        <div class="col-5 forgotpassword-logo">
+                    <div className="row">
+                        <div className="col-5 forgotpassword-logo">
                             <img src={img1} alt="loginPage logo" className="img-fluid my-4" />
                         </div>
-                        <form class="col-7 forgotpassword-inputs">
-                            <div class="mb-3 forgotpassword-inner">
-                                <label for="exampleFormControlInput1" class="form-label">
+                        <form className="col-7 forgotpassword-inputs">
+                            <div className="mb-3 forgotpassword-inner">
+                                <label for="exampleFormControlInput1" className="form-label">
                                     Email Id
                                 </label>
                                 <input
                                     type="text"
-                                    class="form-control"
+                                    className="form-control"
                                     id="exampleFormControlInput1"
                                     placeholder="Enter Email Id"
                                 />
                             </div>
-                            <div class="mb-3 forgotpassword-inner">
-                                <label for="exampleFormControlInput1" class="form-label">
+                            <div className="mb-3 forgotpassword-inner">
+                                <label for="exampleFormControlInput1" className="form-label">
                                    New Password
                                 </label>
                                 <input
                                     type="password"
-                                    class="form-control"
+                                    className="form-control"
                                     id="exampleFormControlInput1"
                                     placeholder="Enter New Password"
                                 />
                             </div>
-                            <div class="mb-3 forgotpassword-inner">
-                                <label for="exampleFormControlInput1" class="form-label">
+                            <div className="mb-3 forgotpassword-inner">
+                                <label for="exampleFormControlInput1" className="form-label">
                                    Confirm Password
                                 </label>
                                 <input
                                     type="password"
-                                    class="form-control"
+                                    className="form-control"
                                     id="exampleFormControlInput1"
                                     placeholder="Re Enter Password"
                                 />
                             </div>
 
-                            <button class="login-button" type="submit">
+                            <button className="login-button" type="submit">
                                 submit
                             </button>
                         </form>

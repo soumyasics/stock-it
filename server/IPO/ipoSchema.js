@@ -2,13 +2,21 @@ const mongoose = require("mongoose");
 
 const ipoSchema = mongoose.Schema({
   totalShares: {
-    type: String,
+    type: Number,
     require: true,
+  },
+  availableShares: {
+    type: Number,
+    require: true
   },
   costPerShare: {
     type: Number,
     require: true,
   },
+  currentMarketPrice: {
+    type: Number, // this value will change when user buy/sell
+    require: true
+  }, 
   companyId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "companies",

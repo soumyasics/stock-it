@@ -3,13 +3,13 @@ import img1 from '../../../assets/images/image 60.png'
 export const UserWelcome = () => {
     return (
         <div>
-            <div class=" text-center">
+            <div className=" text-center">
 
-                <div class="row user-welcome-body">
-                    <div class="col-4 user-welcome-left-box">
+                <div className="row user-welcome-body">
+                    <div className="col-4 user-welcome-left-box">
                         <img src={img1} alt="" />
                     </div>
-                    <div class="col-8 user-welcome-right-box">
+                    <div className="col-8 user-welcome-right-box">
                         <div className="user-welcome-inner-box">
                             <h3>Welcome to Stock It :</h3>
                             <p>

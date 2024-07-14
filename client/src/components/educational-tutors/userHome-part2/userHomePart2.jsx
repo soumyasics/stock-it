@@ -3,9 +3,9 @@ import img1 from "../../../assets/images/image 59.png"
 export const UserHomePart2 = () => {
     return (
         <div>
-            <div class="userHomePart2-body">
-                <div class="row">
-                    <div class="col-8">
+            <div className="userHomePart2-body">
+                <div className="row">
+                    <div className="col-8">
                         <div className="userHomePart2-left-inner-box">
                         <h2>Growth Of Stock It</h2>
                         <p>The stock market is expected to see moderate growth in 2024, influenced by a stable economic
@@ -15,7 +15,7 @@ export const UserHomePart2 = () => {
                             anticipated to perform well.</p>
                     </div>
                     </div>
-                    <div class="col-4">
+                    <div className="col-4">
                         <img src={img1} alt="" />
                     </div>
                 </div>

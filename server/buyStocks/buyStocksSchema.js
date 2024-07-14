@@ -16,7 +16,7 @@ const buyStocksSchema = new mongoose.Schema(
       ref: "companies",
       required: true,
     },
-    quantity: {
+    totalQuantity: {
       type: Number,
       requied: true,
     },
@@ -32,7 +32,6 @@ const buyStocksSchema = new mongoose.Schema(
       type: Number,
       requied: true,
     },
-
     cardHolderName: {
       type: String,
       required: true,

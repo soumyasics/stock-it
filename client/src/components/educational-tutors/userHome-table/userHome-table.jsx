@@ -3,9 +3,9 @@ import img1 from "../../../assets/images/image 61.png"
 export const UserHomeTable = () => {
     return(
     <div>
-        <div class=" userHomeTable-body ">
-            <div class="row">
-                <div class="col-sm-6 userHomeTable-left-box ">
+        <div className=" userHomeTable-body ">
+            <div className="row">
+                <div className="col-sm-6 userHomeTable-left-box ">
                     <div>
                         <img src={img1} alt="" />
                     </div>
@@ -22,7 +22,7 @@ export const UserHomeTable = () => {
 
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div className="col-sm-6">
                     <div className="userHomeTable-right-inner-box">
                         <h3>Recently Added Companies</h3>
                         <table className="userHome-table-table">
