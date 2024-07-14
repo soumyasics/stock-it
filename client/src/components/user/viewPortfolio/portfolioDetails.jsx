@@ -10,6 +10,8 @@ import { toast } from "react-hot-toast";
 export const PortfolioDetails = () => {
   const { id } = useParams();
   const [stockData, setStockData] = useState({});
+  const [profitOrLoss, setProfitOrLoss] = useState(0);
+  const [currentMarektValue, setCurrentMarketValue] = useState(0);
   const [totalBoughtShares, setTotalBoughtShares] = useState(0);
   const [totalPurchasePrice, setTotalPurchasePrice] = useState(0);
   const [userId, setUserId] = useState("");
@@ -48,19 +50,29 @@ export const PortfolioDetails = () => {
 
   const getStockData = async () => {
     try {
-      const response = await axiosInstance.post(`getIPOById/${id}`);
+      const response = await axiosInstance.get(`getBoughtStockById/${id}`);
       if (response.status === 200) {
-        setStockData(response.data.data);
-        const companyLogo =
-          response?.data?.data?.companyId?.logo?.filename || null;
+        const stock = response.data?.data || {};
+        setStockData(stock);
+        const companyLogo = stock?.companyId?.logo?.filename || null;
         if (companyLogo) {
           setLogo(`${BASE_URL}${companyLogo}`);
         }
+
+        // profit and loss calcuation
+        const CMP = stock?.IPOId?.currentMarketPrice;
+        const totalCurrentMarektValuation = CMP * stock?.totalQuantity;
+        setCurrentMarketValue(totalCurrentMarektValuation);
+
+        const pAndL = totalCurrentMarektValuation - stock?.totalCost - 50;
+        setProfitOrLoss(pAndL);
       }
     } catch (error) {
       console.log("Error on getstock data", error);
     }
   };
+
+  console.log("stock data", stockData);
   const handleNoSharesChanges = (e) => {
     const noShares = e.target.value;
     setTotalBoughtShares(noShares);
@@ -133,14 +145,13 @@ export const PortfolioDetails = () => {
       }
     } catch (error) {
       console.log("Error on buy stocks", error);
-    }finally {
-      handleClose()
+    } finally {
+      handleClose();
     }
   };
 
   return (
     <>
-      
       <div id="stock-details-container">
         <div
           style={{ fontSize: "20px", cursor: "pointer" }}
@@ -159,17 +170,28 @@ export const PortfolioDetails = () => {
           </h3>
         </div>
         <Row className="stock-details-row">
-          <Col>Total Shares</Col>
+          <Col>Total Quantity</Col>
           <Col md={1}>:</Col>
-          <Col>{stockData.totalShares}</Col>
+          <Col>{stockData.totalQuantity}</Col>
         </Row>
         <Row className="stock-details-row  ">
-          <Col>Cost per share</Col>
+          <Col>Bough price</Col>
           <Col md={1}>:</Col>
           <Col>{stockData.costPerShare}</Col>
         </Row>
         <Row className="stock-details-row  ">
-          <Col>Number of Shares Needed </Col>
+          <Col>Total Cost</Col>
+          <Col md={1}>:</Col>
+          <Col>{stockData.totalCost}</Col>
+        </Row>
+        <Row className="stock-details-row  ">
+          <Col>Current Market Valuation</Col>
+          <Col md={1}>:</Col>
+          <Col>{currentMarektValue}</Col>
+        </Row>
+
+        <Row className="stock-details-row  ">
+          <Col>Shares For Sale </Col>
           <Col md={1}>:</Col>
           <Col>
             <input
@@ -181,14 +203,23 @@ export const PortfolioDetails = () => {
           </Col>
         </Row>
         <Row className="stock-details-row  ">
-          <Col>Total Purchase Price </Col>
+          <Col>Live Profit / Loss Status </Col>
           <Col md={1}>:</Col>
-          <Col>{totalPurchasePrice}</Col>
+          {profitOrLoss > 0 ? (
+            <Col>
+              <p className="text-success" style={{ textAlign: "left" }}>
+                {" "}
+                ₹ {profitOrLoss}{" "}
+              </p>
+            </Col>
+          ) : (
+            <Col className="text-danger"> ₹ {profitOrLoss}</Col>
+          )}
         </Row>
 
         <div className="d-flex justify-content-center mt-5 stock-details-row">
           <Button onClick={openPaymentModal} className="buy-btn">
-            Buy Stocks
+            Sell Stocks
           </Button>
         </div>
       </div>
