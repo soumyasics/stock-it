@@ -32,7 +32,6 @@ const buyStocksSchema = new mongoose.Schema(
       type: Number,
       requied: true,
     },
-
     cardHolderName: {
       type: String,
       required: true,

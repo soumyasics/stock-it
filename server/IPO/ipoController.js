@@ -27,6 +27,8 @@ exports.createIpo = async (req, res) => {
     const newIpo = new Ipo({
       totalShares,
       costPerShare,
+      currentMarketPrice: costPerShare,
+      availableShares: totalShares,
       capitation,
       companyId,
     });
@@ -59,7 +61,6 @@ exports.getIposForAdminApproval = async (req, res) => {
 exports.getIpoByCompanyId = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log("id", id);
     const company = await CompanyModel.findById(id);
     if (!company) {
       return res.status(404).json({ message: "IPO not found" });

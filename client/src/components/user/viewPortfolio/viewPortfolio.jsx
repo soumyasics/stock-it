@@ -17,10 +17,8 @@ export const MyPortfolio = () => {
         `getAllBoughtStocksByUserId/${userId}`
       );
       if (res.status === 200) {
-        const allStocks = res.data?.data || [];
-        // const allCompanies = allIPOs.map((IPO) => {
-        //   return IPO.companyId;
-        // });
+        let allStocks = res.data?.data || [];
+        allStocks = allStocks.reverse()
         setMyStocks(allStocks);
       } else {
         console.log("Error ", res);

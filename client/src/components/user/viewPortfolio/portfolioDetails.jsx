@@ -2,13 +2,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axiosInstance from "../../../apis/axiosInstance";
 import { Button, Col, Row } from "react-bootstrap";
-import "./stockDetails.css";
+import "./portfolioDetails.css";
 import { BASE_URL } from "../../../apis/baseUrl";
 import { IoReturnUpBack } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
-import { PaymentModal } from "./paymentModal";
-export const StockDetails = () => {
+export const PortfolioDetails = () => {
   const { id } = useParams();
   const [stockData, setStockData] = useState({});
   const [totalBoughtShares, setTotalBoughtShares] = useState(0);
@@ -22,6 +21,7 @@ export const StockDetails = () => {
   });
   const [logo, setLogo] = useState("");
   const [show, setShow] = useState(false);
+
   const handlePaymentDataChange = (e) => {
     const { name, value } = e.target;
     setPaymentData({
@@ -64,14 +64,14 @@ export const StockDetails = () => {
   const handleNoSharesChanges = (e) => {
     const noShares = e.target.value;
     setTotalBoughtShares(noShares);
-    setTotalPurchasePrice(noShares * stockData.currentMarketPrice);
+    setTotalPurchasePrice(noShares * stockData.costPerShare);
   };
   const openPaymentModal = () => {
     if (totalBoughtShares <= 0) {
       toast.error("Please enter valid number of shares");
       return;
     }
-    if (totalBoughtShares > stockData.availableShares) {
+    if (totalBoughtShares > stockData.totalShares) {
       toast.error("You can't buy more shares than available");
       return;
     }
@@ -86,7 +86,7 @@ export const StockDetails = () => {
       companyId: stockData?.companyId?._id,
       totalQuantity: totalBoughtShares,
       numberOfSharesBought: totalBoughtShares,
-      costPerShare: stockData.currentMarketPrice,
+      costPerShare: stockData.costPerShare,
       totalCost: totalPurchasePrice,
       ...paymentData,
     };
@@ -129,15 +129,9 @@ export const StockDetails = () => {
       const response = await axiosInstance.post("buyStocks", data);
       if (response.status === 201) {
         toast.success("Stocks bought successfully");
-          navigate("/viewPortfolio")
+        //   navigate to portfolio
       }
     } catch (error) {
-      const status = error?.response.status;
-      if (status === 400 || status === 404 || status === 500) {
-        toast.error(error?.response?.data?.msg || "Please check your network");
-      }else {
-        toast.error("Something went wrong");
-      }
       console.log("Error on buy stocks", error);
     }finally {
       handleClose()
@@ -146,12 +140,7 @@ export const StockDetails = () => {
 
   return (
     <>
-      <PaymentModal
-        handleClose={handleClose}
-        show={show}
-        handlePaymentDataChange={handlePaymentDataChange}
-        buyStocks={buyStocks}
-      />
+      
       <div id="stock-details-container">
         <div
           style={{ fontSize: "20px", cursor: "pointer" }}
@@ -174,15 +163,10 @@ export const StockDetails = () => {
           <Col md={1}>:</Col>
           <Col>{stockData.totalShares}</Col>
         </Row>
-        <Row className="stock-details-row">
-          <Col>Available Shares</Col>
-          <Col md={1}>:</Col>
-          <Col>{stockData.availableShares}</Col>
-        </Row>
         <Row className="stock-details-row  ">
-          <Col>Current Market Price</Col>
+          <Col>Cost per share</Col>
           <Col md={1}>:</Col>
-          <Col>{stockData.currentMarketPrice}</Col>
+          <Col>{stockData.costPerShare}</Col>
         </Row>
         <Row className="stock-details-row  ">
           <Col>Number of Shares Needed </Col>

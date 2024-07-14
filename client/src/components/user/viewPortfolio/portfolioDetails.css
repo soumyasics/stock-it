@@ -1,0 +1,27 @@
+#stock-details-container {
+    height: 100vh;
+    width: 100%;
+    background-color: #374151;
+    padding: 40px 50px;
+    color: white;
+}
+
+#stock-details-container .stock-details-row {
+    width: 45%;
+    margin-top:10px;
+}
+
+.stock-details-row img {
+    width: 50px;
+    height: 50px;
+}
+.stock-details-row h3 {
+    font-size: 20px;
+    text-transform: capitalize;
+}
+
+#stock-details-container .buy-btn {
+    background-color: #111827;
+    color: white;
+    border-radius: 5PX;
+}

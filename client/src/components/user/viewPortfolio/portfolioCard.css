@@ -1,0 +1,12 @@
+.portfolio-cards-body tr td {
+  text-align: left;
+  
+}
+
+.companyRequest-details3 {
+  height: 350px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  width: 260px;
+  background: #374151;
+}

@@ -72,6 +72,7 @@ import UserViewEtArticle from "./components/user/userViewEtArticles/userViewEtAr
 import CompanyArticleList from "./components/company/companyArticleList/companyArticleList";
 import CompanyAddArticle from "./components/company/companyAddArticles/companyAddArticle";
 import { MyPortfolio } from "./components/user/viewPortfolio/viewPortfolio";
+import { PortfolioDetails } from "./components/user/viewPortfolio/portfolioDetails";
 
 
 function App() {
@@ -118,6 +119,7 @@ function App() {
           <Route path="/buyStocks" element={<BuyStocks />} />
           <Route path="/buyStocks/:id" element={<StockDetails />} />
           <Route path="/viewPortfolio" element={<MyPortfolio />} />
+          <Route path="/viewPortfolio/:id" element={<PortfolioDetails />} />
 
           {/* <Route path="/usersidebar" element={<UserSidebar />} /> */}
           {/* <Route path="/userabout" element={<UserHomePage />} /> */}

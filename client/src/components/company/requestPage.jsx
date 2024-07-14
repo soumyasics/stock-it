@@ -119,9 +119,8 @@ function RequestPage() {
                 <td>-</td>
                 <td>
                   <button
-                    className="btn-primary btn"
+                    className="modal-btn btn-primary btn"
                     type="button"
-                    className="modal-btn"
                     data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop"
                   >

@@ -78,8 +78,8 @@ export const PaymentModal = ({
               </Col>
             </Row>
             <div className="d-flex justify-content-center">
-              <Button variant="primary" type="submit">
-                Submit
+              <Button variant="success" type="submit">
+                Pay
               </Button>
             </div>
           </Form>

@@ -1,4 +1,5 @@
 const { BuyStocksModel } = require("./buyStocksSchema");
+const IPOModel = require("../IPO/ipoSchema");
 
 const buyStocks = async (req, res) => {
   try {
@@ -30,6 +31,25 @@ const buyStocks = async (req, res) => {
     ) {
       return res.status(400).json({ msg: "All fields are required" });
     }
+
+    let stock = await IPOModel.findById(IPOId);
+    if (!stock) {
+      return res.status(404).json({ msg: "Stock not found" });
+    }
+    if (totalQuantity > stock.availableShares) {
+      return res
+        .status(400)
+        .json({ msg: "You can't buy more shares than available" });
+    }
+    
+    // when user buy stocks decrease the available shares
+    stock.availableShares = stock.availableShares - totalQuantity;
+    
+    // increase the currentMarketPrice of the stock
+    const onePercentageOfCMP = Math.round(stock.currentMarketPrice * 0.01);
+    stock.currentMarketPrice = Math.round(onePercentageOfCMP + stock.currentMarketPrice);
+    await stock.save();
+    
     const buyStocks = new BuyStocksModel({
       userId,
       IPOId,
@@ -48,7 +68,7 @@ const buyStocks = async (req, res) => {
       .status(201)
       .json({ msg: "Stock bought successfully", data: buyStocks });
   } catch (error) {
-    return res.status(500).json({ error: error.message });
+    return res.status(500).json({ msg: "Server error",error: error.message });
   }
 };
 
