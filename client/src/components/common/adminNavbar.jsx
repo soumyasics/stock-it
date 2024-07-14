@@ -15,7 +15,7 @@ function AdminNavbar() {
           <img src={logo} alt="" />
           <form className="d-flex adminlogo">
             <img src={logo2} alt="" />
-            <button class="btn" type="submit" onClick={redirectToAdminLogin}>
+            <button className="btn" type="submit" onClick={redirectToAdminLogin}>
               Admin
             </button>
           </form>

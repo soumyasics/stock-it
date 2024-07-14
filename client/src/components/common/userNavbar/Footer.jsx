@@ -9,8 +9,8 @@ function Footer() {
   return (
     <div>
       <footer>
-        <div class="row ">
-          <div class="col ">
+        <div className="row ">
+          <div className="col ">
             <div className='left-footer-inner-box my-4'>
               <img src={img1} alt="" className='img-fluid' />
               <p className='my-2 footer-text'>The goal of a successful trader <br />
@@ -18,7 +18,7 @@ function Footer() {
             </div>
           </div>
 
-          <div class="col ">
+          <div className="col ">
             <div className='middle-footer-inner-box my-5'>
               <li className='footer-head'>Quick Links</li>
               <li className='footer-text'>Home</li>
@@ -28,7 +28,7 @@ function Footer() {
             </div>
           </div>
 
-          <div class="col ">
+          <div className="col ">
             <div className='right-footer-inner-box my-5'>
               <li className='footer-head'>Contact Us</li>
               <li className='footer-text'>Stockitofficial@gmail.com</li>

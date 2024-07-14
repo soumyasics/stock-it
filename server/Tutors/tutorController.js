@@ -222,8 +222,6 @@ const loginTutor = async (req, res) => {
     const { email, password } = req.body;
     const tutor = await TutorModel.findOne({ email });
 
-    console.log("tutor ", tutor)
-
     if (!tutor) {
       return res.status(404).json({ msg: "Tutor not found" });
     }

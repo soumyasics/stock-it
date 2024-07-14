@@ -18,7 +18,7 @@ export const Footer2 = () => {
             </div>
           </div>
 
-          <div class="col ">
+          <div className="col ">
             <div className='middle-footer-inner-box my-5'>
               <li className='footer-head'>Quick Links</li>
               <li className='footer-text'>Home</li>
@@ -28,7 +28,7 @@ export const Footer2 = () => {
             </div>
           </div>
 
-          <div class="col ">
+          <div className="col ">
             <div className='right-footer-inner-box my-5'>
               <li className='footer-head'>Contact Us</li>
               <li className='footer-text'>Stockitofficial@gmail.com</li>

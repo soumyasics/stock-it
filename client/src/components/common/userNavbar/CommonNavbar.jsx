@@ -7,9 +7,9 @@ import img1 from '../assets/images/Frame 339.png'
 function CommonNavbar() {
   return (
     <div>
-      <nav class="navbar commonNavbar">
-        <div class="container">
-          <a class="navbar-brand commonNavbar-image" href="#">
+      <nav className="navbar commonNavbar">
+        <div className="container">
+          <a className="navbar-brand commonNavbar-image" href="#">
             <img src={img1} />
           </a>
           <div className='commonNavbar-right'>

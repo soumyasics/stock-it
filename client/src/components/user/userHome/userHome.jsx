@@ -40,8 +40,8 @@ export const UserHomePage = () => {
           personalized insights, empowering users to make informed investment
           decisions and achieve financial growth.
         </p>
-        <div class="row about-middle-box">
-          <div class="col">
+        <div className="row about-middle-box">
+          <div className="col">
             <img src={img8} alt="" />
             <p className="about-middle-box-heading">Accessible</p>
             <p className="about-middle-box-description">
@@ -49,7 +49,7 @@ export const UserHomePage = () => {
               to all users
             </p>
           </div>
-          <div class="col box1">
+          <div className="col box1">
             <img src={img9} alt="" />
             <p className="about-middle-box-heading">Affordable</p>
             <p className="about-middle-box-description">
@@ -58,7 +58,7 @@ export const UserHomePage = () => {
               Strategic Market Engagement{" "}
             </p>
           </div>
-          <div class="col">
+          <div className="col">
             <img src={img10} alt="" />
             <p className="about-middle-box-heading">Simple</p>
             <p className="about-middle-box-description">
@@ -72,8 +72,8 @@ export const UserHomePage = () => {
         </div>
         <h4 className="about-ourVision">Our Vision</h4>
 
-        <div class="row about-second-last-box">
-          <div class="col ">
+        <div className="row about-second-last-box">
+          <div className="col ">
             <div className="about-second-last-inner-box">
               <p> Cost-Effective Solution</p>
             </div>{" "}
@@ -82,7 +82,7 @@ export const UserHomePage = () => {
               <p>Tailored Investment Strategies</p>
             </div>
           </div>
-          <div class="col">
+          <div className="col">
             <div className="about-second-last-inner-box">
               <p>Strategic Market Engagement</p>
             </div>
@@ -91,7 +91,7 @@ export const UserHomePage = () => {
               <p>Accessibility and Support</p>
             </div>
           </div>
-          <div class="col">
+          <div className="col">
             <div className="about-second-last-inner-box">
               <p>Real-Time Insights</p>
             </div>
@@ -108,8 +108,8 @@ export const UserHomePage = () => {
           and fostering <br />a community of knowledgeable and confident market
           participants.
         </p>
-        <div class="row about-last-box">
-          <div class="col ">
+        <div className="row about-last-box">
+          <div className="col ">
             <div className="about-4-box">
               <p className="about-4 display-1">4</p>
               <span className="about-core">
@@ -120,7 +120,7 @@ export const UserHomePage = () => {
               </span>
             </div>
           </div>
-          <div class="col">
+          <div className="col">
             <div className="about-last-inner-box">
               <p className="about-last-inner-box-head">Clients First</p>
               <p className="about-last-inner-box-text ">
@@ -140,7 +140,7 @@ export const UserHomePage = () => {
               </p>
             </div>
           </div>
-          <div class="col">
+          <div className="col">
             <div className="about-last-inner-box">
               <p className="about-last-inner-box-head">Teamwork</p>
               <p className="about-last-inner-box-text">

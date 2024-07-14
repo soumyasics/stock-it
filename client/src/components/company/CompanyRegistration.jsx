@@ -220,8 +220,8 @@ function CompanyRegistration() {
       <div className="CompanyRegistation-background ">
         <div className="CompanyRegistartion-inner-box ">
           <h4 className="CompanyRegistation-heading">Company Registration</h4>
-          <div class="row my-5">
-            <div class="col-5 CompanyRegistraion-left-box">
+          <div className="row my-5">
+            <div className="col-5 CompanyRegistraion-left-box">
               <img
                 className="CompanyRegistration-logo   img-fluid"
                 src={img5}
@@ -272,13 +272,13 @@ function CompanyRegistration() {
                         onChange={handleChange}
                       />
                     </div>
-                    <div class="col-md-6">
-                      <label for="text" class="form-label">
+                    <div className="col-md-6">
+                      <label for="text" className="form-label">
                         State
                       </label>
                       <input
                         type="text"
-                        class="form-control CompanyRegistration-inp"
+                        className="form-control CompanyRegistration-inp"
                         id="inputPassword4"
                         placeholder="Enter state"
                         name="state"
@@ -344,9 +344,9 @@ function CompanyRegistration() {
                     </div>
                   </div>
 
-                  <div class="row g-3">
-                    <div class="col-md-6">
-                      <label for="file" class="form-label">
+                  <div className="row g-3">
+                    <div className="col-md-6">
+                      <label for="file" className="form-label">
                         Comapany licences
                       </label>
 
@@ -358,7 +358,7 @@ function CompanyRegistration() {
                         onChange={handleChange}
                       />
 
-                      {/* <input type="email" class="form-control CompanyRegistration-inp" id="inputEmail4" placeholder='Upload File' /> */}
+                      {/* <input type="email" className="form-control CompanyRegistration-inp" id="inputEmail4" placeholder='Upload File' /> */}
                     </div>
                     <div className="col-md-6">
                       <label className="form-label">Year Founded</label>

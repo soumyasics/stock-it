@@ -16,7 +16,7 @@ const buyStocksSchema = new mongoose.Schema(
       ref: "companies",
       required: true,
     },
-    quantity: {
+    totalQuantity: {
       type: Number,
       requied: true,
     },

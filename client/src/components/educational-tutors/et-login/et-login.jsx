@@ -80,35 +80,35 @@ function Etlogin() {
           <div className="etlogin-background">
             <div className="etlogin-box">
               <h3 className="resetpassword-heading">Educational Tutor Login</h3>
-              <div class="row">
-                <div class="col-5 etlogin-logo">
+              <div className="row">
+                <div className="col-5 etlogin-logo">
                   <img
                     src={img1}
                     alt="loginPage logo"
                     className="img-fluid my-4"
                   />
                 </div>
-                <form class="col-7 etlogin-inputs" onSubmit={handleSubmit}>
-                  <div class="mb-3 etlogin-inner">
-                    <label for="exampleFormControlInput1" class="form-label">
+                <form className="col-7 etlogin-inputs" onSubmit={handleSubmit}>
+                  <div className="mb-3 etlogin-inner">
+                    <label for="exampleFormControlInput1" className="form-label">
                       Email
                     </label>
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="exampleFormControlInput1"
                       placeholder="Enter Email"
                       name="email"
                       onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
-                  <div class="mb-3 etlogin-inner">
-                    <label for="exampleFormControlInput1" class="form-label">
+                  <div className="mb-3 etlogin-inner">
+                    <label for="exampleFormControlInput1" className="form-label">
                       Password
                     </label>
                     <input
                       type="password"
-                      class="form-control"
+                      className="form-control"
                       id="exampleFormControlInput1"
                       placeholder="Enter Password"
                       name="password"
