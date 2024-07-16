@@ -65,15 +65,13 @@ import { BuyStocks } from "./components/user/buyStocks/buyStocks";
 import { StockDetails } from "./components/user/stockDetails/stockDetails";
 import EtviewArticleList from "./components/educational-tutors/et-ViewArticleList/et-viewArticleList";
 
-import EtviewArticle from "./components/educational-tutors/et-ViewArticle/et-viewArticle";
-
-// import EtviewArticle from "./components/educational-tutors/et-ViewArticle/et-viewArticle";
 import UserViewEtArticle from "./components/user/userViewEtArticles/userViewEtArticle";
 import CompanyArticleList from "./components/company/companyArticleList/companyArticleList";
 import CompanyAddArticle from "./components/company/companyAddArticles/companyAddArticle";
 import { MyPortfolio } from "./components/user/viewPortfolio/viewPortfolio";
 import { PortfolioDetails } from "./components/user/viewPortfolio/portfolioDetails";
-
+import CompanyViewArticle from "./components/company/companyViewArticles/companyViewArticle";
+import EtviewArticle from "./components/educational-tutors/et-ViewArticle/et-viewArticle";
 
 function App() {
   return (
@@ -106,8 +104,9 @@ function App() {
             path="/companyForgotpassword"
             element={<CompanyForgotpassword />}
           />
-          <Route  path="/CompanyArticleList" element={<CompanyArticleList/>}/>
-          <Route path="/companyArticles" element={<CompanyAddArticle/>}/>
+          <Route path="/CompanyArticleList/:id" element={<CompanyArticleList />} />
+          <Route path="/companyAddArticles" element={<CompanyAddArticle />} />
+          <Route path="/companyViewArticles/:id" element={<CompanyViewArticle/>}/>
           {/* user pages  */}
           <Route path="/userRegistration" element={<UserRegistration />} />
           <Route path="/userHome" element={<UserHomePage />} />
@@ -127,7 +126,7 @@ function App() {
           <Route path="/et" element={<EtUserHomePage />} />
           {/* user new */}
           <Route path="/userForgotpassword" element={<UserForgotpassword />} />
-          <Route path="/tutorArticle" element={<UserViewEtArticle/>}/>
+          <Route path="/tutorArticle" element={<UserViewEtArticle />} />
 
           {/* admin pages  */}
           <Route path="/admin" element={<AdminDashboard />} />
@@ -176,8 +175,11 @@ function App() {
           <Route path="/etnavbar" element={<Etnavbar />} />
           <Route path="/etForgotpassword" element={<EtForgotpassword />} />
           <Route path="/addArticle" element={<EtAddArticle />} />
-          <Route path="/viewArticleList/:id" element={<EtviewArticleList />} />
-          <Route path="/viewArticles/:id" element={<EtviewArticle />} />
+          <Route
+            path="/viewEtArticleList/:id"
+            element={<EtviewArticleList />}
+          />
+          <Route path="/viewEtArticle/:id" element={<EtviewArticle />} />
 
           {/* new  */}
           <Route path="/newsidebar" element={<NewAdminsidebar />} />

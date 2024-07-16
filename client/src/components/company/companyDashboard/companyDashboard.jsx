@@ -11,6 +11,9 @@ export const CompanyDashboard = () => {
   const changePage = (value) => {
     setActivePage(value);
   };
+  const rediectToviewArticle=()=>{
+    setActivePage("view-Articles")
+  }
   return (
     <div className="d-flex " style={{ height: "120vh", backgroundColor: "#374151" }}>
       <CompanySidebar changePage={changePage} />
@@ -22,7 +25,7 @@ export const CompanyDashboard = () => {
         {activePage === "ipo-form" && <IpoForm />}
         {activePage === "ipo-status" && <ViewIPOStatus />}
         {activePage === "view-Articles" && <CompanyArticleList/>}
-        {activePage === "add-Articles" && <CompanyAddArticle/>}
+        {activePage === "add-Articles" && <CompanyAddArticle rediectToviewArticle={rediectToviewArticle}/>}
 
       </div>
     </div>
