@@ -1,14 +1,119 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import axiosMultipartInstance from "../../../apis/axiosMultipartInstance";
 
-function CompanyAddArticle() {
+function CompanyAddArticle({rediectToviewArticle}) {
+  const navigate = useNavigate();
+  const [coArticle, SetCoArticle] = useState({
+    title: "",
+    subTitle: "",
+    content: "",
+    category: "",
+    coId: "",
+    thumbnail: null,
+    video: null,
+    conclusion: "",
+  });
+  const handleChanges = (e) => {
+    const { name, value } = e.target;
+    SetCoArticle({ ...coArticle, [name]: value });
+  };
+  useEffect(() => {
+    const coId =
+      JSON.parse(localStorage.getItem("stock_it_companyId")) || null;
+    if (coId) {
+      SetCoArticle((prev) => ({
+        ...prev,
+        coId: coId,
+      }));
+    } else {
+      navigate("/companyLogin");
+    }
+  }, []);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Data", coArticle);
+    const {
+      title,
+      subTitle,
+      content,
+      category,
+      coId,
+      thumbnail,
+      video,
+      conclusion,
+    } = coArticle;
+    const valitadeFields = () => {
+      if (!title) {
+        toast.error("Enter Title");
+        return false;
+      }
+      if (!subTitle) {
+        toast.error("Enter Subtitle");
+        return false;
+      }
+      if (!content) {
+        toast.error("Enter content");
+        return false;
+      }
+      if (!category) {
+        toast.error("Select category");
+        return false;
+      }
+      if (!thumbnail) {
+        toast.error("Please upload thumbnail");
+        return false;
+      }
+      if (!video) {
+        toast.error("Please upload video");
+        return false;
+      }
+      if (!conclusion) {
+        toast.error("Enter conclusion");
+        return false;
+      }
+      return true;
+    };
+    if (!valitadeFields()) {
+      return;
+    }
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("coId", coId);
+    formData.append("subTitle", subTitle);
+    formData.append("category", category);
+    formData.append("content", content);
+    formData.append("conclusion", conclusion);
+    formData.append("thumbnail", thumbnail);
+    formData.append("video", video);
+
+    console.log("formdata", formData);
+    sendDataToServer(formData)
+  };
+  const sendDataToServer=async (data)=>{
+    try {
+      const response=await axiosMultipartInstance.post("co-createArticle",data)
+      console.log("res",response);
+      if(response.status===201){
+        toast.success("Article is uploaded")
+        rediectToviewArticle()
+      }else{
+        toast.error(response.data.msg)
+      }
+    } catch (error) {
+      console.log("Network issue",error)
+      
+    }
+  }
+
   return (
     <div>
-         <div className="etAddArticle">
+      <div className="etAddArticle">
         <div className="etBackBtn">
-        
           <div className="etAddArticle-head ms-1">Article</div>
         </div>
-        <form  className="etAddArticle-inputs">
+        <form onSubmit={handleSubmit} className="etAddArticle-inputs">
           <div className="row">
             <div className="col">
               <label htmlFor="title">Title</label>
@@ -17,8 +122,8 @@ function CompanyAddArticle() {
                 className="form-control"
                 placeholder="Enter Article Title"
                 name="title"
-                // value={article.title}
-                // onChange={handleChanges}
+                value={coArticle.title}
+                onChange={handleChanges}
               />
             </div>
             <div className="col">
@@ -28,8 +133,8 @@ function CompanyAddArticle() {
                 className="form-control"
                 placeholder="Enter Article subtitle"
                 name="subTitle"
-                // value={article.subTitle}
-                // onChange={handleChanges}
+                value={coArticle.subTitle}
+                onChange={handleChanges}
               />
             </div>
           </div>
@@ -41,8 +146,8 @@ function CompanyAddArticle() {
                 className="form-control"
                 placeholder="Enter Article Content "
                 name="content"
-                // value={article.content}
-                // onChange={handleChanges}
+                value={coArticle.content}
+                onChange={handleChanges}
               />
             </div>
             <div className="col ">
@@ -57,8 +162,8 @@ function CompanyAddArticle() {
                 }}
                 aria-label="Default select example"
                 name="category"
-                // value={article.category}
-                // onChange={handleChanges}
+                value={coArticle.category}
+                onChange={handleChanges}
               >
                 <option selected>Open this select menu</option>
                 <option value="Education">Education</option>
@@ -80,9 +185,12 @@ function CompanyAddArticle() {
                   type="file"
                   name="thumbnail"
                   accept="image/*"
-                //   onChange={(e) => {
-                //     setArticle({ ...article, thumbnail: e.target.files[0] });
-                //   }}
+                  onChange={(e) => {
+                    SetCoArticle({
+                      ...coArticle,
+                      thumbnail: e.target.files[0],
+                    });
+                  }}
                 />
               </div>
             </div>
@@ -97,9 +205,9 @@ function CompanyAddArticle() {
                   type="file"
                   name="video"
                   accept="video/*"
-                //   onChange={(e) => {
-                //     setArticle({ ...article, video: e.target.files[0] });
-                //   }}
+                  onChange={(e) => {
+                    SetCoArticle({ ...coArticle, video: e.target.files[0] });
+                  }}
                 />
               </div>
             </div>
@@ -111,8 +219,8 @@ function CompanyAddArticle() {
               type="textarea"
               placeholder="Enter conclusion"
               name="conclusion"
-            //   value={article.conclusion}
-            //   onChange={handleChanges}
+              value={coArticle.conclusion}
+              onChange={handleChanges}
             />
           </div>
           <div className="etAddArticle-btn">
@@ -123,7 +231,7 @@ function CompanyAddArticle() {
         </form>
       </div>
     </div>
-  )
+  );
 }
 
-export default CompanyAddArticle
+export default CompanyAddArticle;
