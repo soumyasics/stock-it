@@ -8,7 +8,7 @@ const ET = require("./Tutors/tutorController");
 const ArtilceRoutes = require("./article/articleController");
 const buyStockController = require("./buyStocks/buyStocksController");
 const CompanyArticleController = require("./companyArticle/articleController")
-
+const CompanyComplaintController = require("./complaintCompanies/complaintCompanyController")
 router.get("/", (req, res) => {
   return res.send({ message: "Stock it Server working" });
 });
@@ -107,5 +107,10 @@ router.get("/allBuyStocks", buyStockController.allBuyStocks);
 router.get("/getBoughtStockById/:id", buyStockController.getBoughtStockById);
 router.get("/getAllBoughtStocksByUserId/:id", buyStockController.getAllBoughtStocksByUserId);
 router.get("/getAllBoughtStocksByCompanyId/:id", buyStockController.getAllBoughtStocksByCompanyId);
+
+// company complaints 
+router.post("/createComplaint", CompanyComplaintController.createComplaint);
+router.get("/getAllComplaints", CompanyComplaintController.getAllComplaints);
+router.get("/getComplaintById/:id", CompanyComplaintController.getComplaintById);
 
 module.exports = router;
