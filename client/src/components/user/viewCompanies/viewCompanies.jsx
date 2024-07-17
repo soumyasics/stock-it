@@ -6,6 +6,7 @@ import { Footer2 } from "../../common/footer2/footer2";
 import axiosInstance from "../../../apis/axiosInstance";
 import { Button } from "react-bootstrap";
 import ComplaintModal from "../UserComplaintModal/userComplaintModal";
+import toast from "react-hot-toast";
 
 export const UserViewCompanies = () => {
   const navigate = useNavigate();
@@ -48,6 +49,7 @@ export const UserViewCompanies = () => {
       console.log("CoId",companyId);
       console.log("user id",userId);
       console.log(complaint);
+      toast.success("Complaint uploaded")
     } catch (error) {
       
     }finally{
@@ -122,6 +124,8 @@ export const UserViewCompanies = () => {
         closeModal={closeModal}
         modalIsOpen={modalIsOpen}
         sendComplaint={sendComplaint}
+        userId={userId}
+        companyId={companyId}
       />
       <div>
         <Footer2 />
