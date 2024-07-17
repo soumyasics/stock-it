@@ -58,6 +58,9 @@ export const UserNavbar = () => {
 const reDirectToTutorArticle=()=>{
   navigate("/tutorArticle")
 }
+const reDirectToCoArticle=()=>{
+  navigate("/companyArticles")
+}
   return (
     <div>
       <nav className="navbar commonNavbar">
@@ -142,7 +145,7 @@ const reDirectToTutorArticle=()=>{
                   </div>
                   <div
                     className="user-home-nav-drop-down"
-                    // onClick={redirectPortfolio}
+                    onClick={reDirectToCoArticle}
                   >
                     Company Articles
                   </div>

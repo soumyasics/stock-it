@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 function UserViewEtArticle() {
   const [viewArticle, setViewArticle] = useState([]);
-  const navigate =useNavigate(  )
+  const navigate =useNavigate()
   const toViewArticleById=(id)=>{
     navigate(`/viewArticles/${id}`)
   }
@@ -25,7 +25,6 @@ function UserViewEtArticle() {
         <div className="viewcomapany-head-box">
           <h4>Tutor Articles </h4>
         </div>
-
         <div className="d-flex flex-wrap gap-5 p-5">
           {viewArticle.map((e) => {
             const thumbnailUrl = e?.thumbnail?.filename || null;
