@@ -5,12 +5,25 @@ import { UserNavbar } from "../userNavbar/userNavbar";
 import { Footer2 } from "../../common/footer2/footer2";
 import axiosInstance from "../../../apis/axiosInstance";
 import { Button } from "react-bootstrap";
-import CompanyAddComplaint from "../../company/companyAddComplaint/companyAddComplaint";
+import ComplaintModal from "../UserComplaintModal/userComplaintModal";
+import toast from "react-hot-toast";
 
 export const UserViewCompanies = () => {
   const navigate = useNavigate();
-
   const [allCompanies, setAllCompanies] = useState([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [userId, setUserId] = useState({});
+  const [companyId, setCompanyId] = useState({});
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+  const addComplaintFn = (companyId) => {
+    setCompanyId(companyId)
+    openModal();
+  };
 
   const getAllCompanies = async () => {
     try {
@@ -25,11 +38,28 @@ export const UserViewCompanies = () => {
       console.log("Error getting compnaies", error);
     }
   };
-
+  useEffect(() => {
+    const userId = localStorage.getItem("stock_it_userId") || null;
+    if (userId) {
+      setUserId(userId);
+    }
+  }, []);
+  const sendComplaint = (complaint) => {
+    try {
+      console.log("CoId",companyId);
+      console.log("user id",userId);
+      console.log(complaint);
+      toast.success("Complaint uploaded")
+    } catch (error) {
+      
+    }finally{
+      closeModal()
+    }
+  };
   console.log("como", allCompanies);
   useEffect(() => {
     getAllCompanies();
-  }, []);
+  },[]);
   return (
     <div>
       <UserNavbar />
@@ -76,9 +106,9 @@ export const UserViewCompanies = () => {
                   <td className="viewComapny-viewmore">
                     <Button
                       className=" btn-danger btn"
-                      type="button"
-                      data-bs-toggle="modal"
-                      data-bs-target="#staticBackdrop"
+                      onClick={() => {
+                        addComplaintFn(co._id);
+                      }}
                     >
                       Add Complaint
                     </Button>
@@ -89,35 +119,14 @@ export const UserViewCompanies = () => {
           </table>
         </div>
       </div>
-      {/* modal page */}
-      <div
-        className="modal fade"
-        id="staticBackdrop"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabindex="-1"
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog modal-xl">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h1 className="modal-title fs-5" id="staticBackdropLabel">
-               Add Complaint Here
-              </h1>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body modal-image">
-              <CompanyAddComplaint />
-            </div>
-          </div>
-        </div>
-      </div>
+      <ComplaintModal
+        openModal={openModal}
+        closeModal={closeModal}
+        modalIsOpen={modalIsOpen}
+        sendComplaint={sendComplaint}
+        userId={userId}
+        companyId={companyId}
+      />
       <div>
         <Footer2 />
       </div>
