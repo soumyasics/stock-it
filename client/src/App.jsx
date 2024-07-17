@@ -72,6 +72,7 @@ import { MyPortfolio } from "./components/user/viewPortfolio/viewPortfolio";
 import { PortfolioDetails } from "./components/user/viewPortfolio/portfolioDetails";
 import CompanyViewArticle from "./components/company/companyViewArticles/companyViewArticle";
 import EtviewArticle from "./components/educational-tutors/et-ViewArticle/et-viewArticle";
+import UserViewCoArticles from "./components/user/userViewCoArticles/userViewCoArticles";
 
 function App() {
   return (
@@ -127,6 +128,7 @@ function App() {
           {/* user new */}
           <Route path="/userForgotpassword" element={<UserForgotpassword />} />
           <Route path="/tutorArticle" element={<UserViewEtArticle />} />
+          <Route path="/companyArticles" element={<UserViewCoArticles/>}/>
 
           {/* admin pages  */}
           <Route path="/admin" element={<AdminDashboard />} />

@@ -121,7 +121,7 @@ function AdminSidebar({ changePage }) {
               <img src={vector4} alt="" />
               <button type="button" onClick={openEdTab}>
                 Educational Tutors
-              </button>
+              </button> 
               {show2 && (
                 <div className=" sidebar-drop-10">
                   <ul>
