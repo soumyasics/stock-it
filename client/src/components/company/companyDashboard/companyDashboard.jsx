@@ -5,6 +5,7 @@ import { ViewIPOStatus } from "../viewIPOStatus/viewIPOStatus";
 import { CompanyProfile } from "../companyProfile/companyProfile";
 import CompanyArticleList from "../companyArticleList/companyArticleList";
 import CompanyAddArticle from "../companyAddArticles/companyAddArticle";
+import CompanyAddComplaint from "../companyAddComplaint/companyAddComplaint";
 
 export const CompanyDashboard = () => {
   const [activePage, setActivePage] = useState("profile");
@@ -26,6 +27,7 @@ export const CompanyDashboard = () => {
         {activePage === "ipo-status" && <ViewIPOStatus />}
         {activePage === "view-Articles" && <CompanyArticleList/>}
         {activePage === "add-Articles" && <CompanyAddArticle rediectToviewArticle={rediectToviewArticle}/>}
+        {activePage === "companyAddComplaint" && <CompanyAddComplaint/>}
 
       </div>
     </div>

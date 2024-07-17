@@ -4,11 +4,13 @@ import img2 from "../../../assets/images/navbarLogo.svg";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { faL } from "@fortawesome/free-solid-svg-icons";
+import { CgProfile } from "react-icons/cg";
 
 export const UserNavbar = () => {
   const [companiesDropdown, setCompaniesDropdown] = useState(false);
   const [stocksDropdown, setStocksDropdown] = useState(false);
   const [articleDropdown, setArticleDropdown] = useState(false);
+  const [profileDropdown, setProfileDropdown] = useState(false);
   const navigate = useNavigate();
   const userLogout = () => {
     navigate("/userLogin");
@@ -35,19 +37,27 @@ export const UserNavbar = () => {
     setStocksDropdown(false)
     setArticleDropdown(false)
     setCompaniesDropdown(!companiesDropdown);
+    setProfileDropdown(false)
   };
 
   const toggleStockDropdown = () => {
     setCompaniesDropdown(false)
     setArticleDropdown(false)
     setStocksDropdown(!stocksDropdown);
+    setProfileDropdown(false)
   }
   const toggleArticleDropdown=()=>{
     setStocksDropdown(false)
     setCompaniesDropdown(false)
     setArticleDropdown(!articleDropdown)
+    setProfileDropdown(false)
   }
-
+const toggleProfileDropdowm=()=>{
+  setStocksDropdown(false)
+  setCompaniesDropdown(false)
+  setArticleDropdown(false)
+  setProfileDropdown(!profileDropdown)
+}
   const redirectBuyStocks = () => {
     navigate('/buyStocks')
   }
@@ -60,6 +70,9 @@ const reDirectToTutorArticle=()=>{
 }
 const reDirectToCoArticle=()=>{
   navigate("/companyArticles")
+}
+const reDirectToUserProfile=()=>{
+  navigate(`/userProfile`)
 }
   return (
     <div>
@@ -156,9 +169,29 @@ const reDirectToCoArticle=()=>{
             <h6 className="text-light fw-bold" onClick={redirectUserAbout}>
               About
             </h6>
-            <h6 className="text-danger fw-bold" onClick={userLogout}>
-              Logout
+           
+               <h6 className="text-light fs-2 mb-3" onClick={toggleProfileDropdowm}>
+               <CgProfile />
             </h6>
+
+            {profileDropdown && (
+              <div className="position-relative">
+                <div className="position-absolute text-light user-home-nav-drop d-flex flex-column">
+                  <div
+                    className="user-home-nav-drop-down"
+                    onClick={reDirectToUserProfile}
+                  >
+                   Profile
+                  </div>
+                  <div
+                    className="user-home-nav-drop-down"
+                    onClick={userLogout}
+                  >
+                   Logout
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </nav>
