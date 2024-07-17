@@ -5,6 +5,7 @@ import { UserNavbar } from "../userNavbar/userNavbar";
 import { Footer2 } from "../../common/footer2/footer2";
 import axiosInstance from "../../../apis/axiosInstance";
 import { Button } from "react-bootstrap";
+import CompanyAddComplaint from "../../company/companyAddComplaint/companyAddComplaint";
 
 export const UserViewCompanies = () => {
   const navigate = useNavigate();
@@ -39,10 +40,7 @@ export const UserViewCompanies = () => {
         </div>
 
         <div className="comapnyRequest-first-box">
-          <div className="companyRequesest-second-box" role="group">
-        
-          </div>
- 
+          <div className="companyRequesest-second-box" role="group"></div>
         </div>
 
         <div className="viewCompany-table ">
@@ -55,6 +53,7 @@ export const UserViewCompanies = () => {
               <th>State</th>
               <th>Email</th>
               <th>View More</th>
+              <th>Complaint</th>
             </tr>
             {allCompanies.map((co, i) => {
               return (
@@ -74,13 +73,51 @@ export const UserViewCompanies = () => {
                       View more
                     </Button>
                   </td>
+                  <td className="viewComapny-viewmore">
+                    <Button
+                      className=" btn-danger btn"
+                      type="button"
+                      data-bs-toggle="modal"
+                      data-bs-target="#staticBackdrop"
+                    >
+                      Add Complaint
+                    </Button>
+                  </td>
                 </tr>
               );
             })}
           </table>
         </div>
       </div>
-
+      {/* modal page */}
+      <div
+        className="modal fade"
+        id="staticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-xl">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="staticBackdropLabel">
+               Add Complaint Here
+              </h1>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body modal-image">
+              <CompanyAddComplaint />
+            </div>
+          </div>
+        </div>
+      </div>
       <div>
         <Footer2 />
       </div>

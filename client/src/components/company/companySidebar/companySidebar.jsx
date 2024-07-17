@@ -205,7 +205,9 @@ export const CompanySidebar = ({ changePage }) => {
                 <img src={img5} alt="icon" />
               </td>
               <td>
-                <h6>Complaints</h6>
+                <h6 onClick={()=>{
+                  changePage("companyAddComplaint")
+                }}>Complaints</h6>
               </td>
             </tr>
           </div>

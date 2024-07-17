@@ -73,6 +73,8 @@ import { PortfolioDetails } from "./components/user/viewPortfolio/portfolioDetai
 import CompanyViewArticle from "./components/company/companyViewArticles/companyViewArticle";
 import EtviewArticle from "./components/educational-tutors/et-ViewArticle/et-viewArticle";
 import UserViewCoArticles from "./components/user/userViewCoArticles/userViewCoArticles";
+import CompanyAddComplaint from "./components/company/companyAddComplaint/companyAddComplaint";
+import UserProfile from "./components/user/userProfile/userProfile";
 
 function App() {
   return (
@@ -108,6 +110,7 @@ function App() {
           <Route path="/CompanyArticleList/:id" element={<CompanyArticleList />} />
           <Route path="/companyAddArticles" element={<CompanyAddArticle />} />
           <Route path="/companyViewArticles/:id" element={<CompanyViewArticle/>}/>
+          <Route path="/companyAddComplaint" element={<CompanyAddComplaint/>}/>
           {/* user pages  */}
           <Route path="/userRegistration" element={<UserRegistration />} />
           <Route path="/userHome" element={<UserHomePage />} />
@@ -129,6 +132,7 @@ function App() {
           <Route path="/userForgotpassword" element={<UserForgotpassword />} />
           <Route path="/tutorArticle" element={<UserViewEtArticle />} />
           <Route path="/companyArticles" element={<UserViewCoArticles/>}/>
+          <Route path="/userProfile" element={<UserProfile/>}/>
 
           {/* admin pages  */}
           <Route path="/admin" element={<AdminDashboard />} />
