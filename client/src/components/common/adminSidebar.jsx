@@ -18,6 +18,7 @@ function AdminSidebar({ changePage }) {
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
   const [show2, setShow2] = useState(false);
+  const [show3, setShow3] = useState(false);
   const navigate = useNavigate();
   const adminLogout = () => {
     localStorage.setItem("stock_it_admin_login", false);
@@ -38,20 +39,32 @@ function AdminSidebar({ changePage }) {
   const navigateToViewAllEts = () => {
     navigate("/adminViewAllETs")
   }
+  const navigateToCoComplaint=()=>{
+    navigate("/adminViewCoComplaint")
+  }
 
   const openCompaniesTab = () => {
     setShow(!show);
     setShow1(false);
     setShow2(false);
+    setShow3(false);
   };
   const openIpoTab = () => {
     setShow1(!show1);
     setShow(false);
     setShow2(false);
+    setShow3(false);
   };
 
   const openEdTab = () => {
     setShow2(!show2);
+    setShow1(false);
+    setShow(false);
+    setShow3(false)
+  };
+  const openTakeActionTab = () => {
+    setShow3(!show3);
+    setShow2(false);
     setShow1(false);
     setShow(false);
   };
@@ -154,12 +167,21 @@ function AdminSidebar({ changePage }) {
             </div>
           </div>
           <div className="adminSidebar-takeaction">
-            <div className="clickable-item adminSidebar-takeaction-grid">
+            <div className="clickable-item sidebar-ipos-drop">
               <img src={img3} alt="" />
+              <button type="button" onClick={openTakeActionTab}>
+                Take Action
+              </button>
+              {show3 && (
+                <div className="sidebar-drop-10">
+                  <ul>
+                    <li onClick={navigateToCoComplaint}>Company</li>
+                    <li>User</li>
+                  </ul>
+                </div>
+              )}
             </div>
-            <div className="clickable-item takeaction-h1">
-              <h5>Take Action</h5>
-            </div>
+           
           </div>
           <div className="adminSidebar-resetpassword">
             <div className="clickable-item adminSidebar-resetpassword-grid">

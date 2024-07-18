@@ -53,7 +53,7 @@
   top: 3px;
 }
 .adminSidebar-companies {
-  /* padding-bottom: 20px; */
+  padding-bottom: 0px !important;
 }
 .adminSidebar-companies img {
   width: 18px;

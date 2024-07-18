@@ -75,6 +75,9 @@ import EtviewArticle from "./components/educational-tutors/et-ViewArticle/et-vie
 import UserViewCoArticles from "./components/user/userViewCoArticles/userViewCoArticles";
 import CompanyAddComplaint from "./components/company/companyAddComplaint/companyAddComplaint";
 import UserProfile from "./components/user/userProfile/userProfile";
+import AdminTakeAction from "./components/Admin/adminTakeAction/adminTakeAction";
+import AdminViewCoComplaint from "./components/Admin/adminViewCoComplaint/adminViewCoComplaint";
+import AdminViewCoComplaintDetail from "./components/Admin/adminViewCoComplaintDetail/adminViewCoComplaintDetail";
 
 function App() {
   return (
@@ -107,10 +110,19 @@ function App() {
             path="/companyForgotpassword"
             element={<CompanyForgotpassword />}
           />
-          <Route path="/CompanyArticleList/:id" element={<CompanyArticleList />} />
+          <Route
+            path="/CompanyArticleList/:id"
+            element={<CompanyArticleList />}
+          />
           <Route path="/companyAddArticles" element={<CompanyAddArticle />} />
-          <Route path="/companyViewArticles/:id" element={<CompanyViewArticle/>}/>
-          <Route path="/companyAddComplaint" element={<CompanyAddComplaint/>}/>
+          <Route
+            path="/companyViewArticles/:id"
+            element={<CompanyViewArticle />}
+          />
+          <Route
+            path="/companyAddComplaint"
+            element={<CompanyAddComplaint />}
+          />
           {/* user pages  */}
           <Route path="/userRegistration" element={<UserRegistration />} />
           <Route path="/userHome" element={<UserHomePage />} />
@@ -131,8 +143,8 @@ function App() {
           {/* user new */}
           <Route path="/userForgotpassword" element={<UserForgotpassword />} />
           <Route path="/tutorArticle" element={<UserViewEtArticle />} />
-          <Route path="/companyArticles" element={<UserViewCoArticles/>}/>
-          <Route path="/userProfile" element={<UserProfile/>}/>
+          <Route path="/companyArticles" element={<UserViewCoArticles />} />
+          <Route path="/userProfile" element={<UserProfile />} />
 
           {/* admin pages  */}
           <Route path="/admin" element={<AdminDashboard />} />
@@ -174,6 +186,10 @@ function App() {
             path="/adminVIewUserDetail/:id"
             element={<AdminViewUserDetail />}
           />
+          {/* admin new */}
+          <Route path="/adminTakeAction" element={<AdminTakeAction/>}/>
+          <Route path="/adminViewCoComplaint" element={<AdminViewCoComplaint/>}/>
+          <Route path="/adminViewCoComplaintDetail/:id" element={<AdminViewCoComplaintDetail/>}/>
 
           {/* et-new */}
           <Route path="/etdashboard" element={<Etdashboard />} />
