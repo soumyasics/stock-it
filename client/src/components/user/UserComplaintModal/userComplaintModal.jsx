@@ -31,7 +31,11 @@ const ComplaintModal = ({
         setComplaint(response.data.data);
         toast.success("completed");
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log("Error on send complaint");
+    }finally{
+      setComplaint("")
+    }
   };
 
   return (
