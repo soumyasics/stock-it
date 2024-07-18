@@ -51,7 +51,7 @@ export const UserViewCompanies = () => {
       console.log(complaint);
       toast.success("Complaint uploaded")
     } catch (error) {
-      
+      toast.error("network issue")
     }finally{
       closeModal()
     }
