@@ -7,8 +7,6 @@ import { Button } from "react-bootstrap";
 import AdminNavbar from "../../common/adminNavbar";
 import { IoReturnUpBack } from "react-icons/io5";
 
-
-
 export const AdminViewAllETs = () => {
   const navigate = useNavigate();
 
@@ -61,34 +59,41 @@ export const AdminViewAllETs = () => {
             <tr className="viewCompancy-head-row">
               <th>Sl No</th>
               <th>Name</th>
-              <th>Qualification</th>
-              <th>Approve Status</th>
               <th>Email Id</th>
               <th>Contact</th>
+              <th>Approve Status</th>
+              <th>Active Status</th>
               <th>View More</th>
             </tr>
             {allETs.map((co, i) => {
               return (
-                <tr key={co._id}>
+                <tr key={co?._id}>
                   <td>{i + 1}</td>
-                  <td>{co.fullName}</td>
-                  <td>{co.qualification}</td>
+                  <td>{co?.fullName}</td>
+                  <td> {co?.email}</td>
+                  <td>{co?.contactNumber}</td>
                   <td>
                     {co.adminApproved === "approve" ? (
                       <p className="text-success"> Approved </p>
-                    ) : co.adminApproved === "pending" ? (
+                    ) : co?.adminApproved === "pending" ? (
                       <p className="text-light"> Pending </p>
                     ) : (
                       <p className="text-danger">Rejected</p>
                     )}
                   </td>
-                  <td> {co.email}</td>
-                  <td>{co.contactNumber}</td>
+                  <td>
+                    {co.isActive ? (
+                      <p className="text-success"> Active </p>
+                    ) : (
+                      <p className="text-danger"> In active </p>
+                    )}
+                  </td>
+                 
 
                   <td className="viewComapny-viewmore">
                     <Button
                       onClick={() => {
-                        navigate(`/adminViewAllETs/${co._id}`);
+                        navigate(`/adminViewAllETs/${co?._id}`);
                       }}
                     >
                       View more

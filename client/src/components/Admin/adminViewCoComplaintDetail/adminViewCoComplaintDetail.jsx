@@ -98,7 +98,12 @@ function AdminViewCoComplaintDetail() {
                 <tr>
                   <td>Website</td>
                   <td>:</td>
-                  <td> <a href={complaint?.companyId?.website}>{complaint?.companyId?.website}</a> </td>
+                  <td>
+                    {" "}
+                    <a href={complaint?.companyId?.website}>
+                      {complaint?.companyId?.website}
+                    </a>{" "}
+                  </td>
                 </tr>
                 <tr>
                   <td>Description</td>
@@ -110,16 +115,13 @@ function AdminViewCoComplaintDetail() {
           </div>
           <div className="adminViewCoComplaintDetail-table ms-5">
             <div className="adminViewCoComplaintDetail-head ms-5">
-              <h4>Company Details</h4>
+              <h4>User details</h4>
             </div>
             <span
               style={{ fontWeight: "bold" }}
               className="adminViewCoComplaintDetail-profile fs-5"
             >
-              <img
-                src={`${BASE_URL}${complaint?.userId?.photo}`}
-                alt=""
-              />
+              <img src={`${BASE_URL}${complaint?.userId?.photo}`} alt="" />
               {complaint?.userId?.firstName}
               {complaint?.userId?.lastName}
             </span>
@@ -161,27 +163,26 @@ function AdminViewCoComplaintDetail() {
                   <td>{complaint?.userId?.state}</td>
                 </tr>
                 <tr>
-                  <td>Website</td>
+                  <td>Demat A/C Number</td>
                   <td>:</td>
-                  <td> <a href={complaint?.userId?.website}>{complaint?.userId?.website}</a> </td>
+                  <td>{complaint?.userId?.dematACNumber} </td>
                 </tr>
                 <tr>
-                  <td>Description</td>
+                  <td>Bank Name</td>
                   <td>:</td>
-                  <td>{complaint?.userId?.description}</td>
+                  <td>{complaint?.userId?.bankName}</td>
                 </tr>
               </tbody>
             </table>
           </div>
-
         </div>
         <div className="banOrSuspendBtn">
           <Button variant="warning" size="sm">
-            Suspend
+            Suspend {complaint?.companyId?.name}
           </Button>{" "}
-          <Button variant="danger" size="sm">
+          {/* <Button variant="danger" size="sm">
             Ban
-          </Button>{" "}
+          </Button>{" "} */}
         </div>
       </div>
     </div>

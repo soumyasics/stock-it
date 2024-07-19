@@ -107,7 +107,8 @@ export const CompanySidebar = ({ changePage }) => {
             </tr>
           </div>
           <div onClick={()=>{
-                changePage("users")
+                // changePage("users")
+                navigate("/companyViewUser")
               }} style={{cursor:"pointer"}}>
           <tr>
               <td className="fs-5 p-1"><FaUsers /></td>

@@ -5,10 +5,10 @@ import { IoReturnUpBack } from "react-icons/io5";
 import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseUrl";
 
-function EtviewArticleList() {
+export const EtviewArticleList = () => {
   const navigate = useNavigate();
   const toViewArticleById=(id)=>{
-    navigate(`/viewArticles/${id}`)
+    navigate(`/viewEtArticle//${id}`)
   }
 
   const [viewArticle, setViewArticle] = useState([]);
@@ -89,5 +89,3 @@ function EtviewArticleList() {
     </div>
   );
 }
-
-export default EtviewArticleList;

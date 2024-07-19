@@ -3,7 +3,7 @@ import Etnavbar from "../et-navbar/etnavbar";
 import Etsidebar from "../et-sidebar/etsidebar";
 import { Col, Row } from "react-bootstrap";
 import EtAddArticle from "../et-AddArticle/etAddArticle";
-import EtviewArticle from "../et-ViewArticleList/et-viewArticleList";
+import {EtviewArticleList} from "../et-ViewArticleList/et-viewArticleList.jsx";
 
 function Etdashboard() {
   const [activePage, setActivePage] = useState("");
@@ -23,7 +23,7 @@ function Etdashboard() {
         </Col>
         <Col md={9} className="p-0" style={{ backgroundColor: "#1F2937" }}>
           {activePage === "addArticles" && <EtAddArticle navigateToviewArticle={navigateToviewArticle}/>}
-          {activePage === "viewArticles" && <EtviewArticle />}
+          {activePage === "viewArticles" && <EtviewArticleList />}
         </Col>
       </Row>
     </>

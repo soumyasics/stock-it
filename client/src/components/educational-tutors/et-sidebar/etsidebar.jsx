@@ -40,7 +40,7 @@ function Etsidebar({ changePage }) {
           </div>
           <div className="etsidebar-detail mt-3">
             <h6>{etData.fullName} </h6>
-            <p>{etData.email}</p>
+            {/* <p>{etData.email}</p> */}
           </div>
         </div>
         <div className="etsidebar-title">

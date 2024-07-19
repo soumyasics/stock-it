@@ -4,7 +4,6 @@ import { BASE_URL } from "../../../apis/baseUrl";
 import { useNavigate } from "react-router-dom";
 import "./portfolioCard.css";
 export const PortfolioCard = ({ data }) => {
-  console.log("portofoo", data);
   const [profitOrLoss, setProfitOrLoss] = useState(0);
   const [currentMarektValue, setCurrentMarketValue] = useState(0);
   const [logo, setLogo] = useState("");

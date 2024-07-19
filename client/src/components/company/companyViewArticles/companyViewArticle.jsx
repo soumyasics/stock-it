@@ -90,7 +90,7 @@ function CompanyViewArticle() {
               ></iframe>
             )}
           </Col>
-          <Col md={4} className="companyViewArticle-description bg-danger">
+          <Col md={4} className="companyViewArticle-description">
             <div className="text-success text-center mt-5 fs-3">
               Description
             </div>

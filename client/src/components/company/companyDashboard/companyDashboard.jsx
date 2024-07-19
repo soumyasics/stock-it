@@ -13,24 +13,34 @@ export const CompanyDashboard = () => {
   const changePage = (value) => {
     setActivePage(value);
   };
-  const rediectToviewArticle=()=>{
-    setActivePage("view-Articles")
-  }
+  const rediectToviewArticle = () => {
+    setActivePage("view-Articles");
+  };
+  const rediectToIPOStatus = () => {
+    setActivePage("ipo-status");
+  };
+
   return (
-    <div className="d-flex " style={{ height: "120vh", backgroundColor: "#374151" }}>
+    <div
+      className="d-flex "
+      style={{ height: "120vh", backgroundColor: "#374151" }}
+    >
       <CompanySidebar changePage={changePage} />
       <div
         className=" w-100"
         style={{ minHeight: "100vh", backgroundColor: "#1F2937" }}
       >
         {activePage === "profile" && <CompanyProfile />}
-        {activePage === "ipo-form" && <IpoForm />}
+        {activePage === "ipo-form" && (
+          <IpoForm rediectToIPOStatus={rediectToIPOStatus} />
+        )}
         {activePage === "ipo-status" && <ViewIPOStatus />}
-        {activePage === "view-Articles" && <CompanyArticleList/>}
-        {activePage === "add-Articles" && <CompanyAddArticle rediectToviewArticle={rediectToviewArticle}/>}
-        {activePage === "companyAddComplaint" && <CompanyAddComplaint/>}
-        {activePage === "users" && <CompanyViewUser/>}
-
+        {activePage === "view-Articles" && <CompanyArticleList />}
+        {activePage === "add-Articles" && (
+          <CompanyAddArticle rediectToviewArticle={rediectToviewArticle} />
+        )}
+        {activePage === "companyAddComplaint" && <CompanyAddComplaint />}
+        {activePage === "users" && <CompanyViewUser />}
       </div>
     </div>
   );
