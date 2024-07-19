@@ -137,7 +137,6 @@ const forgotPassword = async (req, res) => {
     return res
       .status(200)
       .json({ msg: "Password reset successfully", data: user });
-
   } catch (error) {
     return res.status(500).json({ msg: "Server error", error: error.message });
   }
@@ -207,33 +206,15 @@ const editUserById = async (req, res) => {
     const {
       firstName,
       lastName,
-      gender,
-      dob,
       address,
       city,
       state,
       pincode,
-      photo,
       contactNumber,
       email,
       password,
     } = req.body;
 
-    if (
-      !firstName ||
-      !lastName ||
-      !gender ||
-      !dob ||
-      !address ||
-      !city ||
-      !state ||
-      !pincode ||
-      !contactNumber ||
-      !email ||
-      !password
-    ) {
-      return res.status(400).json({ msg: "All fields are required" });
-    }
     if (pincode.length !== 6) {
       return res.status(400).json({ msg: "Invalid pincode" });
     }
@@ -242,22 +223,38 @@ const editUserById = async (req, res) => {
       return res.status(400).json({ msg: "Invalid contact number" });
     }
 
+    const obj = {};
+    if (firstName) {
+      obj.firstName = firstName;
+    }
+    if (lastName) {
+      obj.lastName = lastName;
+    }
+    if (address) {
+      obj.address = address;
+    }
+    if (city) {
+      obj.city = city;
+    }
+    if (state) {
+      obj.state = state;
+    }
+    if (pincode) {
+      obj.pincode = pincode;
+    }
+    if (contactNumber) {
+      obj.contactNumber = contactNumber;
+    }
+    if (email) {
+      obj.email = email;
+    }
+    if (password) {
+      obj.password = password;
+    }
+
     const updatedUser = await UserModel.findByIdAndUpdate(
       req.params.id,
-      {
-        firstName,
-        lastName,
-        gender,
-        dob,
-        address,
-        city,
-        state,
-        pincode,
-        photo: req.file,
-        contactNumber,
-        email,
-        password,
-      },
+      obj,
       { new: true } // To return the updated document
     );
 
@@ -282,5 +279,5 @@ module.exports = {
   editUserById,
   deActivateUserById,
   activateUserById,
-  forgotPassword
+  forgotPassword,
 };

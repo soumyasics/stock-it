@@ -43,7 +43,6 @@ router.post("/getAllUsers", userController.getAllUsers);
 router.post("/getUserById/:id", userController.getUserById);
 router.post(
   "/editUserById/:id",
-  userController.upload,
   userController.editUserById
 );
 router.post("/activateUserById/:id", userController.activateUserById);
