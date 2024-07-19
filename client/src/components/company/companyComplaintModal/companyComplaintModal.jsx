@@ -24,7 +24,7 @@ const CompanyComplaintModal = ({
     }
     sendComplaint(complaint);
     const obj = { complaint, userId, companyId };
-    const response = axiosInstance.post("/createComplaint", obj);
+    const response = axiosInstance.post("/user-createComplaint", obj);
     try {
       if (response.status == 200) {
         setComplaint(response.data.data);
@@ -34,6 +34,7 @@ const CompanyComplaintModal = ({
       console.log("Error on send complaint");
     }finally{
       setComplaint("")
+      closeModal()
     }
   };
 

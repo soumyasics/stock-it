@@ -4,6 +4,7 @@ import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../../apis/axiosInstance";
 import CompanyComplaintModal from "../companyComplaintModal/companyComplaintModal";
+import toast from "react-hot-toast";
 
 function CompanyViewUser() {
   const navigateToViewUserDetail = (id) => {
@@ -12,16 +13,35 @@ function CompanyViewUser() {
   const navigate = useNavigate();
   const [allUsers, setAllUsers] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [userId, setUserId] = useState({});
+  const [companyId, setCompanyId] = useState({});
+  const [userId, setuserId] = useState("");
   const openModal = () => {
     setModalIsOpen(true);
   };
   const closeModal = () => {
     setModalIsOpen(false);
   };
+  const addComplaint = (userId) => {
+    setuserId(userId);
+    openModal();
+  };
   useEffect(() => {
+    const companyId = JSON.parse(localStorage.getItem("stock_it_companyId") ) || null;
+    if (companyId) {
+      setCompanyId(companyId);
+    }
     getAllUsers();
   }, []);
+  const sendComplaint = (complaint) => {
+    console.log("coId", companyId);
+    console.log(complaint);
+    console.log("user id", userId);
+    try {
+      toast.success("Complaint submitted");
+    } catch (error) {
+      console.log("Fail in sending complaint");
+    }
+  };
   const getAllUsers = async () => {
     try {
       const response = await axiosInstance.post("/getAllUsers");
@@ -30,7 +50,7 @@ function CompanyViewUser() {
       }
     } catch (error) {
       console.log("error on receiving data");
-    }
+    } 
   };
   return (
     <div>
@@ -84,8 +104,18 @@ function CompanyViewUser() {
                       openModal={openModal}
                       closeModal={closeModal}
                       modalIsOpen={modalIsOpen}
+                      sendComplaint={sendComplaint}
+                      companyId={companyId}
+                      userId={userId}
                     />
-                    <Button variant="danger">Add complaint</Button>
+                    <Button
+                      onClick={() => {
+                        addComplaint(u._id);
+                      }}
+                      variant="danger"
+                    >
+                      Add complaint
+                    </Button>
                   </td>
                   <td className="viewComapny-viewmore">
                     <Button

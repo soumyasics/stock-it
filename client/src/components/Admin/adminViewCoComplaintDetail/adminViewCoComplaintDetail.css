@@ -2,3 +2,22 @@
     margin-left: 10%;
     margin-top: 3%;
 }
+.adminViewCoComplaintDetail-head  h4 {
+    color: #fff;
+    font-weight: bold;
+}
+.adminViewCoComplaintDetail-table{
+    width: 40%;
+}
+.adminViewCoComplaintDetail-profile img{
+    width: 75px;
+    height: 75px;
+    flex-shrink: 0;
+    border-radius: 55px;
+    margin-right: 2%;
+}
+.adminViewCoComplaintDetail-profile{
+    color: #fff;
+    margin-left: 15%;
+
+}
