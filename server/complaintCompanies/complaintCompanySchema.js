@@ -1,24 +1,26 @@
 const mongoose = require("mongoose");
-const CompanyComplaintSchema =  mongoose.Schema({
+const CompanyComplaintSchema = mongoose.Schema(
+  {
     userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        required: true,
-    }, 
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
     companyId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "companies",
-        required: true,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "companies",
+      required: true,
     },
     complaint: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     status: {
-        type: String,
+      type: String,
+      default: "Pending",
+    },
+  },
+  { timestamps: true }
+);
 
-        default: "Pending"
-    }
-})
-
-module.exports = mongoose.model("CompanyComplaint", CompanyComplaintSchema)
+module.exports = mongoose.model("CompanyComplaint", CompanyComplaintSchema);
