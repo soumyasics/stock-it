@@ -4,7 +4,7 @@ import { toast } from "react-hot-toast";
 
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../../apis/axiosInstance";
-export const IpoForm = () => {
+export const IpoForm = ({ rediectToIPOStatus }) => {
   const [totalShares, setTotalNoShares] = useState("");
   const [costPerShare, setCostPerShare] = useState("");
   const [totalMarketCap, setTotalMarketCap] = useState(0);
@@ -88,6 +88,7 @@ export const IpoForm = () => {
 
       if (res.status === 201) {
         toast.success("Your IPO request has been created successfully");
+       
         return;
       } else {
         console.log("response", res);
@@ -100,6 +101,8 @@ export const IpoForm = () => {
       }
 
       toast.error("Something went wrong");
+    }finally {
+      rediectToIPOStatus()  
     }
   };
   return (

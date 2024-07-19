@@ -129,13 +129,13 @@ function EtviewArticle() {
             </div>
 
             <div className="etViewArticle-btn d-flex gap-3">
-              <div className="etArticle-editbtn">
+              {/* <div className="etArticle-editbtn">
                 <button type="button" className="btn btn-outline-success">
                   Edit
                 </button>
-              </div>
+              </div> */}
               <div className="etArticle-deletebtn">
-                <button type="button" className="btn btn-outline-success">
+                <button type="button" className="btn btn-outline-danger">
                   Delete
                 </button>
               </div>

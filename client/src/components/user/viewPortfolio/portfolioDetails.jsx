@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axiosInstance from "../../../apis/axiosInstance";
 import { Button, Col, Row } from "react-bootstrap";
-import "./portfolioDetails.css";
 import { BASE_URL } from "../../../apis/baseUrl";
 import { IoReturnUpBack } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import "./portfolioDetails.css";
 export const PortfolioDetails = () => {
   const { id } = useParams();
   const [stockData, setStockData] = useState({});
@@ -64,7 +64,7 @@ export const PortfolioDetails = () => {
         const totalCurrentMarektValuation = CMP * stock?.totalQuantity;
         setCurrentMarketValue(totalCurrentMarektValuation);
 
-        const pAndL = totalCurrentMarektValuation - stock?.totalCost - 50;
+        const pAndL = totalCurrentMarektValuation - stock?.totalCost;
         setProfitOrLoss(pAndL);
       }
     } catch (error) {

@@ -9,7 +9,7 @@ function UserViewEtArticle() {
   const [viewArticle, setViewArticle] = useState([]);
   const navigate =useNavigate()
   const toViewArticleById=(id)=>{
-    navigate(`/viewArticles/${id}`)
+    navigate(`/viewEtArticle/${id}`)
   }
   useEffect(() => {
     axiosInstance.get("/getAllArticles").then((response) => {
