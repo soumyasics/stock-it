@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import "./userComplaintModal.css";
 import toast from "react-hot-toast";
 import axiosInstance from "../../../apis/axiosInstance";
 
 Modal.setAppElement("#root");
 
-const ComplaintModal = ({
+const CompanyComplaintModal = ({
   openModal,
   closeModal,
   modalIsOpen,
@@ -48,7 +47,7 @@ const ComplaintModal = ({
         overlayClassName="overlay"
       >
         <h2 style={{ color: "#fff" }} className="text-start">
-         Write your complaint
+          Issue
         </h2>
         <form onSubmit={handleSubmit}>
           <textarea
@@ -66,4 +65,4 @@ const ComplaintModal = ({
   );
 };
 
-export default ComplaintModal;
+export default CompanyComplaintModal;
