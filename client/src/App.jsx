@@ -126,7 +126,7 @@ function App() {
             element={<CompanyAddComplaint />}
           />
           <Route path="/companyViewUser" element={<CompanyViewUser/>}/>
-          <Route path="/companyViewUserDetails" element={<CompanyViewUserdetails/>}/>
+          <Route path="/companyViewUserDetails/:id" element={<CompanyViewUserdetails/>}/>
           {/* user pages  */}
           <Route path="/userRegistration" element={<UserRegistration />} />
           <Route path="/userHome" element={<UserHomePage />} />

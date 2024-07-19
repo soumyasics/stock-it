@@ -1,11 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import img1 from "../../../assets/images/crossbtn.png"
 import { BASE_URL } from "../../../apis/baseUrl";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import axiosInstance from "../../../apis/axiosInstance";
 
 function CompanyViewUserdetails() {
     const[userData,setUserData]=useState({})
     const navigate=useNavigate()
+    const {id}=useParams()
+    useEffect(()=>{
+getUserById()
+    },[])
+    const getUserById =async()=>{
+        try {
+            const response= await axiosInstance.post(`/getUserById/${id}`)
+            if(response.status===200){
+                setUserData(response.data.data)
+            }
+        } catch (error) {
+            console.log("Error on receiving data");
+        }
+    }
   return (
     <div>
       <div>

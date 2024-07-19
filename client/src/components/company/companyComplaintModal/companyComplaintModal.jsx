@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import "./userComplaintModal.css";
 import toast from "react-hot-toast";
 import axiosInstance from "../../../apis/axiosInstance";
 
@@ -15,28 +14,28 @@ const CompanyComplaintModal = ({
 }) => {
   const [complaint, setComplaint] = useState("");
 
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     console.log("Complaint submitted:", complaint);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("Complaint submitted:", complaint);
 
-//     if (!complaint) {
-//       toast.error("Please enter your complaint");
-//       return;
-//     }
-//     sendComplaint(complaint);
-//     const obj = { complaint, userId, companyId };
-//     const response = axiosInstance.post("/createComplaint", obj);
-//     try {
-//       if (response.status == 200) {
-//         setComplaint(response.data.data);
-//         toast.success("completed");
-//       }
-//     } catch (error) {
-//       console.log("Error on send complaint");
-//     }finally{
-//       setComplaint("")
-//     }
-//   };
+    if (!complaint) {
+      toast.error("Please enter your complaint");
+      return;
+    }
+    sendComplaint(complaint);
+    const obj = { complaint, userId, companyId };
+    const response = axiosInstance.post("/createComplaint", obj);
+    try {
+      if (response.status == 200) {
+        setComplaint(response.data.data);
+        toast.success("completed");
+      }
+    } catch (error) {
+      console.log("Error on send complaint");
+    }finally{
+      setComplaint("")
+    }
+  };
 
   return (
     <div>

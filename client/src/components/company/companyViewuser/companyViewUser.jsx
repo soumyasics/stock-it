@@ -3,11 +3,22 @@ import { IoReturnUpBack } from "react-icons/io5";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../../apis/axiosInstance";
+import CompanyComplaintModal from "../companyComplaintModal/companyComplaintModal";
 
 function CompanyViewUser() {
+  const navigateToViewUserDetail = (id) => {
+    navigate(`/companyViewUserDetails/${id}`);
+  };
   const navigate = useNavigate();
   const [allUsers, setAllUsers] = useState([]);
-  const[modalIsOpen,setModalIsOpen]=useState(false)
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [userId, setUserId] = useState({});
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
   useEffect(() => {
     getAllUsers();
   }, []);
@@ -69,6 +80,11 @@ function CompanyViewUser() {
                     )}
                   </td>
                   <td>
+                    <CompanyComplaintModal
+                      openModal={openModal}
+                      closeModal={closeModal}
+                      modalIsOpen={modalIsOpen}
+                    />
                     <Button variant="danger">Add complaint</Button>
                   </td>
                   <td className="viewComapny-viewmore">
