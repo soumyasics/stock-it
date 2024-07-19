@@ -67,9 +67,9 @@ export const ViewCompanyDetails = () => {
           <div className="requestpage-crossbtn" onClick={redirectBack}>
             <img src={img2} alt="x" style={{ cursor: "pointer" }} />
           </div>
-          <div className="requestpage-paragraph">
+          <div className="requestpage-paragraph w-75 ">
             <p>
-              {state.name}-{state.description}
+              {state?.name}-{state?.description}
             </p>
           </div>
           <div className="requestpage-content">
@@ -77,42 +77,42 @@ export const ViewCompanyDetails = () => {
               <tr>
                 <td>Name</td>
                 <td>-</td>
-                <td>{state.name}</td>
+                <td>{state?.name}</td>
               </tr>
               <tr>
                 <td>Company Type</td>
                 <td>-</td>
-                <td>{state.companyType} </td>
+                <td>{state?.companyType} </td>
               </tr>
               <tr>
                 <td>City</td>
                 <td>-</td>
-                <td>{state.district} </td>
+                <td>{state?.district} </td>
               </tr>
               <tr>
                 <td>State</td>
                 <td>-</td>
-                <td>{state.state} </td>
+                <td>{state?.state} </td>
               </tr>
               <tr>
                 <td>Pincode</td>
                 <td>-</td>
-                <td>{state.pincode}</td>
+                <td>{state?.pincode}</td>
               </tr>
               <tr>
                 <td>Contact Number</td>
                 <td>-</td>
-                <td>{state.contact}</td>
+                <td>{state?.contact}</td>
               </tr>
               <tr>
                 <td>Email Id</td>
                 <td>-</td>
-                <td>{state.email}</td>
+                <td>{state?.email}</td>
               </tr>
               <tr>
                 <td>Registration Number</td>
                 <td>-</td>
-                <td>{state.regNo} </td>
+                <td>{state?.regNo} </td>
               </tr>
               <tr>
                 <td>Company License</td>
@@ -131,12 +131,12 @@ export const ViewCompanyDetails = () => {
               <tr>
                 <td>Year Founded</td>
                 <td>-</td>
-                <td>{state.year}</td>
+                <td>{state?.year}</td>
               </tr>
               <tr>
                 <td>Company Website</td>
                 <td>-</td>
-                <td>{state.website}</td>
+                <td>{state?.website}</td>
               </tr>
             </table>
           </div>

@@ -18,7 +18,7 @@ export const ListedCompanies = () => {
         const allIPOs = res.data?.data || [];
         const allCompanies = allIPOs.map((IPO) => {
           return IPO.companyId;
-        })
+        });
         setAllCompanies(allCompanies);
       } else {
         console.log("Error ", res);
@@ -41,10 +41,7 @@ export const ListedCompanies = () => {
         </div>
 
         <div className="comapnyRequest-first-box">
-          <div className="companyRequesest-second-box" role="group">
-        
-          </div>
- 
+          <div className="companyRequesest-second-box" role="group"></div>
         </div>
 
         <div className="viewCompany-table ">
@@ -60,17 +57,17 @@ export const ListedCompanies = () => {
             </tr>
             {allCompanies.map((co, i) => {
               return (
-                <tr key={co._id}>
+                <tr key={co?._id}>
                   <td>{i + 1}</td>
-                  <td>{co.name}</td>
-                  <td>{co.companyType}</td>
-                  <td>{co.contact}</td>
-                  <td>{co.state}</td>
-                  <td>{co.email}</td>
+                  <td>{co?.name}</td>
+                  <td>{co?.companyType}</td>
+                  <td>{co?.contact}</td>
+                  <td>{co?.state}</td>
+                  <td>{co?.email}</td>
                   <td className="viewComapny-viewmore">
                     <Button
                       onClick={() => {
-                        navigate(`/companyDetails/${co._id}`);
+                        navigate(`/companyDetails/${co?._id}`);
                       }}
                     >
                       View more

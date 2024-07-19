@@ -79,18 +79,18 @@ function CompanyViewArticle() {
         <Row>
           <Col md={8} className="companyViewArticle-video">
             {videoUrl && (
-                <iframe
-                    width="90%"
-                    height="500px"
-                    src={videoUrl}
-                    title="YouTube video player"
-                    frameBorder="0"P
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                ></iframe>
-                )}
+              <iframe
+                width="90%"
+                height="500px"
+                src={videoUrl}
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            )}
           </Col>
-          <Col md={4} className="companyViewArticle-description">
+          <Col md={4} className="companyViewArticle-description bg-danger">
             <div className="text-success text-center mt-5 fs-3">
               Description
             </div>
@@ -127,13 +127,13 @@ function CompanyViewArticle() {
             </div>
 
             <div className="companyViewArticle-btn d-flex gap-3">
-              <div className="etArticle-editbtn">
+              {/* <div className="etArticle-editbtn">
                 <button type="button" className="btn btn-outline-success">
                   Edit
                 </button>
-              </div>
+              </div> */}
               <div className="etArticle-deletebtn">
-                <button type="button" className="btn btn-outline-success">
+                <button type="button" className="btn btn-outline-danger">
                   Delete
                 </button>
               </div>
