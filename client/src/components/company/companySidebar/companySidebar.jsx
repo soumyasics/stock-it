@@ -12,6 +12,7 @@ import { IoMdArrowBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseUrl";
+import { FaUsers } from "react-icons/fa";
 
 export const CompanySidebar = ({ changePage }) => {
   const [show, setShow] = useState(false);
@@ -103,6 +104,14 @@ export const CompanySidebar = ({ changePage }) => {
               <td>
                 <h6>Profile</h6>
               </td>
+            </tr>
+          </div>
+          <div onClick={()=>{
+                changePage("users")
+              }} style={{cursor:"pointer"}}>
+          <tr>
+              <td className="fs-5 p-1"><FaUsers /></td>
+              <td className="px-3" >Users</td>
             </tr>
           </div>
           <div

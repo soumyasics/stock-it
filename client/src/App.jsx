@@ -78,6 +78,8 @@ import UserProfile from "./components/user/userProfile/userProfile";
 import AdminTakeAction from "./components/Admin/adminTakeAction/adminTakeAction";
 import AdminViewCoComplaint from "./components/Admin/adminViewCoComplaint/adminViewCoComplaint";
 import AdminViewCoComplaintDetail from "./components/Admin/adminViewCoComplaintDetail/adminViewCoComplaintDetail";
+import CompanyViewUser from "./components/company/companyViewuser/companyViewUser";
+import CompanyViewUserdetails from "./components/company/companyViewUserDetails/companyViewUserdetails";
 
 function App() {
   return (
@@ -123,6 +125,8 @@ function App() {
             path="/companyAddComplaint"
             element={<CompanyAddComplaint />}
           />
+          <Route path="/companyViewUser" element={<CompanyViewUser/>}/>
+          <Route path="/companyViewUserDetails" element={<CompanyViewUserdetails/>}/>
           {/* user pages  */}
           <Route path="/userRegistration" element={<UserRegistration />} />
           <Route path="/userHome" element={<UserHomePage />} />

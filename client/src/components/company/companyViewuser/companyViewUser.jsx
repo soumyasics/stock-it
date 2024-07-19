@@ -1,48 +1,33 @@
-import { useEffect, useState } from "react";
-import "../adminViewAllcompanies/adminViewAllCompanies.css";
-import { useNavigate } from "react-router-dom";
-import { Footer2 } from "../../common/footer2/footer2";
-import axiosInstance from "../../../apis/axiosInstance";
-import { Button } from "react-bootstrap";
-import AdminNavbar from "../../common/adminNavbar";
+import React, { useEffect, useState } from "react";
 import { IoReturnUpBack } from "react-icons/io5";
-export const AdminViewAllUsers = () => {
+import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import axiosInstance from "../../../apis/axiosInstance";
+
+function CompanyViewUser() {
   const navigate = useNavigate();
-
   const [allUsers, setAllUsers] = useState([]);
-
-  const getAllUsers = async () => {
-    try {
-      const res = await axiosInstance.post("getAllUsers");
-      if (res.status === 200) {
-        let data = res.data?.data || [];
-        setAllUsers(data);
-      } else {
-        console.log("Error ", res);
-      }
-    } catch (error) {
-      console.log("Error getting compnaies", error);
-    }
-  };
-
-  console.log("como", allUsers);
+  const[modalIsOpen,setModalIsOpen]=useState(false)
   useEffect(() => {
     getAllUsers();
   }, []);
-
-  const navigateToViewUserDetail = (id) => {
-    console.log("check", id);
-    navigate(`/adminVIewUserDetail/${id}`);
+  const getAllUsers = async () => {
+    try {
+      const response = await axiosInstance.post("/getAllUsers");
+      if (response.status === 200) {
+        setAllUsers(response.data.data);
+      }
+    } catch (error) {
+      console.log("error on receiving data");
+    }
   };
   return (
     <div>
-      <AdminNavbar />
-
       <div className="viewCompany-body">
         <div className="viewcomapany-head-box d-flex align-items-center justify-content-between px-5">
           <div
             onClick={() => {
-              navigate("/admin");
+              navigate(-1);
             }}
             style={{ cursor: "pointer", color: "white", fontSize: "20px" }}
           >
@@ -65,7 +50,7 @@ export const AdminViewAllUsers = () => {
               <th>Contact </th>
               <th>Email</th>
               <th>Status</th>
-             
+              <th>Complaints</th>
               <th>View More</th>
             </tr>
             {allUsers.map((u, i) => {
@@ -83,7 +68,9 @@ export const AdminViewAllUsers = () => {
                       <p className="text-danger"> In active </p>
                     )}
                   </td>
-                
+                  <td>
+                    <Button variant="danger">Add complaint</Button>
+                  </td>
                   <td className="viewComapny-viewmore">
                     <Button
                       onClick={() => {
@@ -99,10 +86,8 @@ export const AdminViewAllUsers = () => {
           </table>
         </div>
       </div>
-
-      <div>
-        <Footer2 />
-      </div>
     </div>
   );
-};
+}
+
+export default CompanyViewUser;

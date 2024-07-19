@@ -4,6 +4,7 @@
     width: 100%;
     min-height: 100vh;
     background-color: #1F2937;
+    padding-bottom: 3%;
 }
 
 .viewcomapany-head-box {
@@ -99,10 +100,11 @@
 
 .viewCompany-table {
     width: 92%;
-    min-height: 400px;
+    min-height: 80vh;
     background-color: #374151;
     margin-left: 4%;
     font-family: Inter;
+    padding-bottom: 2%;
 }
 
 .viewCompany-table table {
