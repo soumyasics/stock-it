@@ -113,9 +113,9 @@ const reDirectToUserProfile=()=>{
                   >
                     All Companies
                   </div>
-                  <div className="user-home-nav-drop-down">
+                  {/* <div className="user-home-nav-drop-down">
                     Access Dashboard
-                  </div>
+                  </div> */}
                 </div>
               </div>
             )}

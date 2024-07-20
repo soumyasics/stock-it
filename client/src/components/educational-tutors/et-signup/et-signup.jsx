@@ -349,6 +349,7 @@ function EtSignup() {
                       className="form-control"
                       placeholder="upload"
                       name="photo"
+                      accept="image/*"
                       onChange={(e) => {
                         setEtData({ ...etData, photo: e.target.files[0] });
                       }}

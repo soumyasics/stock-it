@@ -63,7 +63,7 @@ import { UpcomingCompanies } from "./components/user/viewUpcomingCompanies/upcom
 import { ListedCompanies } from "./components/user/viewUpcomingCompanies/listedCompanies";
 import { BuyStocks } from "./components/user/buyStocks/buyStocks";
 import { StockDetails } from "./components/user/stockDetails/stockDetails";
-import EtviewArticleList from "./components/educational-tutors/et-ViewArticleList/et-viewArticleList";
+import {EtviewArticleList} from "./components/educational-tutors/et-ViewArticleList/et-viewArticleList";
 
 import UserViewEtArticle from "./components/user/userViewEtArticles/userViewEtArticle";
 import CompanyArticleList from "./components/company/companyArticleList/companyArticleList";

@@ -3,30 +3,31 @@
   height: 120vh;
   background: hsl(215, 28%, 17%);
   padding: 3%;
- }
- .etViewArticle-head{
-    color: #fff;
-    font-size: 23px;
- }
- .etViewArticle-video iframe{
-    border-radius: 15px;
-    margin-top: 3%;
-    margin-left: 3%;
 }
-.etViewArticle-description{
-    border-radius: 50px;
-    background: linear-gradient(145deg, #1c2532, #212c3b);
-    box-shadow:  33px 33px 66px #1a232f,
-                 -33px -33px 66px #242f3f;
+.etViewArticle-head {
+  color: #fff;
+  font-size: 23px;
 }
-#etViewVideoTable{
-    margin: auto;
-    width: 100%;
+.etViewArticle-video iframe {
+  border-radius: 15px;
+  margin-top: 3%;
+  margin-left: 3%;
 }
-.etViewArticle-btn{
- margin-top: 20%;
- margin-left: 25%;
+.etViewArticle-description {
+  border-radius: 50px;
+  height: 523px;
+  overflow: auto;
+  background: linear-gradient(145deg, #1c2532, #212c3b);
+  box-shadow: 33px 33px 66px #1a232f, -33px -33px 66px #242f3f;
 }
-.etViewArticle-btn button{
-    width: 100px;
+#etViewVideoTable {
+  margin: auto;
+  width: 100%;
+}
+.etViewArticle-btn {
+  margin-top: 20%;
+  margin-left: 25%;
+}
+.etViewArticle-btn button {
+  width: 100px;
 }

@@ -7,9 +7,9 @@ import coImg1 from "../../../assets/images/co-1.png";
 export const CompanyProfile = () => {
   const [companyData, setcompanyData] = useState(null);
   console.log("ipo", companyData);
+
   useEffect(() => {
     let companyId = localStorage.getItem("stock_it_companyId") || null;
-
     if (!companyId) {
       toast.error("Please login again.");
       navigate("/companyLogin");
@@ -43,8 +43,8 @@ export const CompanyProfile = () => {
         <Col md={6}>
           <Image className="w-75" src={coImg1} alt="ipo" />
         </Col>
-        <Col md={6} className="company-ipo-status shadow p-3">
-          <Card style={{ width: "18rem" }}>
+        <Col md={6} className="company-ipo-status  shadow p-3">
+          <Card className="w-100">
             <Card.Header className="capitalizeText text-center fw-bold">
               {" "}
               Company Details
@@ -80,34 +80,38 @@ export const CompanyProfile = () => {
               <ListGroup.Item>
                 {" "}
                 <h6>
-                  Type: <span>{companyData?.companyType}</span>{" "}
+                  Type:{" "}
+                  <span className="fw-bold">{companyData?.companyType}</span>{" "}
                 </h6>
               </ListGroup.Item>
               <ListGroup.Item>
                 {" "}
                 <h6>
-                  Contact: <span>{companyData?.contact}</span>{" "}
+                  Contact:{" "}
+                  <span className="fw-bold">{companyData?.contact}</span>{" "}
                 </h6>
               </ListGroup.Item>
               <ListGroup.Item>
                 {" "}
                 <h6>
                   Website:
-                  <span>{companyData?.website}</span>
+                  <a target="_blank" href={companyData?.website} className="fw-bold text-dark">
+                    {companyData?.website}
+                  </a>
                 </h6>
               </ListGroup.Item>
               <ListGroup.Item>
                 {" "}
                 <h6>
                   District:
-                  <span>{companyData?.district}</span>
+                  <span className="fw-bold">{companyData?.district}</span>
                 </h6>
               </ListGroup.Item>
               <ListGroup.Item>
                 {" "}
                 <h6>
                   State:
-                  <span>{companyData?.state}</span>
+                  <span className="fw-bold">{companyData?.state}</span>
                 </h6>
               </ListGroup.Item>
               <ListGroup.Item>

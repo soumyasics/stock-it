@@ -83,13 +83,13 @@ export const UserLogin = () => {
                     />
                   </div>
                   <div className="mb-3 userlogin-inner">
-                    <label for="exampleFormControlInput1" className="form-label">
+                    <label for="exampleFormControlInput10" className="form-label">
                       Password
                     </label>
                     <input
                       type="password"
                       className="form-control"
-                      id="exampleFormControlInput1"
+                      id="exampleFormControlInput10"
                       placeholder="Enter Password"
                       onChange={(e) => setPassword(e.target.value)}
                     />
