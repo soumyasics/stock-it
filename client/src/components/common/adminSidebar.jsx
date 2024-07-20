@@ -176,7 +176,9 @@ function AdminSidebar({ changePage }) {
                 <div className="sidebar-drop-10">
                   <ul>
                     <li onClick={navigateToCoComplaint}>Company</li>
-                    <li>User</li>
+                    <li onClick={()=>{
+                      navigate("/adminViewUserComplaint")
+                    }}>User</li>
                   </ul>
                 </div>
               )}

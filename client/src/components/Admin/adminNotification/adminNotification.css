@@ -1,0 +1,35 @@
+.adminNotification-box {
+  width: 90%;
+  height: 45px;
+  border-radius: 9px;
+  background: #111827;
+  margin-top: 2%;
+  margin-left: 5%;
+  color: #fff;
+  padding: 10px 5%;
+  display: flex;
+  justify-content: space-between;
+}
+.adminNotification-box p {
+    padding-top: 1%;
+  color: #fff;
+  font-family: "Noto Sans";
+  font-size: 15.818px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: left;
+}
+.adminNotification-box button{
+    color: #fff;
+    font-family: "Noto Sans";
+    font-size: 15.818px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+@media  (max-width: 750px) {
+    .adminNotification-box {
+      height: 60px;
+    }
+  }
