@@ -151,7 +151,7 @@ function AdminViewCoComplaintDetail() {
                   <td>{complaint?.userId?.contactNumber}</td>
                 </tr>
                 <tr>
-                  <td>City</td>
+                  <td>City</td>   
                   <td>:</td>
                   <td>{complaint?.userId?.city}</td>
                 </tr>
