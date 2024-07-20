@@ -1,25 +1,29 @@
 import React, { useEffect, useState } from "react";
-import "./adminViewCoComplaint.css";
 import { IoReturnUpBack } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../../apis/axiosInstance";
 
-function AdminViewCoComplaint() {
+function AdminViewUserComplaint() {
   const navigate = useNavigate();
-  const reDirectToComplaint = (id) => {
-    navigate(`/adminViewCoComplaintDetail/${id}`);
-  };
+  const reDirectToComplaint=(id)=>{
+    navigate(`/adminViewUserComplaintDetails/${id}`)
+  }
   const [complaint, setComplaint] = useState([
     { userId: { firstName: "" }, companyId: { name: "" } },
   ]);
   useEffect(() => {
-    axiosInstance.get("/getAllComplaints").then((response) => {
-      console.log(response);
+    getAllComplaints();
+  }, []);
+  const getAllComplaints = async () => {
+    const response = await axiosInstance.get("user-getAllComplaints");
+    try {
       if (response.status === 200) {
         setComplaint(response.data.data);
       }
-    });
-  }, []);
+    } catch (error) {
+      console.log("Fail on receiving complaint");
+    }
+  };
   return (
     <div>
       <div className="adminViewCoComplaint-body ">
@@ -34,7 +38,7 @@ function AdminViewCoComplaint() {
               <IoReturnUpBack />
             </span>
             <h5 className="text-center" style={{ marginLeft: "40%" }}>
-              Company Complaints
+              User Complaints
             </h5>
           </div>
         </div>
@@ -46,17 +50,17 @@ function AdminViewCoComplaint() {
                   <div className="adminViewCoComplaint-innerbox1"></div>
                   <table className="adminViewCoComplaint-table">
                     <tr>
-                      <td>User Name</td>
-                      <td>:</td>
-                      <td className="adminViewCoComplaint-data">
-                        {e?.userId?.firstName}
-                      </td>
-                    </tr>
-                    <tr>
                       <td>Company</td>
                       <td>:</td>
                       <td className="adminViewCoComplaint-data">
                         {e.companyId.name}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>User Name</td>
+                      <td>:</td>
+                      <td className="adminViewCoComplaint-data">
+                        {e?.userId?.firstName}
                       </td>
                     </tr>
                   </table>
@@ -79,4 +83,4 @@ function AdminViewCoComplaint() {
   );
 }
 
-export default AdminViewCoComplaint;
+export default AdminViewUserComplaint;

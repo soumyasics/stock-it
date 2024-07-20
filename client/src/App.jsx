@@ -80,6 +80,9 @@ import AdminViewCoComplaint from "./components/Admin/adminViewCoComplaint/adminV
 import AdminViewCoComplaintDetail from "./components/Admin/adminViewCoComplaintDetail/adminViewCoComplaintDetail";
 import CompanyViewUser from "./components/company/companyViewuser/companyViewUser";
 import CompanyViewUserdetails from "./components/company/companyViewUserDetails/companyViewUserdetails";
+import AdminViewUserComplaint from "./components/Admin/adminViewUserComplaint/adminViewUserComplaint";
+import AdminViewUserComplaintDetails from "./components/Admin/adminViewuserComplaintDetails/adminViewUserComplaintDetails";
+import AdminNotification from "./components/Admin/adminNotification/adminNotification";
 
 function App() {
   return (
@@ -194,6 +197,9 @@ function App() {
           <Route path="/adminTakeAction" element={<AdminTakeAction/>}/>
           <Route path="/adminViewCoComplaint" element={<AdminViewCoComplaint/>}/>
           <Route path="/adminViewCoComplaintDetail/:id" element={<AdminViewCoComplaintDetail/>}/>
+          <Route path="/adminViewUserComplaint" element={<AdminViewUserComplaint/>}/>
+          <Route path="/adminViewUserComplaintDetails/:id" element={<AdminViewUserComplaintDetails/>}/>
+          <Route path="/adminnotification" element={<AdminNotification/>}/>
 
           {/* et-new */}
           <Route path="/etdashboard" element={<Etdashboard />} />

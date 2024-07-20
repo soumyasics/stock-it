@@ -1,30 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { IoReturnUpBack } from "react-icons/io5";
 import { useNavigate, useParams } from "react-router-dom";
-import { Button } from "react-bootstrap";
-import "./adminViewCoComplaintDetail.css";
-import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseUrl";
+import { Button } from "react-bootstrap";
+import axiosInstance from "../../../apis/axiosInstance";
 
-function AdminViewCoComplaintDetail() {
+function AdminViewUserComplaintDetails() {
   const navigate = useNavigate();
   const [complaint, setComplaint] = useState({});
   const { id } = useParams();
   useEffect(() => {
-    axiosInstance
-      .get(`/getComplaintById/${id}`)
-      .then((response) => {
-        console.log(response);
-        if (response.status === 200) {
-          setComplaint(response.data.data);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    getAllComplaints();
   }, []);
-
-  console.log(complaint);
+  const getAllComplaints = async () => {
+    const response = await axiosInstance.get(`user-getComplaintById/${id}`);
+    try {
+      if (response.status === 200) {
+        setComplaint(response.data.data);
+      }
+    } catch (error) {
+        console.log("Fail on receving complaint");
+    }
+  };
   return (
     <div>
       <div className="viewCompany-body">
@@ -44,6 +41,68 @@ function AdminViewCoComplaintDetail() {
           <div className="companyRequesest-second-box" role="group"></div>
         </div>
         <div className="d-flex">
+          <div className="adminViewCoComplaintDetail-table ms-5">
+            <div className="adminViewCoComplaintDetail-head ms-5">
+              <h4>User details</h4>
+            </div>
+            <span
+              style={{ fontWeight: "bold" }}
+              className="adminViewCoComplaintDetail-profile fs-5"
+            >
+              <img src={`${BASE_URL}${complaint?.userId?.photo}`} alt="" />
+              {complaint?.userId?.firstName}
+              {complaint?.userId?.lastName}
+            </span>
+            <table>
+              <tbody>
+                <tr>
+                  <td>Gender</td>
+                  <td>:</td>
+                  <td>{complaint?.userId?.gender} </td>
+                </tr>
+                <tr>
+                  <td>DOB</td>
+                  <td>:</td>
+                  <td> {complaint?.userId?.dob} </td>
+                </tr>
+                <tr>
+                  <td>Email</td>
+                  <td>:</td>
+                  <td>{complaint?.userId?.email} </td>
+                </tr>
+                <tr>
+                  <td>Address</td>
+                  <td>:</td>
+                  <td>{complaint?.userId?.address}</td>
+                </tr>
+                <tr>
+                  <td>Contact Number</td>
+                  <td>:</td>
+                  <td>{complaint?.userId?.contactNumber}</td>
+                </tr>
+                <tr>
+                  <td>City</td>
+                  <td>:</td>
+                  <td>{complaint?.userId?.city}</td>
+                </tr>
+                <tr>
+                  <td>State</td>
+                  <td>:</td>
+                  <td>{complaint?.userId?.state}</td>
+                </tr>
+                <tr>
+                  <td>Demat A/C Number</td>
+                  <td>:</td>
+                  <td>{complaint?.userId?.dematACNumber} </td>
+                </tr>
+                <tr>
+                  <td>Bank Name</td>
+                  <td>:</td>
+                  <td>{complaint?.userId?.bankName}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <div className="adminViewCoComplaintDetail-table ms-5">
             <div className="adminViewCoComplaintDetail-head ms-5">
               <h4>Company Details</h4>
@@ -113,72 +172,10 @@ function AdminViewCoComplaintDetail() {
               </tbody>
             </table>
           </div>
-          <div className="adminViewCoComplaintDetail-table ms-5">
-            <div className="adminViewCoComplaintDetail-head ms-5">
-              <h4>User details</h4>
-            </div>
-            <span
-              style={{ fontWeight: "bold" }}
-              className="adminViewCoComplaintDetail-profile fs-5"
-            >
-              <img src={`${BASE_URL}${complaint?.userId?.photo}`} alt="" />
-              {complaint?.userId?.firstName}
-              {complaint?.userId?.lastName}
-            </span>
-            <table>
-              <tbody>
-                <tr>
-                  <td>Gender</td>
-                  <td>:</td>
-                  <td>{complaint?.userId?.gender} </td>
-                </tr>
-                <tr>
-                  <td>DOB</td>
-                  <td>:</td>
-                  <td> {complaint?.userId?.dob} </td>
-                </tr>
-                <tr>
-                  <td>Email</td>
-                  <td>:</td>
-                  <td>{complaint?.userId?.email} </td>
-                </tr>
-                <tr>
-                  <td>Address</td>
-                  <td>:</td>
-                  <td>{complaint?.userId?.address}</td>
-                </tr>
-                <tr>
-                  <td>Contact Number</td>
-                  <td>:</td>
-                  <td>{complaint?.userId?.contactNumber}</td>
-                </tr>
-                <tr>
-                  <td>City</td>   
-                  <td>:</td>
-                  <td>{complaint?.userId?.city}</td>
-                </tr>
-                <tr>
-                  <td>State</td>
-                  <td>:</td>
-                  <td>{complaint?.userId?.state}</td>
-                </tr>
-                <tr>
-                  <td>Demat A/C Number</td>
-                  <td>:</td>
-                  <td>{complaint?.userId?.dematACNumber} </td>
-                </tr>
-                <tr>
-                  <td>Bank Name</td>
-                  <td>:</td>
-                  <td>{complaint?.userId?.bankName}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
         </div>
         <div className="banOrSuspendBtn">
           <Button variant="warning" size="sm">
-            Suspend {complaint?.companyId?.name}
+            Suspend {complaint?.userId?.firstName}
           </Button>{" "}
           {/* <Button variant="danger" size="sm">
             Ban
@@ -189,4 +186,4 @@ function AdminViewCoComplaintDetail() {
   );
 }
 
-export default AdminViewCoComplaintDetail;
+export default AdminViewUserComplaintDetails;
