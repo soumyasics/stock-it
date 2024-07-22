@@ -5,6 +5,7 @@ import { Button } from "react-bootstrap";
 import "./adminViewCoComplaintDetail.css";
 import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseUrl";
+import toast from "react-hot-toast";
 
 function AdminViewCoComplaintDetail() {
   const navigate = useNavigate();
@@ -24,6 +25,39 @@ function AdminViewCoComplaintDetail() {
       });
   }, []);
 
+  const toAccept = (e) => {
+    e.preventDefault();
+    axiosInstance
+      .post(`/activateCompanyById/${complaint?.companyId?._id}`)
+      .then((response) => {
+        console.log(response);
+        if (response.data.status == 200) {
+          toast.success(response.data.msg);
+          navigate(-1);
+        } else {
+          toast.error(response.data.msg);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const toDelete = (e) => {
+    e.preventDefault();
+    axiosInstance
+      .post(`/deActivateCompanyById/${complaint?.companyId?._id}`)
+      .then((res) => {
+        if (res.data.status == 200) {
+          toast.success(res.data.msg);
+          navigate(-1);
+        } else {
+          toast.error(res.data.msg);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   console.log(complaint);
   return (
     <div>
@@ -43,8 +77,8 @@ function AdminViewCoComplaintDetail() {
         <div className="comapnyRequest-first-box">
           <div className="companyRequesest-second-box" role="group"></div>
         </div>
-        <div className="d-flex">
-          <div className="adminViewCoComplaintDetail-table ms-5">
+        <div className="d-flex container">
+          <div className="adminViewCoComplaintDetail-table ms-5 ">
             <div className="adminViewCoComplaintDetail-head ms-5">
               <h4>Company Details</h4>
             </div>
@@ -113,7 +147,7 @@ function AdminViewCoComplaintDetail() {
               </tbody>
             </table>
           </div>
-          <div className="adminViewCoComplaintDetail-table ms-5">
+          <div className="adminViewCoComplaintDetail-table ms-5" >
             <div className="adminViewCoComplaintDetail-head ms-5">
               <h4>User details</h4>
             </div>
@@ -153,7 +187,7 @@ function AdminViewCoComplaintDetail() {
                   <td>{complaint?.userId?.contactNumber}</td>
                 </tr>
                 <tr>
-                  <td>City</td>   
+                  <td>City</td>
                   <td>:</td>
                   <td>{complaint?.userId?.city}</td>
                 </tr>
@@ -176,13 +210,20 @@ function AdminViewCoComplaintDetail() {
             </table>
           </div>
         </div>
+        <div className="adminViewComplaintBox">
+          <h3 className="text-dark mb-3 fs-5" style={{fontWeight:"bold"}}>Complaint</h3>
+        {complaint.complaint}
+        </div>
         <div className="banOrSuspendBtn">
-          <Button variant="warning" size="sm">
-            Suspend {complaint?.companyId?.name}
-          </Button>{" "}
-          {/* <Button variant="danger" size="sm">
-            Ban
-          </Button>{" "} */}
+          {complaint?.companyId?.isActive ? (
+            <Button variant="danger" size="lg" onClick={toDelete}>
+             Deactivate
+            </Button>
+          ) : (
+            <Button variant="success" size="lg" onClick={toAccept}>
+              Activate
+            </Button>
+          )}
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { BASE_URL } from "../../../apis/baseUrl";
 import { Button } from "react-bootstrap";
 import axiosInstance from "../../../apis/axiosInstance";
+import toast from "react-hot-toast";
 
 function AdminViewUserComplaintDetails() {
   const navigate = useNavigate();
@@ -19,8 +20,33 @@ function AdminViewUserComplaintDetails() {
         setComplaint(response.data.data);
       }
     } catch (error) {
-        console.log("Fail on receving complaint");
+      console.log("Fail on receving complaint");
     }
+  };
+  const toAccept = () => {
+    axiosInstance
+      .post(`/activateUserById/${complaint?.userId?._id}`)
+      .then((response) => {
+        if (response.status == 200) {
+          toast.success("User activation sucessfull");
+          navigate(-1);
+        } else {
+          toast.error(response.data.msg);
+        }
+      });
+  };
+  const toDelete = () => {
+    axiosInstance
+      .post(`/deActivateUserById/${complaint?.userId?._id}`)
+      .then((response) => {
+        console.log("res", response);
+        if (response.status == 200) {
+          toast.success("User deactivation sucessfully");
+          navigate(-1);
+        } else {
+          toast.error(response.data.msg);
+        }
+      });
   };
   return (
     <div>
@@ -40,7 +66,7 @@ function AdminViewUserComplaintDetails() {
         <div className="comapnyRequest-first-box">
           <div className="companyRequesest-second-box" role="group"></div>
         </div>
-        <div className="d-flex">
+        <div className="d-flex container">
           <div className="adminViewCoComplaintDetail-table ms-5">
             <div className="adminViewCoComplaintDetail-head ms-5">
               <h4>User details</h4>
@@ -173,13 +199,20 @@ function AdminViewUserComplaintDetails() {
             </table>
           </div>
         </div>
+        <div className="adminViewComplaintBox">
+          <h3 className="text-dark mb-3 fs-5" style={{fontWeight:"bold"}}>Complaint</h3>
+        {complaint.complaint}
+        </div>
         <div className="banOrSuspendBtn">
-          <Button variant="warning" size="sm">
-            Suspend {complaint?.userId?.firstName}
-          </Button>{" "}
-          {/* <Button variant="danger" size="sm">
-            Ban
-          </Button>{" "} */}
+          {complaint?.userId?.isActive ? (
+            <Button variant="danger" size="lg" onClick={toDelete}>
+              Deactivate
+            </Button>
+          ) : (
+            <Button variant="success" size="lg" onClick={toAccept}>
+            Activate
+            </Button>
+          )}
         </div>
       </div>
     </div>

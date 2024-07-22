@@ -1,65 +1,110 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
 .AdminLogin-background {
-    width: 100%;
-    height: 100vh;
-    background-color: #1F2937;
+  width: 100%;
+  height: 100vh;
+  background-color: #1f2937;
 }
 
 .AdminLogin-box {
-    height: 70%;
-    width: 43%;
-    background-color:#0c0c0c;
-    position: absolute;
-    top: 53%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 40px;
-
+  height: 430px;
+  width: 43%;
+  background-color: #040000;
+  position: absolute;
+  top: 53%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 40px;
 }
 
-
+.adminloginpasswordInput input {
+  border-radius: 20px !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-right: 0;
+  padding-left: 10px;
+  font-family: "Noto Sans";
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.adminloginpasswordInput {
+  width: 292px;
+  height: 31px;
+  border-radius: 20px !important;
+}
+#basic-addon23 {
+  height: 31px !important;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-left: none !important;
+}
 .AdminLogin-heading {
-    color: #FFF;
-    font-size: 20px;
-    font-family: 'Noto Sans', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    text-align: center;
-    margin-top: 6.5%;
-    padding-top: 3%;
+  color: #fff;
+  font-size: 20px;
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+  margin-top: 6.5%;
+  padding-top: 3%;
 }
-.AdminLogin-left-inner-box
-{
-    height: 85%;
-    width: 85%;
-    background-color: rgba(245, 245, 220, 0);
-    color: #FFF;
-    position: relative;
-   bottom: 8%;
+.AdminLogin-left-inner-box {
+  height: 85%;
+  width: 85%;
+  background-color: rgba(245, 245, 220, 0);
+  color: #fff;
+  position: relative;
+  bottom: 8%;
 }
-.AdminLogin-button
-{
+.AdminLogin-button {
+  border-radius: 10px;
+  background: linear-gradient(109deg, #cacaca 7.86%, #787373 94.87%);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  width: 124px;
+  height: 34px;
+  justify-content: center;
+  position: relative;
+  left: 30%;
+  top: 12px;
+  border: none;
+}
 
-border-radius: 10px;
-background: linear-gradient(109deg, #CACACA 7.86%, #787373 94.87%);
-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-display: flex;
-width: 124px;
-height: 34px;
-justify-content: center;
-position: relative;
-left: 30%;
-top: 12px;
+.AdminLogin-input ::placeholder {
+  padding-left: 5px;
+  color: #929292;
+  font-family: "Noto Sans";
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
-.AdminLogin-input
-{
-    border-radius: 20px;
-    height: 35px;
+.adminLogin-image {
+  width: 194px;
+  height: 187px;
+  margin-left: 15%;
 }
-.adminLogin-image
-{
-    width: 194px;
-height: 187px;
-margin-left: 15%;}
+.AdminLogin-input {
+  border-radius: 20px;
+  height: 30px;
+  width: 292px;
+  padding-left: 10px;
+  font-family: "Noto Sans";
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.adminloginResetPassword {
+  margin-left: 50%;
+  color: #5cb4e3;
+  text-align: center;
+  font-family: "Noto Sans";
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}

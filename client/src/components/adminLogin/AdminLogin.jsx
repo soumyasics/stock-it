@@ -5,12 +5,22 @@ import axiosInstance from "../../apis/axiosInstance";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { useEffect } from "react";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+import { IoIosEye } from "react-icons/io";
+import { IoIosEyeOff } from "react-icons/io";
 
 import CommonNavbar from "../common/commonNavbar";
 
 function AdminLogin() {
   const navigate = useNavigate();
   const [state, setState] = useState({ email: "", password: "" });
+  const [showPassword, setShowPassword] = useState(true);
+  const [show, setShow] = useState(false);
+  const handleChange = () => {
+    setShowPassword(!showPassword);
+    setShow(!show);
+  };
   function btnchange(input) {
     setState({ ...state, [input.target.name]: input.target.value });
   }
@@ -74,19 +84,48 @@ function AdminLogin() {
                       />
                     </div>
                     <div className="mb-3">
-                      <label for="formGroupExampleInput2" className="form-label">
+                      <label
+                        for="formGroupExampleInput2"
+                        className="form-label"
+                      >
                         Password
                       </label>
-                      <input
+                      {/* <input
                         type="password"
                         className="form-control AdminLogin-input"
                         id="formGroupExampleInput2"
                         placeholder="Enter Password"
                         onChange={btnchange}
                         name="password"
-                      />
+                      /> */}
+                      <InputGroup className="mb-3 adminloginpasswordInput">
+                        <Form.Control
+                          placeholder="Enter password"
+                          aria-label="admin password"
+                          aria-describedby="basic-addon2"
+                          type={showPassword ? "password" : "text"}
+                          onChange={btnchange}
+                          name="password"
+                        />
+                        <InputGroup.Text
+                          id="basic-addon23"
+                          style={{ backgroundColor: "white" }}
+                        >
+                          {" "}
+                          {show ? (
+                            <span onClick={handleChange}>
+                              <IoIosEye />{" "}
+                            </span>
+                          ) : (
+                            <span onClick={handleChange}>
+                              <IoIosEyeOff />
+                            </span>
+                          )}
+                        </InputGroup.Text>
+                      </InputGroup>
                     </div>
                     <span
+                      className="adminloginResetPassword"
                       style={{ cursor: "pointer" }}
                       onClick={() => {
                         navigate("/admin-resetPassword");

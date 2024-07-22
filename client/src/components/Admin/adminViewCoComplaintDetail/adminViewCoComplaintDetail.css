@@ -1,5 +1,5 @@
 .banOrSuspendBtn{
-    margin-left: 10%;
+    margin-left: 46%;
     margin-top: 3%;
 }
 .adminViewCoComplaintDetail-head  h4 {
@@ -7,7 +7,7 @@
     font-weight: bold;
 }
 .adminViewCoComplaintDetail-table{
-    width: 40%;
+    width: 50%;
 }
 .adminViewCoComplaintDetail-profile img{
     width: 75px;
@@ -19,5 +19,15 @@
 .adminViewCoComplaintDetail-profile{
     color: #fff;
     margin-left: 15%;
-
 }
+.adminViewComplaintBox{
+    width: 50%;
+    border: 1px solid;
+    min-height: 200px;
+    margin-left: 25%;
+    margin-top: 5%;
+    color: #131212;
+    padding: 2%;
+    background-color: rgba(250, 235, 215, 0.749);
+    border-radius: 20px;
+    }
