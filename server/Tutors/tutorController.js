@@ -298,6 +298,43 @@ const forgotPassword = async (req, res) => {
     return res.status(500).json({ msg: "Server error", error: error.message });
   }
 };
+const editTutorById = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const tutor = await TutorModel.findById(id);
+    if (!tutor) {
+      return res.status(404).json({ msg: "Tutor not found" });
+    }
+    const {
+      fullName,
+      qualification,
+      specification,
+      experience,
+      email,
+      password,
+      contactNumber,
+    } = req.body;
+    const obj = {};
+
+    if (fullName) obj.fullName = fullName;
+    if (qualification) obj.qualification = qualification;
+    if (specification) obj.specification = specification;
+    if (experience) obj.experience = experience;
+    if (email) obj.email = email;
+    if (password) obj.password = password;
+    if (contactNumber) obj.contactNumber = contactNumber;
+
+    const updatedTutor = await TutorModel.findByIdAndUpdate(id, obj, {
+      new: true,
+    });
+    return res
+      .status(200)
+      .json({ msg: "Tutor updated successfully", data: updatedTutor });
+  } catch (error) {
+    return res.status(500).json({ msg: "Server error", error: error.message });
+  }
+};
+
 module.exports = {
   registerTutor,
   loginTutor,
@@ -313,5 +350,5 @@ module.exports = {
   upload,
   getAllPendingTutors,
   searchTutorByName,
-  forgotPassword,
+  forgotPassword,editTutorById
 };
