@@ -74,7 +74,7 @@ router.post("/adminApproveTutorById/:id", ET.adminApproveTutorById);
 router.post("/adminRejectTutorById/:id", ET.adminRejectTutorById);
 router.post("/deleteTutorById/:id", ET.deleteTutorById);
 router.post("/tutor-forgot-password", ET.forgotPassword);
-
+router.post("/editTutorById/:id", ET.editTutorById);
 // Article routes
 router.post(
   "/createArticle",
