@@ -331,6 +331,34 @@ const forgotPassword = async (req, res) => {
     return res.status(500).json({ msg: "Server error", error: error.message });
   }
 };
+
+const editCompanyById = async (req, res) => {
+  try {
+    const {name, pincode, companyType, password, website, state, contact, email, description, regNo} = req.body;
+    const company = await Company.findById(req.params.id);
+    if (!company) {
+      return res.status(404).json({ msg: "Company not found" });
+    }
+    const obj = {};
+    if (name) obj.name = name;
+    if (pincode) obj.pincode = pincode;
+    if (companyType) obj.companyType = companyType;
+    if (password) obj.password = password;
+    if (website) obj.website = website;
+    if (state) obj.state = state;
+    if (contact) obj.contact = contact;
+    if (email) obj.email = email;
+    if (description) obj.description = description;
+    if (regNo) obj.regNo = regNo;
+    const updatedCompany = await Company.findByIdAndUpdate(req.params.id, obj, {
+      new: true,
+    });
+    res.status(200).json({ msg: "Company updated successfully", data: updatedCompany });
+  } catch (error) {
+    return res.status(500).json({msg: "Server error", error: error.message});
+  }
+}
+
 module.exports = {
   registerCompany,
   login,
@@ -347,5 +375,6 @@ module.exports = {
   searchcompanyByName,
   forgotPassword,
   viewPendingCompanies,
-  addTicker
+  addTicker,
+  editCompanyById
 };
