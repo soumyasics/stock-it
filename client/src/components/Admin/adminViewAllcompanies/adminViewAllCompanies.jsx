@@ -62,6 +62,7 @@ export const AdminViewAllCompanies = () => {
               <th>State</th>
               <th>Email</th>
               <th>Approve Status</th>
+              <th>Active Status</th>
               <th>View More</th>
             </tr>
             {allCompanies.map((co, i) => {
@@ -78,6 +79,13 @@ export const AdminViewAllCompanies = () => {
                       <p className="text-success"> Approved </p>
                     ) : (
                       <p className="text-danger">Not Approved</p>
+                    )}
+                  </td>
+                  <td>
+                    {co.isActive ? (
+                      <p className="text-success">Active</p>
+                    ) : (
+                      <p className="text-danger">Not Active</p>
                     )}
                   </td>
                   <td className="viewComapny-viewmore">

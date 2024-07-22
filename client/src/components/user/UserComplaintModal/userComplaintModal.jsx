@@ -44,7 +44,7 @@ const ComplaintModal = ({
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Complaint Modal"
-        className="modal-xl "
+        className="modal-complaint"
         overlayClassName="overlay"
       >
         <h2 style={{ color: "#fff" }} className="text-start">

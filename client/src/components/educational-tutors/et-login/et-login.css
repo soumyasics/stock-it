@@ -68,6 +68,29 @@
   font-weight: 400;
   line-height: normal;
 }
+.et-loginpasswordInput input {
+  border-radius: 20px !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-right: 0;
+  padding-left: 10px;
+  font-family: "Noto Sans";
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.et-loginpasswordInput {
+  width: 292px;
+  height: 30px;
+  border-radius: 20px !important;
+}
+#basic-addon2 {
+  height: 30px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-left: none !important;
+}
 
 .login-button {
   margin-left: 100px;

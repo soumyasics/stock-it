@@ -93,8 +93,8 @@ const registerCompany = async (req, res) => {
 
 const addTicker = async (req, res) => {
   try {
-    const {companyId, ticker} = req.body;
-    
+    const { companyId, ticker } = req.body;
+
     const company = await Company.findById(companyId);
     if (!company) {
       return res.status(404).json({ msg: "Company not found" });
@@ -221,10 +221,14 @@ const acceptCompanyById = async (req, res) => {
 // accept Company by ID
 const activateCompanyById = async (req, res) => {
   try {
-    const company = await Company.findByIdAndUpdate({
-      _id: req.params.id,
-      isActive: true,
-    });
+    const id = req.params.id;
+    const company = await Company.findByIdAndUpdate(
+      id,
+      {
+        isActive: true,
+      },
+      { new: true }
+    );
     if (!company) {
       return res.json({ status: 500, msg: "Company not found" });
     }
@@ -239,10 +243,14 @@ const activateCompanyById = async (req, res) => {
 };
 const deActivateCompanyById = async (req, res) => {
   try {
-    const company = await Company.findByIdAndUpdate({
-      _id: req.params.id,
-      isActive: false,
-    });
+    const id = req.params.id;
+    const company = await Company.findByIdAndUpdate(
+      id,
+      {
+        isActive: false,
+      },
+      { new: true }
+    );
     if (!company) {
       return res.json({ status: 500, msg: "Company not found" });
     }
@@ -270,6 +278,9 @@ const login = async (req, res) => {
     }
     if (company.adminApproved === false) {
       return res.status(401).json({ msg: "Company not approved by admin" });
+    }
+    if (company.isActive === false) {
+      return res.status(401).json({ msg: "Your account is deactivated by admin." });
     }
     const token = jwt.sign({ companyId: company._id }, secret, {
       expiresIn: "1h",
@@ -376,5 +387,6 @@ module.exports = {
   forgotPassword,
   viewPendingCompanies,
   addTicker,
+
   editCompanyById
 };

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./adminViewCompanyDetails.css";
-import img2 from "../../../assets/images/crossbtn.png"
-import {  useParams } from "react-router-dom";
+import img2 from "../../../assets/images/crossbtn.png";
+import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import axiosInstance from "../../../apis/axiosInstance";
@@ -9,7 +9,7 @@ import { BASE_URL } from "../../../apis/baseUrl";
 import AdminNavbar from "../../common/adminNavbar";
 export const AdminViewCompanyDetails = () => {
   const [state, setState] = useState({ license: { filename: "" } });
-  console.log("state", state)
+  console.log("state", state);
   const { id } = useParams();
   const navigate = useNavigate();
   useEffect(() => {
@@ -17,7 +17,9 @@ export const AdminViewCompanyDetails = () => {
       .post(`/viewCompanyById/${id}`)
       .then((response) => {
         console.log(response);
-        setState(response.data.data);
+        if (response.status == 200) {
+          setState(response.data.data);
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -26,28 +28,32 @@ export const AdminViewCompanyDetails = () => {
 
   const toAccept = (e) => {
     e.preventDefault();
-    axiosInstance.post("/acceptCompanyById/" + id).then((response) => {
+    axiosInstance.post(`/activateCompanyById/${id}`).then((response) => {
       console.log(response);
       if (response.data.status == 200) {
         toast.success(response.data.msg);
-        navigate("/admin");
+        navigate(-1);
       } else {
         toast.error(response.data.msg);
         navigate("/admin");
       }
-    });
+    }).catch((error)=>{
+      console.log(error);
+    })
   };
   const toDelete = (e) => {
     e.preventDefault();
-    axiosInstance.post(`deleteCompanyById/${id}`).then((res) => {
+    axiosInstance.post(`/deActivateCompanyById/${id}`).then((res) => {
       if (res.data.status == 200) {
         toast.success(res.data.msg);
-        navigate("/admin");
+        navigate(-1);
       } else {
         toast.error(res.data.msg);
         navigate("/admin");
       }
-    });
+    }).catch((error)=>{
+      console.log(error);
+    })
   };
 
   const redirectBack = () => {
@@ -55,7 +61,7 @@ export const AdminViewCompanyDetails = () => {
   };
   return (
     <>
-    <AdminNavbar />
+      <AdminNavbar />
       <div className="w-100">
         <div className="requestpage-bg">
           <div className="requestpage-header">
@@ -141,12 +147,22 @@ export const AdminViewCompanyDetails = () => {
             </table>
           </div>
           <div className="requestpage-btn">
-            {/* <button className="btn" type="submit" value="submit" >
-              Buy
+            <button
+              className="btn"
+              type="submit"
+              value="submit"
+              onClick={toAccept}
+            >
+              Active
             </button>
-            <button className="btn" type="submit" value="submit">
-              Sell
-            </button> */}
+            <button
+              className="btn"
+              type="submit"
+              value="submit"
+              onClick={toDelete}
+            >
+              Inactive
+            </button>
           </div>
 
           {/* Modal page */}
@@ -194,5 +210,4 @@ export const AdminViewCompanyDetails = () => {
       </div>
     </>
   );
-}
-
+};

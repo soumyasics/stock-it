@@ -5,6 +5,10 @@ import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../../apis/axiosInstance";
 import { Footer2 } from "../../common/footer2/footer2";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+import { IoIosEye } from "react-icons/io";
+import { IoIosEyeOff } from "react-icons/io";
 
 function CompanyLogin() {
   const navigate = useNavigate();
@@ -13,9 +17,15 @@ function CompanyLogin() {
   const redirectToComapanySignup = () => {
     navigate("/CompanyRegistration");
   };
-  const redirectToComapnyForgotpassword=()=>{
-    navigate("/companyForgotpassword")
-  }
+  const [showPassword, setShowPassword] = useState(true);
+  const [show, setShow] = useState(false);
+  const handleChange = () => {
+    setShowPassword(!showPassword);
+    setShow(!show);
+  };
+  const redirectToComapnyForgotpassword = () => {
+    navigate("/companyForgotpassword");
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!email || !password) {
@@ -46,15 +56,15 @@ function CompanyLogin() {
           localStorage.setItem("stock_it_companyId", JSON.stringify(userData));
         }
         toast.success("Login Successful");
-        navigate('/company-dashboard')
+        navigate("/company-dashboard");
       } else {
         throw new Error("Something wrong.");
       }
       console.log("resp", res);
     } catch (err) {
       const msg = err.response?.data?.msg || "Something went wrong";
-      
-      console.log("company login msg", err)
+
+      console.log("company login msg", err);
       toast.error(msg);
     }
   };
@@ -85,17 +95,45 @@ function CompanyLogin() {
                 <label for="exampleFormControlInput1" className="form-label">
                   Password
                 </label>
-                <input
+                {/* <input
                   type="password"
                   className="form-control"
                   id="exampleFormControlInput1"
                   placeholder="Enter Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                />
+                /> */}
+
+                <InputGroup className="mb-3 companyloginpasswordInput">
+                  <Form.Control
+                    placeholder="Enter password"
+                    aria-label="password"
+                    aria-describedby="basic-addon2"
+                    type={showPassword ? "password" : "text"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <InputGroup.Text
+                    id="basic-addon2"
+                    style={{ backgroundColor: "white", borderLeft: "0 solid" }}
+                  >
+                    {" "}
+                    {show ? (
+                      <span onClick={handleChange}>
+                        <IoIosEye />{" "}
+                      </span>
+                    ) : (
+                      <span onClick={handleChange}>
+                        <IoIosEyeOff />
+                      </span>
+                    )}
+                  </InputGroup.Text>
+                </InputGroup>
               </div>
               <div className="forgot-password">
-                <span onClick={redirectToComapnyForgotpassword} >forgot password?</span>
+                <span onClick={redirectToComapnyForgotpassword}>
+                  forgot password?
+                </span>
               </div>
               <button className="login-button" value="submit" type="submit">
                 Login
@@ -115,9 +153,8 @@ function CompanyLogin() {
         </div>
       </div>
       <div>
-        <Footer2 /> 
+        <Footer2 />
       </div>
-
     </div>
   );
 }
