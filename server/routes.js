@@ -30,7 +30,7 @@ router.post("/deleteCompanyById/:id", company.deleteCompanyById);
 router.post("/activateCompanyById/:id", company.activateCompanyById);
 router.post("/searchcompanyByName/:name", company.searchcompanyByName);
 router.post("/companyForgotPassword", company.forgotPassword);
-
+router.post("/editCompanyById/:id", company.editCompanyById);
 // user routes
 router.post(
   "/registerUser",
