@@ -387,8 +387,6 @@ module.exports = {
   forgotPassword,
   viewPendingCompanies,
   addTicker,
-<<<<<<< HEAD
-=======
+
   editCompanyById
->>>>>>> d7fae5e5aa050382770aee0e7b979cc19c996095
 };
