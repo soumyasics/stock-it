@@ -83,6 +83,7 @@ import CompanyViewUserdetails from "./components/company/companyViewUserDetails/
 import AdminViewUserComplaint from "./components/Admin/adminViewUserComplaint/adminViewUserComplaint";
 import AdminViewUserComplaintDetails from "./components/Admin/adminViewuserComplaintDetails/adminViewUserComplaintDetails";
 import AdminNotification from "./components/Admin/adminNotification/adminNotification";
+import EditModal from "./components/user/userEditProfile/userEditProfile";
 
 function App() {
   return (
@@ -152,6 +153,7 @@ function App() {
           <Route path="/tutorArticle" element={<UserViewEtArticle />} />
           <Route path="/companyArticles" element={<UserViewCoArticles />} />
           <Route path="/userProfile" element={<UserProfile />} />
+          <Route path="/editProfile" element={<EditModal/>}/>
 
           {/* admin pages  */}
           <Route path="/admin" element={<AdminDashboard />} />

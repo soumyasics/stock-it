@@ -2,9 +2,21 @@ import React, { useEffect, useState } from "react";
 import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseUrl";
 import { UserNavbar } from "../userNavbar/userNavbar";
+import EditModal from "../userEditProfile/userEditProfile";
 
 function UserProfile() {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [userData, setUserData] = useState({});
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+  const editProfile=()=>{
+    openModal()
+  }
   useEffect(() => {
     const userId = localStorage.getItem("stock_it_userId") || null;
     if (userId) {
@@ -131,10 +143,15 @@ function UserProfile() {
               </table>
             </div>
             <div className="adminViewUserDetail-btn">
-            <button className="btn" type="submit" value="submit">
+            <button onClick={editProfile} className="btn" type="submit" value="submit">
               Edit
             </button>
+           <EditModal modalIsOpen={modalIsOpen}
+           openModal={openModal}
+           closeModal={closeModal}
            
+           />
+
           </div>
             {/* Modal page */}
             <div
