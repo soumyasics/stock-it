@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./userEditProfile.css";
 import Modal from "react-modal";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -8,70 +7,79 @@ import { MdArrowBack } from "react-icons/md";
 import Button from "react-bootstrap/Button";
 import axiosInstance from "../../../apis/axiosInstance";
 import toast from "react-hot-toast";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
 
 Modal.setAppElement("#root");
 
-const EditModal = ({ openModal, closeModal, modalIsOpen, getUserData2 }) => {
-  const [userId, setUserId] = useState("");
-  const [userData, setUserData] = useState({
-    firstName: "",
-    lastName: "",
-    address: "",
-    city: "",
-    state: "",
+const EditCoProfileModal = ({
+  openModal,
+  closeModal,
+  modalIsOpen,
+  getIpoData,
+}) => {
+  const [companyId, setCompanyId] = useState("");
+  const [companyData, setCompanyData] = useState({
+    name: "",
     pincode: "",
-    contactNumber: "",
-    email: "",
+    companyType: "",
     password: "",
+    website: "",
+    state: "",
+    contact: "",
+    email: "",
+    description: "",
+    regNo: "",
   });
   useEffect(() => {
-    const userId = localStorage.getItem("stock_it_userId") || null;
-    if (userId) {
-      setUserId(userId);
-      console.log("userid", userId);
-      getUserData(userId);
+    const companyId =
+      JSON.parse(localStorage.getItem("stock_it_companyId")) || null;
+    if (companyId) {
+      setCompanyId(companyId);
+      console.log("Coid", companyId);
+      getcompanyData(companyId);
     }
   }, []);
-  const getUserData = async (id) => {
+  const getcompanyData = async (id) => {
     try {
-      const response = await axiosInstance.post(`/getUserById/${id}`);
+      const response = await axiosInstance.post(`/viewCompanyById/${id}`);
       if (response.status == 200) {
-        setUserData(response.data.data);
+        setCompanyData(response.data.data);
         console.log(response.data.data);
       }
     } catch (error) {
-      console.log("Fail on getting userdata");
+      console.log("Fail on getting companyData");
     }
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const {
-      firstName,
-      lastName,
-      address,
-      city,
-      state,
+      name,
       pincode,
-      contactNumber,
-      email,
+      companyType,
       password,
-    } = userData;
+      website,
+      state,
+      contact,
+      email,
+      description,
+      regNo,
+    } = companyData;
     const isFieldValidate = () => {
-      if (!firstName) {
-        toast.error("Enter your firstName");
+      if (!name) {
+        toast.error("Enter your CompanyName");
         return false;
       }
-      if (!lastName) {
-        toast.error("Enter your lastName");
+      if (!companyType) {
+        toast.error("Enter your CompanyType");
         return false;
       }
-      if (!address) {
-        toast.error("Enter your address");
+      if (!website) {
+        toast.error("Enter your website");
         return false;
       }
-      if (!city) {
-        toast.error("Enter your city");
+      if (!regNo) {
+        toast.error("Enter your regNo");
         return false;
       }
       if (!state) {
@@ -86,11 +94,11 @@ const EditModal = ({ openModal, closeModal, modalIsOpen, getUserData2 }) => {
         toast.error("Enter validate pincode");
         return false;
       }
-      if (!contactNumber) {
+      if (!contact) {
         toast.error("Enter your contact number");
         return false;
       }
-      if (contactNumber.length !== 10) {
+      if (contact.length !== 10) {
         toast.error("Enter validate contact number");
         return false;
       }
@@ -111,6 +119,10 @@ const EditModal = ({ openModal, closeModal, modalIsOpen, getUserData2 }) => {
         toast.error("Password needs minimum 8 characters");
         return;
       }
+      if (!description) {
+        toast.error("Enter description");
+        return false;
+      }
       return true;
     };
     if (!isFieldValidate()) {
@@ -122,17 +134,17 @@ const EditModal = ({ openModal, closeModal, modalIsOpen, getUserData2 }) => {
   const sendDataToServer = async () => {
     try {
       const response = await axiosInstance.post(
-        `/editUserById/${userId}`,
-        userData
+        `/editCompanyById/${companyId}`,
+        companyData
       );
       if (response.status == 200) {
         console.log("Edit", response);
         toast.success("Profile updated");
       }
     } catch (error) {
-      console.log("Fail on updating userdata");
+      console.log("Fail on updating companyData");
     } finally {
-      getUserData2(userId);
+      getIpoData(companyId);
     }
   };
   return (
@@ -141,7 +153,7 @@ const EditModal = ({ openModal, closeModal, modalIsOpen, getUserData2 }) => {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="editProfile Modal"
-        className="modal-edit"
+        className="modal-Coedit"
         overlayClassName="overlay"
       >
         <div className="d-flex">
@@ -154,48 +166,58 @@ const EditModal = ({ openModal, closeModal, modalIsOpen, getUserData2 }) => {
         <Form onSubmit={handleSubmit}>
           <Row className="mb-3 mt-3">
             <Form.Group as={Col} controlId="formGridFirstname">
-              <Form.Label>First Name</Form.Label>
+              <Form.Label>Name</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter Firstname"
-                value={userData.firstName}
+                placeholder="Enter CompanyName"
+                value={companyData.name}
                 onChange={(e) =>
-                  setUserData({ ...userData, firstName: e.target.value })
+                  setCompanyData({ ...companyData, name: e.target.value })
                 }
               />
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridlastname">
-              <Form.Label>Last Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter lastname"
-                value={userData.lastName}
+              <Form.Label>CompanyType</Form.Label>
+              <Form.Select
+                aria-label="Floating label select example"
+                placeholder="Enter CompanyType"
+                value={companyData.companyType}
                 onChange={(e) =>
-                  setUserData({ ...userData, lastName: e.target.value })
+                  setCompanyData({
+                    ...companyData,
+                    companyType: e.target.value,
+                  })
                 }
-              />
+              >
+                <option value="">Choose company type</option>
+                <option value="Tech">Tech</option>
+                <option value="Medical">Medical</option>
+                <option value="Education">Education</option>
+                <option value="Other">Other</option>
+              </Form.Select>
             </Form.Group>
           </Row>
           <Form.Group className="mb-3" controlId="formGridAddress1">
-            <Form.Label>Address</Form.Label>
+            <Form.Label>Website</Form.Label>
             <Form.Control
-              placeholder="Enter address"
-              value={userData.address}
+              type="url"
+              placeholder="Enter website"
+              value={companyData.website}
               onChange={(e) =>
-                setUserData({ ...userData, address: e.target.value })
+                setCompanyData({ ...companyData, website: e.target.value })
               }
             />
           </Form.Group>
           <Row className="mb-3">
-            <Form.Group as={Col} controlId="formGridCity">
-              <Form.Label>City</Form.Label>
+            <Form.Group as={Col} controlId="formGridRegNo">
+              <Form.Label>RegNo</Form.Label>
               <Form.Control
-                type="text"
-                placeholder="Enter city"
-                value={userData.city}
+                type="number"
+                placeholder="Enter RegNo"
+                value={companyData.regNo}
                 onChange={(e) =>
-                  setUserData({ ...userData, city: e.target.value })
+                  setCompanyData({ ...companyData, regNo: e.target.value })
                 }
               />
             </Form.Group>
@@ -205,9 +227,9 @@ const EditModal = ({ openModal, closeModal, modalIsOpen, getUserData2 }) => {
               <Form.Control
                 type="text"
                 placeholder="Enter state"
-                value={userData.state}
+                value={companyData.state}
                 onChange={(e) =>
-                  setUserData({ ...userData, state: e.target.value })
+                  setCompanyData({ ...companyData, state: e.target.value })
                 }
               />
             </Form.Group>
@@ -218,9 +240,9 @@ const EditModal = ({ openModal, closeModal, modalIsOpen, getUserData2 }) => {
               <Form.Control
                 type="number"
                 placeholder="Enter pincode"
-                value={userData.pincode}
+                value={companyData.pincode}
                 onChange={(e) =>
-                  setUserData({ ...userData, pincode: e.target.value })
+                  setCompanyData({ ...companyData, pincode: e.target.value })
                 }
               />
             </Form.Group>
@@ -230,9 +252,12 @@ const EditModal = ({ openModal, closeModal, modalIsOpen, getUserData2 }) => {
               <Form.Control
                 type="number"
                 placeholder="Enter contact number"
-                value={userData.contactNumber}
+                value={companyData.contact}
                 onChange={(e) =>
-                  setUserData({ ...userData, contactNumber: e.target.value })
+                  setCompanyData({
+                    ...companyData,
+                    contact: e.target.value,
+                  })
                 }
               />
             </Form.Group>
@@ -243,9 +268,9 @@ const EditModal = ({ openModal, closeModal, modalIsOpen, getUserData2 }) => {
               <Form.Control
                 type="email"
                 placeholder="Enter email"
-                value={userData.email}
+                value={companyData.email}
                 onChange={(e) =>
-                  setUserData({ ...userData, email: e.target.value })
+                  setCompanyData({ ...companyData, email: e.target.value })
                 }
               />
             </Form.Group>
@@ -255,9 +280,24 @@ const EditModal = ({ openModal, closeModal, modalIsOpen, getUserData2 }) => {
               <Form.Control
                 type="password"
                 placeholder="Password"
-                value={userData.password}
+                value={companyData.password}
                 onChange={(e) =>
-                  setUserData({ ...userData, password: e.target.value })
+                  setCompanyData({ ...companyData, password: e.target.value })
+                }
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="floatingTextarea">
+              <Form.Label>Description</Form.Label>
+              <Form.Control
+                as="textarea"
+                placeholder="Enter Description"
+                style={{ height: "60px" }}
+                value={companyData.description}
+                onChange={(e) =>
+                  setCompanyData({
+                    ...companyData,
+                    description: e.target.value,
+                  })
                 }
               />
             </Form.Group>
@@ -273,4 +313,4 @@ const EditModal = ({ openModal, closeModal, modalIsOpen, getUserData2 }) => {
   );
 };
 
-export default EditModal;
+export default EditCoProfileModal;
