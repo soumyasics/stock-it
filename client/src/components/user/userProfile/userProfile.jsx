@@ -14,13 +14,13 @@ function UserProfile() {
   const closeModal = () => {
     setModalIsOpen(false);
   };
-  const editProfile=()=>{
-    openModal()
-  }
+  const editProfile = () => {
+    openModal();
+  };
   useEffect(() => {
     const userId = localStorage.getItem("stock_it_userId") || null;
     if (userId) {
-        console.log("userid", userId);
+      console.log("userid", userId);
       getUserData(userId);
     }
   }, []);
@@ -38,14 +38,14 @@ function UserProfile() {
   };
   return (
     <div>
-        <UserNavbar/>
+      <UserNavbar />
       <div>
         <div className="w-100">
           <div className="adminViewUserDetail-bg">
             <div className="adminViewUserDetail-header">
               <img src={`${BASE_URL}${userData?.photo}`} alt="profile" />
               <div className="adminViewUserDetail-companyname">
-                <h2 style={{textTransform:"capitalize"}}>
+                <h2 style={{ textTransform: "capitalize" }}>
                   {userData.firstName}
                   {userData.lastName}
                 </h2>
@@ -54,105 +54,122 @@ function UserProfile() {
             <div className="adminViewUserDetail-content">
               <table>
                 <tbody>
-                <tr>
-                  <td>First Name</td>
-                  <td>-</td>
-                  <td style={{textTransform:"capitalize"}}>{userData?.firstName}</td>
-                </tr>
-                <tr>
-                  <td>Last Name</td>
-                  <td>-</td>
-                  <td style={{textTransform:"capitalize"}}>{userData?.lastName}</td>
-                </tr>
-                <tr>
-                  <td>Gender</td>
-                  <td>-</td>
-                  <td>{userData?.gender} </td>
-                </tr>
-                <tr>
-                  <td>DOB</td>
-                  <td>-</td>
-                  <td>{userData?.dob} </td>
-                </tr>
-                <tr>
-                  <td>Address</td>
-                  <td>-</td>
-                  <td style={{textTransform:"capitalize"}}>{userData?.address} </td>
-                </tr>
-                <tr>
-                  <td>City</td>
-                  <td>-</td>
-                  <td style={{textTransform:"capitalize"}}>{userData?.city} </td>
-                </tr>
-                <tr>
-                  <td>State</td>
-                  <td>-</td>
-                  <td style={{textTransform:"capitalize"}}>{userData?.state} </td>
-                </tr>
-                <tr>
-                  <td>Pincode</td>
-                  <td>-</td>
-                <td>{userData?.pincode} </td>
-                </tr>
+                  <tr>
+                    <td>First Name</td>
+                    <td>-</td>
+                    <td style={{ textTransform: "capitalize" }}>
+                      {userData?.firstName}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Last Name</td>
+                    <td>-</td>
+                    <td style={{ textTransform: "capitalize" }}>
+                      {userData?.lastName}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Gender</td>
+                    <td>-</td>
+                    <td>{userData?.gender} </td>
+                  </tr>
+                  <tr>
+                    <td>DOB</td>
+                    <td>-</td>
+                    <td>{userData?.dob} </td>
+                  </tr>
+                  <tr>
+                    <td>Address</td>
+                    <td>-</td>
+                    <td style={{ textTransform: "capitalize" }}>
+                      {userData?.address}{" "}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>City</td>
+                    <td>-</td>
+                    <td style={{ textTransform: "capitalize" }}>
+                      {userData?.city}{" "}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>State</td>
+                    <td>-</td>
+                    <td style={{ textTransform: "capitalize" }}>
+                      {userData?.state}{" "}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Pincode</td>
+                    <td>-</td>
+                    <td>{userData?.pincode} </td>
+                  </tr>
 
-                <tr>
-                  <td>Contact Number</td>
-                  <td>-</td>
-                  <td>{userData?.contactNumber} </td>
-                </tr>
-                <tr>
-                  <td>Email ID</td>
-                  <td>-</td>
-                  <td>{userData?.email} </td>
-                </tr>
-                <tr>
-                  <td>Id Proof</td>
-                  <td>-</td>
-                  <td>
-                    <button
-                      className="modal-btn btn-primary btn"
-                      type="button"
-                      data-bs-toggle="modal"
-                      data-bs-target="#staticBackdrop"
-                    >
-                      View Id Proof
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Demant Account Number</td>
-                  <td>-</td>
-                  <td>{userData.dematACNumber} </td>
-                </tr>
-                <tr>
-                  <td>Bank Name</td>
-                  <td>-</td>
-                  <td>{userData.bankName} </td>
-                </tr>
-                <tr>
-                  <td>IFSC Code</td>
-                  <td>-</td>
-                  <td>{userData.ifscCode} </td>
-                </tr>
-                <tr>
-                  <td>Branch Name</td>
-                  <td>-</td>
-                  <td style={{textTransform:"capitalize"}}>{userData.branchName} </td>
-                </tr>
+                  <tr>
+                    <td>Contact Number</td>
+                    <td>-</td>
+                    <td>{userData?.contactNumber} </td>
+                  </tr>
+                  <tr>
+                    <td>Email ID</td>
+                    <td>-</td>
+                    <td>{userData?.email} </td>
+                  </tr>
+                  <tr>
+                    <td>Id Proof</td>
+                    <td>-</td>
+                    <td>
+                      <button
+                        className="modal-btn btn-primary btn"
+                        type="button"
+                        data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop"
+                      >
+                        View Id Proof
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Demant Account Number</td>
+                    <td>-</td>
+                    <td>{userData.dematACNumber} </td>
+                  </tr>
+                  <tr>
+                    <td>Bank Name</td>
+                    <td>-</td>
+                    <td>{userData.bankName} </td>
+                  </tr>
+                  <tr>
+                    <td>IFSC Code</td>
+                    <td>-</td>
+                    <td>{userData.ifscCode} </td>
+                  </tr>
+                  <tr>
+                    <td>Branch Name</td>
+                    <td>-</td>
+                    <td style={{ textTransform: "capitalize" }}>
+                      {userData.branchName}{" "}
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
             <div className="adminViewUserDetail-btn">
-            <button onClick={editProfile} className="btn" type="submit" value="submit">
-              Edit
-            </button>
-           <EditModal modalIsOpen={modalIsOpen}
-           openModal={openModal}
-           closeModal={closeModal}
-           
-           />
-
-          </div>
+              <button
+                onClick={editProfile}
+                className="btn"
+                type="submit"
+                value="submit"
+              >
+                Edit
+              </button>
+              <EditModal
+                modalIsOpen={modalIsOpen}
+                openModal={openModal}
+                closeModal={closeModal}
+                getUserData2={getUserData}
+              />
+            </div>
             {/* Modal page */}
             <div
               className="modal fade"
@@ -177,8 +194,11 @@ function UserProfile() {
                     ></button>
                   </div>
                   <div className="modal-body modal-image">
-                  <img src={`${BASE_URL}${userData?.idProof}`} alt="Id Proof" />
-                </div>
+                    <img
+                      src={`${BASE_URL}${userData?.idProof}`}
+                      alt="Id Proof"
+                    />
+                  </div>
                   <div className="modal-footer">
                     <button
                       type="button"

@@ -1,13 +1,31 @@
 import { useEffect, useState } from "react";
 import axiosInstance from "../../../apis/axiosInstance";
-import { Card, Col, Image, ListGroup, Row, Table } from "react-bootstrap";
+import {
+  Button,
+  Card,
+  Col,
+  Image,
+  ListGroup,
+  Row,
+  Table,
+} from "react-bootstrap";
 import ipoImage1 from "../../../assets/images/ipo-1.png";
 import "./companyProfile.css";
 import coImg1 from "../../../assets/images/co-1.png";
+import EditCoProfileModal from "../companyEditProfile/companyEditProfile";
 export const CompanyProfile = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [companyData, setcompanyData] = useState(null);
   console.log("ipo", companyData);
-
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+  const editProfile = () => {
+    openModal();
+  };
   useEffect(() => {
     let companyId = localStorage.getItem("stock_it_companyId") || null;
     if (!companyId) {
@@ -95,7 +113,11 @@ export const CompanyProfile = () => {
                 {" "}
                 <h6>
                   Website:
-                  <a target="_blank" href={companyData?.website} className="fw-bold text-dark">
+                  <a
+                    target="_blank"
+                    href={companyData?.website}
+                    className="fw-bold text-dark"
+                  >
                     {companyData?.website}
                   </a>
                 </h6>
@@ -123,6 +145,17 @@ export const CompanyProfile = () => {
               </ListGroup.Item>
             </ListGroup>
           </Card>
+          <div className="editsubmit-button mt-4 ms-9">
+            <Button variant="success" type="submit" onClick={editProfile}>
+              Edit Profile
+            </Button>{" "}
+            <EditCoProfileModal
+              modalIsOpen={modalIsOpen}
+              openModal={openModal}
+              closeModal={closeModal}
+              getIpoData={getIpoData}
+            />
+          </div>
         </Col>
       </Row>
     </div>
