@@ -5,11 +5,15 @@ import { UserNavbar } from "../userNavbar/userNavbar";
 import { Footer2 } from "../../common/footer2/footer2";
 import axiosInstance from "../../../apis/axiosInstance";
 import { Button } from "react-bootstrap";
+import InputGroup from "react-bootstrap/InputGroup";
+import Form from "react-bootstrap/Form";
+import { BsSearch } from "react-icons/bs";
 
 export const ListedCompanies = () => {
   const navigate = useNavigate();
 
   const [allCompanies, setAllCompanies] = useState([]);
+  const [fixedData, setFixedData] = useState([]);
 
   const getAllUpcomingCompanies = async () => {
     try {
@@ -20,6 +24,7 @@ export const ListedCompanies = () => {
           return IPO.companyId;
         });
         setAllCompanies(allCompanies);
+        setFixedData(allCompanies);
       } else {
         console.log("Error ", res);
       }
@@ -27,7 +32,17 @@ export const ListedCompanies = () => {
       console.log("Error getting compnaies", error);
     }
   };
-
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    if (value) {
+      const filterData = fixedData.filter((items) => {
+        return items.name.toLowerCase().includes(value.toLowerCase());
+      });
+      setAllCompanies(filterData);
+    } else {
+      setAllCompanies(fixedData);
+    }
+  };
   useEffect(() => {
     getAllUpcomingCompanies();
   }, []);
@@ -45,41 +60,60 @@ export const ListedCompanies = () => {
         </div>
 
         <div className="viewCompany-table ">
-          <table border="1px">
-            <tr className="viewCompancy-head-row">
-              <th>No</th>
-              <th>Name</th>
-              <th>Type</th>
-              <th>Contact</th>
-              <th>State</th>
-              <th>Email</th>
-              <th>View More</th>
-            </tr>
-            {allCompanies.map((co, i) => {
-              return (
-                <tr key={co?._id}>
-                  <td>{i + 1}</td>
-                  <td>{co?.name}</td>
-                  <td>{co?.companyType}</td>
-                  <td>{co?.contact}</td>
-                  <td>{co?.state}</td>
-                  <td>{co?.email}</td>
-                  <td className="viewComapny-viewmore">
-                    <Button
-                      onClick={() => {
-                        navigate(`/companyDetails/${co?._id}`);
-                      }}
-                    >
-                      View more
-                    </Button>
-                  </td>
-                </tr>
-              );
-            })}
-          </table>
+          <InputGroup
+            className="mb-3 p-3"
+            style={{ width: "300px", marginLeft: "73%" }}
+          >
+            <Form.Control
+              placeholder="Search"
+              aria-label="Username"
+              aria-describedby="basic-addon1"
+              onChange={handleSearch}
+            />
+            <InputGroup.Text id="basic-addon1">
+              <BsSearch />
+            </InputGroup.Text>
+          </InputGroup>
+          {allCompanies.length == 0 ? (
+            <h3 className="fs-2" style={{ fontWeight: "bold" }}>
+              No Data Found
+            </h3>
+          ) : (
+            <table border="1px">
+              <tr className="viewCompancy-head-row">
+                <th>No</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Contact</th>
+                <th>State</th>
+                <th>Email</th>
+                <th>View More</th>
+              </tr>
+              {allCompanies.map((co, i) => {
+                return (
+                  <tr key={co?._id}>
+                    <td>{i + 1}</td>
+                    <td>{co?.name}</td>
+                    <td>{co?.companyType}</td>
+                    <td>{co?.contact}</td>
+                    <td>{co?.state}</td>
+                    <td>{co?.email}</td>
+                    <td className="viewComapny-viewmore">
+                      <Button
+                        onClick={() => {
+                          navigate(`/companyDetails/${co?._id}`);
+                        }}
+                      >
+                        View more
+                      </Button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </table>
+          )}
         </div>
       </div>
-
       <div>
         <Footer2 />
       </div>

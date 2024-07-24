@@ -7,6 +7,9 @@ import axiosInstance from "../../../apis/axiosInstance";
 import { Button } from "react-bootstrap";
 import ComplaintModal from "../UserComplaintModal/userComplaintModal";
 import toast from "react-hot-toast";
+import InputGroup from "react-bootstrap/InputGroup";
+import Form from "react-bootstrap/Form";
+import { BsSearch } from "react-icons/bs";
 
 export const UserViewCompanies = () => {
   const navigate = useNavigate();
@@ -14,6 +17,7 @@ export const UserViewCompanies = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [userId, setUserId] = useState({});
   const [companyId, setCompanyId] = useState({});
+  const [fixedData, setFixedData] = useState([]);
   const openModal = () => {
     setModalIsOpen(true);
   };
@@ -21,7 +25,7 @@ export const UserViewCompanies = () => {
     setModalIsOpen(false);
   };
   const addComplaintFn = (companyId) => {
-    setCompanyId(companyId)
+    setCompanyId(companyId);
     openModal();
   };
 
@@ -31,6 +35,7 @@ export const UserViewCompanies = () => {
       if (res.status === 200) {
         const data = res.data?.data || [];
         setAllCompanies(data);
+        setFixedData(data);
       } else {
         console.log("Error ", res);
       }
@@ -46,20 +51,32 @@ export const UserViewCompanies = () => {
   }, []);
   const sendComplaint = (complaint) => {
     try {
-      console.log("CoId",companyId);
-      console.log("user id",userId);
+      console.log("CoId", companyId);
+      console.log("user id", userId);
       console.log(complaint);
-      toast.success("Complaint uploaded")
+      toast.success("Complaint uploaded");
     } catch (error) {
-      toast.error("network issue")
-    }finally{
-      closeModal()
+      toast.error("network issue");
+    } finally {
+      closeModal();
     }
   };
   console.log("como", allCompanies);
   useEffect(() => {
     getAllCompanies();
-  },[]);
+  }, []);
+
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    if (value) {
+      const filterData = fixedData.filter((items) => {
+        return items.name.toLowerCase().includes(value.toLowerCase());
+      });
+      setAllCompanies(filterData);
+    } else {
+      setAllCompanies(fixedData);
+    }
+  };
   return (
     <div>
       <UserNavbar />
@@ -74,49 +91,69 @@ export const UserViewCompanies = () => {
         </div>
 
         <div className="viewCompany-table ">
-          <table border="1px">
-            <tr className="viewCompancy-head-row">
-              <th>No</th>
-              <th>Name</th>
-              <th>Type</th>
-              <th>Contact</th>
-              <th>State</th>
-              <th>Email</th>
-              <th>View More</th>
-              <th>Complaint</th>
-            </tr>
-            {allCompanies.map((co, i) => {
-              return (
-                <tr key={co._id}>
-                  <td>{i + 1}</td>
-                  <td>{co.name}</td>
-                  <td>{co.companyType}</td>
-                  <td>{co.contact}</td>
-                  <td>{co.state}</td>
-                  <td>{co.email}</td>
-                  <td className="viewComapny-viewmore">
-                    <Button
-                      onClick={() => {
-                        navigate(`/companyDetails/${co._id}`);
-                      }}
-                    >
-                      View more
-                    </Button>
-                  </td>
-                  <td className="viewComapny-viewmore">
-                    <Button
-                      className=" btn-danger btn"
-                      onClick={() => {
-                        addComplaintFn(co._id);
-                      }}
-                    >
-                      Add Complaint
-                    </Button>
-                  </td>
-                </tr>
-              );
-            })}
-          </table>
+          <InputGroup
+            className="mb-3 p-3"
+            style={{ width: "300px", marginLeft: "73%" }}
+          >
+            <Form.Control
+              placeholder="Search"
+              aria-label="Username"
+              aria-describedby="basic-addon1"
+              onChange={handleSearch}
+            />
+            <InputGroup.Text id="basic-addon1">
+              <BsSearch />
+            </InputGroup.Text>
+          </InputGroup>
+          {allCompanies.length == 0 ? (
+            <h3 className="fs-2" style={{ fontWeight: "bold" }}>
+              No Data Found
+            </h3>
+          ) : (
+            <table border="1px">
+              <tr className="viewCompancy-head-row">
+                <th>No</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Contact</th>
+                <th>State</th>
+                <th>Email</th>
+                <th>View More</th>
+                <th>Complaint</th>
+              </tr>
+              {allCompanies.map((co, i) => {
+                return (
+                  <tr key={co._id}>
+                    <td>{i + 1}</td>
+                    <td>{co.name}</td>
+                    <td>{co.companyType}</td>
+                    <td>{co.contact}</td>
+                    <td>{co.state}</td>
+                    <td>{co.email}</td>
+                    <td className="viewComapny-viewmore">
+                      <Button
+                        onClick={() => {
+                          navigate(`/companyDetails/${co._id}`);
+                        }}
+                      >
+                        View more
+                      </Button>
+                    </td>
+                    <td className="viewComapny-viewmore">
+                      <Button
+                        className=" btn-danger btn"
+                        onClick={() => {
+                          addComplaintFn(co._id);
+                        }}
+                      >
+                        Add Complaint
+                      </Button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </table>
+          )}
         </div>
       </div>
       <ComplaintModal
