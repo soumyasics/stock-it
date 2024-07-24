@@ -84,6 +84,8 @@ import AdminViewUserComplaint from "./components/Admin/adminViewUserComplaint/ad
 import AdminViewUserComplaintDetails from "./components/Admin/adminViewuserComplaintDetails/adminViewUserComplaintDetails";
 import AdminNotification from "./components/Admin/adminNotification/adminNotification";
 import EditModal from "./components/user/userEditProfile/userEditProfile";
+import EtProfile from "./components/educational-tutors/etProfile/etProfile";
+import CompanyDivident from "./components/company/companyDivident/companyDivident";
 
 function App() {
   return (
@@ -131,6 +133,7 @@ function App() {
           />
           <Route path="/companyViewUser" element={<CompanyViewUser/>}/>
           <Route path="/companyViewUserDetails/:id" element={<CompanyViewUserdetails/>}/>
+          <Route path="companyDividend" element={<CompanyDivident/>}/>
           {/* user pages  */}
           <Route path="/userRegistration" element={<UserRegistration />} />
           <Route path="/userHome" element={<UserHomePage />} />
@@ -214,6 +217,7 @@ function App() {
             element={<EtviewArticleList />}
           />
           <Route path="/viewEtArticle/:id" element={<EtviewArticle />} />
+          <Route path="/etprofile" element={<EtProfile/>}/>
 
           {/* new  */}
           <Route path="/newsidebar" element={<NewAdminsidebar />} />

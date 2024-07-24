@@ -146,7 +146,9 @@ export const CompanySidebar = ({ changePage }) => {
             </tr>
           </div>
           <div className="companysidebar-items companysidebar-content-dividend">
-            <tr>
+            <tr onClick={()=>{
+              navigate("/companyDividend")
+            }}>
               <td>
                 <img src={img2} alt="" />
               </td>

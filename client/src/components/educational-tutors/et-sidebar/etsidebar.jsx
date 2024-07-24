@@ -8,6 +8,8 @@ import img3 from "../../../assets/images/logout.png";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseUrl";
+import { CgProfile } from "react-icons/cg";
+import { Row, Col } from "react-bootstrap";
 
 function Etsidebar({ changePage }) {
   const navigate = useNavigate();
@@ -40,20 +42,34 @@ function Etsidebar({ changePage }) {
           </div>
           <div className="etsidebar-detail mt-3">
             <h6>{etData.fullName} </h6>
-            {/* <p>{etData.email}</p> */}
+            <p>{etData.email}</p>
           </div>
         </div>
         <div className="etsidebar-title">
           <img src={titleImg} alt="" />
         </div>
         <div className="etsidebar-content mt-5">
+          <span style={{cursor:"pointer"}} onClick={()=>{
+            changePage("tutorProfile")
+          }}>
+            <tr>
+              <td>
+                <span className="fs-4 ">
+                  <CgProfile />
+                </span>
+              </td>
+              <td className="px-2">
+                <h6>Profile</h6>
+              </td>
+            </tr>
+          </span>
           <div className="etsidebar-items etsidebar-content-Article">
             <tr>
-              <td className="ms-9 ">
+              <td style={{}}>
                 <img src={img1} alt="" />
               </td>
-              <td>
-                <div className="content-drop ">
+              <td className="px-0">
+                <div className="content-drop">
                   <button type="button" onClick={() => setShow(!show)}>
                     Articles
                   </button>
@@ -64,7 +80,7 @@ function Etsidebar({ changePage }) {
                           onClick={() => {
                             changePage("addArticles");
                           }}
-                          style={{cursor:"pointer"}}
+                          style={{ cursor: "pointer" }}
                         >
                           Add Articles
                         </li>
@@ -72,7 +88,7 @@ function Etsidebar({ changePage }) {
                           onClick={() => {
                             changePage("viewArticles");
                           }}
-                          style={{cursor:"pointer"}}
+                          style={{ cursor: "pointer" }}
                         >
                           View Articles
                         </li>
@@ -98,7 +114,7 @@ function Etsidebar({ changePage }) {
               onClick={() => {
                 navigate("/etLogin");
               }}
-              style={{cursor:"pointer"}}
+              style={{ cursor: "pointer" }}
             >
               <td>
                 <img src={img3} alt="icon" />
