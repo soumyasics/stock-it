@@ -4,6 +4,7 @@ import Etsidebar from "../et-sidebar/etsidebar";
 import { Col, Row } from "react-bootstrap";
 import EtAddArticle from "../et-AddArticle/etAddArticle";
 import {EtviewArticleList} from "../et-ViewArticleList/et-viewArticleList.jsx";
+import EtProfile from "../etProfile/etProfile.jsx";
 
 function Etdashboard() {
   const [activePage, setActivePage] = useState("");
@@ -24,6 +25,7 @@ function Etdashboard() {
         <Col md={9} className="p-0" style={{ backgroundColor: "#1F2937" }}>
           {activePage === "addArticles" && <EtAddArticle navigateToviewArticle={navigateToviewArticle}/>}
           {activePage === "viewArticles" && <EtviewArticleList />}
+          {activePage === "tutorProfile" && <EtProfile/>}
         </Col>
       </Row>
     </>
