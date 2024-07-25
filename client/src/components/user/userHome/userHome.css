@@ -1,230 +1,221 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-.about-background {
-    background-color: #1F2937;
-    height: 290vh;
-    width: 100%;
-    text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+.about-background2 {
+  background-color: #1f2937;
+  width: 100%;
+  padding-bottom: 20px;
+  text-align: center;
 }
 
 .about-heading {
-    color: #FFF;
-    text-align: center;
-    font-family: 'Noto Sans', sans-serif;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    position: relative;
-    top: 20px;
-
+  color: #fff;
+  text-align: center;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  position: relative;
+  top: 20px;
 }
 
 .about-image {
-    width: 80%;
-    height: 15%;
-    flex-shrink: 0;
-    margin-top: 4%;
-
-
+  width: 80%;
+  height: 15%;
+  flex-shrink: 0;
+  margin-top: 4%;
 }
 
 .about-second-heading {
-    color: #FFF;
+  color: #fff;
 
-    font-family: in;
-    font-size: 21px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    text-align: center;
-    margin-top: 4%;
+  font-family: in;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-align: center;
+  margin-top: 4%;
 }
 
 .about-pargaraph {
-    color: #FFF;
-    text-align: center;
-    font-size: 17px;
-    font-weight: 400;
-    line-height: normal;
-    margin-top: 4%;
-    font-family: 'Noto Sans', sans-serif;
-
+  color: #fff;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 4%;
+  font-family: "Noto Sans", sans-serif;
 }
 
 .about-middle-box {
-    background-color: rgba(250, 235, 215, 0);
-    height: 13%;
-    width:79%;
-    margin: auto;
-    margin-top: 5%;
-    text-align: center;
-
+  background-color: rgba(250, 235, 215, 0);
+  height: 13%;
+  width: 79%;
+  margin: auto;
+  margin-top: 5%;
+  text-align: center;
 }
 
 .about-middle-box-heading {
-    color: #FFF;
-    text-align: center;
-    font-family: 'Noto Sans', sans-serif;
-    font-size: 21px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
+  color: #fff;
+  text-align: center;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }
 
 .about-middle-box-description {
-    color: #FFF;
-    font-family: 'Noto Sans', sans-serif;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+  color: #fff;
+  font-family: "Noto Sans", sans-serif;
+
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .about-ourVision {
-    color: #FFF;
-    font-family: 'Noto Sans', sans-serif;
-    font-size: 27px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    margin-right: 4.5%;
+  color: #fff;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 27px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-right: 4.5%;
 }
 
 .about-second-last-box {
-    background-color: rgba(250, 235, 215, 0);
-    height: 8%;
-    width: 85%;
-    margin: auto;
-    margin-top: 5%;
-    text-align: center;
+  background-color: rgba(250, 235, 215, 0);
+  height: 8%;
+  width: 85%;
+  margin: auto;
+  margin-top: 5%;
+  text-align: center;
 }
 
+.about-second-last-inner-box2 {
+  background-color: #777;
+  padding: 10px 0;
+  color: #fff;
+}
 .about-second-last-inner-box {
-    width: 85%;
-    padding: 14px 36px;
-    justify-content: center;
-    border-radius: 25px;
-    background: #777;
-    text-align: center;
-    color: #FFF;
-    font-family: Inter;
-    font-size: 1.15vw;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    height: 26%;
+  width: 85%;
+  padding: 14px 36px;
+  justify-content: center;
+  border-radius: 25px;
+  background: #777;
+  text-align: center;
+  color: #fff;
+  font-family: Inter;
+  font-size: 1.15vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  height: 26%;
 }
 
 .about-pargaraph2 {
-    font-family: 'Noto Sans', sans-serif;
-    color: #FFF;
-    text-align: center;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    margin-top: 4%;
+  font-family: "Noto Sans", sans-serif;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 4%;
 }
 
 .about-last-box {
-    width: 100%;
-    height: 18%;
-    background-color: rgba(250, 235, 215, 0);
-    text-align: center;
+  width: 100%;
+  height: 18%;
+  background-color: rgba(250, 235, 215, 0);
+  text-align: center;
 }
 
 .about-4 {
-    color: #959595;
-    font-family: 'Noto Sans', sans-serif;
-    font-size: 175.235px;
-    font-style: normal;
-    font-weight: 800;
-    line-height: normal;
-    position: relative;
-    top: 10%;
+  color: #959595;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 175.235px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  position: relative;
+  top: 10%;
 }
 
 .about-4-box {
-    display: flex;
-    height: 80%;
-    width: 90%;
-    background-color: rgba(245, 245, 220, 0);
+  display: flex;
+  height: 80%;
+  width: 90%;
+  background-color: rgba(245, 245, 220, 0);
 
-    text-align: left;
-    margin-left: 30%;
-    margin-top: 10%;
+  text-align: left;
+  margin-left: 30%;
+  margin-top: 10%;
 }
 
 .about-core {
-    color: #FFF;
-    position: relative;
-    top: 25%;
-    color: #FFF;
-    font-size: 34px;
-    font-family: 'Noto Sans', sans-serif;
-    font-size: 34.047px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+  color: #fff;
+  position: relative;
+  top: 25%;
+  color: #fff;
+  font-size: 34px;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 34.047px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
 .about-core-text {
-    position: relative;
-    top: 65%;
-    right: 22%;
-    color: #FFF;
-    font-size:1.2vw;
-    font-family: 'Noto Sans', sans-serif;
-
-
+  position: relative;
+  top: 65%;
+  right: 22%;
+  color: #fff;
+  font-size: 1.2vw;
+  font-family: "Noto Sans", sans-serif;
 }
 
 .about-last-inner-box {
-    height: 40%;
-    width: 73%;
-    border-radius: 12.364px;
-    background: #9A9A9A;
-    margin-top: 5%;
-    margin-bottom: 13%;
-    padding-left: 2px;
-    padding-right: 2px;
+  height: 40%;
+  width: 73%;
+  border-radius: 12.364px;
+  background: #9a9a9a;
+  margin-top: 5%;
+  margin-bottom: 13%;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 
 .about-inner-box2 {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
-
-
-
 .about-last-inner-box-text {
-    color: #FFF;
-    font-family: 'Noto Sans', sans-serif;
-    font-size: 14.012px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    position: relative;
-    top: 4%;
-
-
+  color: #fff;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 14.012px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  position: relative;
+  top: 4%;
 }
 
 .about-last-inner-box-head {
-
-    color: #FFF;
-    font-family: 'Noto Sans', sans-serif;
-    font-size: 14.836px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    position: relative;
-    top: 10%;
+  color: #fff;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 14.836px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  position: relative;
+  top: 10%;
 }
-.userHome-footer2
-{
-    position:relative;
-    bottom: 0;
+.userHome-footer2 {
+  position: relative;
+  bottom: 0;
 }
