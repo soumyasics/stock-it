@@ -6,9 +6,12 @@ import axiosInstance from "../../../apis/axiosInstance";
 import { Button } from "react-bootstrap";
 import AdminNavbar from "../../common/adminNavbar";
 import { IoReturnUpBack } from "react-icons/io5";
+import InputGroup from "react-bootstrap/InputGroup";
+import Form from "react-bootstrap/Form";
+import { BsSearch } from "react-icons/bs";
 export const AdminViewAllCompanies = () => {
   const navigate = useNavigate();
-
+const[fixedData,setFixedData]=useState([])
   const [allCompanies, setAllCompanies] = useState([]);
 
   const getAllCompanies = async () => {
@@ -18,6 +21,7 @@ export const AdminViewAllCompanies = () => {
         let data = res.data?.data || [];
         data.reverse();
         setAllCompanies(data);
+        setFixedData(data)
       } else {
         console.log("Error ", res);
       }
@@ -25,11 +29,21 @@ export const AdminViewAllCompanies = () => {
       console.log("Error getting compnaies", error);
     }
   };
-
   console.log("como", allCompanies);
   useEffect(() => {
     getAllCompanies();
   }, []);
+
+  const handleSearch=(e)=>{
+const value=e.target.value
+if(value){
+  const filterData=fixedData.filter((items)=>{
+    return items.name.toLowerCase().includes(value.toLowerCase())
+  });setAllCompanies(filterData)
+}else{
+  setAllCompanies(fixedData)
+}
+  }
   return (
     <div>
       <AdminNavbar />
@@ -53,6 +67,21 @@ export const AdminViewAllCompanies = () => {
         </div>
 
         <div className="viewCompany-table ">
+        <InputGroup
+            className="mb-3 p-3"
+            style={{ width: "300px", marginLeft: "73%" }}
+          >
+            <Form.Control
+              placeholder="Search"
+              aria-label="Username"
+              aria-describedby="basic-addon1"
+              onChange={handleSearch}
+            />
+            <InputGroup.Text id="basic-addon1">
+              <BsSearch />
+            </InputGroup.Text>
+          </InputGroup>
+          {allCompanies.length==0?<h3 className="fs-3" style={{fontWeight:"bold"}}>No Data Found</h3>:
           <table border="1px">
             <tr className="viewCompancy-head-row">
               <th> No</th>
@@ -100,7 +129,7 @@ export const AdminViewAllCompanies = () => {
                 </tr>
               );
             })}
-          </table>
+          </table>}
         </div>
       </div>
 

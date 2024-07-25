@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { IoReturnUpBack } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../../apis/axiosInstance";
+import AdminNavbar from "../../common/adminNavbar";
 
 function AdminViewUserComplaint() {
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ function AdminViewUserComplaint() {
   };
   return (
     <div>
+      <AdminNavbar/>
       <div className="adminViewCoComplaint-body ">
         <div className="adminViewCoComplaint-heading">
           <div className="d-flex pt-3">
