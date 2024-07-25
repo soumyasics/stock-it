@@ -41,9 +41,7 @@ export const BuyStocks = () => {
     const value = e.target.value;
     if (value) {
       const filterData = fixedData.filter((items) => {
-        return items.companyId?.name
-          .toLowerCase()
-          .includes(value.toLowerCase());
+        return items.companyId?.name.toLowerCase().includes(value.toLowerCase());
       });
       setAllCompanies(filterData);
     } else {
@@ -51,8 +49,7 @@ export const BuyStocks = () => {
     }
   };
 
-  console.log("company", allCompanies);
-  console.log("f", fixedData);
+
   return (
     <div>
       <UserNavbar />
