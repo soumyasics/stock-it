@@ -65,13 +65,14 @@ const EditCoProfileModal = ({
       description,
       regNo,
     } = companyData;
+    console.log("compan", companyData)
     const isFieldValidate = () => {
       if (!name) {
         toast.error("Enter your CompanyName");
         return false;
       }
       if (!companyType) {
-        toast.error("Enter your CompanyType");
+        toast.error("Choose your company type");
         return false;
       }
       if (!website) {
@@ -90,7 +91,7 @@ const EditCoProfileModal = ({
         toast.error("Enter your pincode");
         return false;
       }
-      if (pincode.length !== 6) {
+      if (String(pincode).length !== 6) {
         toast.error("Enter validate pincode");
         return false;
       }
@@ -98,8 +99,8 @@ const EditCoProfileModal = ({
         toast.error("Enter your contact number");
         return false;
       }
-      if (contact.length !== 10) {
-        toast.error("Enter validate contact number");
+      if (String(contact).length !== 10) {
+        toast.error("Enter 10 digit contact number");
         return false;
       }
       if (!email) {
@@ -161,7 +162,7 @@ const EditCoProfileModal = ({
             {" "}
             <MdArrowBack />
           </span>
-          <h2 className="editprofile">Edit Profile</h2>
+          <h2 className="editprofile ">Edit Profile</h2>
         </div>
         <Form onSubmit={handleSubmit}>
           <Row className="mb-3 mt-3">

@@ -12,7 +12,8 @@
   padding: 20px;
   border-radius: 10px;
   width: 50%;
-  height: 670px;
+  height: 458px;
+  overflow-y: auto;
 }
 .modal-Etedit {
   background-color: #2c3e50;

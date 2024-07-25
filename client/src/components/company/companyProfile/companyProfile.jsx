@@ -125,6 +125,13 @@ export const CompanyProfile = () => {
               <ListGroup.Item>
                 {" "}
                 <h6>
+                  State:
+                  <span className="fw-bold">{companyData?.state}</span>
+                </h6>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                {" "}
+                <h6>
                   District:
                   <span className="fw-bold">{companyData?.district}</span>
                 </h6>
@@ -132,8 +139,22 @@ export const CompanyProfile = () => {
               <ListGroup.Item>
                 {" "}
                 <h6>
-                  State:
-                  <span className="fw-bold">{companyData?.state}</span>
+                  Pincode: 
+                  <span className="fw-bold">{companyData?.pincode}</span>
+                </h6>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                {" "}
+                <h6>
+                  Founded Year: 
+                  <span className="fw-bold">{companyData?.year}</span>
+                </h6>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                {" "}
+                <h6>
+                  Registration number: 
+                  <span className="fw-bold">{companyData?.regNo}</span>
                 </h6>
               </ListGroup.Item>
               <ListGroup.Item>
