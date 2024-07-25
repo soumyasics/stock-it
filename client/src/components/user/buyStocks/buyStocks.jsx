@@ -24,7 +24,7 @@ export const BuyStocks = () => {
         // });
         setAllCompanies(allIPOs);
         setFixedData(allIPOs);
-        console.log("allIpos",allIPOs);
+        console.log("allIpos", allIPOs);
       } else {
         console.log("Error ", res);
       }
@@ -43,11 +43,13 @@ export const BuyStocks = () => {
       const filterData = fixedData.filter((items) => {
         return items.companyId?.name.toLowerCase().includes(value.toLowerCase());
       });
-      setAllCompanies(filterData)
-    }else{
-      setAllCompanies(fixedData)
+      setAllCompanies(filterData);
+    } else {
+      setAllCompanies(fixedData);
     }
   };
+
+
   return (
     <div>
       <UserNavbar />
@@ -59,31 +61,33 @@ export const BuyStocks = () => {
           <div className="companyRequesest-second-box" role="group"></div>
         </div>
         <InputGroup
-            className="mb-3 p-3"
-            style={{ width: "300px", marginLeft: "73%" }}
-          >
-            <Form.Control
-              placeholder="Search Stocks"
-              aria-label="Username"
-              aria-describedby="basic-addon1"
-              onChange={handleSearch}
-            />
-            <InputGroup.Text id="basic-addon1">
-              <BsSearch />
-            </InputGroup.Text>
-          </InputGroup>
-        <div className="viewCompany-table d-flex flex-wrap gap-5 p-5">
-         
-          {allCompanies.map((co) => {
-            return (
-              <div key={co._id}>
-                <StockCard data={co} />
-              </div>
-            );
-          })}
-        </div>
+          className="mb-3 p-3"
+          style={{ width: "300px", marginLeft: "73%" }}
+        >
+          <Form.Control
+            placeholder="Search Stocks"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+            onChange={handleSearch}
+          />
+          <InputGroup.Text id="basic-addon1">
+            <BsSearch />
+          </InputGroup.Text>
+        </InputGroup>
+        {allCompanies.length == 0 ? (
+          <h3 className="fs-3" style={{fontWeight:"bold"}}>No Data Found</h3>
+        ) : (
+          <div className="viewCompany-table d-flex flex-wrap gap-5 p-5">
+            {allCompanies.map((co) => {
+              return (
+                <div key={co._id}>
+                  <StockCard data={co} />
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
-
       <div>
         <Footer2 />
       </div>

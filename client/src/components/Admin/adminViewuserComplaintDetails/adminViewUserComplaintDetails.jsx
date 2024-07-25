@@ -5,6 +5,7 @@ import { BASE_URL } from "../../../apis/baseUrl";
 import { Button } from "react-bootstrap";
 import axiosInstance from "../../../apis/axiosInstance";
 import toast from "react-hot-toast";
+import AdminNavbar from "../../common/adminNavbar";
 
 function AdminViewUserComplaintDetails() {
   const navigate = useNavigate();
@@ -50,6 +51,7 @@ function AdminViewUserComplaintDetails() {
   };
   return (
     <div>
+      <AdminNavbar/>
       <div className="viewCompany-body">
         <div className="viewcomapany-head-box d-flex align-items-center justify-content-between px-5">
           <div

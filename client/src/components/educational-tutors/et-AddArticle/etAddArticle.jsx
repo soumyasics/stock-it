@@ -96,7 +96,7 @@ function EtAddArticle({navigateToviewArticle}) {
       console.log(response);
       if (response.status == 201) {
         toast.success("Article upload successful");
-        navigateToviewArticle()
+        navigateToviewArticle() 
       } else {
         toast.error(response.data.msg);
       }

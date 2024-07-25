@@ -6,10 +6,15 @@ import axiosInstance from "../../../apis/axiosInstance";
 import { Button } from "react-bootstrap";
 import AdminNavbar from "../../common/adminNavbar";
 import { IoReturnUpBack } from "react-icons/io5";
+import InputGroup from "react-bootstrap/InputGroup";
+import Form from "react-bootstrap/Form";
+import { BsSearch } from "react-icons/bs";
+
 export const AdminIPOPendingList = () => {
   const navigate = useNavigate();
 
   const [allIPOs, setAllIPOs] = useState([]);
+  const [fixedData, setFixedData] = useState([]);
 
   const getAllIPOs = async () => {
     try {
@@ -17,6 +22,7 @@ export const AdminIPOPendingList = () => {
       if (res.status === 200) {
         let data = res.data?.data || [];
         setAllIPOs(data);
+        setFixedData(data);
       } else {
         console.log("Error ", res);
       }
@@ -29,6 +35,18 @@ export const AdminIPOPendingList = () => {
   useEffect(() => {
     getAllIPOs();
   }, []);
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    if (value) {
+      const filterData = fixedData.filter((items) => {
+        return items.companyId?.name.toLowerCase().includes(value.toLowerCase());
+      });
+      setAllIPOs(filterData);
+    } else {
+      setAllIPOs(fixedData);
+    }
+  };
+  // console.log("all",allIPOs);
   return (
     <div>
       <AdminNavbar />
@@ -52,6 +70,23 @@ export const AdminIPOPendingList = () => {
         </div>
 
         <div className="viewCompany-table ">
+          <InputGroup
+            className="mb-3 p-3"
+            style={{ width: "300px", marginLeft: "73%" }}
+          >
+            <Form.Control
+              placeholder="Search"
+              aria-label="Username"
+              aria-describedby="basic-addon1"
+              onChange={handleSearch}
+            />
+            <InputGroup.Text id="basic-addon1">
+              <BsSearch />
+            </InputGroup.Text>
+          </InputGroup>
+          {
+            allIPOs.length==0? <h3 className="fs-3" style={{fontWeight:"bold"}}>No Data Found</h3>:
+          
           <table border="1px">
             <thead>
               <tr className="viewCompancy-head-row">
@@ -97,7 +132,8 @@ export const AdminIPOPendingList = () => {
                 );
               })}
             </tbody>
-          </table>
+          </table>}
+          
         </div>
       </div>
 
