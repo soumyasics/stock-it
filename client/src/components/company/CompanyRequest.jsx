@@ -8,11 +8,13 @@ import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import AdminNavbar from "../common/adminNavbar";
 import { Footer2 } from "../common/footer2/footer2";
+import InputGroup from "react-bootstrap/InputGroup";
+import Form from "react-bootstrap/Form";
+import { BsSearch } from "react-icons/bs";
 
-export const 
-CompanyPendingRequest = () => {
+export const CompanyPendingRequest = () => {
   const [state, setState] = useState([]);
-
+  const [fixedData, setFixedData] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
   const userPerPage = 15;
   const pageVisited = pageNumber * userPerPage;
@@ -29,14 +31,25 @@ CompanyPendingRequest = () => {
       .then((res) => {
         if (res.data.status === 200) {
           setState(res.data.data);
+          setFixedData(res.data.data);
         }
-        console.log("pending co.",res);
+        console.log("pending co.", res);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
-
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    if (value) {
+      const filterData = fixedData.filter((items) => {
+        return items.name.toLowerCase().includes(value.toLowerCase());
+      });
+      setState(filterData);
+    } else {
+      setState(fixedData);
+    }
+  };
   const displayUsers = state
     .slice(pageVisited, pageVisited + userPerPage)
     .map((e, i) => {
@@ -85,6 +98,20 @@ CompanyPendingRequest = () => {
       <div className="companyRequest-heading">
         <p>Company Requests</p>
       </div>
+      <InputGroup
+        className="mb-3 p-3"
+        style={{ width: "300px", marginLeft: "73%" }}
+      >
+        <Form.Control
+          placeholder="Search"
+          aria-label="Username"
+          aria-describedby="basic-addon1"
+          onChange={handleSearch}
+        />
+        <InputGroup.Text id="basic-addon1">
+          <BsSearch />
+        </InputGroup.Text>
+      </InputGroup>
       {
         <div
           style={{ height: "500px", overflow: "auto" }}

@@ -204,7 +204,7 @@ function App() {
           <Route path="/adminViewCoComplaintDetail/:id" element={<AdminViewCoComplaintDetail/>}/>
           <Route path="/adminViewUserComplaint" element={<AdminViewUserComplaint/>}/>
           <Route path="/adminViewUserComplaintDetails/:id" element={<AdminViewUserComplaintDetails/>}/>
-          <Route path="/adminnotification" element={<AdminNotification/>}/>
+          <Route path="/adminNotification" element={<AdminNotification/>}/>
 
           {/* et-new */}
           <Route path="/etdashboard" element={<Etdashboard />} />

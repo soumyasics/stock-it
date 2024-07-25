@@ -6,6 +6,7 @@ import "./adminViewCoComplaintDetail.css";
 import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseUrl";
 import toast from "react-hot-toast";
+import AdminNavbar from "../../common/adminNavbar";
 
 function AdminViewCoComplaintDetail() {
   const navigate = useNavigate();
@@ -61,6 +62,7 @@ function AdminViewCoComplaintDetail() {
   console.log(complaint);
   return (
     <div>
+      <AdminNavbar/>
       <div className="viewCompany-body">
         <div className="viewcomapany-head-box d-flex align-items-center justify-content-between px-5">
           <div
