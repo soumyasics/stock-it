@@ -41,7 +41,7 @@ export const BuyStocks = () => {
     const value = e.target.value;
     if (value) {
       const filterData = fixedData.filter((items) => {
-        return items.name.toLowerCase().includes(value.toLowerCase());
+        return items.companyId?.name.toLowerCase().includes(value.toLowerCase());
       });
       setAllCompanies(filterData)
     }else{

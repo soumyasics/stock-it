@@ -25,16 +25,16 @@ function AdminLogin() {
     setState({ ...state, [input.target.name]: input.target.value });
   }
 
+  useEffect(() => {
+    const isAdminLoggedin = localStorage.getItem("stock_it_admin_login");
+    if (isAdminLoggedin == "true") {
+      navigate("/admin");
+    }
+  }, []);
+
   const btnsubmit = (e) => {
     e.preventDefault();
-    console.log(state);
-    // if (state.email === "admin@gmail.com" && state.password === "admin@123") {
-    //   toast.success("Login success")
-    //   navigate("/admin");
-    // }else {
-    //   toast.error("Login failed")
 
-    // }
     axiosInstance
       .post("/loginAdmin", state)
       .then((res) => {

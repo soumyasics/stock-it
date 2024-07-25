@@ -13,13 +13,27 @@ import img4 from "../../assets/images/reset.png";
 import img5 from "../../assets/images/logout.png";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import AdminNavbar from "./adminNavbar";
+import { toast } from "react-hot-toast";
+
 function AdminSidebar({ changePage }) {
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
   const [show2, setShow2] = useState(false);
   const [show3, setShow3] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const isAdminLoggedin =
+      localStorage.getItem("stock_it_admin_login") || null;
+    console.log("is admin ", isAdminLoggedin);
+
+    if (isAdminLoggedin === null || isAdminLoggedin === "false") {
+      console.log("workd");
+
+      toast.error("Please login again.");
+      navigate("/AdminLogin");
+    }
+  }, []);
   const adminLogout = () => {
     localStorage.setItem("stock_it_admin_login", false);
     navigate("/AdminLogin");
@@ -37,11 +51,14 @@ function AdminSidebar({ changePage }) {
   };
 
   const navigateToViewAllEts = () => {
-    navigate("/adminViewAllETs")
-  }
-  const navigateToCoComplaint=()=>{
-    navigate("/adminViewCoComplaint")
-  }
+    navigate("/adminViewAllETs");
+  };
+  const navigateToCoComplaint = () => {
+    navigate("/adminViewCoComplaint");
+  };
+  const navigateToResetPassword = () => {
+    navigate("/admin-resetPassword");
+  };
 
   const openCompaniesTab = () => {
     setShow(!show);
@@ -60,7 +77,7 @@ function AdminSidebar({ changePage }) {
     setShow2(!show2);
     setShow1(false);
     setShow(false);
-    setShow3(false)
+    setShow3(false);
   };
   const openTakeActionTab = () => {
     setShow3(!show3);
@@ -105,7 +122,9 @@ function AdminSidebar({ changePage }) {
                     >
                       Company pending requests
                     </li>
-                    <li onClick={navigateToAllCompanies}>View active companies</li>
+                    <li onClick={navigateToAllCompanies}>
+                      View active companies
+                    </li>
                     <li>View all company article</li>
                   </ul>
                 </div>
@@ -134,7 +153,7 @@ function AdminSidebar({ changePage }) {
               <img src={vector4} alt="" />
               <button type="button" onClick={openEdTab}>
                 Educational Tutors
-              </button> 
+              </button>
               {show2 && (
                 <div className=" sidebar-drop-10">
                   <ul>
@@ -176,21 +195,24 @@ function AdminSidebar({ changePage }) {
                 <div className="sidebar-drop-10">
                   <ul>
                     <li onClick={navigateToCoComplaint}>Company</li>
-                    <li onClick={()=>{
-                      navigate("/adminViewUserComplaint")
-                    }}>User</li>
+                    <li
+                      onClick={() => {
+                        navigate("/adminViewUserComplaint");
+                      }}
+                    >
+                      User
+                    </li>
                   </ul>
                 </div>
               )}
             </div>
-           
           </div>
           <div className="adminSidebar-resetpassword">
             <div className="clickable-item adminSidebar-resetpassword-grid">
               <img src={img4} alt="" />
             </div>
             <div className="clickable-item reset-h1">
-              <h5>Reset Password</h5>
+              <h5 onClick={navigateToResetPassword}>Reset Password</h5>
             </div>
           </div>
           <div className="adminSidebar-logout">
