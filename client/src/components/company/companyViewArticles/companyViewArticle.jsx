@@ -76,7 +76,7 @@ function CompanyViewArticle() {
           </div>
         </div>
         <div className="d-flex text-light align-items-center flex-column justify-content-center">
-          <h1 className="text-center text-capitalize ">{viewArticle?.title}</h1>
+          <h2 className="text-center text-capitalize ">{viewArticle?.title}</h2>
           <h6>{viewArticle?.category}</h6>
         </div>
         <Row>

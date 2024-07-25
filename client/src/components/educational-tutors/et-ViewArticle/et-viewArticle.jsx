@@ -12,7 +12,7 @@ function EtviewArticle() {
   const { id } = useParams();
   const [videoUrl, setVideoUrl] = useState(null);
   useEffect(() => {
-    if (viewArticle) {                  
+    if (viewArticle) {
       let tutorialVideoLink = viewArticle?.video?.filename || null;
       if (tutorialVideoLink) {
         let URL = `${BASE_URL}${tutorialVideoLink}`;
@@ -76,13 +76,17 @@ function EtviewArticle() {
           >
             <IoReturnUpBack />
           </div>
-          {viewArticle?.title}
         </div>
+        <div className="d-flex text-light align-items-center flex-column justify-content-center">
+          <h1 className="text-center text-capitalize ">{viewArticle?.title}</h1>
+          <h6>{viewArticle?.category}</h6>
+        </div>
+
         <Row>
-          <Col md={8} className="etViewArticle-video">
+          <Col md={12} className="companyViewArticle-video">
             {videoUrl && (
               <iframe
-                width="90%"
+                width="100%"
                 height="500px"
                 src={videoUrl}
                 title="YouTube video player"
@@ -92,53 +96,18 @@ function EtviewArticle() {
               ></iframe>
             )}
           </Col>
-          <Col md={4} className="etViewArticle-description">
-            <div className="text-success text-center mt-5 fs-3">
-              Description
+        </Row>
+        <Row>
+          <Col md={12} className="companyViewArticle-description">
+            <div className="text-light text-center d-flex justify-content-center mt-5 ">
+              <br />
+              <span className="text-capitalize">{viewArticle?.subTitle}</span>
             </div>
-            <div className="etViewArticle-box2">
-              <table className="mt-4" id="etViewVideoTable">
-                <tbody>
-                  <tr>
-                    <td>Title</td>
-                    <td>-</td>
-                    <td className="fs-5">{viewArticle?.title}</td>
-                  </tr>
-                  <tr>
-                    <td>SubTitle</td>
-                    <td>-</td>
-                    <td>{viewArticle?.subTitle}</td>
-                  </tr>
-                  <tr>
-                    <td>Content</td>
-                    <td>-</td>
-                    <td>{viewArticle?.content}</td>
-                  </tr>
-                  <tr>
-                    <td>Category</td>
-                    <td>-</td>
-                    <td>{viewArticle?.category}</td>
-                  </tr>
-                  <tr>
-                    <td>Conclusion</td>
-                    <td>-</td>
-                    <td>{viewArticle?.conclusion}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div className="etViewArticle-btn d-flex gap-3">
-              {/* <div className="etArticle-editbtn">
-                <button type="button" className="btn btn-outline-success">
-                  Edit
-                </button>
-              </div> */}
-              <div className="etArticle-deletebtn">
-                <button type="button" className="btn btn-outline-danger">
-                  Delete
-                </button>
-              </div>
+            <div className="companyViewArticle-box2 text-light text-justify">
+              <span>{viewArticle?.content}</span>
+              <br />
+              <br />
+              <span>{viewArticle?.conclusion}</span>
             </div>
           </Col>
         </Row>
