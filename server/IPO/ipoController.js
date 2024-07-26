@@ -39,6 +39,37 @@ exports.createIpo = async (req, res) => {
   }
 };
 
+exports.editIPO = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { totalShares, costPerShare, companyId, capitation } = req.body;
+    if (!totalShares || !costPerShare || !companyId || !capitation) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
+    const ipo = await Ipo.findById(id);
+    if (!ipo) {
+      return res.status(404).json({ message: "IPO not found" });
+    }
+    if (ipo.adminApproved === "approved") {
+      return res
+        .status(409)
+        .json({ message: "Your IPO request is already approved." });
+    }
+    
+    ipo.totalShares = totalShares;
+    ipo.costPerShare = costPerShare;
+    ipo.currentMarketPrice = costPerShare;
+    ipo.availableShares = totalShares;
+    ipo.capitation = capitation;
+    ipo.status = "pending"; 
+    await ipo.save();
+    res.status(200).json(ipo);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
 // Get all IPOs
 exports.getIpos = async (req, res) => {
   try {

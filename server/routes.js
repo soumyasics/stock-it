@@ -61,6 +61,7 @@ router.post("/rejectIPOById/:id", IPO.rejectIPOById);
 router.get("/getAllPendingIPOs", IPO.getAllPendingIPOs);
 router.get("/getAllApprovedIPOs", IPO.getAllApprovedIPOs);
 router.get("/getAllRejectedIPOs", IPO.getAllRejectedIPOs);
+router.patch("/editIPO/:id", IPO.editIPO);
 // tutors
 router.post("/registerTutor", ET.upload, ET.registerTutor);
 router.post("/loginTutor", ET.loginTutor);
