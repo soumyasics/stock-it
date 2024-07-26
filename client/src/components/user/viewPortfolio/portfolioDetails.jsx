@@ -135,7 +135,7 @@ export const PortfolioDetails = () => {
           <Col>{stockData.numberOfSharesBought}</Col>
         </Row>
         <Row className="stock-details-row">
-          <Col>Currently available quantity</Col>
+          <Col>Currently available shares</Col>
           <Col md={1}>:</Col>
           <Col>{stockData.totalQuantity}</Col>
         </Row>
@@ -166,19 +166,20 @@ export const PortfolioDetails = () => {
           <Col md={1}>:</Col>
           <Col>{stockData.numberOfSharesBought - stockData.totalQuantity}</Col>
         </Row>
-
-        <Row className="stock-details-row  ">
-          <Col>Sell shares </Col>
-          <Col md={1}>:</Col>
-          <Col>
-            <input
-              max={stockData.totalShares}
-              value={sellingQuantity}
-              onChange={handleNoSharesChanges}
-              type="number"
-            />
-          </Col>
-        </Row>
+        {stockData.totalQuantity !== 0 && (
+          <Row className="stock-details-row  ">
+            <Col>Sell shares </Col>
+            <Col md={1}>:</Col>
+            <Col>
+              <input
+                max={stockData.totalShares}
+                value={sellingQuantity}
+                onChange={handleNoSharesChanges}
+                type="number"
+              />
+            </Col>
+          </Row>
+        )}
 
         <Row className="stock-details-row  ">
           <Col>Live Profit / Loss Status </Col>
@@ -211,9 +212,11 @@ export const PortfolioDetails = () => {
         </Row>
 
         <div className="d-flex justify-content-center mt-5 stock-details-row">
-          <Button className="buy-btn" onClick={sellStocks}>
-            Sell Stocks
-          </Button>
+          {stockData.totalQuantity !== 0 && (
+            <Button className="buy-btn" onClick={sellStocks}>
+              Sell Stocks
+            </Button>
+          )}
         </div>
       </div>
     </>

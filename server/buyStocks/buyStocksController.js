@@ -121,10 +121,8 @@ const sellStocksById = async (req, res) => {
       stock.currentMarketPrice - onePercentageOfCMP
     );
 
-    // await stock.save();
-
     // 4. increase availble shares of stocks
-    stock.availableShares += sellingQuantity;
+    stock.availableShares += Number(sellingQuantity);
 
     await holdings.save();
     await stock.save();
