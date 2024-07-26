@@ -48,7 +48,7 @@ const CompanyComplaintModal = ({
         overlayClassName="overlay"
       >
         <h2 style={{ color: "#fff" }} className="text-start">
-          Issue
+          Write your complaint
         </h2>
         <form onSubmit={handleSubmit}>
           <textarea

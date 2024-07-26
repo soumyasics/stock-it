@@ -62,7 +62,9 @@ exports.editIPO = async (req, res) => {
     ipo.currentMarketPrice = costPerShare;
     ipo.availableShares = totalShares;
     ipo.capitation = capitation;
-    ipo.status = "pending"; 
+    ipo.adminApproved = "pending"; 
+
+    console.log("ipooo", ipo)
     await ipo.save();
     res.status(200).json(ipo);
   } catch (err) {

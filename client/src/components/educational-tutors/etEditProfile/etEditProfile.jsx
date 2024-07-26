@@ -118,6 +118,11 @@ const EtEditModal = ({ openModal, closeModal, modalIsOpen, getEtData2 }) => {
         toast.success("Profile updated");
       }
     } catch (error) {
+      const status = error.response.status;
+      if (status === 400 || status === 404) {
+        toast.error(error?.response?.data?.msg);
+        return;
+      }
       console.log("Fail on updating userdata");
     } finally {
       getEtData2(tutorId);
