@@ -8,7 +8,7 @@ import { BASE_URL } from "../../../apis/baseUrl";
 export const EtviewArticleList = () => {
   const navigate = useNavigate();
   const toViewArticleById=(id)=>{
-    navigate(`/viewEtArticle//${id}`)
+    navigate(`/viewEtArticle/${id}`)
   }
 
   const [viewArticle, setViewArticle] = useState([]);
@@ -69,7 +69,7 @@ export const EtviewArticleList = () => {
                     <img src={path} alt="Thumbnail" />
                   </div>
                   <div className="viewArticleList-title mt-5 text-light text-capitalize fw-bolder fs-2">
-                    <h4>{e.title} </h4>
+                  <h4>{e.title?.length > 14 ? e.title?.substring(0, 14) +".." : e.title} </h4>
                   </div>
                   <p
                     className="viewArticleList-btn text-primary text-decoration-underline"

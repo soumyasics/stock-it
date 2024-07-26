@@ -48,7 +48,7 @@ function CompanyArticleList() {
                     <img src={path} alt="Thumbnail" />
                   </div>
                   <div className="userviewArticleList-title mt-5 text-light text-capitalize fw-bolder text-center fs-2">
-                    <h4>{e.title} </h4>
+                    <h4>{e.title?.length > 14 ? e.title?.substring(0, 14) +".." : e.title} </h4>
                   </div>
                   <p
                     className="userviewArticleList-btn text-primary text-decoration-underline"

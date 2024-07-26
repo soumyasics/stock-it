@@ -75,7 +75,7 @@ export const ListedCompanies = () => {
             </InputGroup.Text>
           </InputGroup>
           {allCompanies.length == 0 ? (
-            <h3 className="fs-2" style={{ fontWeight: "bold" }}>
+            <h3 className="fs-2 text-center" style={{ fontWeight: "bold" }}>
               No Data Found
             </h3>
           ) : (
