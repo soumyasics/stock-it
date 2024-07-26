@@ -1,6 +1,6 @@
 const { BuyStocksModel } = require("./buyStocksSchema");
 const IPOModel = require("../IPO/ipoSchema");
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 const buyStocks = async (req, res) => {
   try {
     const {
@@ -74,6 +74,74 @@ const buyStocks = async (req, res) => {
   }
 };
 
+const sellStocksById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { sellingQuantity } = req.body;
+    if (!sellingQuantity) {
+      return res.status(400).json({ msg: "All fields are required" });
+    }
+    const holdings = await BuyStocksModel.findById(id)
+      .populate("IPOId")
+      .populate("userId")
+      .populate("companyId")
+      .exec();
+
+    if (!holdings) {
+      return res.status(404).json({ msg: "Sell stocks not found" });
+    }
+
+    if (sellingQuantity > holdings.totalQuantity) {
+      return res
+        .status(400)
+        .json({ msg: "You can't sell more shares than you have" });
+    }
+
+    const stock = holdings.IPOId;
+    // 1. profit or loss calculation
+    const currentMarketValueOfSellingQuantity =
+      stock.currentMarketPrice * sellingQuantity;
+    console.log("current market value", currentMarketValueOfSellingQuantity);
+    const totalCostForSellingQuantity = sellingQuantity * holdings.costPerShare;
+    console.log("total cost", totalCostForSellingQuantity);
+    const profitOrLoss =
+      currentMarketValueOfSellingQuantity - totalCostForSellingQuantity;
+    if (profitOrLoss < 0) {
+      holdings.currentLoss += profitOrLoss;
+    } else {
+      holdings.currentProfit += profitOrLoss;
+    }
+
+    //  2 reduce avalible quantity
+    holdings.totalQuantity -= sellingQuantity;
+
+    // 3. reduce current market price
+    const onePercentageOfCMP = Math.round(stock.currentMarketPrice * 0.01);
+    stock.currentMarketPrice = Math.round(
+      stock.currentMarketPrice - onePercentageOfCMP
+    );
+
+    // await stock.save();
+
+    // 4. increase availble shares of stocks
+    stock.availableShares += sellingQuantity;
+
+    await holdings.save();
+    await stock.save();
+
+    return res.status(200).json({
+      msg: "Sell stocks found",
+      profitOrLoss: profitOrLoss,
+      currentAvailbleQty: holdings.totalQuantity,
+      CMP: stock.currentMarketPrice,
+      stock,
+      holdings,
+    });
+  } catch (error) {
+    return res.status(500).json({ msg: "Server error", error: error.message });
+  }
+};
+
 const allBuyStocks = async (req, res) => {
   try {
     const buyStocks = await BuyStocksModel.find()
@@ -119,7 +187,7 @@ const getAllBoughtStocksByCompanyId = async (req, res) => {
 
 const getBoughtStockById = async (req, res) => {
   try {
-    const  id  = req.params.id;
+    const id = req.params.id;
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).json({ msg: "Id is required" });
@@ -143,4 +211,5 @@ module.exports = {
   getBoughtStockById,
   getAllBoughtStocksByUserId,
   getAllBoughtStocksByCompanyId,
+  sellStocksById,
 };

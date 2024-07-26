@@ -107,6 +107,7 @@ router.get("/co-getArticleByCompanyId/:id", CompanyArticleController.getArticleB
 
 // buy stocks 
 router.post("/buyStocks", buyStockController.buyStocks);
+router.post("/sellStocks/:id", buyStockController.sellStocksById);
 router.get("/allBuyStocks", buyStockController.allBuyStocks);
 router.get("/getBoughtStockById/:id", buyStockController.getBoughtStockById);
 router.get("/getAllBoughtStocksByUserId/:id", buyStockController.getAllBoughtStocksByUserId);
