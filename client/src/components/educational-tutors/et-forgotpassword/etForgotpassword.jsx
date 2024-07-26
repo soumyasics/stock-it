@@ -7,15 +7,27 @@ import { toast } from "react-hot-toast";
 import axiosInstance from "../../../apis/axiosInstance";
 import { useNavigate } from "react-router-dom";
 import { TiArrowBackOutline } from "react-icons/ti";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+import { FaEyeSlash } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 
 function EtForgotpassword() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const navigate=useNavigate()
-  const redirectToEtLogin=()=>{
-    navigate("/etlogin")
-  }
+  const [showPassword, setShowPassword] = useState(true);
+  const [showPassword1, setShowPassword1] = useState(true);
+  const toggleButton = () => {
+    setShowPassword(!showPassword);
+  };
+  const toggleButton1 = () => {
+    setShowPassword1(!showPassword1);
+  };
+  const navigate = useNavigate();
+  const redirectToEtLogin = () => {
+    navigate("/etlogin");
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -40,9 +52,9 @@ function EtForgotpassword() {
       return;
     }
     let obj = {
-        email,
-        newPassword: password
-    }
+      email,
+      newPassword: password,
+    };
     sendDataToServer(obj);
   };
   const sendDataToServer = async (data) => {
@@ -51,17 +63,17 @@ function EtForgotpassword() {
       console.log("forgot res", response);
       if (response.status === 200) {
         toast.success(response.data.msg);
-redirectToEtLogin()
+        redirectToEtLogin();
       } else {
         toast.error(response.data.msg);
       }
     } catch (error) {
-      const status=error.response?.status
-      if(status==400){
-        toast.error("Check your email Id")
-      }else{
-        console.error("There was an error in changing passwords!",error)
-        toast.error("Network error")
+      const status = error.response?.status;
+      if (status == 400) {
+        toast.error("Check your email Id");
+      } else {
+        console.error("There was an error in changing passwords!", error);
+        toast.error("Network error");
       }
     }
   };
@@ -69,8 +81,11 @@ redirectToEtLogin()
     <div>
       <CommonNavbar />
       <div className="etForgotpassword">
-        <div className="etForgotpassword-backbtn ms-5" onClick={redirectToEtLogin}>
-        <TiArrowBackOutline />
+        <div
+          className="etForgotpassword-backbtn ms-5"
+          onClick={redirectToEtLogin}
+        >
+          <TiArrowBackOutline />
         </div>
         <div className="etForgotpassword-box">
           <h3 className="resetpassword-heading">Forgot Password</h3>
@@ -78,7 +93,10 @@ redirectToEtLogin()
             <div className="col-5 etForgotpassword-logo">
               <img src={img1} alt="loginPage logo" className="img-fluid my-4" />
             </div>
-            <form className="col-7 etForgotpassword-inputs" onSubmit={handleSubmit}>
+            <form
+              className="col-7 etForgotpassword-inputs"
+              onSubmit={handleSubmit}
+            >
               <div className="mb-3 etForgotpassword-inner">
                 <label for="exampleFormControlInput1" className="form-label">
                   Email Id
@@ -96,27 +114,65 @@ redirectToEtLogin()
                 <label for="exampleFormControlInput1" className="form-label">
                   New Password
                 </label>
-                <input
+                {/* <input
                   type="password"
                   className="form-control"
                   id="exampleFormControlInput1"
                   placeholder="Enter New Password"
                   name="password"
                   onChange={(e) => setPassword(e.target.value)}
-                />
+                /> */}
+                <InputGroup className="mb-3 companyForgotpasswordInput">
+                  <Form.Control
+                    placeholder="Enter New Password"
+                    type={showPassword ? "password" : "text"}
+                    aria-label="password"
+                    aria-describedby="basic-addon1"
+                    name="password"
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
+                  />
+                  <InputGroup.Text id="basic-addon1">
+                    {showPassword ? (
+                      <FaEyeSlash onClick={toggleButton} />
+                    ) : (
+                      <FaEye onClick={toggleButton} />
+                    )}
+                  </InputGroup.Text>
+                </InputGroup>
               </div>
               <div className="mb-3 etForgotpassword-inner">
                 <label for="exampleFormControlInput1" className="form-label">
                   Confirm Password
                 </label>
-                <input
+                {/* <input
                   type="password"
                   className="form-control"
                   id="exampleFormControlInput1"
                   placeholder="Enter Confirm Password"
                   name="confirmPassword"
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                />
+                /> */}
+                <InputGroup className="mb-3 companyForgotpasswordInput">
+                  <Form.Control
+                    placeholder="Enter New Password"
+                    type={showPassword1 ? "password" : "text"}
+                    aria-label="password"
+                    aria-describedby="basic-addon1"
+                    name="password"
+                    onChange={(e) => {
+                      setConfirmPassword(e.target.value);
+                    }}
+                  />
+                  <InputGroup.Text id="basic-addon1">
+                    {showPassword1 ? (
+                      <FaEyeSlash onClick={toggleButton1} />
+                    ) : (
+                      <FaEye onClick={toggleButton1} />
+                    )}
+                  </InputGroup.Text>
+                </InputGroup>
               </div>
               <button className="login-button" type="submit">
                 submit

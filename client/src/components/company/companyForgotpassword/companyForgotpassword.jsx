@@ -7,21 +7,33 @@ import { toast } from "react-hot-toast";
 import axiosInstance from "../../../apis/axiosInstance";
 import { useNavigate } from "react-router-dom";
 import { TiArrowBackOutline } from "react-icons/ti";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+import { FaEyeSlash } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 
 function CompanyForgotpassword() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(true);
+  const [showPassword1, setShowPassword1] = useState(true);
   const navigate = useNavigate();
   const redirectTocompanyLogin = () => {
     navigate("/companylogin");
   };
+  const toggleButton = () => {
+    setShowPassword(!showPassword);
+  };
+  const toggleButton1 = () => {
+    setShowPassword1(!showPassword1);
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if(!email){
-      toast.error("Please enter email Id")
-      return
+    if (!email) {
+      toast.error("Please enter email Id");
+      return;
     }
     if (!emailRegex.test(email)) {
       toast.error("Please enter a valid email address");
@@ -111,27 +123,65 @@ function CompanyForgotpassword() {
                   <label for="exampleFormControlInput1" className="form-label">
                     New Password
                   </label>
-                  <input
+                  {/* <input
                     type="password"
                     className="form-control"
                     id="exampleFormControlInput1"
                     placeholder="Enter New Password"
                     name="password"
                     onChange={(e) => setPassword(e.target.value)}
-                  />
+                  /> */}
+                  <InputGroup className="mb-3 companyForgotpasswordInput">
+                    <Form.Control
+                      placeholder="Enter New Password"
+                      type={showPassword ? "password" : "text"}
+                      aria-label="password"
+                      aria-describedby="basic-addon1"
+                      name="password"
+                      onChange={(e) => {
+                        setPassword(e.target.value);
+                      }}
+                    />
+                    <InputGroup.Text id="basic-addon1">
+                      {showPassword ? (
+                        <FaEyeSlash onClick={toggleButton} />
+                      ) : (
+                        <FaEye onClick={toggleButton} />
+                      )}
+                    </InputGroup.Text>
+                  </InputGroup>
                 </div>
                 <div className="mb-3 companyForgotpassword-inner">
                   <label for="exampleFormControlInput1" className="form-label">
                     Confirm Password
                   </label>
-                  <input
+                  {/* <input
                     type="password"
                     className="form-control"
                     id="exampleFormControlInput1"
                     placeholder="Enter Confirm Password"
                     name="confirmPassword"
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                  />
+                  /> */}
+                  <InputGroup className="mb-3 companyForgotpasswordInput">
+                    <Form.Control
+                      placeholder="Enter Confirm Password"
+                      type={showPassword1 ? "password" : "text"}
+                      aria-label="password"
+                      aria-describedby="basic-addon1"
+                      name="confirmPassword"
+                      onChange={(e) => {
+                        setConfirmPassword(e.target.value);
+                      }}
+                    />
+                    <InputGroup.Text id="basic-addon1">
+                      {showPassword1 ? (
+                        <FaEyeSlash onClick={toggleButton1} />
+                      ) : (
+                        <FaEye onClick={toggleButton1} />
+                      )}
+                    </InputGroup.Text>
+                  </InputGroup>
                 </div>
                 <button className="login-button" type="submit">
                   submit

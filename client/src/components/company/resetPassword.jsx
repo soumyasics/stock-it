@@ -4,13 +4,26 @@ import "./resetPassword.css";
 import axiosInstance from "../../apis/axiosInstance";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+import { FaEyeSlash } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 function Resetpassword() {
   const [state, setState] = useState({
     email: "",
     newpassword: "",
     confirmpassword: "",
   });
-  const navigate =useNavigate()
+  const [showPassword, setShowPassword] = useState(true);
+  const [showPassword1, setShowPassword1] = useState(true);
+
+  const toggleButton = () => {
+    setShowPassword(!showPassword);
+  };
+  const toggleButton1 = () => {
+    setShowPassword1(!showPassword1);
+  };
+  const navigate = useNavigate();
   function tochange(e) {
     setState({ ...state, [e.target.name]: e.target.value });
   }
@@ -43,7 +56,7 @@ function Resetpassword() {
       console.log(res);
       if (res.data.status == 200) {
         toast.success(res.data.msg);
-        navigate('/adminlogin')
+        navigate("/adminlogin");
       } else {
         toast.error(res.data.msg);
       }
@@ -66,7 +79,10 @@ function Resetpassword() {
                 </div>
                 <div className="col-7 resetpassword-inputs">
                   <div className="mb-3 resetpassword-inner">
-                    <label for="exampleFormControlInput1" className="form-label">
+                    <label
+                      for="exampleFormControlInput1"
+                      className="form-label"
+                    >
                       Email
                     </label>
                     <input
@@ -80,30 +96,70 @@ function Resetpassword() {
                     />
                   </div>
                   <div className="mb-3 resetpassword-inner">
-                    <label for="exampleFormControlInput1" className="form-label">
+                    <label
+                      for="exampleFormControlInput1"
+                      className="form-label"
+                    >
                       New Password
                     </label>
-                    <input
+                    {/* <input
                       type="password"
                       className="form-control"
                       id="exampleFormControlInput1"
                       placeholder="Enter New password"
                       name="newpassword"
                       onChange={tochange}
-                    />
+                    /> */}
+                    <InputGroup className="mb-3 companyForgotpasswordInput">
+                      <Form.Control
+                        placeholder="Enter New Password"
+                        type={showPassword ? "password" : "text"}
+                        aria-label="password"
+                        aria-describedby="basic-addon1"
+                        name="newpassword"
+                        onChange={tochange}
+                      />
+                      <InputGroup.Text id="basic-addon1">
+                        {showPassword ? (
+                          <FaEyeSlash onClick={toggleButton} />
+                        ) : (
+                          <FaEye onClick={toggleButton} />
+                        )}
+                      </InputGroup.Text>
+                    </InputGroup>
                   </div>{" "}
                   <div className="mb-3 resetpassword-inner">
-                    <label for="exampleFormControlInput1" className="form-label">
+                    <label
+                      for="exampleFormControlInput1"
+                      className="form-label"
+                    >
                       Confirm Password
                     </label>
-                    <input
+                    {/* <input
                       type="password"
                       className="form-control"
                       id="exampleFormControlInput1"
                       placeholder="Re Enter password"
                       name="confirmpassword"
                       onChange={tochange}
-                    />
+                    /> */}
+                           <InputGroup className="mb-3 companyForgotpasswordInput">
+                      <Form.Control
+                        placeholder="Re Enter Password"
+                        type={showPassword1 ? "password" : "text"}
+                        aria-label="password"
+                        aria-describedby="basic-addon1"
+                        name="confirmpassword"
+                        onChange={tochange}
+                      />
+                      <InputGroup.Text id="basic-addon1">
+                        {showPassword1 ? (
+                          <FaEyeSlash onClick={toggleButton1} />
+                        ) : (
+                          <FaEye onClick={toggleButton1} />
+                        )}
+                      </InputGroup.Text>
+                    </InputGroup>
                   </div>
                   <button className="reset-button" value="submit" type="submit">
                     Submit
