@@ -60,6 +60,19 @@ const buyStocksSchema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
+    divident: [
+      {
+        date: {
+          type: Date,
+          required: true,
+        },
+        amount: {
+          type: Number,
+          required: true,
+        },
+        
+      },
+    ],
   },
   {
     timestamps: true,

@@ -255,10 +255,11 @@ function CompanyRegistration() {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label className="form-label">Company Type</label>
+                      <label className="form-label ">Company Type</label>
                       <select
                         name="companyType"
-                        className="form-select select-box CompanyRegistration-inp"
+                        style={{fontSize: "14px"}}
+                        className="form-select  select-box CompanyRegistration-inp"
                         required
                         value={companyData.companyType}
                         onChange={handleChange}

@@ -301,6 +301,7 @@ const forgotPassword = async (req, res) => {
 const editTutorById = async (req, res) => {
   try {
     const id = req.params.id;
+    
     const tutor = await TutorModel.findById(id);
     if (!tutor) {
       return res.status(404).json({ msg: "Tutor not found" });
@@ -320,7 +321,13 @@ const editTutorById = async (req, res) => {
     if (qualification) obj.qualification = qualification;
     if (specification) obj.specification = specification;
     if (experience) obj.experience = experience;
-    if (email) obj.email = email;
+    if (email) {
+      const emailExists = await TutorModel.findOne({ email });
+      if (emailExists && email !== tutor.email) {
+        return res.status(400).json({ msg: "Email already exists" });
+      }
+      obj.email = email
+    };
     if (password) obj.password = password;
     if (contactNumber) obj.contactNumber = contactNumber;
 
