@@ -13,7 +13,7 @@ import ipoImage1 from "../../../assets/images/ipo-1.png";
 import "./viewStatus.css";
 import IpoStatusEditModal from "../ipoStatusEdit/ipoStatusEdit";
 export const ViewIPOStatus = () => {
-  const [ipoStatus, setIpoStatus] = useState(null);
+  const [ipoStatus, setIpoStatus] = useState({});
   console.log("ipo", ipoStatus);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [userData, setUserData] = useState({});
@@ -131,6 +131,8 @@ export const ViewIPOStatus = () => {
           openModal={openModal}
           modalIsOpen={modalIsOpen}
           closeModal={closeModal}
+          ipoStatus={ipoStatus}
+          getIpoData={getIpoData}
           />
         </Col>
         <Col md={6}>

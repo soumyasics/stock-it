@@ -1,28 +1,45 @@
 import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
-import Form from "react-bootstrap/Form";
 import { TiArrowBack } from "react-icons/ti";
-import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import axiosInstance from "../../../apis/axiosInstance";
 
 Modal.setAppElement("#root");
 
-const IpoStatusEditModal = ({ closeModal, modalIsOpen }) => {
-//   const [complaint, setComplaint] = useState("");
+const IpoStatusEditModal = ({
+  closeModal,
+  modalIsOpen,
+  ipoStatus,
+  getIpoData,
+}) => {
+  //   const [complaint, setComplaint] = useState("");
 
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     console.log("Complaint submitted:", complaint);
-//     // Add your submission logic here
-//     setComplaint("");
-//     closeModal();
-//   };
-const [totalShares, setTotalNoShares] = useState("");
+  //   const handleSubmit = (event) => {
+  //     event.preventDefault();
+  //     console.log("Complaint submitted:", complaint);
+  //     // Add your submission logic here
+  //     setComplaint("");
+  //     closeModal();
+  //   };
+  const [totalShares, setTotalNoShares] = useState("");
   const [costPerShare, setCostPerShare] = useState("");
   const [totalMarketCap, setTotalMarketCap] = useState(0);
   const [companyId, setCompanyId] = useState(null);
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (ipoStatus.costPerShare) {
+      setCostPerShare(ipoStatus.costPerShare);
+    }
+    if (ipoStatus.totalMarketCap) {
+      setTotalMarketCap(ipoStatus.totalMarketCap);
+    }
+    if (ipoStatus.totalShares) {
+      setTotalNoShares(ipoStatus.totalShares);
+    }
+  }, [ipoStatus]);
   useEffect(() => {
     let companyId = localStorage.getItem("stock_it_companyId") || null;
     if (companyId) {
@@ -33,6 +50,7 @@ const [totalShares, setTotalNoShares] = useState("");
       navigate("/companyLogin");
     }
   }, []);
+
   useEffect(() => {
     const cap = totalShares * costPerShare;
     if (isNaN(cap)) {
@@ -90,38 +108,39 @@ const [totalShares, setTotalNoShares] = useState("");
     const ipoData = {
       totalShares,
       costPerShare: costPerShare,
-      companyId: companyId,
       capitation: totalMarketCap,
     };
     sendDataToServer(ipoData);
+    console.log("hi", ipoData);
   };
-  useEffect(() => {
-    let companyId = localStorage.getItem("stock_it_companyId") || null;
-
-    if (!companyId) {
-      toast.error("Please login again.");
-      navigate("/companyLogin");
-      return;
-    }
-    companyId = companyId.replace(/['"]+/g, "");
-    getIpoData(companyId);
-  }, []);
-
-  const getIpoData = async (companyId) => {
+  const sendDataToServer = async (ipoData) => {
+    console.log("ippo data", ipoData);
     try {
-      const response = await axiosInstance.get(
-        `/getIpoByCompanyId/${companyId}`
+      const res = await axiosInstance.patch(
+        `/editIPO/${ipoStatus._id}`,
+        ipoData
       );
-      console.log("resp", response);
-      const data = response?.data?.data || null;
-      if (data) {
-        setIpoStatus(data);
+
+      console.log("ippo res", res);
+
+      if (res.status === 200) {
+        toast.success("Your IPO edited successfully");
+
+        return;
       } else {
-        console.log("resposne", response);
+        console.log("response", res);
       }
-      console.log("Response from getIpoStatus api", response.data.data);
     } catch (error) {
-      console.log("Error getting compnaies ipo data", error);
+      const status = error?.response?.status;
+      if (status === 409) {
+        toast.error(error?.response?.data?.message || "Something went wrong.");
+        return;
+      }
+
+      toast.error("Something went wrong");
+    } finally {
+      getIpoData(companyId);
+      closeModal();
     }
   };
   return (
@@ -134,64 +153,65 @@ const [totalShares, setTotalNoShares] = useState("");
         overlayClassName="overlay"
       >
         <div className="d-flex"></div>
-        <Form onSubmit={handleSubmit}>
-          <div className="companystock">
-            <span
-              onClick={closeModal}
-              style={{ color: "#fff", fontSize: "25px", marginLeft: "8%" }}
-            >
-              {" "}
-              <TiArrowBack />
-            </span>
-            <div className="companystock-head">
-              <h3>Edit Company Stock Details</h3>
-            </div>
-            <form className="companystock-inputs" onSubmit={handleSubmit}>
-              <label htmlFor="Totalshares">
-                Total Shares <span className="companystock-star">*</span>
-              </label>
-              <br />
-              <input
-                type="number"
-                value={totalShares}
-                className="ps-3"
-                onChange={handleTotalNoSharesChange}
-                placeholder="Total Shares"
-                min="0"
-                max="1000000000"
-              />
-              <label htmlFor="CostPerShares">
-                Cost Per Share <span className="companystock-star">*</span>
-              </label>
-              <br />
-              <input
-                className="ps-3"
-                type="number"
-                placeholder="Cost Per Share"
-                value={costPerShare}
-                onChange={handleCostPerShareChange}
-                min="0"
-                max="1000000000"
-              />
-              <label htmlFor="TotalMarketCap">
-                Total Market Capitalization{" "}
-                <span className="companystock-star">*</span>
-              </label>
-              <br />
-              <input
-                type="text"
-                className="ps-3"
-                placeholder="Total Market Capitalization"
-                value={totalMarketCap}
-                readOnly
-              />
-              <button type="submit" onClick={handleSubmit}>Submit</button>
-            </form>
+
+        <div className="companystock">
+          <span
+            onClick={closeModal}
+            style={{ color: "#fff", fontSize: "25px", marginLeft: "8%" }}
+          >
+            {" "}
+            <TiArrowBack />
+          </span>
+          <div className="companystock-head">
+            <h3>Edit Company Stock Details</h3>
           </div>
-          {/* <div className="editsubmit-button">
+          <form className="companystock-inputs" onSubmit={handleSubmit}>
+            <label htmlFor="Totalshares">
+              Total Shares <span className="companystock-star">*</span>
+            </label>
+            <br />
+            <input
+              type="number"
+              value={totalShares}
+              className="ps-3"
+              onChange={handleTotalNoSharesChange}
+              placeholder="Total Shares"
+              min="0"
+              max="1000000000"
+            />
+            <label htmlFor="CostPerShares">
+              Cost Per Share <span className="companystock-star">*</span>
+            </label>
+            <br />
+            <input
+              className="ps-3"
+              type="number"
+              placeholder="Cost Per Share"
+              value={costPerShare}
+              onChange={handleCostPerShareChange}
+              min="0"
+              max="1000000000"
+            />
+            <label htmlFor="TotalMarketCap">
+              Total Market Capitalization{" "}
+              <span className="companystock-star">*</span>
+            </label>
+            <br />
+            <input
+              type="text"
+              className="ps-3"
+              placeholder="Total Market Capitalization"
+              value={totalMarketCap}
+              readOnly
+            />
+            <button type="submit" onClick={handleSubmit}>
+              Submit
+            </button>
+          </form>
+        </div>
+        {/* <div className="editsubmit-button">
             <Button variant="secondary">Update</Button>{" "}
           </div> */}
-        </Form>
       </Modal>
     </div>
   );

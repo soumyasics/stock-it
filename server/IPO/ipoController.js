@@ -42,8 +42,8 @@ exports.createIpo = async (req, res) => {
 exports.editIPO = async (req, res) => {
   try {
     const { id } = req.params;
-    const { totalShares, costPerShare, companyId, capitation } = req.body;
-    if (!totalShares || !costPerShare || !companyId || !capitation) {
+    const { totalShares, costPerShare,  capitation } = req.body;
+    if (!totalShares || !costPerShare ||  !capitation) {
       return res.status(400).json({ message: "All fields are required" });
     }
 
