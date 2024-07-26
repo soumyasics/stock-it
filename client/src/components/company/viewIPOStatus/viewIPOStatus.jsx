@@ -119,20 +119,22 @@ export const ViewIPOStatus = () => {
               </ListGroup.Item>
             </ListGroup>
           </Card>
-          <Button
-            className="ipoStatusBtn"
-            style={{ width: "100px", marginTop: "5%" }}
-            variant="success"
-            onClick={editProfile}
-          >
-            Edit
-          </Button>
+          {ipoStatus.costPerShare && (
+            <Button
+              className="ipoStatusBtn"
+              style={{ width: "100px", marginTop: "5%" }}
+              variant="success"
+              onClick={editProfile}
+            >
+              Edit
+            </Button>
+          )}
           <IpoStatusEditModal
-          openModal={openModal}
-          modalIsOpen={modalIsOpen}
-          closeModal={closeModal}
-          ipoStatus={ipoStatus}
-          getIpoData={getIpoData}
+            openModal={openModal}
+            modalIsOpen={modalIsOpen}
+            closeModal={closeModal}
+            ipoStatus={ipoStatus}
+            getIpoData={getIpoData}
           />
         </Col>
         <Col md={6}>

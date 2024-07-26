@@ -83,3 +83,23 @@
 {
     margin-top: 33%;
 }
+.companypasswordInput input {
+    border-radius: 20px !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-right: 0;
+    padding-left: 10px;
+    font-family: "Noto Sans";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+ 
+#basic-addonCompany {
+    height: 34.2px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-left: none !important;
+    background-color: #fff;
+  }

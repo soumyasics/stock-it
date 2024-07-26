@@ -7,6 +7,10 @@ import { useState } from "react";
 import { DateOfBirthSelector } from "./dateOfbirthSelector";
 import axiosMultipartInstance from "../../../apis/axiosMultipartInstance";
 import { toast } from "react-hot-toast";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+import { FaEyeSlash } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 
 const months = [
   "Jan",
@@ -24,6 +28,15 @@ const months = [
 ];
 
 export const UserRegistration = () => {
+  const [showPassword, setShowPassword] = useState(true);
+  const [showPassword1, setShowPassword1] = useState(true);
+
+  const toggleButton = () => {
+    setShowPassword(!showPassword);
+  };
+  const toggleButton1 = () => {
+    setShowPassword1(!showPassword1);
+  };
   const navigate = useNavigate();
   // const [userData, setUserData] = useState({
   //   firstName: "fname",
@@ -435,19 +448,37 @@ export const UserRegistration = () => {
 
                   <div className="row fieldgap">
                     <div className="col">
-                      <label htmlFor="password">password</label>
-                      <input
+                      <label htmlFor="password">Password</label>
+                      {/* <input
                         type="password"
                         className="form-control"
                         placeholder="Enter Password"
                         onChange={handleChanges}
                         name="password"
                         value={userData.password}
-                      />
+                      /> */}
+                      <InputGroup className="mb-3 userpasswordInput">
+                        <Form.Control
+                          placeholder="Enter Password"
+                          type={showPassword ? "password" : "text"}
+                          aria-label="password"
+                          aria-describedby="basic-addon1"
+                          name="password"
+                          onChange={handleChanges}
+                          value={userData.password}
+                        />
+                        <InputGroup.Text id="basic-addonUser">
+                          {showPassword ? (
+                            <FaEyeSlash onClick={toggleButton} />
+                          ) : (
+                            <FaEye onClick={toggleButton} />
+                          )}
+                        </InputGroup.Text>
+                      </InputGroup>
                     </div>
                     <div className="col">
                       <label htmlFor="confirmpassword">Confirm Password</label>
-                      <input
+                      {/* <input
                         type="password"
                         className="form-control"
                         placeholder="Re Enter Password"
@@ -455,7 +486,25 @@ export const UserRegistration = () => {
                         onChange={handleChanges}
                         name="confirmPassword"
                         value={userData.confirmPassword}
-                      />
+                      /> */}
+                           <InputGroup className="mb-3 userpasswordInput">
+                        <Form.Control
+                          placeholder="Re Enter Password"
+                          type={showPassword1 ? "password" : "text"}
+                          aria-label="password"
+                          aria-describedby="basic-addon1"
+                          name="confirmPassword"
+                          onChange={handleChanges}
+                          value={userData.confirmPassword}
+                        />
+                        <InputGroup.Text id="basic-addonUser">
+                          {showPassword1 ? (
+                            <FaEyeSlash onClick={toggleButton1} />
+                          ) : (
+                            <FaEye onClick={toggleButton1} />
+                          )}
+                        </InputGroup.Text>
+                      </InputGroup>
                     </div>
 
                     <div className="col">

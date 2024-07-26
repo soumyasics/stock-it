@@ -170,3 +170,23 @@
 .login-link a:hover {
   text-decoration: underline;
 }
+.etpasswordInput input {
+  border-radius: 20px !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-right: 0;
+  padding-left: 10px;
+  font-family: "Noto Sans";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+#basic-addonEt {
+  height: 37px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-left: none !important;
+  background-color: #fff;
+}
