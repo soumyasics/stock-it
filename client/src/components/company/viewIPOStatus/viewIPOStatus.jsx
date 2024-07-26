@@ -1,11 +1,32 @@
 import { useEffect, useState } from "react";
 import axiosInstance from "../../../apis/axiosInstance";
-import { Card, Col, Image, ListGroup, Row, Table } from "react-bootstrap";
+import {
+  Button,
+  Card,
+  Col,
+  Image,
+  ListGroup,
+  Row,
+  Table,
+} from "react-bootstrap";
 import ipoImage1 from "../../../assets/images/ipo-1.png";
 import "./viewStatus.css";
+import IpoStatusEditModal from "../ipoStatusEdit/ipoStatusEdit";
 export const ViewIPOStatus = () => {
   const [ipoStatus, setIpoStatus] = useState(null);
   console.log("ipo", ipoStatus);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [userData, setUserData] = useState({});
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+  const editProfile = () => {
+    openModal();
+  };
   useEffect(() => {
     let companyId = localStorage.getItem("stock_it_companyId") || null;
 
@@ -41,7 +62,9 @@ export const ViewIPOStatus = () => {
       <Row className=" mx-auto mt-5" style={{ width: "90%" }}>
         <Col md={6} className="company-ipo-status shadow p-3">
           <Card style={{ width: "18rem" }}>
-            <Card.Header className="capitalizeText text-center fw-bold">{ipoStatus?.companyId?.name?.substring(0, 20)} IPO Status</Card.Header>
+            <Card.Header className="capitalizeText text-center fw-bold">
+              {ipoStatus?.companyId?.name?.substring(0, 20)} IPO Status
+            </Card.Header>
             <ListGroup variant="flush">
               <ListGroup.Item>
                 {" "}
@@ -96,6 +119,19 @@ export const ViewIPOStatus = () => {
               </ListGroup.Item>
             </ListGroup>
           </Card>
+          <Button
+            className="ipoStatusBtn"
+            style={{ width: "100px", marginTop: "5%" }}
+            variant="success"
+            onClick={editProfile}
+          >
+            Edit
+          </Button>
+          <IpoStatusEditModal
+          openModal={openModal}
+          modalIsOpen={modalIsOpen}
+          closeModal={closeModal}
+          />
         </Col>
         <Col md={6}>
           <Image className="w-75" src={ipoImage1} alt="ipo" />
