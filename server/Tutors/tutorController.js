@@ -88,6 +88,14 @@ const getAllTutors = async (req, res) => {
     return res.status(500).json({ msg: error.message });
   }
 };
+const getAllApprovedTutors = async (req, res) => {
+  try {
+    const tutors = await TutorModel.find({ adminApproved: "approve" });
+    return res.status(200).json({ msg: "All tutors", data: tutors });
+  } catch (error) {
+    return res.status(500).json({ msg: error.message });
+  }
+};
 const getAllPendingTutors = async (req, res) => {
   try {
     const tutors = await TutorModel.find({ adminApproved: "pending" });
@@ -357,5 +365,7 @@ module.exports = {
   upload,
   getAllPendingTutors,
   searchTutorByName,
-  forgotPassword,editTutorById
+  forgotPassword,
+  editTutorById,
+  getAllApprovedTutors
 };

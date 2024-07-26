@@ -10,6 +10,8 @@ const buyStockController = require("./buyStocks/buyStocksController");
 const CompanyArticleController = require("./companyArticle/articleController")
 const CompanyComplaintController = require("./complaintCompanies/complaintCompanyController")
 const UserComplaintController = require("./complaintUsers/complaintUsers.js");
+const ETCompalintController = require("./complaintEts/complaintETController.js")
+
 router.get("/", (req, res) => {
   return res.send({ message: "Stock it Server working" });
 });
@@ -76,6 +78,7 @@ router.post("/adminRejectTutorById/:id", ET.adminRejectTutorById);
 router.post("/deleteTutorById/:id", ET.deleteTutorById);
 router.post("/tutor-forgot-password", ET.forgotPassword);
 router.post("/editTutorById/:id", ET.editTutorById);
+router.get("/getAllApprovedTutors", ET.getAllApprovedTutors);
 // Article routes
 router.post(
   "/createArticle",
@@ -118,5 +121,11 @@ router.get("/getComplaintById/:id", CompanyComplaintController.getComplaintById)
 router.post("/user-createComplaint", UserComplaintController.createComplaint);
 router.get("/user-getAllComplaints", UserComplaintController.getAllComplaints);
 router.get("/user-getComplaintById/:id", UserComplaintController.getComplaintById);
+
+// et complaints 
+router.post("/createComplaintET", ETCompalintController.createComplaintET);
+router.get("/getAllComplaintsET", ETCompalintController.getAllComplaintsET);
+router.get("/getComplaintById/:id", ETCompalintController.getComplaintByIdET);
+
 
 module.exports = router;
