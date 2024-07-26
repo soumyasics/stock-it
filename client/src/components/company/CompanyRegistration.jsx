@@ -7,8 +7,20 @@ import CommonNavbar from "../common/commonNavbar";
 import { Footer2 } from "../common/footer2/footer2";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+import { FaEyeSlash } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 
 function CompanyRegistration() {
+  const [showPassword, setShowPassword] = useState(true);
+  const [showPassword1, setShowPassword1] = useState(true);
+  const toggleButton = () => {
+    setShowPassword(!showPassword);
+  };
+  const toggleButton1 = () => {
+    setShowPassword1(!showPassword1);
+  };
   const navigate = useNavigate();
   const [companyData, setCompanyData] = useState({
     name: "",
@@ -162,18 +174,18 @@ function CompanyRegistration() {
       return;
     }
 
-    if(pincode.length!==6){
-      toast.error("Please enter 6 digit pincode")
+    if (pincode.length !== 6) {
+      toast.error("Please enter 6 digit pincode");
       formIsValid = false;
       return;
     }
-    if(year.length!==4){
-      toast.error("Year should be 4 digit")
+    if (year.length !== 4) {
+      toast.error("Year should be 4 digit");
       formIsValid = false;
-      return
+      return;
     }
-    if(regNo.length!==10){
-      toast.error("Please enter 10 digit registration number")
+    if (regNo.length !== 10) {
+      toast.error("Please enter 10 digit registration number");
       formIsValid = false;
       return;
     }
@@ -208,7 +220,6 @@ function CompanyRegistration() {
       formIsValid = false;
       return;
     }
-    
 
     if (formIsValid) {
       sendDataToServer(formData);
@@ -412,7 +423,7 @@ function CompanyRegistration() {
                   <div className="row g-3">
                     <div className="col-md-6">
                       <label className="form-label">Password</label>
-                      <input
+                      {/* <input
                         type="password"
                         name="password"
                         className="form-control CompanyRegistration-inp"
@@ -420,11 +431,30 @@ function CompanyRegistration() {
                         required
                         value={companyData.password}
                         onChange={handleChange}
-                      />
+                      /> */}
+                      <InputGroup className="mb-3 companypasswordInput">
+                        <Form.Control
+                          placeholder="Enter Password"
+                          type={showPassword ? "password" : "text"}
+                          aria-label="password"
+                          aria-describedby="basic-addon1"
+                          name="password"
+                          required
+                          onChange={handleChange}
+                          value={companyData.password}
+                        />
+                        <InputGroup.Text id="basic-addonCompany">
+                          {showPassword ? (
+                            <FaEyeSlash onClick={toggleButton} />
+                          ) : (
+                            <FaEye onClick={toggleButton} />
+                          )}
+                        </InputGroup.Text>
+                      </InputGroup>
                     </div>
                     <div className="col-md-6">
                       <label className="form-label">Confirm Password</label>
-                      <input
+                      {/* <input
                         type="password"
                         className="form-control CompanyRegistration-inp"
                         placeholder="Re-enter Password"
@@ -432,7 +462,25 @@ function CompanyRegistration() {
                         name="confirmPassword"
                         value={companyData.confirmPassword}
                         onChange={handleChange}
-                      />
+                      /> */}
+                            <InputGroup className="mb-3 companypasswordInput">
+                        <Form.Control
+                          placeholder="Re Enter Password"
+                          type={showPassword1 ? "password" : "text"}
+                          aria-label="password"
+                          aria-describedby="basic-addon1"
+                          name="confirmPassword"
+                          onChange={handleChange}
+                          value={companyData.confirmPassword}
+                        />
+                        <InputGroup.Text id="basic-addonCompany">
+                          {showPassword1 ? (
+                            <FaEyeSlash onClick={toggleButton1} />
+                          ) : (
+                            <FaEye onClick={toggleButton1} />
+                          )}
+                        </InputGroup.Text>
+                      </InputGroup>
                     </div>
                   </div>
                   <button className="my-5 CompanyRegistration-button">

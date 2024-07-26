@@ -6,8 +6,20 @@ import { Footer2 } from "../../common/footer2/footer2";
 import { toast } from "react-hot-toast";
 import axiosMultipartInstance from "../../../apis/axiosMultipartInstance";
 import { Navigate, useNavigate } from "react-router-dom";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+import { FaEyeSlash } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 
 function EtSignup() {
+  const [showPassword, setShowPassword] = useState(true);
+  const [showPassword1, setShowPassword1] = useState(true);
+  const toggleButton = () => {
+    setShowPassword(!showPassword);
+  };
+  const toggleButton1 = () => {
+    setShowPassword1(!showPassword1);
+  };
   const navigate = useNavigate();
   const redirectToEtLogin = () => {
     navigate("/etlogin");
@@ -75,9 +87,9 @@ function EtSignup() {
       toast.error("Contact Number is required");
       return false;
     }
-    if(contactNumber.length!==10){
-      toast.error("Contact Number should be 10 digits")
-      return false
+    if (contactNumber.length !== 10) {
+      toast.error("Contact Number should be 10 digits");
+      return false;
     }
     if (!email) {
       toast.error("Email is required");
@@ -129,7 +141,7 @@ function EtSignup() {
     formData.append("fullName", fullName);
     formData.append("gender", gender);
     formData.append("qualification", qualification),
-    formData.append("specification", specification);
+      formData.append("specification", specification);
     formData.append("experience", experience);
     formData.append("contactNumber", contactNumber);
     formData.append("email", email);
@@ -321,25 +333,61 @@ function EtSignup() {
                   <div className="row fieldgap">
                     <div className="col mt-4">
                       <label htmlFor="password">Password</label>
-                      <input
+                      {/* <input
                         type="password"
                         className="form-control"
                         placeholder="Enter Password"
                         name="password"
                         value={etData.password}
                         onChange={handleChanges}
-                      />
+                      /> */}
+                      <InputGroup className="mb-3 etpasswordInput">
+                        <Form.Control
+                          placeholder="Enter Password"
+                          type={showPassword ? "password" : "text"}
+                          aria-label="password"
+                          aria-describedby="basic-addon1"
+                          name="password"
+                          onChange={handleChanges}
+                          value={etData.password}
+                        />
+                        <InputGroup.Text id="basic-addonEt">
+                          {showPassword ? (
+                            <FaEyeSlash onClick={toggleButton} />
+                          ) : (
+                            <FaEye onClick={toggleButton} />
+                          )}
+                        </InputGroup.Text>
+                      </InputGroup>
                     </div>
                     <div className="col mt-4">
                       <label htmlFor="confirmpassword">Confirm Password</label>
-                      <input
+                      {/* <input
                         type="password"
                         className="form-control"
                         placeholder="Re Enter Password"
                         name="confirmPassword"
                         value={etData.confirmPassword}
                         onChange={handleChanges}
-                      />
+                      /> */}
+                      <InputGroup className="mb-3 etpasswordInput">
+                        <Form.Control
+                          placeholder="Re Enter Password"
+                          type={showPassword1 ? "password" : "text"}
+                          aria-label="password"
+                          aria-describedby="basic-addon1"
+                          name="confirmPassword"
+                          onChange={handleChanges}
+                          value={etData.confirmPassword}
+                        />
+                        <InputGroup.Text id="basic-addonEt">
+                          {showPassword1 ? (
+                            <FaEyeSlash onClick={toggleButton1} />
+                          ) : (
+                            <FaEye onClick={toggleButton1} />
+                          )}
+                        </InputGroup.Text>
+                      </InputGroup>
                     </div>
                   </div>
                   <div className="col mt-4">
@@ -360,7 +408,15 @@ function EtSignup() {
                   <button type="submit">Register</button>
                   <p className="login-link">
                     Already have an account?
-                    <span className="text-primary" style={{fontFamily: "Noto Sans", fontSize:"18px",   cursor: "pointer"}} onClick={redirectToEtLogin}>
+                    <span
+                      className="text-primary"
+                      style={{
+                        fontFamily: "Noto Sans",
+                        fontSize: "18px",
+                        cursor: "pointer",
+                      }}
+                      onClick={redirectToEtLogin}
+                    >
                       Login Now{" "}
                     </span>
                   </p>
