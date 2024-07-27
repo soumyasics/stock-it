@@ -9,7 +9,7 @@ import { Footer2 } from "./footer2/footer2";
 function About() {
   return (
     <>
-      <div className="about-background">
+      <div className="about-background2">
         <h5 className=" about-heading">
           Invest in everything
           <br />
@@ -28,12 +28,11 @@ function About() {
           <br />a community of knowledgeable and confident market participants.
         </p>
 
-        <p className="about-pargaraph">
+        <p className="about-pargaraph p-5">
           To democratize access to the stock market by providing an intuitive,
           data-driven platform that offers real-time information, advanced
-          analytics, and <br />
-          personalized insights, empowering users to make informed investment
-          decisions and achieve financial growth.
+          analytics, and personalized insights, empowering users to make
+          informed investment decisions and achieve financial growth.
         </p>
         <div className="row about-middle-box">
           <div className="col">
@@ -65,34 +64,34 @@ function About() {
             </p>
           </div>
         </div>
-        <h4 className="about-ourVision">Our Vision</h4>
+        <h4 className="">Our Vision</h4>
 
         <div className="row about-second-last-box">
           <div className="col ">
-            <div className="about-second-last-inner-box">
-              <p> Cost-Effective Solution</p>
+            <div className="about-second-last-inner-box2">
+              <span> Cost-Effective Solution</span>
             </div>{" "}
             <br />
-            <div className="about-second-last-inner-box">
-              <p>Tailored Investment Strategies</p>
+            <div className="about-second-last-inner-box2">
+              <span>Tailored Investment Strategies</span>
             </div>
           </div>
           <div className="col">
-            <div className="about-second-last-inner-box">
-              <p>Strategic Market Engagement</p>
+            <div className="about-second-last-inner-box2">
+              <span>Strategic Market Engagement</span>
             </div>
             <br />
-            <div className="about-second-last-inner-box">
-              <p>Accessibility and Support</p>
+            <div className="about-second-last-inner-box2">
+              <span>Accessibility and Support</span>
             </div>
           </div>
           <div className="col">
-            <div className="about-second-last-inner-box">
-              <p>Real-Time Insights</p>
+            <div className="about-second-last-inner-box2">
+              <span>Real-Time Insights</span>
             </div>
             <br />
-            <div className="about-second-last-inner-box">
-              <p>Innovation and Adaptability</p>
+            <div className="about-second-last-inner-box2">
+              <span>Innovation and Adaptability</span>
             </div>
           </div>
         </div>
@@ -103,66 +102,51 @@ function About() {
           and fostering <br />a community of knowledgeable and confident market
           participants.
         </p>
-        <div className="row about-last-box">
+        <div className="row about-last-box2 pb-3">
           <div className="col ">
             <div className="about-4-box">
               <p className="about-4 display-1">4</p>
               <span className="about-core">
                 core <br /> values
               </span>
-              <span className="about-core-text">
-                The key decision-making <br /> criteria for all.z
-              </span>
+           
             </div>
           </div>
           <div className="col">
             <div className="about-last-inner-box">
               <p className="about-last-inner-box-head">Clients First</p>
-              <p className="about-last-inner-box-text ">
-                Our clients' success is paramount - their success <br />
-                is our success. We build and nurture long-term <br />
-                relationships with our clients by using our proven <br />
-                investment strategies.
+              <p className="about-last-inner-box-text mt-3">
+                Our clients' success is paramount - their success is our
+                success.
               </p>
             </div>
 
             <div className="about-last-inner-box">
               <p className="about-last-inner-box-head">Objectivity</p>
-              <p className="about-last-inner-box-text">
+              <p className="about-last-inner-box-text mt-3">
                 We assess every investment opportunity <br />
                 objectively and with total impartiality. <br />
-                Our independence sets us apart and helps ensure <br />
-                that our decisions are aligned with the needs <br />
-                of our clients.
               </p>
             </div>
           </div>
           <div className="col">
             <div className="about-last-inner-box">
               <p className="about-last-inner-box-head">Teamwork</p>
-              <p className="about-last-inner-box-text">
+              <p className="about-last-inner-box-text mt-3">
                 Success is built on respect for each individual. <br />
-                It is our aim to create a true meritocracy in <br />
-                which talent and achievement are rewarded <br />
-                and opportunity is equally available to all.
               </p>
             </div>
             <div className="about-last-inner-box">
               <p className="about-last-inner-box-head">Citizenship</p>
-              <p className="about-last-inner-box-text">
-                we are profoundly aware of our responsibilities. <br />
-                As a good corporate citizen, we aim to give back <br />
-                to the communities in which we live and actively <br />
-                support and participate in a range of initiatives <br />
-                within them.
+              <p className="about-last-inner-box-text mt-3">
+                we are profoundly aware of our responsibilities.
               </p>
             </div>
           </div>
         </div>
       </div>
       <div className="">
-      <Footer2 />
-
+        <Footer2 />
       </div>
     </>
   );

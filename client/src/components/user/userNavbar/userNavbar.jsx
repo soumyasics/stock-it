@@ -98,7 +98,7 @@ export const UserNavbar = () => {
           </a>
           <div
             className="commonNavbar-right user-navbar d-flex  align-items-center justify-content-between"
-            style={{ width: "500px" }}
+            
           >
             <h6 className="text-light fw-bold" onClick={redirectUserHome}>
               Home

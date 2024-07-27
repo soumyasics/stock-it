@@ -34,12 +34,11 @@ export const UserHomePage = () => {
             participants.
           </p>
 
-          <p className="about-pargaraph">
+          <p className="about-pargaraph p-5">
             To democratize access to the stock market by providing an intuitive,
             data-driven platform that offers real-time information, advanced
-            analytics, and <br />
-            personalized insights, empowering users to make informed investment
-            decisions and achieve financial growth.
+            analytics, and personalized insights, empowering users to make
+            informed investment decisions and achieve financial growth.
           </p>
           <div className="row about-middle-box">
             <div className="col">
@@ -100,11 +99,11 @@ export const UserHomePage = () => {
               </div>
             </div>
           </div>
-          <p className="about-pargaraph2">
+          <p className="about-pargaraph2 p-5">
             {" "}
             To empower investors of all levels with real-time, insightful, and
             personalized financial information, enabling informed
-            decision-making and fostering <br />a community of knowledgeable and
+            decision-making and fostering a community of knowledgeable and
             confident market participants.
           </p>
           <div className="row about-last-box2 pb-3">
@@ -113,9 +112,6 @@ export const UserHomePage = () => {
                 <p className="about-4 display-1">4</p>
                 <span className="about-core">
                   core <br /> values
-                </span>
-                <span className="about-core-text">
-                  The key decision-making <br /> criteria for all.z
                 </span>
               </div>
             </div>
@@ -145,9 +141,8 @@ export const UserHomePage = () => {
               </div>
               <div className="about-last-inner-box">
                 <p className="about-last-inner-box-head">Citizenship</p>
-                <p className="about-last-inner-box-text mt-3" >
-                  we are profoundly aware of our responsibilities. 
-                  
+                <p className="about-last-inner-box-text mt-3">
+                  we are profoundly aware of our responsibilities.
                 </p>
               </div>
             </div>

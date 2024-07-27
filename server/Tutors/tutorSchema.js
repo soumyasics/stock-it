@@ -52,6 +52,10 @@ const tSchema = new Schema({
     enum: ["pending", "approve", "reject"],
     default: "pending",
   },
+  rating: {
+    type: Number,
+    default: 0
+  }
 });
 
 const TutorModel = mongoose.model("tutors", tSchema);
