@@ -1,61 +1,69 @@
 import ReactStars from "react-rating-stars-component";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
-export const TutorRating = ({ freelancerId }) => {
-
+import axiosInstance from "../../../apis/axiosInstance";
+export const TutorRating = ({ etId }) => {
+  const [userId, setUserId] = useState();
   const [reviewData, setReviewData] = useState({
     rating: 0,
     review: "",
     userId: "",
-    freelancerId: "",
+    etId: "",
   });
 
-//   useEffect(() => {
-//     setReviewData({
-//       ...reviewData,
-//       userId,
-//       freelancerId,
-//     });
-//   }, [userId, freelancerId]);
+  useEffect(() => {
+    const userId = localStorage.getItem("stock_it_userId") || null;
+    if (userId) {
+      setUserId(userId);
+    } else {
+      toast.error("Please Login");
+    }
+    setReviewData({
+      ...reviewData,
+      userId,
+      etId,
+    });
+  }, [userId, etId]);
 
-//   console.log("review ", reviewData)
-//   const changeReview = (e) => {
-//     const { name, value } = e.target;
-//     setReviewData({ ...reviewData, [name]: value });
-//   };
+  console.log("review ", reviewData);
+  const changeReview = (e) => {
+    const { name, value } = e.target;
+    setReviewData({ ...reviewData, [name]: value });
+  };
 
-//   const ratingChanged = (newRating) => {
-//     setReviewData({ ...reviewData, rating: newRating });
-//   };
+  const ratingChanged = (newRating) => {
+    setReviewData({ ...reviewData, rating: newRating });
+  };
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     if (reviewData.review !== "" && reviewData.rating !== 0) {
-//       console.log("review dat", reviewData);
-//       sendDataToServer();
-//     } else {
-//       toast.error("Please provide a review and rating");
-//     }
-//   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (reviewData.review !== "" && reviewData.rating !== 0) {
+      console.log("review dat", reviewData);
+      sendDataToServer();
+    } else {
+      toast.error("Please provide a review and rating");
+    }
+  };
 
-//   const sendDataToServer = async () => {
-//     try {
-//       const res = await axiosInstance.post("addRating", reviewData);
-//       if (res.status === 200) {
-//         toast.success("Review added successfully");
-//         setReviewData({ ...reviewData, review: "", rating: 0 });
-//       } else {
-//         throw new Error("Couldn't add review");
-//       }
-//     } catch (error) {
-//       toast.error("Couldn't add review");
-//     }
-//   };
+  const sendDataToServer = async () => {
+    try {
+      const res = await axiosInstance.post("/addRating", reviewData);
+      if (res.status === 200) {
+        toast.success("Review added successfully");
+        setReviewData({ ...reviewData, review: "", rating: 0 });
+      } else {
+        throw new Error("Couldn't add review");
+      }
+    } catch (error) {
+      toast.error("Couldn't add review");
+    }
+  };
   return (
     <div>
       <div
         className="mt-3 mx-auto shadow p-3"
         style={{
+          background: "#374151",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -64,17 +72,17 @@ export const TutorRating = ({ freelancerId }) => {
         }}
       >
         <div>
-          <h5 className="text-center ">Review your experience </h5>
+          <h5 className="text-center text-light">Review your experience </h5>
         </div>
         <ReactStars
           count={5}
-        //   onChange={ratingChanged}
+            onChange={ratingChanged}
           size={30}
           activeColor="#ffd700"
         />
         <form
           className="d-flex justify-content-center align-items-center mt-4"
-        //   onSubmit={handleSubmit}
+            onSubmit={handleSubmit}
         >
           <input
             type="text"
@@ -82,7 +90,7 @@ export const TutorRating = ({ freelancerId }) => {
             value={reviewData.review}
             id="review"
             name="review"
-            // onChange={changeReview}
+            onChange={changeReview}
             placeholder="Write a review"
             className="form-control"
           />

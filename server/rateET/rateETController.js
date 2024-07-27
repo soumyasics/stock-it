@@ -35,14 +35,14 @@ const addRating = async (req, res) => {
       return acc + curr.rating;
     }, 0);
 
-    freelancer.rating = totalRates / prevRatings.length;;
-    await freelancer.save();
+    // freelancer.rating = totalRates / prevRatings.length;;
+    // await freelancer.save();
     
 
     return res.status(200).json({
       message: "Rating added successfully",
       success: true,
-      currentRating: freelancer.rating ,
+      // currentRating: freelancer.rating ,
     });
   } catch (error) {
     return res.status(500).json({

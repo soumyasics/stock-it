@@ -92,6 +92,7 @@ import AdminViewEtComplaint from "./components/Admin/adminViewEtComplaint/adminV
 import AdminViewEtComplaintDetail from "./components/Admin/adminViewEtComplaintDetail/adminViewEtComplaintDetail";
 import AdminViewBroughtStock from "./components/Admin/adminViewBroughtStock/adminViewBroughtStock";
 import { TutorRating } from "./components/user/userRatingTutor/userRatingTutor";
+import AdminViewEtRating from "./components/Admin/adminEtRating/adminViewEtRating";
 
 function App() {
   return (
@@ -238,6 +239,7 @@ function App() {
             element={<AdminViewEtComplaintDetail />}
           />
           <Route path="/adminViewBroughtStock" element={<AdminViewBroughtStock/>}/>
+          <Route path="/adminViewEtRating" element={<AdminViewEtRating/>}/>
           {/* et-new */}
           <Route path="/etdashboard" element={<Etdashboard />} />
           <Route path="/etsidebar" element={<Etsidebar />} />

@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import UserComplaintModal from "../userComplaintTutor/userComplaintTutor";
 import toast from "react-hot-toast";
 import { UserNavbar } from "../userNavbar/userNavbar";
+import { TutorRating } from "../userRatingTutor/userRatingTutor";
 
 function UserViewEtDetail() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -50,7 +51,7 @@ function UserViewEtDetail() {
     <div>
       <UserNavbar/>
       <div>
-        <div className="adminViewUserDetail-bg py-5">
+        <div className="userViewTutorDetail-bg py-5">
           <Row>
             <Col>
               <img src={tutorImg} alt="" />
@@ -132,8 +133,10 @@ function UserViewEtDetail() {
                   
                 />
               </div>
+              
             </Col>
           </Row>
+        <TutorRating etId={id}/>
         </div>
       </div>
     </div>

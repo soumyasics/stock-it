@@ -35,3 +35,12 @@
     color: #FFF;
     background: linear-gradient(109deg, #CACACA 7.86%, #787373 94.87%);
 }
+.adminSidebar-rating-grid{
+    display: flex;
+    color: #FFF;
+}
+.clickable-item-rating{
+    font-size: 15px;
+    margin:2% 10%;
+   
+}
