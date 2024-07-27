@@ -104,7 +104,9 @@ function Etsidebar({ changePage }) {
               <td>
                 <img src={img2} alt="icon" />
               </td>
-              <td>
+              <td onClick={() => {
+                navigate("/etSubs")
+              }}>
                 <h6>Subscribers</h6>
               </td>
             </tr>

@@ -93,6 +93,7 @@ import AdminViewEtComplaintDetail from "./components/Admin/adminViewEtComplaintD
 import AdminViewBroughtStock from "./components/Admin/adminViewBroughtStock/adminViewBroughtStock";
 import { TutorRating } from "./components/user/userRatingTutor/userRatingTutor";
 import AdminViewEtRating from "./components/Admin/adminEtRating/adminViewEtRating";
+import { ViewETSubs } from "./components/educational-tutors/et-viewSubs/et-viewsubs";
 
 function App() {
   return (
@@ -245,6 +246,7 @@ function App() {
           <Route path="/etsidebar" element={<Etsidebar />} />
           <Route path="/etnavbar" element={<Etnavbar />} />
           <Route path="/etForgotpassword" element={<EtForgotpassword />} />
+          <Route path="/etSubs" element={<ViewETSubs />} />
           <Route path="/addArticle" element={<EtAddArticle />} />
           <Route
             path="/viewEtArticleList/:id"

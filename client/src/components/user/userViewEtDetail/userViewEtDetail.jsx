@@ -11,13 +11,16 @@ import toast from "react-hot-toast";
 import { UserNavbar } from "../userNavbar/userNavbar";
 import { TutorRating } from "../userRatingTutor/userRatingTutor";
 import { ReviewModal } from "./reviewModel";
+import { useNavigate } from "react-router-dom";
 
 function UserViewEtDetail() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [userId, setUserId] = useState({});
+  const [userId, setUserId] = useState("");
   const { id } = useParams();
   const [etData, setEtData] = useState({});
   const [showReview, setShowReview] = useState(false);
+  const [isSubscribed, setIsSubscribed] = useState(false);
+  const navigate = useNavigate();
   const handleClose = () => {
     setShowReview(false);
   };
@@ -38,19 +41,101 @@ function UserViewEtDetail() {
     const userId = localStorage.getItem("stock_it_userId") || null;
     if (userId) {
       setUserId(userId);
+      getTutorById();
     } else {
       toast.error("Please Login");
+      navigate("/userLogin");
     }
-    getTutorById();
   }, []);
   const getTutorById = async () => {
     try {
       const response = await axiosInstance.post(`getTutorById/${id}`);
       if (response.status == 200) {
         setEtData(response.data.data);
+   
       }
     } catch (error) {
-      console.log("Fail on receiving data");
+      console.log("Fail on receiving data", error);
+    }
+  };
+  useEffect(() => {
+    getSubscriptionStatus();
+  }, [id, userId])
+
+  const getSubscriptionStatus = async () => {
+    if (!userId || !id) {
+      return
+    }
+    try {
+      const response = await axiosInstance.post(`getSubscriptionStatus`, {
+        userId,
+        ETId: id,
+      });
+
+      if (response.status == 200) {
+        setIsSubscribed(response.data.suscriptionStatus);
+      }
+    } catch (error) {
+      console.log("Fail on receiving subscription status", error);
+    }
+  };
+
+  const handleSubscribe = async () => {
+    if (id && userId) {
+      try {
+        const res = await axiosInstance.post("/newSubscription", {
+          userId,
+          ETId: id,
+        });
+        if (res.status === 201) {
+          toast.success(res.data.message);
+          getSubscriptionStatus();
+        }
+      } catch (error) {
+        console.log("err", error);
+        const status = error?.response?.status;
+        if (
+          status === 400 ||
+          status === 404 ||
+          status === 409 ||
+          status === 500
+        ) {
+          toast.error(error?.response?.data?.message);
+        } else {
+          toast.error("Something went wrong");
+        }
+      }
+    } else {
+      toast.error("Something went wrong..");
+    }
+  };
+  const handleUnSubscribe = async () => {
+    if (id && userId) {
+      try {
+        const res = await axiosInstance.post("unSubscribe", {
+          userId,
+          ETId: id,
+        });
+        if (res.status === 200) {
+          toast.success(res.data.message);
+          getSubscriptionStatus();
+        }
+      } catch (error) {
+        console.log("err", error);
+        const status = error?.response?.status;
+        if (
+          status === 400 ||
+          status === 404 ||
+          status === 409 ||
+          status === 500
+        ) {
+          toast.error(error?.response?.data?.message);
+        } else {
+          toast.error("Something went wrong");
+        }
+      }
+    } else {
+      toast.error("Something went wrong..");
     }
   };
 
@@ -140,7 +225,15 @@ function UserViewEtDetail() {
                 </table>
               </div>
               <div className="userViewEtDetail-btn ">
-                <Button variant="success ">Subcribe</Button>{" "}
+                {isSubscribed ? (
+                  <Button variant="danger" onClick={handleUnSubscribe}>
+                    Un Subcribe
+                  </Button>
+                ) : (
+                  <Button variant="success" onClick={handleSubscribe}>
+                    Subcribe
+                  </Button>
+                )}
                 <Button className="ms-3" variant="primary" onClick={handleOpen}>
                   View Reviews
                 </Button>

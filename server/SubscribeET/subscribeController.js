@@ -11,12 +11,12 @@ const newSubscription = async (req, res) => {
     }
     const user = await UserModel.findById(userId);
     if (!user) {
-      return res.status(404).json({ message: "Parent not found" });
+      return res.status(404).json({ message: "User not found" });
     }
 
     const et = await TutorModel.findById(ETId);
     if (!et) {
-      return res.status(404).json({ message: "Health Professional not found" });
+      return res.status(404).json({ message: "Educational tutor not found" });
     }
 
     const existingSubscription = await SubscribeModel.findOne({
@@ -33,11 +33,51 @@ const newSubscription = async (req, res) => {
       ETId,
     });
     await newSubscription.save();
-    return res
-      .status(201)
-      .json({ message: "Subscribed", data: newSubscription });
+    return res.status(201).json({
+      message: "You successfully subscribed the educational tutor",
+      data: newSubscription,
+    });
   } catch (error) {
     console.error("Error in  subscribe: ", error);
+    return res
+      .status(500)
+      .json({ message: "Internal server error", error: error.message });
+  }
+};
+const unSubscribe = async (req, res) => {
+  try {
+    const { userId, ETId } = req.body;
+
+    if (!userId || !ETId) {
+      return res.status(400).json({ message: "All fields are required." });
+    }
+    const user = await UserModel.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const et = await TutorModel.findById(ETId);
+    if (!et) {
+      return res.status(404).json({ message: "Educational tutor not found" });
+    }
+
+    const existingSubscription = await SubscribeModel.findOne({
+      userId,
+      ETId,
+    });
+
+    if (!existingSubscription) {
+      return res
+        .status(409)
+        .json({ message: "You have not subscribed this tutor." });
+    }
+
+    await SubscribeModel.findByIdAndDelete(existingSubscription._id);
+    return res.status(200).json({
+      message: "You successfully unsubscribed the educational tutor",
+    });
+  } catch (error) {
+    console.error("Error in unsubscribe subscribe: ", error);
     return res
       .status(500)
       .json({ message: "Internal server error", error: error.message });
@@ -56,7 +96,9 @@ const getAllSubscriptionByUserId = async (req, res) => {
       .populate("userId")
       .exec();
 
-    return res.status(200).json({ message: "Subscriptions", data: subscriptions });
+    return res
+      .status(200)
+      .json({ message: "Subscriptions", data: subscriptions });
   } catch (error) {
     console.error("Error in getAllSubscriptionByParentId: ", error);
     return res
@@ -74,7 +116,7 @@ const getAllSubscriptionByETId = async (req, res) => {
     }
     const subscriptions = await SubscribeModel.find({
       ETId: id,
-    });
+    }).populate("userId").exec();
     return res
       .status(200)
       .json({ message: "Subscriptions", data: subscriptions });
@@ -106,7 +148,7 @@ const getSubscriptionStatus = async (req, res) => {
     const { userId, ETId } = req.body;
 
     if (!userId || !ETId) {
-      return res.status(400).json({ message: "Parent id and HP id required." });
+      return res.status(400).json({ message: "All fields are required." });
     }
     if (!mongoose.Types.ObjectId.isValid(userId)) {
       return res.status(400).json({ message: "Invalid userId" });
@@ -143,4 +185,5 @@ module.exports = {
   getAllSubscriptionByETId,
   getSubscriptionStatus,
   getAllSubscriptions,
+  unSubscribe
 };

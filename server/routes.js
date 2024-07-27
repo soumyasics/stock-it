@@ -12,6 +12,7 @@ const CompanyComplaintController = require("./complaintCompanies/complaintCompan
 const UserComplaintController = require("./complaintUsers/complaintUsers.js");
 const ETCompalintController = require("./complaintEts/complaintETController.js");
 const RatingController = require("./rateET/rateETController.js");
+const ETSubscriptionController = require("./SubscribeET/subscribeController.js")
 router.get("/", (req, res) => {
   return res.send({ message: "Stock it Server working" });
 });
@@ -150,5 +151,16 @@ router.get("/getComplaintByIdET/:id", ETCompalintController.getComplaintByIdET);
 router.post("/addRating", RatingController.addRating);
 router.get("/getAllRating", RatingController.getAllRating);
 router.get("/getAllRatingByETId/:id", RatingController.getAllRatingByETId);
+
+
+// et subscription
+router.post("/newSubscription", ETSubscriptionController.newSubscription);
+router.post("/unSubscribe", ETSubscriptionController.unSubscribe);
+router.get("/getAllSubscriptionByUserId/:id", ETSubscriptionController.getAllSubscriptionByUserId);
+router.get("/getAllSubscriptionByETId/:id", ETSubscriptionController.getAllSubscriptionByETId);
+router.post("/getSubscriptionStatus", ETSubscriptionController.getSubscriptionStatus);
+router.get("/getAllSubscriptions", ETSubscriptionController.getAllSubscriptions);
+
+
 
 module.exports = router;
