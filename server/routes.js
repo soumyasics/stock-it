@@ -126,7 +126,7 @@ router.get("/user-getComplaintById/:id", UserComplaintController.getComplaintByI
 // et complaints 
 router.post("/createComplaintET", ETCompalintController.createComplaintET);
 router.get("/getAllComplaintsET", ETCompalintController.getAllComplaintsET);
-router.get("/getComplaintById/:id", ETCompalintController.getComplaintByIdET);
+router.get("/getComplaintByIdET/:id", ETCompalintController.getComplaintByIdET);
 
 
 module.exports = router;

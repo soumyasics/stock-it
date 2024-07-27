@@ -6,6 +6,7 @@ import { Footer2 } from "../../common/footer2/footer2";
 import AdminNavbar from "../../common/adminNavbar";
 import { AdminOverview } from "../adminOverview/adminOverview";
 import { ETPendingRequest } from "../adminViewAllETPendingRequests/viewAllETPendingRequest";
+import AdminViewBroughtStock from "../adminViewBroughtStock/adminViewBroughtStock";
 export const AdminDashboard = () => {
   const [activePage, setActivePage] = useState("overview");
   const changePage = (value) => {
@@ -26,6 +27,7 @@ export const AdminDashboard = () => {
           {activePage === "et-pending-request" && (
             <ETPendingRequest />
           )}
+         
         </Col>
       </Row>
       <div>
