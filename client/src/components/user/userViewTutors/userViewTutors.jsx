@@ -70,6 +70,9 @@ function UserViewTutors() {
                     </Button>
                     
                   </td>
+                  <TutorRating 
+                 approvedEt={approvedEt}
+                  />
                 </tr>
               );
             })}

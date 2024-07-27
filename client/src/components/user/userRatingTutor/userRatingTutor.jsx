@@ -1,56 +1,63 @@
 import ReactStars from "react-rating-stars-component";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
-export const TutorRating = ({ freelancerId }) => {
+export const TutorRating = ({ etId }) => {
+    const [userId,setUserId]=useState()
 
   const [reviewData, setReviewData] = useState({
     rating: 0,
     review: "",
     userId: "",
-    freelancerId: "",
+    etId: "",
   });
 
-//   useEffect(() => {
-//     setReviewData({
-//       ...reviewData,
-//       userId,
-//       freelancerId,
-//     });
-//   }, [userId, freelancerId]);
+  useEffect(() => {
+    const userId = localStorage.getItem("stock_it_userId") || null;
+    if (userId) {
+      setUserId(userId);
+    } else {
+      toast.error("Please Login");
+    }
+    setReviewData({
+      ...reviewData,
+      userId,
+      etId,
+    });
+  }, [userId, etId]);
 
-//   console.log("review ", reviewData)
-//   const changeReview = (e) => {
-//     const { name, value } = e.target;
-//     setReviewData({ ...reviewData, [name]: value });
-//   };
+  console.log("review ", reviewData)
+  const changeReview = (e) => {
+    const { name, value } = e.target;
+    setReviewData({ ...reviewData, [name]: value });
+  };
 
-//   const ratingChanged = (newRating) => {
-//     setReviewData({ ...reviewData, rating: newRating });
-//   };
+  const ratingChanged = (newRating) => {
+    setReviewData({ ...reviewData, rating: newRating });
+  };
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     if (reviewData.review !== "" && reviewData.rating !== 0) {
-//       console.log("review dat", reviewData);
-//       sendDataToServer();
-//     } else {
-//       toast.error("Please provide a review and rating");
-//     }
-//   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (reviewData.review !== "" && reviewData.rating !== 0) {
+      console.log("review dat", reviewData);
+      sendDataToServer();
+    } else {
+      toast.error("Please provide a review and rating");
+    }
+  };
 
-//   const sendDataToServer = async () => {
-//     try {
-//       const res = await axiosInstance.post("addRating", reviewData);
-//       if (res.status === 200) {
-//         toast.success("Review added successfully");
-//         setReviewData({ ...reviewData, review: "", rating: 0 });
-//       } else {
-//         throw new Error("Couldn't add review");
-//       }
-//     } catch (error) {
-//       toast.error("Couldn't add review");
-//     }
-//   };
+  const sendDataToServer = async () => {
+    try {
+      const res = await axiosInstance.post("addRating", reviewData);
+      if (res.status === 200) {
+        toast.success("Review added successfully");
+        setReviewData({ ...reviewData, review: "", rating: 0 });
+      } else {
+        throw new Error("Couldn't add review");
+      }
+    } catch (error) {
+      toast.error("Couldn't add review");
+    }
+  };
   return (
     <div>
       <div
