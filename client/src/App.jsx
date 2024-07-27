@@ -131,7 +131,7 @@ function App() {
           />
           <Route path="/companyAddArticles" element={<CompanyAddArticle />} />
           <Route
-            path="/companyViewArticles/:id"
+            path="/companyViewArticles/:id/:userType"
             element={<CompanyViewArticle />}
           />
           <Route
@@ -250,7 +250,7 @@ function App() {
             path="/viewEtArticleList/:id"
             element={<EtviewArticleList />}
           />
-          <Route path="/viewEtArticle/:id" element={<EtviewArticle />} />
+          <Route path="/viewEtArticle/:id/:userType" element={<EtviewArticle />} />
           <Route path="/etprofile" element={<EtProfile />} />
 
           {/* new  */}

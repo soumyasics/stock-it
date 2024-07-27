@@ -5,11 +5,12 @@ import { Col, Row } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseUrl";
+import { toast } from "react-hot-toast";
 
 function EtviewArticle() {
   const navigate = useNavigate();
   const [viewArticle, setViewArticle] = useState(null);
-  const { id } = useParams();
+  const { id, userType } = useParams();
   const [videoUrl, setVideoUrl] = useState(null);
   useEffect(() => {
     if (viewArticle) {
@@ -64,6 +65,19 @@ function EtviewArticle() {
     }
   };
 
+  const deleteArticle = async () => {
+    try {
+      const res = await axiosInstance.delete(`deleteArticleById/${id}`);
+      if (res.status === 200) {
+        navigate("/etdashboard");
+        toast.error("Video article deleted successfully.");
+      }
+    } catch (error) {
+      console.error("Network Issue");
+      toast.error("Network issue");
+    }
+  };
+
   return (
     <div>
       <div className="etViewArticle-main">
@@ -108,6 +122,20 @@ function EtviewArticle() {
               <br />
               <br />
               <span>{viewArticle?.conclusion}</span>
+            </div>
+
+            <div className="d-flex mt-5 justify-content-center">
+              {userType === "et" && (
+                <div className="etArticle-deletebtn">
+                  <button
+                    type="button"
+                    onClick={deleteArticle}
+                    className="mx-auto btn btn-outline-danger"
+                  >
+                    Delete
+                  </button>
+                </div>
+              )}
             </div>
           </Col>
         </Row>

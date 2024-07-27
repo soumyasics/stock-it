@@ -5,11 +5,13 @@ import { IoReturnUpBack } from "react-icons/io5";
 import { useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseUrl";
+import {toast} from "react-hot-toast";
 
 function CompanyViewArticle() {
   const navigate = useNavigate();
   const [viewArticle, setViewArticle] = useState(null);
-  const { id } = useParams();
+  const { id, userType } = useParams();
+  console.log("user typ", userType);
   const [videoUrl, setVideoUrl] = useState(null);
   useEffect(() => {
     if (viewArticle) {
@@ -62,7 +64,20 @@ function CompanyViewArticle() {
       console.error("Network Issue");
     }
   };
-  return (
+  const deleteArticle = async () => {
+    try {
+      const res = await axiosInstance.delete(`co-deleteArticleById/${id}`);
+      if (res.status === 200) {
+        navigate("/company-dashboard");
+        toast.error("Video article deleted successfully.");
+      }
+    } catch (error) {
+      console.error("Network Issue");
+      toast.error("Network issue");
+      
+    }
+  }
+  return ( 
     <div>
       <div className="companyViewArticle-main">
         <div className="companyViewArticle-head d-flex gap-4">
@@ -98,7 +113,7 @@ function CompanyViewArticle() {
           <Col md={12} className="companyViewArticle-description ">
             <div className="text-light text-center d-flex justify-content-center mt-5 ">
               <br />
-              <span className="text-capitalize">{viewArticle?.subTitle}</span>
+              <span className="text-capitalize fs-4 mb-4">{viewArticle?.subTitle}</span>
             </div>
             <div className="companyViewArticle-box2 text-light text-justify">
               <span>{viewArticle?.content}</span>
@@ -113,14 +128,18 @@ function CompanyViewArticle() {
                   Edit
                 </button>
               </div> */}
-              <div className="etArticle-deletebtn">
-                <button
-                  type="button"
-                  className="mx-auto btn btn-outline-danger"
-                >
-                  Delete
-                </button>
-              </div>
+
+              {userType === "company" && (
+                <div className="etArticle-deletebtn">
+                  <button
+                    type="button"
+                    onClick={deleteArticle}
+                    className="mx-auto btn btn-outline-danger"
+                  >
+                    Delete
+                  </button>
+                </div>
+              )}
             </div>
           </Col>
         </Row>

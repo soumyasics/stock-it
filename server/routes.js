@@ -86,7 +86,7 @@ router.post(
 router.get("/getAllArticles", ArtilceRoutes.getAllArticles);
 router.post("/getArticleById/:id", ArtilceRoutes.getArticleById);
 router.post("/updateArticleById/:id", ArtilceRoutes.updateArticleById);
-router.post("/deleteArticleById/:id", ArtilceRoutes.deleteArticleById);
+router.delete("/deleteArticleById/:id", ArtilceRoutes.deleteArticleById);
 router.get("/getArticleByTutorId/:id", ArtilceRoutes.getArticleByTutorId);
 
 // company article routes
@@ -102,7 +102,7 @@ router.post(
   "/co-updateArticleById/:id",
   CompanyArticleController.updateArticleById
 );
-router.post(
+router.delete(
   "/co-deleteArticleById/:id",
   CompanyArticleController.deleteArticleById
 );

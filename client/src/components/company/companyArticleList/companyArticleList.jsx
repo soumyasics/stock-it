@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 function CompanyArticleList() {
   const navigate = useNavigate();
   const toViewArticleById = (id) => {
-    navigate(`/companyViewArticles/${id}`);
+    navigate(`/companyViewArticles/${id}/company`);
   };
   const [viewArticle, setViewArticle] = useState([]);
   useEffect(() => {

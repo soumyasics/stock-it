@@ -8,7 +8,7 @@ import { BASE_URL } from "../../../apis/baseUrl";
 export const EtviewArticleList = () => {
   const navigate = useNavigate();
   const toViewArticleById=(id)=>{
-    navigate(`/viewEtArticle/${id}`)
+    navigate(`/viewEtArticle/${id}/et`)
   }
 
   const [viewArticle, setViewArticle] = useState([]);

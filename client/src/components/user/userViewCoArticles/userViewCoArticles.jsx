@@ -9,7 +9,7 @@ function UserViewCoArticles() {
   const [viewArticle, setViewArticle] = useState([]);
   const navigate = useNavigate();
   const toViewArticleById = (id) => {
-    navigate(`/companyViewArticles/${id}`);
+    navigate(`/companyViewArticles/${id}/user`);
   };
   useEffect(() => {
     axiosInstance.get("co-getAllArticles").then((response) => {

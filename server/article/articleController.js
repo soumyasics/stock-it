@@ -109,6 +109,7 @@ const updateArticleById = async (req, res) => {
 
 const deleteArticleById = async (req, res) => {
   try {
+
     const article = await ArticleModel.findByIdAndDelete(req.params.id);
     return res.status(200).json({ message: "Article deleted", data: article });
   } catch (err) {
