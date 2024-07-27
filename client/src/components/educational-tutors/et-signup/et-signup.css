@@ -171,7 +171,7 @@
   text-decoration: underline;
 }
 .etpasswordInput input {
-  border-radius: 20px !important;
+  border-radius: 15px !important;
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
   border-right: 0;
@@ -185,8 +185,8 @@
 
 #basic-addonEt {
   height: 37px;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
   border-left: none !important;
   background-color: #fff;
 }

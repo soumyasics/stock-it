@@ -63,7 +63,7 @@ import { UpcomingCompanies } from "./components/user/viewUpcomingCompanies/upcom
 import { ListedCompanies } from "./components/user/viewUpcomingCompanies/listedCompanies";
 import { BuyStocks } from "./components/user/buyStocks/buyStocks";
 import { StockDetails } from "./components/user/stockDetails/stockDetails";
-import {EtviewArticleList} from "./components/educational-tutors/et-ViewArticleList/et-viewArticleList";
+import { EtviewArticleList } from "./components/educational-tutors/et-ViewArticleList/et-viewArticleList";
 
 import UserViewEtArticle from "./components/user/userViewEtArticles/userViewEtArticle";
 import CompanyArticleList from "./components/company/companyArticleList/companyArticleList";
@@ -86,6 +86,12 @@ import AdminNotification from "./components/Admin/adminNotification/adminNotific
 import EditModal from "./components/user/userEditProfile/userEditProfile";
 import EtProfile from "./components/educational-tutors/etProfile/etProfile";
 import CompanyDivident from "./components/company/companyDivident/companyDivident";
+import UserViewTutors from "./components/user/userViewTutors/userViewTutors";
+import UserViewEtDetail from "./components/user/userViewEtDetail/userViewEtDetail";
+import AdminViewEtComplaint from "./components/Admin/adminViewEtComplaint/adminViewEtComplaint";
+import AdminViewEtComplaintDetail from "./components/Admin/adminViewEtComplaintDetail/adminViewEtComplaintDetail";
+import AdminViewBroughtStock from "./components/Admin/adminViewBroughtStock/adminViewBroughtStock";
+import { TutorRating } from "./components/user/userRatingTutor/userRatingTutor";
 
 function App() {
   return (
@@ -131,9 +137,12 @@ function App() {
             path="/companyAddComplaint"
             element={<CompanyAddComplaint />}
           />
-          <Route path="/companyViewUser" element={<CompanyViewUser/>}/>
-          <Route path="/companyViewUserDetails/:id" element={<CompanyViewUserdetails/>}/>
-          <Route path="companyDividend" element={<CompanyDivident/>}/>
+          <Route path="/companyViewUser" element={<CompanyViewUser />} />
+          <Route
+            path="/companyViewUserDetails/:id"
+            element={<CompanyViewUserdetails />}
+          />
+          <Route path="companyDividend" element={<CompanyDivident />} />
           {/* user pages  */}
           <Route path="/userRegistration" element={<UserRegistration />} />
           <Route path="/userHome" element={<UserHomePage />} />
@@ -156,7 +165,10 @@ function App() {
           <Route path="/tutorArticle" element={<UserViewEtArticle />} />
           <Route path="/companyArticles" element={<UserViewCoArticles />} />
           <Route path="/userProfile" element={<UserProfile />} />
-          <Route path="/editProfile" element={<EditModal/>}/>
+          <Route path="/editProfile" element={<EditModal />} />
+          <Route path="/userViewEt" element={<UserViewTutors />} />
+          <Route path="/userViewEtDetail/:id" element={<UserViewEtDetail />} />
+          <Route path="/userRatingTutor" element={<TutorRating/>}/>
 
           {/* admin pages  */}
           <Route path="/admin" element={<AdminDashboard />} />
@@ -199,13 +211,33 @@ function App() {
             element={<AdminViewUserDetail />}
           />
           {/* admin new */}
-          <Route path="/adminTakeAction" element={<AdminTakeAction/>}/>
-          <Route path="/adminViewCoComplaint" element={<AdminViewCoComplaint/>}/>
-          <Route path="/adminViewCoComplaintDetail/:id" element={<AdminViewCoComplaintDetail/>}/>
-          <Route path="/adminViewUserComplaint" element={<AdminViewUserComplaint/>}/>
-          <Route path="/adminViewUserComplaintDetails/:id" element={<AdminViewUserComplaintDetails/>}/>
-          <Route path="/adminNotification" element={<AdminNotification/>}/>
-
+          <Route path="/adminTakeAction" element={<AdminTakeAction />} />
+          <Route
+            path="/adminViewCoComplaint"
+            element={<AdminViewCoComplaint />}
+          />
+          <Route
+            path="/adminViewCoComplaintDetail/:id"
+            element={<AdminViewCoComplaintDetail />}
+          />
+          <Route
+            path="/adminViewUserComplaint"
+            element={<AdminViewUserComplaint />}
+          />
+          <Route
+            path="/adminViewUserComplaintDetails/:id"
+            element={<AdminViewUserComplaintDetails />}
+          />
+          <Route path="/adminNotification" element={<AdminNotification />} />
+          <Route
+            path="/adminViewEtComplaint"
+            element={<AdminViewEtComplaint />}
+          />
+          <Route
+            path="/adminViewEtComplaintDetail/:id"
+            element={<AdminViewEtComplaintDetail />}
+          />
+          <Route path="/adminViewBroughtStock" element={<AdminViewBroughtStock/>}/>
           {/* et-new */}
           <Route path="/etdashboard" element={<Etdashboard />} />
           <Route path="/etsidebar" element={<Etsidebar />} />
@@ -217,7 +249,7 @@ function App() {
             element={<EtviewArticleList />}
           />
           <Route path="/viewEtArticle/:id" element={<EtviewArticle />} />
-          <Route path="/etprofile" element={<EtProfile/>}/>
+          <Route path="/etprofile" element={<EtProfile />} />
 
           {/* new  */}
           <Route path="/newsidebar" element={<NewAdminsidebar />} />

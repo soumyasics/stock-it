@@ -181,8 +181,10 @@ function AdminSidebar({ changePage }) {
             <div className="clickable-item adminSidebar-stock-grid">
               <img src={img2} alt="" />
             </div>
-            <div className=" clickable-item stock-h1">
-              <h5>Stock</h5>
+            <div className=" clickable-item stock-h1" >
+              <h5 onClick={()=>{
+              navigate("/adminViewBroughtStock")
+            }}>Stock</h5>
             </div>
           </div>
           <div className="adminSidebar-takeaction">
@@ -201,6 +203,11 @@ function AdminSidebar({ changePage }) {
                       }}
                     >
                       User
+                    </li>
+                    <li onClick={()=>{
+                      navigate("/adminViewEtComplaint")
+                    }}>
+                      Tutor
                     </li>
                   </ul>
                 </div>

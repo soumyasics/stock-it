@@ -119,7 +119,7 @@ function Resetpassword() {
                         name="newpassword"
                         onChange={tochange}
                       />
-                      <InputGroup.Text id="basic-addon1">
+                      <InputGroup.Text id="basic-addonReset">
                         {showPassword ? (
                           <FaEyeSlash onClick={toggleButton} />
                         ) : (
@@ -152,7 +152,7 @@ function Resetpassword() {
                         name="confirmpassword"
                         onChange={tochange}
                       />
-                      <InputGroup.Text id="basic-addon1">
+                      <InputGroup.Text id="basic-addonReset">
                         {showPassword1 ? (
                           <FaEyeSlash onClick={toggleButton1} />
                         ) : (
