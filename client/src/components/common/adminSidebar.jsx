@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./adminSidebar.css";
-
 import imgGif from "../../assets/images/headergif.gif";
 import titleImg from "../../assets/images/Group 398.png";
 import vector1 from "../../assets/images/Vector.png";
@@ -14,6 +13,7 @@ import img5 from "../../assets/images/logout.png";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { toast } from "react-hot-toast";
+import { IoMdStar } from "react-icons/io";
 
 function AdminSidebar({ changePage }) {
   const [show, setShow] = useState(false);
@@ -181,10 +181,24 @@ function AdminSidebar({ changePage }) {
             <div className="clickable-item adminSidebar-stock-grid">
               <img src={img2} alt="" />
             </div>
-            <div className=" clickable-item stock-h1" >
-              <h5 onClick={()=>{
-              navigate("/adminViewBroughtStock")
-            }}>Stock</h5>
+            <div className=" clickable-item stock-h1">
+              <h5
+                onClick={() => {
+                  navigate("/adminViewBroughtStock");
+                }}
+              >
+                Stock
+              </h5>
+            </div>
+          </div>
+          <div className="adminSidebar-rating " style={{ marginLeft: "18%",width:"50%" }}>
+            <div className="fs-5 adminSidebar-rating-grid">
+              <IoMdStar />
+              <div className="clickable-item-rating" onClick={()=>{
+                navigate("/adminViewEtRating")
+              }}>
+                View Rating
+              </div>
             </div>
           </div>
           <div className="adminSidebar-takeaction">
@@ -204,9 +218,11 @@ function AdminSidebar({ changePage }) {
                     >
                       User
                     </li>
-                    <li onClick={()=>{
-                      navigate("/adminViewEtComplaint")
-                    }}>
+                    <li
+                      onClick={() => {
+                        navigate("/adminViewEtComplaint");
+                      }}
+                    >
                       Tutor
                     </li>
                   </ul>

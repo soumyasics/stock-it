@@ -1,22 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
 import { IoReturnUpBack } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../../apis/axiosInstance";
-import { UserNavbar } from "../userNavbar/userNavbar";
+import { useNavigate } from "react-router-dom";
 
-function UserViewTutors() {
+function AdminViewEtRating() {
   const navigate = useNavigate();
-  const [approvedEt, setApprovedEt] = useState([]);
-  
+  const [rating, setRating] = useState([]);
   useEffect(() => {
-    getApprovedEt();
+    getEtRating();
   }, []);
-  const getApprovedEt = async () => {
+  const getEtRating = async () => {
     try {
-      const responce = await axiosInstance.get("/getAllApprovedTutors");
-      if (responce.status == 200) {
-        setApprovedEt(responce.data.data);
+      const response = await axiosInstance.get("/getAllRating");
+      console.log(response);
+      if (response.status == 200) {
+        setRating(response.data.data);
       }
     } catch (error) {
       console.log("Fail on receiving data");
@@ -24,7 +22,6 @@ function UserViewTutors() {
   };
   return (
     <div>
-      <UserNavbar/>
       <div className="viewCompany-body">
         <div className="viewcomapany-head-box d-flex align-items-center justify-content-between px-5">
           <div
@@ -35,7 +32,7 @@ function UserViewTutors() {
           >
             <IoReturnUpBack />
           </div>
-          <h4>All Educational Tutors</h4>
+          <h4>Tutor Rating</h4>
           <div></div>
         </div>
 
@@ -47,28 +44,26 @@ function UserViewTutors() {
           <table border="1px">
             <tr className="viewCompancy-head-row">
               <th>Sl No</th>
-              <th>Name</th>
+              <th>User</th>
               <th>Email Id</th>
-              <th>Contact</th>
-              <th>View More</th>
+              <th>Tutor</th>
+              <th>Email Id</th>
+              <th>Rating</th>
+              <th>Review</th>
             </tr>
-            {approvedEt.map((co, i) => {
+            {rating.map((co, i) => {
               return (
                 <tr key={co?._id}>
                   <td>{i + 1}</td>
-                  <td>{co?.fullName}</td>
-                  <td> {co?.email}</td>
-                  <td>{co?.contactNumber}</td>
-                  <td className="viewComapny-viewmore">
-                    <Button
-                      variant="success"
-                      onClick={() => {
-                        navigate(`/userViewEtDetail/${co?._id}`);
-                      }}
-                    >
-                      View more
-                    </Button>
-                    
+                  <td>{co?.userId.firstName}</td>
+                  <td> {co?.userId?.email}</td>
+                  <td>{co?.etId?.fullName}</td>
+                  <td>{co?.etId?.email}</td>
+                  <td>{co?.rating}</td>
+                  <td>
+                    {co?.review?.length > 20
+                      ? co?.review?.substring(0, 20) + "..."
+                      : co?.review}
                   </td>
                 </tr>
               );
@@ -80,4 +75,4 @@ function UserViewTutors() {
   );
 }
 
-export default UserViewTutors;
+export default AdminViewEtRating;
