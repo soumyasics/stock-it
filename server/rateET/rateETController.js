@@ -1,4 +1,5 @@
 const { RateETModel } = require("./rateETSchema");
+const {TutorModel} = require("../Tutors/tutorSchema");
 const mongoose = require("mongoose");
 
 const addRating = async (req, res) => {
@@ -20,14 +21,22 @@ const addRating = async (req, res) => {
         message: "Invalid IDs.",
       });
     }
+    const tutor = await TutorModel.findById(etId);
+    if (!tutor) {
+      return res.status(404).json({
+        success: false,
+        message: "Tutor not found.",
+      });
+    }
+    
 
-    const rateFreelancer = new RateETModel({
+    const rateTutor = new RateETModel({
       userId,
       etId,
       rating,
       review,
     });
-    await rateFreelancer.save();
+    await rateTutor.save();
 
     const prevRatings = await RateETModel.find({ etId });
   
@@ -35,14 +44,14 @@ const addRating = async (req, res) => {
       return acc + curr.rating;
     }, 0);
 
-    // freelancer.rating = totalRates / prevRatings.length;;
-    // await freelancer.save();
+    tutor.rating = totalRates / prevRatings.length;
+    await tutor.save();
     
 
     return res.status(200).json({
       message: "Rating added successfully",
       success: true,
-      // currentRating: freelancer.rating ,
+      currentRating: tutor.rating ,
     });
   } catch (error) {
     return res.status(500).json({

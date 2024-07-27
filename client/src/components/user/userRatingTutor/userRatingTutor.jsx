@@ -2,7 +2,7 @@ import ReactStars from "react-rating-stars-component";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import axiosInstance from "../../../apis/axiosInstance";
-export const TutorRating = ({ etId }) => {
+export const TutorRating = ({ etId, getTutorById }) => {
   const [userId, setUserId] = useState();
   const [reviewData, setReviewData] = useState({
     rating: 0,
@@ -56,6 +56,8 @@ export const TutorRating = ({ etId }) => {
       }
     } catch (error) {
       toast.error("Couldn't add review");
+    } finally {
+      getTutorById();
     }
   };
   return (
@@ -76,13 +78,14 @@ export const TutorRating = ({ etId }) => {
         </div>
         <ReactStars
           count={5}
-            onChange={ratingChanged}
+          onChange={ratingChanged}
           size={30}
           activeColor="#ffd700"
+          value={reviewData.rating}
         />
         <form
           className="d-flex justify-content-center align-items-center mt-4"
-            onSubmit={handleSubmit}
+          onSubmit={handleSubmit}
         >
           <input
             type="text"

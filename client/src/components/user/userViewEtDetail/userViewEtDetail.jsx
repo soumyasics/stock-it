@@ -10,12 +10,20 @@ import UserComplaintModal from "../userComplaintTutor/userComplaintTutor";
 import toast from "react-hot-toast";
 import { UserNavbar } from "../userNavbar/userNavbar";
 import { TutorRating } from "../userRatingTutor/userRatingTutor";
+import { ReviewModal } from "./reviewModel";
 
 function UserViewEtDetail() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [userId, setUserId] = useState({});
   const { id } = useParams();
   const [etData, setEtData] = useState({});
+  const [showReview, setShowReview] = useState(false);
+  const handleClose = () => {
+    setShowReview(false);
+  };
+  const handleOpen = () => {
+    setShowReview(true);
+  };
   const openModal = () => {
     setModalIsOpen(true);
   };
@@ -25,7 +33,6 @@ function UserViewEtDetail() {
   const addComplaintFn = () => {
     openModal();
   };
-
 
   useEffect(() => {
     const userId = localStorage.getItem("stock_it_userId") || null;
@@ -49,7 +56,15 @@ function UserViewEtDetail() {
 
   return (
     <div>
-      <UserNavbar/>
+      <UserNavbar />
+      <UserComplaintModal
+        closeModal={closeModal}
+        openModal={openModal}
+        modalIsOpen={modalIsOpen}
+        etId={id}
+        userId={userId}
+      />
+      <ReviewModal show={showReview} handleClose={handleClose} id={id} />
       <div>
         <div className="userViewTutorDetail-bg py-5">
           <Row>
@@ -116,27 +131,30 @@ function UserViewEtDetail() {
                       <td>-</td>
                       <td>{etData?.email} </td>
                     </tr>
+                    <tr>
+                      <td>Rating</td>
+                      <td>-</td>
+                      <td>{etData?.rating?.toFixed(2) || 0} </td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
-              <div className="userViewEtDetail-btn">
-                <Button variant="warning">Subcribe</Button>{" "}
-                <Button variant="danger" onClick={addComplaintFn}>
+              <div className="userViewEtDetail-btn ">
+                <Button variant="success ">Subcribe</Button>{" "}
+                <Button className="ms-3" variant="primary" onClick={handleOpen}>
+                  View Reviews
+                </Button>
+                <Button
+                  className="ms-3"
+                  variant="danger"
+                  onClick={addComplaintFn}
+                >
                   Add Complaint
                 </Button>{" "}
-                <UserComplaintModal
-                  closeModal={closeModal}
-                  openModal={openModal}
-                  modalIsOpen={modalIsOpen}
-                  etId={id}
-                  userId={userId}
-                  
-                />
               </div>
-              
             </Col>
           </Row>
-        <TutorRating etId={id}/>
+          <TutorRating etId={id} getTutorById={getTutorById} />
         </div>
       </div>
     </div>
