@@ -208,7 +208,7 @@ function AdminViewUserComplaintDetails() {
         <div className="banOrSuspendBtn">
           {complaint?.userId?.isActive ? (
             <Button variant="danger" size="lg" onClick={toDelete}>
-              Deactivate
+              Deactivate User
             </Button>
           ) : (
             <Button variant="success" size="lg" onClick={toAccept}>

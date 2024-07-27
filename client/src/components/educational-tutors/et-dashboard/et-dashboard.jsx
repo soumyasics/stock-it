@@ -7,7 +7,7 @@ import {EtviewArticleList} from "../et-ViewArticleList/et-viewArticleList.jsx";
 import EtProfile from "../etProfile/etProfile.jsx";
 
 function Etdashboard() {
-  const [activePage, setActivePage] = useState("");
+  const [activePage, setActivePage] = useState("tutorProfile");
   const changePage = (value) => {
     setActivePage(value);
   };
@@ -23,9 +23,9 @@ function Etdashboard() {
           <Etsidebar changePage={changePage} />
         </Col>
         <Col md={9} className="p-0" style={{ backgroundColor: "#1F2937" }}>
+          {activePage === "tutorProfile" && <EtProfile/>}
           {activePage === "addArticles" && <EtAddArticle navigateToviewArticle={navigateToviewArticle}/>}
           {activePage === "viewArticles" && <EtviewArticleList />}
-          {activePage === "tutorProfile" && <EtProfile/>}
         </Col>
       </Row>
     </>

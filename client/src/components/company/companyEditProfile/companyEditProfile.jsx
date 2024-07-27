@@ -143,6 +143,10 @@ const EditCoProfileModal = ({
         toast.success("Profile updated");
       }
     } catch (error) {
+      const status = error.response.status;
+      if (status === 400 || status === 404) {
+        toast.error(error?.response?.data?.msg);
+      }
       console.log("Fail on updating companyData");
     } finally {
       getIpoData(companyId);

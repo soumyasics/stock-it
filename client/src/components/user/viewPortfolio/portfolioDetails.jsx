@@ -11,29 +11,13 @@ export const PortfolioDetails = () => {
   const { id } = useParams();
   const [stockData, setStockData] = useState({});
   const [profitOrLoss, setProfitOrLoss] = useState(0);
+  const [bookedProfitOrLoss, setBookedProfitOrLoss] = useState(0);
   const [currentMarektValue, setCurrentMarketValue] = useState(0);
-  const [totalBoughtShares, setTotalBoughtShares] = useState(0);
-  const [totalPurchasePrice, setTotalPurchasePrice] = useState(0);
+  const [sellingQuantity, setSellingQuantity] = useState(0);
   const [userId, setUserId] = useState("");
-  const [paymentData, setPaymentData] = useState({
-    cardHolderName: "",
-    cardNumber: "",
-    cvv: "",
-    expiry: "",
-  });
+
   const [logo, setLogo] = useState("");
-  const [show, setShow] = useState(false);
 
-  const handlePaymentDataChange = (e) => {
-    const { name, value } = e.target;
-    setPaymentData({
-      ...paymentData,
-      [name]: value,
-    });
-  };
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   const navigate = useNavigate();
   useEffect(() => {
     if (id) {
@@ -45,6 +29,10 @@ export const PortfolioDetails = () => {
       }
     }
   }, [id]);
+
+  useEffect(() => {
+    setBookedProfitOrLoss(stockData.currentProfit - stockData.currentLoss);
+  }, [stockData.currentProfit, stockData.currentLoss]);
 
   console.log("stock data", stockData);
 
@@ -61,10 +49,17 @@ export const PortfolioDetails = () => {
 
         // profit and loss calcuation
         const CMP = stock?.IPOId?.currentMarketPrice;
-        const totalCurrentMarektValuation = CMP * stock?.totalQuantity;
-        setCurrentMarketValue(totalCurrentMarektValuation);
+        let pAndL;
+        let totalCurrentMarektValuation = 0;
+        if (stock.totalQuantity === 0) {
+          pAndL = currentProfilt - currentLoss;
+        } else {
+          totalCurrentMarektValuation = CMP * stock?.numberOfSharesBought;
+          setCurrentMarketValue(totalCurrentMarektValuation);
 
-        const pAndL = totalCurrentMarektValuation - stock?.totalCost;
+          pAndL = totalCurrentMarektValuation - stock?.totalCost;
+        }
+
         setProfitOrLoss(pAndL);
       }
     } catch (error) {
@@ -75,80 +70,45 @@ export const PortfolioDetails = () => {
   console.log("stock data", stockData);
   const handleNoSharesChanges = (e) => {
     const noShares = e.target.value;
-    setTotalBoughtShares(noShares);
-    setTotalPurchasePrice(noShares * stockData.costPerShare);
-  };
-  const openPaymentModal = () => {
-    if (totalBoughtShares <= 0) {
-      toast.error("Please enter valid number of shares");
-      return;
-    }
-    if (totalBoughtShares > stockData.totalShares) {
-      toast.error("You can't buy more shares than available");
-      return;
-    }
-    handleShow();
+    setSellingQuantity(noShares);
   };
 
-  const buyStocks = async (e) => {
-    e.preventDefault();
-    const data = {
-      userId,
-      IPOId: id,
-      companyId: stockData?.companyId?._id,
-      totalQuantity: totalBoughtShares,
-      numberOfSharesBought: totalBoughtShares,
-      costPerShare: stockData.costPerShare,
-      totalCost: totalPurchasePrice,
-      ...paymentData,
-    };
-    sendDataToServer(data);
-  };
-
-  const sendDataToServer = async (data) => {
-    const {
-      userId,
-      IPOId,
-      companyId,
-      totalQuantity,
-      numberOfSharesBought,
-      costPerShare,
-      totalCost,
-      cardHolderName,
-      cardNumber,
-      cvv,
-      expiry,
-    } = data;
-
-    if (
-      !userId ||
-      !IPOId ||
-      !companyId ||
-      !totalQuantity ||
-      !numberOfSharesBought ||
-      !costPerShare ||
-      !totalCost ||
-      !cardHolderName ||
-      !cardNumber ||
-      !cvv ||
-      !expiry
-    ) {
-      console.log("All data needed", data);
+  const sellStocks = () => {
+    if (sellingQuantity === 0) {
+      toast.error("Selling quantity shouldn't be zero.");
       return;
     }
 
+    if (sellingQuantity > stockData.totalQuantity) {
+      toast.error(
+        `You can't sell more than shares you have! You only have ${stockData.totalQuantity} number of shares`
+      );
+      return;
+    }
+    sendDataToServer();
+  };
+  const sendDataToServer = async () => {
     try {
-      const response = await axiosInstance.post("buyStocks", data);
-      if (response.status === 201) {
-        toast.success("Stocks bought successfully");
-        //   navigate to portfolio
+      const res = await axiosInstance.post(`/sellStocks/${stockData?._id}`, {
+        sellingQuantity,
+      });
+      if (res.status === 200) {
+        toast.success("You sold shares successfully. ");
+        getStockData();
       }
     } catch (error) {
-      console.log("Error on buy stocks", error);
-    } finally {
-      handleClose();
+      const status = error?.response?.data?.status;
+      if (status === 400 || status === 404 || status === 500) {
+        const msg = error?.response?.data?.msg || "Network issue";
+        toast.error(msg);
+      } else {
+        toast.error("Server error.");
+      }
+      console.log("Error on sell stocks", error);
     }
   };
+
+  console.log("sto", stockData);
 
   return (
     <>
@@ -170,38 +130,57 @@ export const PortfolioDetails = () => {
           </h3>
         </div>
         <Row className="stock-details-row">
-          <Col>Total Quantity</Col>
+          <Col>Total quantity bought</Col>
+          <Col md={1}>:</Col>
+          <Col>{stockData.numberOfSharesBought}</Col>
+        </Row>
+        <Row className="stock-details-row">
+          <Col>Currently available shares</Col>
           <Col md={1}>:</Col>
           <Col>{stockData.totalQuantity}</Col>
         </Row>
         <Row className="stock-details-row  ">
-          <Col>Bough price</Col>
+          <Col>Bought price</Col>
           <Col md={1}>:</Col>
           <Col>{stockData.costPerShare}</Col>
         </Row>
+
         <Row className="stock-details-row  ">
           <Col>Total Cost</Col>
           <Col md={1}>:</Col>
           <Col>{stockData.totalCost}</Col>
         </Row>
         <Row className="stock-details-row  ">
+          <Col>Current Market Price </Col>
+          <Col md={1}>:</Col>
+          <Col>{stockData.IPOId?.currentMarketPrice}</Col>
+        </Row>
+
+        <Row className="stock-details-row  ">
           <Col>Current Market Valuation</Col>
           <Col md={1}>:</Col>
           <Col>{currentMarektValue}</Col>
         </Row>
-
         <Row className="stock-details-row  ">
-          <Col>Shares For Sale </Col>
+          <Col>Number of shares sold</Col>
           <Col md={1}>:</Col>
-          <Col>
-            <input
-              max={stockData.totalShares}
-              value={totalBoughtShares}
-              onChange={handleNoSharesChanges}
-              type="number"
-            />
-          </Col>
+          <Col>{stockData.numberOfSharesBought - stockData.totalQuantity}</Col>
         </Row>
+        {stockData.totalQuantity !== 0 && (
+          <Row className="stock-details-row  ">
+            <Col>Sell shares </Col>
+            <Col md={1}>:</Col>
+            <Col>
+              <input
+                max={stockData.totalShares}
+                value={sellingQuantity}
+                onChange={handleNoSharesChanges}
+                type="number"
+              />
+            </Col>
+          </Row>
+        )}
+
         <Row className="stock-details-row  ">
           <Col>Live Profit / Loss Status </Col>
           <Col md={1}>:</Col>
@@ -217,10 +196,27 @@ export const PortfolioDetails = () => {
           )}
         </Row>
 
+        <Row className="stock-details-row  ">
+          <Col>Booked Profit / Loss </Col>
+          <Col md={1}>:</Col>
+          {bookedProfitOrLoss > 0 ? (
+            <Col>
+              <p className="text-success" style={{ textAlign: "left" }}>
+                {" "}
+                ₹ {bookedProfitOrLoss}{" "}
+              </p>
+            </Col>
+          ) : (
+            <Col className="text-danger"> ₹ {bookedProfitOrLoss}</Col>
+          )}
+        </Row>
+
         <div className="d-flex justify-content-center mt-5 stock-details-row">
-          <Button onClick={openPaymentModal} className="buy-btn">
-            Sell Stocks
-          </Button>
+          {stockData.totalQuantity !== 0 && (
+            <Button className="buy-btn" onClick={sellStocks}>
+              Sell Stocks
+            </Button>
+          )}
         </div>
       </div>
     </>

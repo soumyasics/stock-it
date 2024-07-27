@@ -88,6 +88,14 @@ const getAllTutors = async (req, res) => {
     return res.status(500).json({ msg: error.message });
   }
 };
+const getAllApprovedTutors = async (req, res) => {
+  try {
+    const tutors = await TutorModel.find({ adminApproved: "approve" });
+    return res.status(200).json({ msg: "All tutors", data: tutors });
+  } catch (error) {
+    return res.status(500).json({ msg: error.message });
+  }
+};
 const getAllPendingTutors = async (req, res) => {
   try {
     const tutors = await TutorModel.find({ adminApproved: "pending" });
@@ -301,6 +309,7 @@ const forgotPassword = async (req, res) => {
 const editTutorById = async (req, res) => {
   try {
     const id = req.params.id;
+    
     const tutor = await TutorModel.findById(id);
     if (!tutor) {
       return res.status(404).json({ msg: "Tutor not found" });
@@ -320,7 +329,13 @@ const editTutorById = async (req, res) => {
     if (qualification) obj.qualification = qualification;
     if (specification) obj.specification = specification;
     if (experience) obj.experience = experience;
-    if (email) obj.email = email;
+    if (email) {
+      const emailExists = await TutorModel.findOne({ email });
+      if (emailExists && email !== tutor.email) {
+        return res.status(400).json({ msg: "Email already exists" });
+      }
+      obj.email = email
+    };
     if (password) obj.password = password;
     if (contactNumber) obj.contactNumber = contactNumber;
 
@@ -350,5 +365,7 @@ module.exports = {
   upload,
   getAllPendingTutors,
   searchTutorByName,
-  forgotPassword,editTutorById
+  forgotPassword,
+  editTutorById,
+  getAllApprovedTutors
 };

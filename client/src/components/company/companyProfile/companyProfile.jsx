@@ -58,7 +58,10 @@ export const CompanyProfile = () => {
     <div className="text-light pt-5">
       <h4 className="text-center">Profile </h4>
       <Row className=" mx-auto mt-5" style={{ width: "90%" }}>
-        <Col md={6}>
+        <Col
+          md={6}
+          className="d-flex justify-content-center align-items-center"
+        >
           <Image className="w-75" src={coImg1} alt="ipo" />
         </Col>
         <Col md={6} className="company-ipo-status  shadow p-3">
@@ -139,21 +142,21 @@ export const CompanyProfile = () => {
               <ListGroup.Item>
                 {" "}
                 <h6>
-                  Pincode: 
+                  Pincode:
                   <span className="fw-bold">{companyData?.pincode}</span>
                 </h6>
               </ListGroup.Item>
               <ListGroup.Item>
                 {" "}
                 <h6>
-                  Founded Year: 
+                  Founded Year:
                   <span className="fw-bold">{companyData?.year}</span>
                 </h6>
               </ListGroup.Item>
               <ListGroup.Item>
                 {" "}
                 <h6>
-                  Registration number: 
+                  Registration number:
                   <span className="fw-bold">{companyData?.regNo}</span>
                 </h6>
               </ListGroup.Item>

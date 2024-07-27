@@ -50,19 +50,7 @@ export const PortfolioCard = ({ data }) => {
             <td>:</td>
             <td className="companyRequest-data">{currentMarektValue}</td>
           </tr> 
-          <tr>
-            <td>Net P&L</td>
-            <td>:</td>
-            {profitOrLoss > 0 ? (
-              <td className="companyRequest-data text-success">
-                {profitOrLoss}
-              </td>
-            ) : (
-              <td className="companyRequest-data text-danger">
-                {profitOrLoss}
-              </td>
-            )}
-          </tr>
+      
         </tbody>
       </table>
       <h6
