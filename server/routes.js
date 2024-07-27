@@ -7,11 +7,11 @@ const IPO = require("./IPO/ipoController");
 const ET = require("./Tutors/tutorController");
 const ArtilceRoutes = require("./article/articleController");
 const buyStockController = require("./buyStocks/buyStocksController");
-const CompanyArticleController = require("./companyArticle/articleController")
-const CompanyComplaintController = require("./complaintCompanies/complaintCompanyController")
+const CompanyArticleController = require("./companyArticle/articleController");
+const CompanyComplaintController = require("./complaintCompanies/complaintCompanyController");
 const UserComplaintController = require("./complaintUsers/complaintUsers.js");
-const ETCompalintController = require("./complaintEts/complaintETController.js")
-
+const ETCompalintController = require("./complaintEts/complaintETController.js");
+const RatingController = require("./rateET/rateETController.js");
 router.get("/", (req, res) => {
   return res.send({ message: "Stock it Server working" });
 });
@@ -43,10 +43,7 @@ router.post(
 router.post("/loginUser", userController.loginUser);
 router.post("/getAllUsers", userController.getAllUsers);
 router.post("/getUserById/:id", userController.getUserById);
-router.post(
-  "/editUserById/:id",
-  userController.editUserById
-);
+router.post("/editUserById/:id", userController.editUserById);
 router.post("/activateUserById/:id", userController.activateUserById);
 router.post("/deActivateUserById/:id", userController.deActivateUserById);
 router.post("/user-forgot-password", userController.forgotPassword);
@@ -92,7 +89,7 @@ router.post("/updateArticleById/:id", ArtilceRoutes.updateArticleById);
 router.post("/deleteArticleById/:id", ArtilceRoutes.deleteArticleById);
 router.get("/getArticleByTutorId/:id", ArtilceRoutes.getArticleByTutorId);
 
-// company article routes 
+// company article routes
 router.post(
   "/co-createArticle",
   CompanyArticleController.uploadVideo,
@@ -101,32 +98,57 @@ router.post(
 
 router.get("/co-getAllArticles", CompanyArticleController.getAllArticles);
 router.post("/co-getArticleById/:id", CompanyArticleController.getArticleById);
-router.post("/co-updateArticleById/:id", CompanyArticleController.updateArticleById);
-router.post("/co-deleteArticleById/:id", CompanyArticleController.deleteArticleById);
-router.get("/co-getArticleByCompanyId/:id", CompanyArticleController.getArticleByTutorId);
+router.post(
+  "/co-updateArticleById/:id",
+  CompanyArticleController.updateArticleById
+);
+router.post(
+  "/co-deleteArticleById/:id",
+  CompanyArticleController.deleteArticleById
+);
+router.get(
+  "/co-getArticleByCompanyId/:id",
+  CompanyArticleController.getArticleByTutorId
+);
 
-// buy stocks 
+// buy stocks
 router.post("/buyStocks", buyStockController.buyStocks);
 router.post("/sellStocks/:id", buyStockController.sellStocksById);
 router.get("/allBuyStocks", buyStockController.allBuyStocks);
 router.get("/getBoughtStockById/:id", buyStockController.getBoughtStockById);
-router.get("/getAllBoughtStocksByUserId/:id", buyStockController.getAllBoughtStocksByUserId);
-router.get("/getAllBoughtStocksByCompanyId/:id", buyStockController.getAllBoughtStocksByCompanyId);
+router.get(
+  "/getAllBoughtStocksByUserId/:id",
+  buyStockController.getAllBoughtStocksByUserId
+);
+router.get(
+  "/getAllBoughtStocksByCompanyId/:id",
+  buyStockController.getAllBoughtStocksByCompanyId
+);
 
-// company complaints 
+// company complaints
 router.post("/createComplaint", CompanyComplaintController.createComplaint);
 router.get("/getAllComplaints", CompanyComplaintController.getAllComplaints);
-router.get("/getComplaintById/:id", CompanyComplaintController.getComplaintById);
+router.get(
+  "/getComplaintById/:id",
+  CompanyComplaintController.getComplaintById
+);
 
-// user complaints 
+// user complaints
 router.post("/user-createComplaint", UserComplaintController.createComplaint);
 router.get("/user-getAllComplaints", UserComplaintController.getAllComplaints);
-router.get("/user-getComplaintById/:id", UserComplaintController.getComplaintById);
+router.get(
+  "/user-getComplaintById/:id",
+  UserComplaintController.getComplaintById
+);
 
-// et complaints 
+// et complaints
 router.post("/createComplaintET", ETCompalintController.createComplaintET);
 router.get("/getAllComplaintsET", ETCompalintController.getAllComplaintsET);
 router.get("/getComplaintById/:id", ETCompalintController.getComplaintByIdET);
 
+// rating
+router.post("/addRating", RatingController.addRating);
+router.get("/getAllRating", RatingController.getAllRating);
+router.get("/getAllRatingByETId/:id", RatingController.getAllRatingByETId);
 
 module.exports = router;
