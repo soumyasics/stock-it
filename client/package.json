@@ -29,6 +29,7 @@
     "react-modal": "^3.16.1",
     "react-paginate": "^8.2.0",
     "react-pagination": "^1.0.0",
+    "react-rating-stars-component": "^2.2.0",
     "react-router-dom": "^6.21.3"
   },
   "devDependencies": {

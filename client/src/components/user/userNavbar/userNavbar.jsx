@@ -11,6 +11,7 @@ export const UserNavbar = () => {
   const [stocksDropdown, setStocksDropdown] = useState(false);
   const [articleDropdown, setArticleDropdown] = useState(false);
   const [profileDropdown, setProfileDropdown] = useState(false);
+  const [tutorDropdown, setTutorDropdown] = useState(false);
   const navigate = useNavigate();
   const userLogout = () => {
     navigate("/userLogin");
@@ -32,48 +33,62 @@ export const UserNavbar = () => {
   const redirectListedCompanies = () => {
     navigate("/listedCompanies");
   };
+  const redirectToTutor = () => {
+    navigate("/userViewEt");
+  };
 
   const toggleCompanyDropdown = () => {
-    setStocksDropdown(false)
-    setArticleDropdown(false)
+    setStocksDropdown(false);
+    setArticleDropdown(false);
     setCompaniesDropdown(!companiesDropdown);
-    setProfileDropdown(false)
+    setProfileDropdown(false);
+    setTutorDropdown(false);
   };
 
   const toggleStockDropdown = () => {
-    setCompaniesDropdown(false)
-    setArticleDropdown(false)
+    setCompaniesDropdown(false);
+    setArticleDropdown(false);
     setStocksDropdown(!stocksDropdown);
-    setProfileDropdown(false)
-  }
-  const toggleArticleDropdown=()=>{
-    setStocksDropdown(false)
-    setCompaniesDropdown(false)
-    setArticleDropdown(!articleDropdown)
-    setProfileDropdown(false)
-  }
-const toggleProfileDropdowm=()=>{
-  setStocksDropdown(false)
-  setCompaniesDropdown(false)
-  setArticleDropdown(false)
-  setProfileDropdown(!profileDropdown)
-}
+    setProfileDropdown(false);
+    setTutorDropdown(false);
+  };
+  const toggleArticleDropdown = () => {
+    setStocksDropdown(false);
+    setCompaniesDropdown(false);
+    setArticleDropdown(!articleDropdown);
+    setProfileDropdown(false);
+    setTutorDropdown(false);
+  };
+  const toggleProfileDropdowm = () => {
+    setStocksDropdown(false);
+    setCompaniesDropdown(false);
+    setArticleDropdown(false);
+    setTutorDropdown(false);
+    setProfileDropdown(!profileDropdown);
+  };
+  const toggleTutorsDropdowm = () => {
+    setTutorDropdown(!tutorDropdown);
+    setStocksDropdown(false);
+    setCompaniesDropdown(false);
+    setArticleDropdown(false);
+    setProfileDropdown(false);
+  };
   const redirectBuyStocks = () => {
-    navigate('/buyStocks')
-  }
-  
+    navigate("/buyStocks");
+  };
+
   const redirectPortfolio = () => {
-    navigate('/viewPortfolio')
-  }
-const reDirectToTutorArticle=()=>{
-  navigate("/tutorArticle")
-}
-const reDirectToCoArticle=()=>{
-  navigate("/companyArticles")
-}
-const reDirectToUserProfile=()=>{
-  navigate(`/userProfile`)
-}
+    navigate("/viewPortfolio");
+  };
+  const reDirectToTutorArticle = () => {
+    navigate("/tutorArticle");
+  };
+  const reDirectToCoArticle = () => {
+    navigate("/companyArticles");
+  };
+  const reDirectToUserProfile = () => {
+    navigate(`/userProfile`);
+  };
   return (
     <div>
       <nav className="navbar commonNavbar">
@@ -119,6 +134,21 @@ const reDirectToUserProfile=()=>{
                 </div>
               </div>
             )}
+            <h6 className="text-light fw-bold" onClick={toggleTutorsDropdowm}>
+              Tutors
+            </h6>
+            {tutorDropdown && (
+              <div className="position-relative">
+                <div className="position-absolute text-light user-home-nav-drop d-flex flex-column">
+                  <div
+                    className="user-home-nav-drop-down"
+                    onClick={redirectToTutor}
+                  >
+                    Active Tutors
+                  </div>
+                </div>
+              </div>
+            )}
 
             <h6 className="text-light fw-bold" onClick={toggleStockDropdown}>
               Stocks
@@ -142,7 +172,7 @@ const reDirectToUserProfile=()=>{
                 </div>
               </div>
             )}
-            
+
             <h6 className="text-light fw-bold" onClick={toggleArticleDropdown}>
               Articles
             </h6>
@@ -169,9 +199,12 @@ const reDirectToUserProfile=()=>{
             <h6 className="text-light fw-bold" onClick={redirectUserAbout}>
               About
             </h6>
-           
-               <h6 className="text-light fs-2 mb-3" onClick={toggleProfileDropdowm}>
-               <CgProfile />
+
+            <h6
+              className="text-light fs-2 mb-3"
+              onClick={toggleProfileDropdowm}
+            >
+              <CgProfile />
             </h6>
 
             {profileDropdown && (
@@ -181,13 +214,10 @@ const reDirectToUserProfile=()=>{
                     className="user-home-nav-drop-down"
                     onClick={reDirectToUserProfile}
                   >
-                   Profile
+                    Profile
                   </div>
-                  <div
-                    className="user-home-nav-drop-down"
-                    onClick={userLogout}
-                  >
-                   Logout
+                  <div className="user-home-nav-drop-down" onClick={userLogout}>
+                    Logout
                   </div>
                 </div>
               </div>
