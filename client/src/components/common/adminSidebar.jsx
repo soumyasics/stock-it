@@ -52,6 +52,9 @@ function AdminSidebar({ changePage }) {
   const navigateIPOPending = () => {
     navigate("/adminIPOPending");
   };
+  const navigateAllIPO = () => {
+    navigate("/adminAllIPOs");
+  };
 
   const navigateToViewAllEts = () => {
     navigate("/adminViewAllETs");
@@ -146,8 +149,8 @@ function AdminSidebar({ changePage }) {
               {show1 && (
                 <div className="sidebar-drop-10">
                   <ul>
-                    <li onClick={navigateIPOPending}>View all request</li>
-                    <li>View all company IPOs</li>
+                    <li onClick={navigateIPOPending}>View pending request </li>
+                    <li onClick={navigateAllIPO}>View all company IPOs</li>
                   </ul>
                 </div>
               )}

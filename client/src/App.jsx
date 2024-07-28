@@ -99,6 +99,7 @@ import { CompanyViewBuyOrderDetails } from "./components/company/viewOrders/orde
 import { UserDashboard } from "./components/user/userDashboard/userDashboard";
 import { UserDashboardParams } from "./components/user/userDashboard/userDashboardParams";
 import { AdminViewActiveCompanies } from "./components/Admin/adminViewAllcompanies/adminViewAllCompanies copy";
+import { AdminAllIPO } from "./components/Admin/adminAllIPOs/adminallIPO";
 
 function App() {
   return (
@@ -214,6 +215,7 @@ function App() {
           />
 
           <Route path="/adminIPOPending" element={<AdminIPOPendingList />} />
+          <Route path="/adminAllIPOs" element={<AdminAllIPO />} />
           <Route
             path="/adminIPOPending/:id"
             element={<AdminViewIPODetails />}

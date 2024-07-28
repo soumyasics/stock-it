@@ -10,7 +10,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
 import { BsSearch } from "react-icons/bs";
 
-export const AdminIPOPendingList = () => {
+export const AdminAllIPO = () => {
   const navigate = useNavigate();
 
   const [allIPOs, setAllIPOs] = useState([]);
@@ -21,11 +21,9 @@ export const AdminIPOPendingList = () => {
       const res = await axiosInstance.get("getIpos");
       if (res.status === 200) {
         let data = res.data?.data || [];
-        const pendingIpos = data?.filter((item) => {
-          return item.adminApproved === "pending";
-        })
-        setAllIPOs(pendingIpos);
-        setFixedData(pendingIpos);
+        data.reverse()
+        setAllIPOs(data);
+        setFixedData(data);
       } else {
         console.log("Error ", res);
       }
@@ -64,7 +62,7 @@ export const AdminIPOPendingList = () => {
           >
             <IoReturnUpBack />
           </div>
-          <h4>All Pending IPOs</h4>
+          <h4>All  IPOs</h4>
           <div></div>
         </div>
 
