@@ -13,6 +13,7 @@ const UserComplaintController = require("./complaintUsers/complaintUsers.js");
 const ETCompalintController = require("./complaintEts/complaintETController.js");
 const RatingController = require("./rateET/rateETController.js");
 const ETSubscriptionController = require("./SubscribeET/subscribeController.js")
+const DividentController = require("./divident/dividentController.js")
 router.get("/", (req, res) => {
   return res.send({ message: "Stock it Server working" });
 });
@@ -160,6 +161,12 @@ router.get("/getAllSubscriptionByUserId/:id", ETSubscriptionController.getAllSub
 router.get("/getAllSubscriptionByETId/:id", ETSubscriptionController.getAllSubscriptionByETId);
 router.post("/getSubscriptionStatus", ETSubscriptionController.getSubscriptionStatus);
 router.get("/getAllSubscriptions", ETSubscriptionController.getAllSubscriptions);
+
+// divident 
+router.post("/addDivident", DividentController.addDivident);
+router.get("/getAllDividents", DividentController.getAllDividents);
+router.get("/getDividentById/:id", DividentController.getDividentById);
+
 
 
 
