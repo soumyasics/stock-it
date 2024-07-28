@@ -9,7 +9,7 @@ import { IoReturnUpBack } from "react-icons/io5";
 import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
 import { BsSearch } from "react-icons/bs";
-export const AdminViewAllCompanies = () => {
+export const AdminViewActiveCompanies = () => {
   const navigate = useNavigate();
   const [fixedData, setFixedData] = useState([]);
   const [allCompanies, setAllCompanies] = useState([]);
@@ -19,9 +19,12 @@ export const AdminViewAllCompanies = () => {
       const res = await axiosInstance.post("viewCompanies");
       if (res.status === 200) {
         let data = res.data?.data || [];
-        data.reverse();
-        setAllCompanies(data);
-        setFixedData(data);
+        const activeCoData = data.filter((c) => {
+          return c.isActive === true
+        })
+        activeCoData.reverse();
+        setAllCompanies(activeCoData);
+        setFixedData(activeCoData);
       } else {
         console.log("Error ", res);
       }
@@ -58,7 +61,7 @@ export const AdminViewAllCompanies = () => {
           >
             <IoReturnUpBack />
           </div>
-          <h4>All companies list</h4>
+          <h4>Active companies list</h4>
           <div></div>
         </div>
 

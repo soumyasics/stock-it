@@ -9,7 +9,6 @@ import { BASE_URL } from "../../../apis/baseUrl";
 import AdminNavbar from "../../common/adminNavbar";
 export const AdminViewCompanyDetails = () => {
   const [state, setState] = useState({ license: { filename: "" } });
-  console.log("state", state);
   const { id } = useParams();
   const navigate = useNavigate();
   useEffect(() => {
@@ -28,32 +27,38 @@ export const AdminViewCompanyDetails = () => {
 
   const toAccept = (e) => {
     e.preventDefault();
-    axiosInstance.post(`/activateCompanyById/${id}`).then((response) => {
-      console.log(response);
-      if (response.data.status == 200) {
-        toast.success(response.data.msg);
-        navigate(-1);
-      } else {
-        toast.error(response.data.msg);
-        navigate("/admin");
-      }
-    }).catch((error)=>{
-      console.log(error);
-    })
+    axiosInstance
+      .post(`/activateCompanyById/${id}`)
+      .then((response) => {
+        console.log(response);
+        if (response.data.status == 200) {
+          toast.success(response.data.msg);
+          navigate(-1);
+        } else {
+          toast.error(response.data.msg);
+          navigate("/admin");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   const toDelete = (e) => {
     e.preventDefault();
-    axiosInstance.post(`/deActivateCompanyById/${id}`).then((res) => {
-      if (res.data.status == 200) {
-        toast.success(res.data.msg);
-        navigate(-1);
-      } else {
-        toast.error(res.data.msg);
-        navigate("/admin");
-      }
-    }).catch((error)=>{
-      console.log(error);
-    })
+    axiosInstance
+      .post(`/deActivateCompanyById/${id}`)
+      .then((res) => {
+        if (res.data.status == 200) {
+          toast.success(res.data.msg);
+          navigate(-1);
+        } else {
+          toast.error(res.data.msg);
+          navigate("/admin");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const redirectBack = () => {
@@ -147,22 +152,25 @@ export const AdminViewCompanyDetails = () => {
             </table>
           </div>
           <div className="requestpage-btn">
-            <button
-              className="btn"
-              type="submit"
-              value="submit"
-              onClick={toAccept}
-            >
-              Active
-            </button>
-            <button
-              className="btn"
-              type="submit"
-              value="submit"
-              onClick={toDelete}
-            >
-              Inactive
-            </button>
+            {state.isActive ? (
+              <button
+                className="btn"
+                type="submit"
+                value="submit"
+                onClick={toDelete}
+              >
+                Inactive
+              </button>
+            ) : (
+              <button
+                className="btn"
+                type="submit"
+                value="submit"
+                onClick={toAccept}
+              >
+                Active
+              </button>
+            )}
           </div>
 
           {/* Modal page */}

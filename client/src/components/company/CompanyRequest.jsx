@@ -100,7 +100,7 @@ export const CompanyPendingRequest = () => {
       </div>
       <InputGroup
         className="mb-3 p-3"
-        style={{ width: "300px", marginLeft: "73%" }}
+        style={{ width: "300px", marginLeft: "20px" }}
       >
         <Form.Control
           placeholder="Search"

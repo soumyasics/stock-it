@@ -382,7 +382,6 @@ module.exports = {
   activateCompanyById,
   deActivateCompanyById,
   acceptCompanyById,
-  deleteCompanyById,
   searchcompanyByName,
   forgotPassword,
   viewPendingCompanies,

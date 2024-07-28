@@ -42,6 +42,9 @@ function AdminSidebar({ changePage }) {
   const navigateToAllCompanies = () => {
     navigate("/adminViewCompany");
   };
+  const navigateToActiveCompanies = () => {
+    navigate("/adminActiveCompany");
+  };
 
   const navigateToAllUsers = () => {
     navigate("/adminViewUsers");
@@ -122,10 +125,12 @@ function AdminSidebar({ changePage }) {
                     >
                       Company pending requests
                     </li>
-                    <li onClick={navigateToAllCompanies}>
+                    <li onClick={navigateToActiveCompanies}>
                       View active companies
                     </li>
-                    <li>View all company article</li>
+                    <li onClick={navigateToAllCompanies}>
+                      View all company article
+                    </li>
                   </ul>
                 </div>
               )}

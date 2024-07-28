@@ -30,7 +30,7 @@ export const AdminDashboard = () => {
             <AdminViewComapaniesArticles />
           )}
           {activePage === "view-tutors-articles" && (
-            <AdminViewTutorsArticles />
+            <AdminViewTutorsArticles /> 
           )}
           {activePage === "et-pending-request" && (
             <ETPendingRequest />
