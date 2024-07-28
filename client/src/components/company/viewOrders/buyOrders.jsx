@@ -45,7 +45,7 @@ export const CompanyViewBuyOrders = () => {
           >
             <IoReturnUpBack />
           </div>
-          <h4>Buy Orders</h4>
+          <h4>Orders</h4>
           <div></div>
         </div>
 

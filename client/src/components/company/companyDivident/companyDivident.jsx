@@ -2,6 +2,8 @@ import React from "react";
 import { IoReturnUpBack } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import dividentImg from "../../../assets/illus/divident-1.png";
+import "./divident.css";
 
 function CompanyDivident() {
   const navigate = useNavigate();
@@ -17,13 +19,20 @@ function CompanyDivident() {
           >
             <IoReturnUpBack />
           </div>
-          <h4>Dividend</h4>
+          <div>
+            <h4>Dividend</h4>
+          </div>
           <div></div>
         </div>
-          <table style={{width:"20%"}}>
+        <div className="d-flex gap-5">
+          <div className="divident-img" style={{ width: "40%" }}>
+            <img src={dividentImg} alt="dividnet" />
+          </div>
+
+          <table className="w-50" id="divident-table">
             <tbody>
               <tr>
-                <td>Stock Ticker Symbol</td>
+                <td class="first-column-table">Stock Ticker Symbol</td>
                 <td>:</td>
                 <td>SBW</td>
               </tr>
@@ -57,11 +66,15 @@ function CompanyDivident() {
                 <td>:</td>
                 <td>5000</td>
               </tr>
+              <tr
+                className=" d-flex justify-content-center position-relative"
+                style={{ left: "50%", top: "20px" }}
+              >
+                <Button variant="success">Provide Dividend</Button>
+              </tr>
             </tbody>
           </table>
-          <Button variant="secondary" style={{margin:"2% 10%"}}>
-            Provide Dividend
-          </Button>
+        </div>
       </div>
     </div>
   );

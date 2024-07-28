@@ -14,7 +14,6 @@ export const CompanyViewBuyOrderDetails = () => {
   const [bookedProfitOrLoss, setBookedProfitOrLoss] = useState(0);
   const [currentMarektValue, setCurrentMarketValue] = useState(0);
   const [sellingQuantity, setSellingQuantity] = useState(0);
-  const [userId, setUserId] = useState("");
 
   const [logo, setLogo] = useState("");
 
@@ -22,11 +21,7 @@ export const CompanyViewBuyOrderDetails = () => {
   useEffect(() => {
     if (id) {
       getStockData();
-      const userIdentification =
-        localStorage.getItem("stock_it_userId") || null;
-      if (userIdentification) {
-        setUserId(userIdentification);
-      }
+      
     }
   }, [id]);
 

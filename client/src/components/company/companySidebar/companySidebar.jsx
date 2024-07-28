@@ -169,17 +169,17 @@ export const CompanySidebar = ({ changePage }) => {
                 <div className="company-content-drop">
                   <button type="button" onClick={() => setShow(!show)}>
                     {" "}
-                    Receive Order
+                    Received Orders
                   </button>
                   {show && (
                     <div className="sidebar-drop">
                       <ul>
                         <li onClick={() => {
                           navigate('/companyViewBuyOrders')
-                        }}>Buy order</li>
-                        <li onClick={() => {
+                        }}>Orders</li>
+                        {/* <li onClick={() => {
                           // navigate('/companyViewBuyOrders')
-                        }}>Sell Order</li>
+                        }}>Sell Order</li> */}
                       </ul>
                     </div>
                   )}

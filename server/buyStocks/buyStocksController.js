@@ -101,9 +101,7 @@ const sellStocksById = async (req, res) => {
     // 1. profit or loss calculation
     const currentMarketValueOfSellingQuantity =
       stock.currentMarketPrice * sellingQuantity;
-    console.log("current market value", currentMarketValueOfSellingQuantity);
     const totalCostForSellingQuantity = sellingQuantity * holdings.costPerShare;
-    console.log("total cost", totalCostForSellingQuantity);
     const profitOrLoss =
       currentMarketValueOfSellingQuantity - totalCostForSellingQuantity;
     if (profitOrLoss < 0) {
