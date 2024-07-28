@@ -16,7 +16,6 @@ import EditCoProfileModal from "../companyEditProfile/companyEditProfile";
 export const CompanyProfile = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [companyData, setcompanyData] = useState(null);
-  console.log("ipo", companyData);
   const openModal = () => {
     setModalIsOpen(true);
   };

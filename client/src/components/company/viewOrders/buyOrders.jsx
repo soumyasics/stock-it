@@ -7,7 +7,6 @@ import { StockCard } from "./stockCard";
 export const CompanyViewBuyOrders = () => {
   const navigate = useNavigate();
   const [buyOrders, setbuyOrders] = useState([]);
-  console.log("buy ord", buyOrders)
 
   useEffect(() => {
     let companyId = localStorage.getItem("stock_it_companyId") || null;

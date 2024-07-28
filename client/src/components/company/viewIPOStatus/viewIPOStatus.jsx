@@ -14,9 +14,7 @@ import "./viewStatus.css";
 import IpoStatusEditModal from "../ipoStatusEdit/ipoStatusEdit";
 export const ViewIPOStatus = () => {
   const [ipoStatus, setIpoStatus] = useState({});
-  console.log("ipo", ipoStatus);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [userData, setUserData] = useState({});
   const openModal = () => {
     setModalIsOpen(true);
   };

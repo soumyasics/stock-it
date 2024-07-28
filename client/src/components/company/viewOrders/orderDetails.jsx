@@ -62,7 +62,6 @@ export const CompanyViewBuyOrderDetails = () => {
     }
   };
 
-  console.log("stock data", stockData);
   const handleNoSharesChanges = (e) => {
     const noShares = e.target.value;
     setSellingQuantity(noShares);
@@ -181,8 +180,8 @@ export const CompanyViewBuyOrderDetails = () => {
         </div>
       </div>
 
-      <div className="img-container w-50 d-flex  align-items-center ">
-        <img src={portfolioImg} alt="portfolio" />
+      <div style={{width: "38%"}} className="img-container d-flex justify-content-start align-items-center ">
+        <img src={portfolioImg} style={{width: "100%"}} alt="portfolio" />
       </div>
     </div>
   );

@@ -18,8 +18,9 @@ export const CompanySidebar = ({ changePage }) => {
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
   const [companyData, setcompanyData] = useState(null);
-  console.log("ipo", companyData);
+  const [ipoFiled, setIpoFiled] = useState(false);
   const navigate = useNavigate();
+  const [ipoStatus, setIpoStatus] = useState(null);
   const [logo, setLogo] = useState(profilePic);
 
   const redirectCompanyHome = () => {
@@ -27,7 +28,6 @@ export const CompanySidebar = ({ changePage }) => {
   };
 
   useEffect(() => {
-    console.log("comp d", companyData);
     if (companyData?.logo?.filename) {
       const url = `${BASE_URL}${companyData?.logo?.filename}`;
       console.log("url", url);
@@ -44,10 +44,11 @@ export const CompanySidebar = ({ changePage }) => {
       return;
     }
     companyId = companyId.replace(/['"]+/g, "");
+    getCompanyData(companyId);
     getIpoData(companyId);
   }, []);
 
-  const getIpoData = async (companyId) => {
+  const getCompanyData = async (companyId) => {
     try {
       const response = await axiosInstance.post(
         `/viewCompanyById/${companyId}`
@@ -58,15 +59,28 @@ export const CompanySidebar = ({ changePage }) => {
       } else {
         console.log("resposne", response);
       }
-      console.log("Response from getcompanyData api", response.data.data);
     } catch (error) {
       console.log("Error getting compnaies ipo data", error);
     }
   };
 
+  const getIpoData = async (companyId) => {
+    try {
+      const response = await axiosInstance.get(
+        `/getIpoByCompanyId/${companyId}`
+      );
+      const data = response?.data?.data || null;
+      if (data) {
+        setIpoStatus(data);
+      }
+    } catch (error) {
+      console.log("=> ipo data", error);
+    }
+  };
+
   const redirectToBuyOrders = () => {
-    navigate('/companyViewBuyOrders')
-  }
+    navigate("/companyViewBuyOrders");
+  };
   return (
     <div>
       <div className="companysidebar-main pt-5">
@@ -109,13 +123,18 @@ export const CompanySidebar = ({ changePage }) => {
               </td>
             </tr>
           </div>
-          <div onClick={()=>{
-                // changePage("users")
-                navigate("/companyViewUser")
-              }} style={{cursor:"pointer"}}>
-          <tr>
-              <td className="fs-5 p-1"><FaUsers /></td>
-              <td className="px-3" >Users</td>
+          <div
+            onClick={() => {
+              // changePage("users")
+              navigate("/companyViewUser");
+            }}
+            style={{ cursor: "pointer" }}
+          >
+            <tr>
+              <td className="fs-5 p-1">
+                <FaUsers />
+              </td>
+              <td className="px-3">Users</td>
             </tr>
           </div>
           <div
@@ -133,60 +152,71 @@ export const CompanySidebar = ({ changePage }) => {
               </td>
             </tr>
           </div>
-          <div
-            onClick={() => {
-              changePage("ipo-status");
-            }}
-            className="companysidebar-items companysidebar-content-companyipos"
-          >
-            <tr className="">
-              <td>
-                <img src={img1} alt="icon" />
-              </td>
-              <td>
-                <h6>IPO Status</h6>
-              </td>
-            </tr>
-          </div>
-          <div className="companysidebar-items companysidebar-content-dividend">
-            <tr onClick={()=>{
-              navigate("/companyDividend")
-            }}>
-              <td>
-                <img src={img2} alt="" />
-              </td>
-              <td>
-                <h6>Dividend</h6>
-              </td>
-            </tr>
-          </div>
-          <div className="companysidebar-items companysidebar-content-receive">
-            <tr>
-              <td>
-                <img src={img3} alt="" />
-              </td>
-              <td>
-                <div className="company-content-drop">
-                  <button type="button" onClick={() => setShow(!show)}>
-                    {" "}
-                    Received Orders
-                  </button>
-                  {show && (
-                    <div className="sidebar-drop">
-                      <ul>
-                        <li onClick={() => {
-                          navigate('/companyViewBuyOrders')
-                        }}>Orders</li>
-                        {/* <li onClick={() => {
-                          // navigate('/companyViewBuyOrders')
-                        }}>Sell Order</li> */}
-                      </ul>
+
+          {ipoStatus && (
+            <>
+              <div
+                onClick={() => {
+                  changePage("ipo-status");
+                }}
+                className="companysidebar-items companysidebar-content-companyipos"
+              >
+                <tr className="">
+                  <td>
+                    <img src={img1} alt="icon" />
+                  </td>
+                  <td>
+                    <h6>IPO Status</h6>
+                  </td>
+                </tr>
+              </div>
+              <div className="companysidebar-items companysidebar-content-dividend">
+                <tr
+                  onClick={() => {
+                    navigate("/companyDividend");
+                  }}
+                >
+                  <td>
+                    <img src={img2} alt="" />
+                  </td>
+                  <td>
+                    <h6>Dividend</h6>
+                  </td>
+                </tr>
+              </div>
+              <div className="companysidebar-items companysidebar-content-receive">
+                <tr>
+                  <td>
+                    <img src={img3} alt="" />
+                  </td>
+                  <td>
+                    <div className="company-content-drop">
+                      <button type="button" onClick={() => setShow(!show)}>
+                        {" "}
+                        Received Orders
+                      </button>
+                      {show && (
+                        <div className="sidebar-drop">
+                          <ul>
+                            <li
+                              onClick={() => {
+                                navigate("/companyViewBuyOrders");
+                              }}
+                            >
+                              Orders
+                            </li>
+                            {/* <li onClick={() => {
+                            // navigate('/companyViewBuyOrders')
+                          }}>Sell Order</li> */}
+                          </ul>
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
-              </td>
-            </tr>
-          </div>
+                  </td>
+                </tr>
+              </div>
+            </>
+          )}
           <div className="companysidebar-items companysidebar-content-Article">
             <tr>
               <td>
@@ -202,15 +232,19 @@ export const CompanySidebar = ({ changePage }) => {
                     <div className="sidebar-drop">
                       <ul>
                         <li
-                        onClick={()=>{
-                          changePage("add-Articles")
-                        }}
-                        >Add Articles</li>
+                          onClick={() => {
+                            changePage("add-Articles");
+                          }}
+                        >
+                          Add Articles
+                        </li>
                         <li
-                         onClick={()=>{
-                          changePage("view-Articles")
-                        }}
-                        >View Articles</li>
+                          onClick={() => {
+                            changePage("view-Articles");
+                          }}
+                        >
+                          View Articles
+                        </li>
                       </ul>
                     </div>
                   )}
@@ -224,9 +258,13 @@ export const CompanySidebar = ({ changePage }) => {
                 <img src={img5} alt="icon" />
               </td>
               <td>
-                <h6 onClick={()=>{
-                  changePage("companyAddComplaint")
-                }}>Complaints</h6>
+                <h6
+                  onClick={() => {
+                    changePage("companyAddComplaint");
+                  }}
+                >
+                  Complaints
+                </h6>
               </td>
             </tr>
           </div>

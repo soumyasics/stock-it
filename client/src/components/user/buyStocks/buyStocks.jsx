@@ -22,6 +22,7 @@ export const BuyStocks = () => {
         // const allCompanies = allIPOs.map((IPO) => {
         //   return IPO.companyId;
         // });
+        allIPOs.reverse()
         setAllCompanies(allIPOs);
         setFixedData(allIPOs);
         console.log("allIpos", allIPOs);
