@@ -1,55 +1,64 @@
 import React, { useEffect, useState } from "react";
-import "./etAddArticle.css";
 import toast from "react-hot-toast";
-import axiosMultipartInstance from "../../../apis/axiosMultipartInstance";
 import { useNavigate } from "react-router-dom";
-function EtAddArticle({navigateToviewArticle}) {
-  const [article, setArticle] = useState({
+import axiosMultipartInstance from "../../../apis/axiosMultipartInstance";
+
+export function CompanyEditArticle({ articleData, editModeOff, articleId }) {
+  const navigate = useNavigate();
+  console.log("arti0 ", articleData);
+  const [coArticle, SetCoArticle] = useState({
     title: "",
     subTitle: "",
     content: "",
     category: "",
-    tutorId: "",
+    coId: "",
     thumbnail: null,
     video: null,
     conclusion: "",
   });
-  const navigate = useNavigate()
+
+  console.log("co ar", coArticle)
+  useEffect(() => {
+    SetCoArticle(articleData);
+  }, [articleData]);
+
   const handleChanges = (e) => {
     const { name, value } = e.target;
-    setArticle({ ...article, [name]: value });
-
+    SetCoArticle({ ...coArticle, [name]: value });
   };
 
   useEffect(() => {
-    const tutorId =
-      JSON.parse(localStorage.getItem("stock_it_tutorId")) || null;
-    if (tutorId) {
-      setArticle((prev) => ({
+    const coId = JSON.parse(localStorage.getItem("stock_it_companyId")) || null;
+    if (coId) {
+      SetCoArticle((prev) => ({
         ...prev,
-        tutorId: tutorId,
+        coId: coId,
       }));
-    }else {
-      // todo => navigate to to tutor login
-      // show toast please login again. 
-      navigate('/etlogin')
+    } else {
+      navigate("/companyLogin");
     }
   }, []);
-  console.log("arti", article);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("data", article);
-    const { title, subTitle, content, category, tutorId, thumbnail, video, conclusion } =
-      article;
+    const {
+      title,
+      subTitle,
+      content,
+      category,
+      coId,
+      thumbnail,
+      video,
+      conclusion,
+    } = coArticle;
 
     const valitadeFields = () => {
       if (!title) {
-        toast.error("Enter title");
+        toast.error("Enter Title");
         return false;
       }
       if (!subTitle) {
-        toast.error("Enter subtilte");
+        toast.error("Enter Subtitle");
         return false;
       }
       if (!content) {
@@ -74,43 +83,49 @@ function EtAddArticle({navigateToviewArticle}) {
       }
       return true;
     };
+
     if (!valitadeFields()) {
       return;
     }
+
     const formData = new FormData();
     formData.append("title", title);
+    formData.append("coId", coId);
     formData.append("subTitle", subTitle);
-    formData.append("content", content);
     formData.append("category", category);
+    formData.append("content", content);
+    formData.append("conclusion", conclusion);
     formData.append("thumbnail", thumbnail);
     formData.append("video", video);
-    formData.append("tutorId", tutorId);
-    formData.append("conclusion", conclusion);
 
-    console.log("formdata", formData);
     sendDataToServer(formData);
   };
+
   const sendDataToServer = async (data) => {
     try {
-      const response = await axiosMultipartInstance.post("createArticle", data);
-      console.log(response);
-      if (response.status == 201) {
-        toast.success("Article upload successful");
-        navigateToviewArticle() 
-      } else {
-        toast.error(response.data.msg);
+      const response = await axiosMultipartInstance.post(
+        `co-updateArticleById/${articleId}`,
+        data
+      );
+      if (response.status === 200) {
+        toast.success("Article is updated");
       }
     } catch (error) {
-      console.error("network issue");
+      toast.error("Something went wrong");
+      console.log("Network issue", error);
+    } finally {
+      editModeOff();
     }
   };
 
   return (
-    <div>
-      <div className="etAddArticle">
-        <div className="etBackBtn">
-        
-          <div className="etAddArticle-head ms-1">Article</div>
+    <div
+      style={{ backgroundColor: "#1f2937", width: "100%", height: "100vh" }}
+      className="d-flex  align-items-center"
+    >
+      <div className="etAddArticle2 pb-5">
+        <div className="etBackBtn ps-4">
+          <div className="etAddArticle-head ms-1 text-center">Article</div>
         </div>
         <form onSubmit={handleSubmit} className="etAddArticle-inputs">
           <div className="row">
@@ -121,7 +136,7 @@ function EtAddArticle({navigateToviewArticle}) {
                 className="form-control"
                 placeholder="Enter Article Title"
                 name="title"
-                value={article.title}
+                value={coArticle.title}
                 onChange={handleChanges}
               />
             </div>
@@ -132,7 +147,7 @@ function EtAddArticle({navigateToviewArticle}) {
                 className="form-control"
                 placeholder="Enter Article subtitle"
                 name="subTitle"
-                value={article.subTitle}
+                value={coArticle.subTitle}
                 onChange={handleChanges}
               />
             </div>
@@ -145,7 +160,7 @@ function EtAddArticle({navigateToviewArticle}) {
                 className="form-control"
                 placeholder="Enter Article Content "
                 name="content"
-                value={article.content}
+                value={coArticle.content}
                 onChange={handleChanges}
               />
             </div>
@@ -161,10 +176,10 @@ function EtAddArticle({navigateToviewArticle}) {
                 }}
                 aria-label="Default select example"
                 name="category"
-                value={article.category}
+                value={coArticle.category}
                 onChange={handleChanges}
               >
-                <option selected>Open this select menu</option>
+                <option value="">Open this select menu</option>
                 <option value="Education">Education</option>
                 <option value="Company Updates">Company Updates</option>
                 <option value="Company News">Company News</option>
@@ -177,34 +192,35 @@ function EtAddArticle({navigateToviewArticle}) {
           <div className="row pt-2">
             <div className="col">
               <div className="mb-3">
-                <label for="formFileSm" className="form-label">
+                <label htmlFor="formFileSm" className="form-label">
                   Thumbnail
                 </label>
                 <input
                   className="form-control form-control-sm"
-                  id="formFileSm"
                   type="file"
                   name="thumbnail"
                   accept="image/*"
                   onChange={(e) => {
-                    setArticle({ ...article, thumbnail: e.target.files[0] });
+                    SetCoArticle({
+                      ...coArticle,
+                      thumbnail: e.target.files[0],
+                    });
                   }}
                 />
               </div>
             </div>
             <div className="col">
               <div className="mb-3">
-                <label for="formFileSm" className="form-label">
+                <label htmlFor="formFileSm" className="form-label">
                   Video
                 </label>
                 <input
                   className="form-control form-control-sm"
-                  id="formFileSm"
                   type="file"
                   name="video"
                   accept="video/*"
                   onChange={(e) => {
-                    setArticle({ ...article, video: e.target.files[0] });
+                    SetCoArticle({ ...coArticle, video: e.target.files[0] });
                   }}
                 />
               </div>
@@ -217,12 +233,22 @@ function EtAddArticle({navigateToviewArticle}) {
               type="textarea"
               placeholder="Enter conclusion"
               name="conclusion"
-              value={article.conclusion}
+              value={coArticle.conclusion}
               onChange={handleChanges}
             />
           </div>
-          <div className="etAddArticle-btn">
-            <button type="submit" value="submit">
+          <div className="etAddArticle-btn mb-5">
+            <button
+              type="button"
+              className="btn btn-outline-danger"
+              onClick={() => {
+                editModeOff();
+              }}
+            >
+              Cancel
+            </button>
+            &nbsp; &nbsp;
+            <button type="submit" className="btn btn-outline-success">
               Update
             </button>
           </div>
@@ -231,5 +257,3 @@ function EtAddArticle({navigateToviewArticle}) {
     </div>
   );
 }
-
-export default EtAddArticle;

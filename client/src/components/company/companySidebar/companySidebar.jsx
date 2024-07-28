@@ -252,7 +252,7 @@ export const CompanySidebar = ({ changePage }) => {
               </td>
             </tr>
           </div>
-          <div className=" companysidebar-items company-content-complaint">
+          {/* <div className=" companysidebar-items company-content-complaint">
             <tr>
               <td>
                 <img src={img5} alt="icon" />
@@ -267,7 +267,7 @@ export const CompanySidebar = ({ changePage }) => {
                 </h6>
               </td>
             </tr>
-          </div>
+          </div> */}
           <div className="companysidebar-items company-content-logout">
             <tr
               onClick={() => {

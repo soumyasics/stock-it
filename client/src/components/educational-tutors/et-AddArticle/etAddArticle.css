@@ -9,6 +9,15 @@
   margin: auto;
   margin-top: 10%;
 }
+.etAddArticle2 {
+  width: 90%;
+  height: 500px;
+  border-radius: 25px;
+  background: #374151;
+  padding-top: 1%;
+  margin: auto;
+  
+}
 .etBackBtn {
   font-size: 25px;
   color: #fff;
@@ -57,13 +66,18 @@
   width: 95%;
   height: 100px;
 }
+
+.etAddArticle-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
 .etAddArticle-btn button {
-    color: #fff;
-    font-family: "Noto sans";
-  width: 81.744px;
+  color: #fff;
+  font-family: "Noto sans";
+  padding: 0 15px;
   height: 29.194px;
   flex-shrink: 0;
-  margin: 1% 45%;
   border-radius: 13.222px;
   background: #374151;
   box-shadow: 0px 2.644px 2.644px 0px rgba(0, 0, 0, 0.25);

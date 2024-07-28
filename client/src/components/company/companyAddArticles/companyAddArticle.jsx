@@ -110,8 +110,8 @@ function CompanyAddArticle({rediectToviewArticle}) {
   return (
     <div>
       <div className="etAddArticle">
-        <div className="etBackBtn">
-          <div className="etAddArticle-head ms-1">Article</div>
+        <div className="etBackBtn ps-4">
+          <div className="etAddArticle-head ms-1 text-center">Article</div>
         </div>
         <form onSubmit={handleSubmit} className="etAddArticle-inputs">
           <div className="row">
@@ -165,11 +165,13 @@ function CompanyAddArticle({rediectToviewArticle}) {
                 value={coArticle.category}
                 onChange={handleChanges}
               >
-                <option selected>Open this select menu</option>
+                <option value="">Open this select menu</option>
                 <option value="Education">Education</option>
                 <option value="Company Updates">Company Updates</option>
+                <option value="Company News">Company News</option>
                 <option value="Upcoming IPOs">Upcoming IPOs</option>
                 <option value="Stock Analysis">Stock Analysis</option>
+                <option value="Other">Other</option>
               </select>
             </div>
           </div>
@@ -225,7 +227,7 @@ function CompanyAddArticle({rediectToviewArticle}) {
           </div>
           <div className="etAddArticle-btn">
             <button type="submit" value="submit">
-              Update
+              Add Article
             </button>
           </div>
         </form>

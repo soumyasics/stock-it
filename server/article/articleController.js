@@ -94,6 +94,12 @@ const updateArticleById = async (req, res) => {
     if (conclusion) {
       updateField.conclusion = conclusion;
     }
+    if (req.files[0]) {
+      updateField.thumbnail = req.files[0];
+    }
+    if (req.files[1]) {
+      updateField.video = req.files[1];
+    }
     const article = await ArticleModel.findByIdAndUpdate(
       req.params.id,
       updateField,
