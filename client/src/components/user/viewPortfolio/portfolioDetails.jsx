@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axiosInstance from "../../../apis/axiosInstance";
-import { Button, Col, Row } from "react-bootstrap";
+import { Alert, Button, Col, Row } from "react-bootstrap";
 import { BASE_URL } from "../../../apis/baseUrl";
 import { IoReturnUpBack } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import "./portfolioDetails.css";
+
 export const PortfolioDetails = () => {
   const { id } = useParams();
   const [stockData, setStockData] = useState({});
@@ -15,7 +16,7 @@ export const PortfolioDetails = () => {
   const [currentMarektValue, setCurrentMarketValue] = useState(0);
   const [sellingQuantity, setSellingQuantity] = useState(0);
   const [userId, setUserId] = useState("");
-
+  const [dividents, setDividents] = useState([]);
   const [logo, setLogo] = useState("");
 
   const navigate = useNavigate();
@@ -41,6 +42,10 @@ export const PortfolioDetails = () => {
       const response = await axiosInstance.get(`getBoughtStockById/${id}`);
       if (response.status === 200) {
         const stock = response.data?.data || {};
+        const ipoID = stock?.IPOId?._id || null;
+        if (ipoID) {
+          getDividentsData(ipoID);
+        }
         setStockData(stock);
         const companyLogo = stock?.companyId?.logo?.filename || null;
         if (companyLogo) {
@@ -64,6 +69,17 @@ export const PortfolioDetails = () => {
       }
     } catch (error) {
       console.log("Error on getstock data", error);
+    }
+  };
+
+  const getDividentsData = async (ipoId) => {
+    try {
+      const res = await axiosInstance.get(`getDividentsByIPOId/${ipoId}`);
+      if (res.status === 200) {
+        setDividents(res.data.data);
+      }
+    } catch (error) {
+      console.log("Error on get divident data", error);
     }
   };
 
@@ -112,113 +128,134 @@ export const PortfolioDetails = () => {
 
   return (
     <>
-      <div id="stock-details-container">
-        <div
-          style={{ fontSize: "20px", cursor: "pointer" }}
-          onClick={() => {
-            navigate(-1);
-          }}
-        >
-          <IoReturnUpBack />
-        </div>
-        <div className="stock-details-row align-items-center d-flex  ">
-          <img src={logo} alt="logo" />
+      <Row id="stock-details-container">
+        <Col>
+          <div
+            style={{ fontSize: "20px", cursor: "pointer" }}
+            onClick={() => {
+              navigate(-1);
+            }}
+            className="w-50"
+          >
+            <IoReturnUpBack />
+          </div>
+          <div className="stock-details-row align-items-center d-flex  ">
+            <img src={logo} alt="logo" />
 
-          <h3 className="ms-5">
-            {" "}
-            {`${stockData?.companyId?.name} (${stockData?.companyId?.ticker})`}
-          </h3>
-        </div>
-        <Row className="stock-details-row">
-          <Col>Total quantity bought</Col>
-          <Col md={1}>:</Col>
-          <Col>{stockData.numberOfSharesBought}</Col>
-        </Row>
-        <Row className="stock-details-row">
-          <Col>Currently available shares</Col>
-          <Col md={1}>:</Col>
-          <Col>{stockData.totalQuantity}</Col>
-        </Row>
-        <Row className="stock-details-row  ">
-          <Col>Bought price</Col>
-          <Col md={1}>:</Col>
-          <Col>{stockData.costPerShare}</Col>
-        </Row>
-
-        <Row className="stock-details-row  ">
-          <Col>Total Cost</Col>
-          <Col md={1}>:</Col>
-          <Col>{stockData.totalCost}</Col>
-        </Row>
-        <Row className="stock-details-row  ">
-          <Col>Current Market Price </Col>
-          <Col md={1}>:</Col>
-          <Col>{stockData.IPOId?.currentMarketPrice}</Col>
-        </Row>
-
-        <Row className="stock-details-row  ">
-          <Col>Current Market Valuation</Col>
-          <Col md={1}>:</Col>
-          <Col>{currentMarektValue}</Col>
-        </Row>
-        <Row className="stock-details-row  ">
-          <Col>Number of shares sold</Col>
-          <Col md={1}>:</Col>
-          <Col>{stockData.numberOfSharesBought - stockData.totalQuantity}</Col>
-        </Row>
-        {stockData.totalQuantity !== 0 && (
+            <h3 className="ms-5">
+              {" "}
+              {`${stockData?.companyId?.name} (${stockData?.companyId?.ticker})`}
+            </h3>
+          </div>
+          <Row className="stock-details-row ">
+            <Col>Total quantity bought</Col>
+            <Col md={1}>:</Col>
+            <Col>{stockData.numberOfSharesBought}</Col>
+          </Row>
+          <Row className="stock-details-row">
+            <Col>Currently available shares</Col>
+            <Col md={1}>:</Col>
+            <Col>{stockData.totalQuantity}</Col>
+          </Row>
           <Row className="stock-details-row  ">
-            <Col>Sell shares </Col>
+            <Col>Bought price</Col>
+            <Col md={1}>:</Col>
+            <Col>{stockData.costPerShare}</Col>
+          </Row>
+
+          <Row className="stock-details-row  ">
+            <Col>Total Cost</Col>
+            <Col md={1}>:</Col>
+            <Col>{stockData.totalCost}</Col>
+          </Row>
+          <Row className="stock-details-row  ">
+            <Col>Current Market Price </Col>
+            <Col md={1}>:</Col>
+            <Col>{stockData.IPOId?.currentMarketPrice}</Col>
+          </Row>
+
+          <Row className="stock-details-row  ">
+            <Col>Current Market Valuation</Col>
+            <Col md={1}>:</Col>
+            <Col>{currentMarektValue}</Col>
+          </Row>
+          <Row className="stock-details-row  ">
+            <Col>Number of shares sold</Col>
             <Col md={1}>:</Col>
             <Col>
-              <input
-                max={stockData.totalShares}
-                value={sellingQuantity}
-                onChange={handleNoSharesChanges}
-                type="number"
-              />
+              {stockData.numberOfSharesBought - stockData.totalQuantity}
             </Col>
           </Row>
-        )}
-
-        <Row className="stock-details-row  ">
-          <Col>Live Profit / Loss Status </Col>
-          <Col md={1}>:</Col>
-          {profitOrLoss > 0 ? (
-            <Col>
-              <p className="text-success" style={{ textAlign: "left" }}>
-                {" "}
-                ₹ {profitOrLoss}{" "}
-              </p>
-            </Col>
-          ) : (
-            <Col className="text-danger"> ₹ {profitOrLoss}</Col>
-          )}
-        </Row>
-
-        <Row className="stock-details-row  ">
-          <Col>Booked Profit / Loss </Col>
-          <Col md={1}>:</Col>
-          {bookedProfitOrLoss > 0 ? (
-            <Col>
-              <p className="text-success" style={{ textAlign: "left" }}>
-                {" "}
-                ₹ {bookedProfitOrLoss}{" "}
-              </p>
-            </Col>
-          ) : (
-            <Col className="text-danger"> ₹ {bookedProfitOrLoss}</Col>
-          )}
-        </Row>
-
-        <div className="d-flex justify-content-center mt-5 stock-details-row">
           {stockData.totalQuantity !== 0 && (
-            <Button className="buy-btn" onClick={sellStocks}>
-              Sell Stocks
-            </Button>
+            <Row className="stock-details-row  ">
+              <Col>Sell shares </Col>
+              <Col md={1}>:</Col>
+              <Col>
+                <input
+                  max={stockData.totalShares}
+                  value={sellingQuantity}
+                  onChange={handleNoSharesChanges}
+                  type="number"
+                />
+              </Col>
+            </Row>
           )}
-        </div>
-      </div>
+
+          <Row className="stock-details-row  ">
+            <Col>Live Profit / Loss Status </Col>
+            <Col md={1}>:</Col>
+            {profitOrLoss > 0 ? (
+              <Col>
+                <p className="text-success" style={{ textAlign: "left" }}>
+                  {" "}
+                  ₹ {profitOrLoss}{" "}
+                </p>
+              </Col>
+            ) : (
+              <Col className="text-danger"> ₹ {profitOrLoss}</Col>
+            )}
+          </Row>
+
+          <Row className="stock-details-row  ">
+            <Col>Booked Profit / Loss </Col>
+            <Col md={1}>:</Col>
+            {bookedProfitOrLoss > 0 ? (
+              <Col>
+                <p className="text-success" style={{ textAlign: "left" }}>
+                  {" "}
+                  ₹ {bookedProfitOrLoss}{" "}
+                </p>
+              </Col>
+            ) : (
+              <Col className="text-danger"> ₹ {bookedProfitOrLoss}</Col>
+            )}
+          </Row>
+
+          <div className="d-flex justify-content-center mt-5 stock-details-row">
+            {stockData.totalQuantity !== 0 && (
+              <Button className="buy-btn" onClick={sellStocks}>
+                Sell Stocks
+              </Button>
+            )}
+          </div>
+        </Col>
+
+        <Col className="p-5" style={{overflowY: "auto", maxHeight: "500px"}}>
+          {dividents.map((d) => {
+            const company = d?.companyId;
+            return (
+              <div>
+                <Alert key={d?._id} variant="success ">
+                  <span className="text-uppercase ">{company?.name}</span>{" "}
+                  &nbsp; announced a dividend of {d?.dividentPerShare} rupees
+                  per share. It will be added to your bank account on{" "}
+                  {d?.createdAt?.substring(0, 10)}.
+                </Alert>
+              </div>
+            );
+          })}
+        </Col>
+      </Row>
     </>
   );
 };

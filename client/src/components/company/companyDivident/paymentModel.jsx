@@ -2,14 +2,18 @@ import { useState } from "react";
 import { Form, Col, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import "./PaymentModal.css";
 
-export const PaymentModal = ({
+export const DividentPaymentModal = ({
   show,
   handleClose,
   handlePaymentDataChange,
-  buyStocks,
+  sendDataToServer,
+  paymentData,
 }) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    sendDataToServer();
+  };
   return (
     <div id="my-unique-payment">
       <Modal
@@ -24,7 +28,7 @@ export const PaymentModal = ({
           <Modal.Title>Payment</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={buyStocks}>
+          <Form onSubmit={handleSubmit}>
             <Row>
               <Col>
                 <Form.Group className="mb-3" controlId="formCardHolderName">
@@ -33,8 +37,9 @@ export const PaymentModal = ({
                     name="cardHolderName"
                     onChange={handlePaymentDataChange}
                     type="text"
-                    placeholder="Enter Name"
+                    value={paymentData.cardHolderName}
                     required
+                    placeholder="Enter Name"
                   />
                 </Form.Group>
               </Col>
@@ -47,6 +52,7 @@ export const PaymentModal = ({
                     onChange={handlePaymentDataChange}
                     minLength={16}
                     maxLength={16}
+                    value={paymentData.cardNumber}
                     required
                     placeholder="Enter Card Number"
                   />
@@ -59,24 +65,26 @@ export const PaymentModal = ({
                   <Form.Label>CVV</Form.Label>
                   <Form.Control
                     type="text"
-                    required
                     name="cvv"
                     onChange={handlePaymentDataChange}
                     minLength={3}
                     maxLength={3}
+                    value={paymentData.cvv}
+                    required
                     placeholder="Enter CVV"
                   />
                 </Form.Group>
               </Col>
               <Col>
                 <Form.Group className="mb-3" controlId="formExpiry">
-                  <Form.Label>Expiry date</Form.Label>
+                  <Form.Label>Expiry Date</Form.Label>
                   <Form.Control
                     type="date"
                     name="expiry"
                     required
                     onChange={handlePaymentDataChange}
                     placeholder="DD/MM/YYYY"
+                    value={paymentData.expiry}
                   />
                 </Form.Group>
               </Col>

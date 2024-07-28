@@ -166,6 +166,7 @@ router.get("/getAllSubscriptions", ETSubscriptionController.getAllSubscriptions)
 router.post("/addDivident", DividentController.addDivident);
 router.get("/getAllDividents", DividentController.getAllDividents);
 router.get("/getDividentById/:id", DividentController.getDividentById);
+router.get("/getDividentsByIPOId/:id", DividentController.getDividentsByIPOId);
 
 
 

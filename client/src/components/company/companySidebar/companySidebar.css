@@ -1,11 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 
 .companysidebar-main {
-  width: 307px;
-  height: 100vh;
-  flex-shrink: 0;
+  width: 339px;
   background: #374151;
-  padding-top: 2%;
+  overflow-y: auto;
+  height: 120vh;
 }
 
 .companysidebar-profile {

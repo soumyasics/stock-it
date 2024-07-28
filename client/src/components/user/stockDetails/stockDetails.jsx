@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axiosInstance from "../../../apis/axiosInstance";
-import { Button, Col, Row } from "react-bootstrap";
+import { Alert, Button, Col, Row } from "react-bootstrap";
 import "./stockDetails.css";
 import { BASE_URL } from "../../../apis/baseUrl";
 import { IoReturnUpBack } from "react-icons/io5";
@@ -14,6 +14,7 @@ export const StockDetails = () => {
   const [totalBoughtShares, setTotalBoughtShares] = useState(0);
   const [totalPurchasePrice, setTotalPurchasePrice] = useState(0);
   const [userId, setUserId] = useState("");
+  const [dividents, setDividents] = useState([]);
   const [paymentData, setPaymentData] = useState({
     cardHolderName: "",
     cardNumber: "",
@@ -36,6 +37,7 @@ export const StockDetails = () => {
   useEffect(() => {
     if (id) {
       getStockData();
+      getDividentsData();
       const userIdentification =
         localStorage.getItem("stock_it_userId") || null;
       if (userIdentification) {
@@ -129,21 +131,31 @@ export const StockDetails = () => {
       const response = await axiosInstance.post("buyStocks", data);
       if (response.status === 201) {
         toast.success("Stocks bought successfully");
-          navigate("/viewPortfolio")
+        navigate("/viewPortfolio");
       }
     } catch (error) {
       const status = error?.response.status;
       if (status === 400 || status === 404 || status === 500) {
         toast.error(error?.response?.data?.msg || "Please check your network");
-      }else {
+      } else {
         toast.error("Something went wrong");
       }
       console.log("Error on buy stocks", error);
-    }finally {
-      handleClose()
+    } finally {
+      handleClose();
     }
   };
 
+  const getDividentsData = async () => {
+    try {
+      const res = await axiosInstance.get(`getDividentsByIPOId/${id}`);
+      if (res.status === 200) {
+        setDividents(res.data.data);
+      }
+    } catch (error) {
+      console.log("Error on get divident data", error);
+    }
+  };
   return (
     <>
       <PaymentModal
@@ -152,62 +164,79 @@ export const StockDetails = () => {
         handlePaymentDataChange={handlePaymentDataChange}
         buyStocks={buyStocks}
       />
-      <div id="stock-details-container">
-        <div
-          style={{ fontSize: "20px", cursor: "pointer" }}
-          onClick={() => {
-            navigate(-1);
-          }}
-        >
-          <IoReturnUpBack />
-        </div>
-        <div className="stock-details-row align-items-center d-flex  ">
-          <img src={logo} alt="logo" />
+      <Row id="stock-details-container">
+        <Col>
+          <div
+            style={{ fontSize: "20px", cursor: "pointer" }}
+            onClick={() => {
+              navigate(-1);
+            }}
+          >
+            <IoReturnUpBack />
+          </div>
+          <div className="stock-details-row align-items-center d-flex  ">
+            <img src={logo} alt="logo" />
 
-          <h3 className="ms-5">
-            {" "}
-            {`${stockData?.companyId?.name} (${stockData?.companyId?.ticker})`}
-          </h3>
-        </div>
-        <Row className="stock-details-row">
-          <Col>Total Shares</Col>
-          <Col md={1}>:</Col>
-          <Col>{stockData.totalShares}</Col>
-        </Row>
-        <Row className="stock-details-row">
-          <Col>Available Shares</Col>
-          <Col md={1}>:</Col>
-          <Col>{stockData.availableShares}</Col>
-        </Row>
-        <Row className="stock-details-row  ">
-          <Col>Current Market Price</Col>
-          <Col md={1}>:</Col>
-          <Col>{stockData.currentMarketPrice}</Col>
-        </Row>
-        <Row className="stock-details-row  ">
-          <Col>Number of Shares Needed </Col>
-          <Col md={1}>:</Col>
-          <Col>
-            <input
-              max={stockData.totalShares}
-              value={totalBoughtShares}
-              onChange={handleNoSharesChanges}
-              type="number"
-            />
-          </Col>
-        </Row>
-        <Row className="stock-details-row  ">
-          <Col>Total Purchase Price </Col>
-          <Col md={1}>:</Col>
-          <Col>{totalPurchasePrice}</Col>
-        </Row>
+            <h3 className="ms-5">
+              {" "}
+              {`${stockData?.companyId?.name} (${stockData?.companyId?.ticker})`}
+            </h3>
+          </div>
+          <Row className="stock-details-row">
+            <Col>Total Shares</Col>
+            <Col md={1}>:</Col>
+            <Col>{stockData.totalShares}</Col>
+          </Row>
+          <Row className="stock-details-row">
+            <Col>Available Shares</Col>
+            <Col md={1}>:</Col>
+            <Col>{stockData.availableShares}</Col>
+          </Row>
+          <Row className="stock-details-row  ">
+            <Col>Current Market Price</Col>
+            <Col md={1}>:</Col>
+            <Col>{stockData.currentMarketPrice}</Col>
+          </Row>
+          <Row className="stock-details-row  ">
+            <Col>Number of Shares Needed </Col>
+            <Col md={1}>:</Col>
+            <Col>
+              <input
+                max={stockData.totalShares}
+                value={totalBoughtShares}
+                onChange={handleNoSharesChanges}
+                type="number"
+              />
+            </Col>
+          </Row>
+          <Row className="stock-details-row  ">
+            <Col>Total Purchase Price </Col>
+            <Col md={1}>:</Col>
+            <Col>{totalPurchasePrice}</Col>
+          </Row>
 
-        <div className="d-flex justify-content-center mt-5 stock-details-row">
-          <Button onClick={openPaymentModal} className="buy-btn">
-            Buy Stocks
-          </Button>
-        </div>
-      </div>
+          <div className="d-flex justify-content-center mt-5 stock-details-row">
+            <Button onClick={openPaymentModal} className="buy-btn">
+              Buy Stocks
+            </Button>
+          </div>
+        </Col>
+        <Col className="p-5" style={{ overflowY: "auto", maxHeight: "500px" }}>
+          {dividents.map((d) => {
+            const company = d?.companyId;
+            return (
+              <div>
+                <Alert key={d?._id} variant="success ">
+                  <span className="text-uppercase ">{company?.name}</span>{" "}
+                  &nbsp; announced a dividend of {d?.dividentPerShare} rupees
+                  per share. It will be added to your bank account on{" "}
+                  {d?.createdAt?.substring(0, 10)}.
+                </Alert>
+              </div>
+            );
+          })}
+        </Col>
+      </Row>
     </>
   );
 };

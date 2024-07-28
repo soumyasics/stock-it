@@ -6,6 +6,7 @@ import dividentImg from "../../../assets/illus/divident-1.png";
 import "./divident.css";
 import axiosInstance from "../../../apis/axiosInstance";
 import { toast } from "react-hot-toast";
+import { DividentPaymentModal } from "./paymentModel";
 
 function CompanyDivident() {
   const [ipoStatus, setIpoStatus] = useState({});
@@ -14,6 +15,16 @@ function CompanyDivident() {
   const [today] = useState(new Date().toISOString().split("T")[0]);
   const [dividentPerShare, setDividentPerShare] = useState(0);
   const [totalDivident, setTotalDivident] = useState(0);
+  const [companyId, setCompanyId] = useState("");
+  const [IPOId, setIPOId] = useState("");
+  const [show, setShow] = useState(false);
+  const [paymentData, setPaymentData] = useState({
+    cardHolderName: "",
+    cardNumber: "",
+    cvv: "",
+    expiry: "",
+  });
+  const [paymentDate, setPaymentDate] = useState(today);
   const navigate = useNavigate();
   useEffect(() => {
     let companyId = localStorage.getItem("stock_it_companyId") || null;
@@ -27,18 +38,22 @@ function CompanyDivident() {
     getIpoData(companyId);
     getCompanyData(companyId);
   }, []);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const getIpoData = async (companyId) => {
     try {
       const response = await axiosInstance.get(
         `/getIpoByCompanyId/${companyId}`
       );
-      const data = response?.data?.data || null;
-      if (data) {
-        setIpoStatus(data);
-      } else {
-        console.log("resposne", response);
+      if (response.status === 200) {
+        const data = response?.data?.data || null;
+        if (data) {
+          setIpoStatus(data);
+          setIPOId(data._id);
+        }
       }
-      console.log("Response from getIpoStatus api", response.data.data);
     } catch (error) {
       console.log("Error getting compnaies ipo data", error);
     }
@@ -48,15 +63,38 @@ function CompanyDivident() {
       const response = await axiosInstance.post(
         `/viewCompanyById/${companyId}`
       );
-      const data = response?.data?.data || null;
-      if (data) {
-        setcompanyData(data);
+      if (response.status === 200) {
+        const data = response?.data?.data || null;
+        if (data) {
+          setcompanyData(data);
+          setCompanyId(data._id);
+        }
       } else {
         console.log("resposne", response);
       }
     } catch (error) {
       console.log("Error getting compnaies ipo data", error);
     }
+  };
+  const handlePaymentDataChange = (e) => {
+    const { name, value } = e.target;
+    // regular expression for validate number
+    const isValidNumber = /^[0-9]+$/;
+    if (name === "cardNumber" && value !== "") {
+      if (!isValidNumber.test(value)) {
+        return;
+      }
+    }
+
+    if (name === "cvv" && value !== "") {
+      if (!isValidNumber.test(value)) {
+        return;
+      }
+    }
+    setPaymentData({
+      ...paymentData,
+      [name]: value,
+    });
   };
 
   const handleDividentAmountChange = (e) => {
@@ -87,110 +125,154 @@ function CompanyDivident() {
       toast.error("You can't provide divident more than current market price");
       return;
     }
-    const amount = dividentPerShare * ipoStatus?.totalShares;
-    setTotalDivident(amount);
+
+    if (!paymentDate) {
+      toast.error("Please select payment date");
+      return;
+    }
+    if (!totalDivident) {
+      toast.error("Please refresh.");
+      return;
+    }
+    
+    handleShow();
+  };
+  const sendDataToServer = async () => {
+    let serializedData = {
+      IPOId,
+      companyId,
+      dividentPerShare,
+      totalDividentAmount: totalDivident,
+      paymentDate,
+    };
+    try {
+      const res = await axiosInstance.post("addDivident", serializedData);
+      console.log("resp", res);
+      if (res.status === 200) {
+        toast.success("Divident added successfully");
+        setDividentPerShare(0);
+        setTotalDivident(0);
+        // redirect to ipo status.
+      }
+    } catch (error) {
+      console.log("Error on divident", error);
+    }finally {
+      handleClose()
+    }
   };
 
   useEffect(() => {
     const totalShares = ipoStatus?.totalShares || 0;
     setTotalDivident(dividentPerShare * totalShares);
   }, [dividentPerShare]);
-  console.log("ipo status", ipoStatus);
-  console.log("company data", companyData);
   return (
-    <div>
-      <div className="viewCompany-body">
-        <div className="viewcomapany-head-box d-flex align-items-center justify-content-between px-5">
-          <div
-            onClick={() => {
-              navigate(-1);
-            }}
-            style={{ cursor: "pointer", color: "white", fontSize: "20px" }}
-          >
-            <IoReturnUpBack />
+    <>
+      <DividentPaymentModal
+        handlePaymentDataChange={handlePaymentDataChange}
+        handleClose={handleClose}
+        show={show}
+        sendDataToServer={sendDataToServer}
+        paymentData={paymentData}
+      />
+      <div>
+        <div className="viewCompany-body">
+          <div className="viewcomapany-head-box d-flex align-items-center justify-content-between px-5">
+            <div
+              onClick={() => {
+                navigate(-1);
+              }}
+              style={{ cursor: "pointer", color: "white", fontSize: "20px" }}
+            >
+              <IoReturnUpBack />
+            </div>
+            <div>
+              <h4>Dividend</h4>
+            </div>
+            <div></div>
           </div>
-          <div>
-            <h4>Dividend</h4>
-          </div>
-          <div></div>
-        </div>
-        <div className="d-flex mt-5 gap-5">
-          <div className="divident-img " style={{ width: "40%" }}>
-            <img src={dividentImg} alt="dividnet" />
-          </div>
+          <div className="d-flex mt-5 gap-5">
+            <div className="divident-img " style={{ width: "40%" }}>
+              <img src={dividentImg} alt="dividnet" />
+            </div>
 
-          <table className="w-50" id="divident-table">
-            <tbody>
-              <tr>
-                <td class="first-column-table">Stock Ticker Symbol</td>
-                <td>:</td>
-                <td className="text-uppercase">
-                  {companyData?.ticker || "Not assigned yet."}
-                </td>
-              </tr>
-              <tr>
-                <td>Total Issued Shares</td>
-                <td>:</td>
-                <td>{ipoStatus?.totalShares}</td>
-              </tr>
+            <table className="w-50" id="divident-table">
+              <tbody>
+                <tr>
+                  <td class="first-column-table">Stock Ticker Symbol</td>
+                  <td>:</td>
+                  <td className="text-uppercase">
+                    {companyData?.ticker || "Not assigned yet."}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Total Issued Shares</td>
+                  <td>:</td>
+                  <td>{ipoStatus?.totalShares}</td>
+                </tr>
 
-              <tr>
-                <td>Total Shares Purchased</td>
-                <td>:</td>
-                <td>{ipoStatus?.totalShares - ipoStatus?.availableShares}</td>
-              </tr>
-              <tr>
-                <td>Unbought Shares</td>
-                <td>:</td>
-                <td>{ipoStatus?.availableShares}</td>
-              </tr>
-              <tr>
-                <td>Current Market Price</td>
-                <td>:</td>
-                <td>{ipoStatus?.currentMarketPrice}</td>
-              </tr>
-              <tr>
-                <td>Dividend Declaration Date</td>
-                <td>:</td>
-                <td>{todaysDate}</td>
-              </tr>
-              <tr>
-                <td>Divident Payment Date</td>
-                <td>:</td>
-                <td>
-                  <input min={today} type="date" />
-                </td>
-              </tr>
-              <tr>
-                <td>Divident Amount Per Share</td>
-                <td>:</td>
-                <td>
-                  <input
-                    value={dividentPerShare}
-                    onChange={handleDividentAmountChange}
-                    type="number"
-                    placeholder="Enter divident amount"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>Total Divident Amount</td>
-                <td>:</td>
-                <td>{totalDivident}</td>
-              </tr>
-              <tr
-                className=" d-flex justify-content-center position-relative"
-                style={{ left: "50%", top: "20px" }}
-              >
-                <Button onClick={initiateDivident} variant="success">
-                  Provide Dividend
-                </Button>
-              </tr>
-            </tbody>
-          </table>
+                <tr>
+                  <td>Total Shares Purchased</td>
+                  <td>:</td>
+                  <td>{ipoStatus?.totalShares - ipoStatus?.availableShares}</td>
+                </tr>
+                <tr>
+                  <td>Unbought Shares</td>
+                  <td>:</td>
+                  <td>{ipoStatus?.availableShares}</td>
+                </tr>
+                <tr>
+                  <td>Current Market Price</td>
+                  <td>:</td>
+                  <td>{ipoStatus?.currentMarketPrice}</td>
+                </tr>
+                <tr>
+                  <td>Dividend Declaration Date</td>
+                  <td>:</td>
+                  <td>{todaysDate}</td>
+                </tr>
+                <tr>
+                  <td>Divident Payment Date</td>
+                  <td>:</td>
+                  <td>
+                    <input
+                      min={today}
+                      type="date"
+                      value={paymentDate}
+                      onChange={(e) => setPaymentDate(e.target.value)}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Divident Amount Per Share</td>
+                  <td>:</td>
+                  <td>
+                    <input
+                      value={dividentPerShare}
+                      onChange={handleDividentAmountChange}
+                      type="number"
+                      placeholder="Enter divident amount"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Total Divident Amount</td>
+                  <td>:</td>
+                  <td>{totalDivident}</td>
+                </tr>
+                <tr
+                  className=" d-flex justify-content-center position-relative"
+                  style={{ left: "50%", top: "20px" }}
+                >
+                  <Button onClick={initiateDivident} variant="success">
+                    Provide Dividend
+                  </Button>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
