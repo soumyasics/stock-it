@@ -3,8 +3,8 @@ import { Container, Row, Col, ListGroup, Card } from "react-bootstrap";
 import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseUrl";
 import { Form } from "react-bootstrap";
-import "./userDashboard.css"
-export const UserDashboardSidebar = () => {
+import "./userDashboard.css";
+export const UserDashboardSidebar = ({ changeSelectedStock }) => {
   const [fixedData, setFixedData] = useState([]);
   const [stocks, setStocks] = useState([]);
   useEffect(() => {
@@ -76,7 +76,9 @@ export const UserDashboardSidebar = () => {
             path = `${BASE_URL}${logoUrl}`;
           }
           return (
-            <ListGroup.Item key={index} style={{ backgroundColor: "#374151" }}>
+            <ListGroup.Item key={index} style={{ backgroundColor: "#374151" }} onClick={() => {
+              changeSelectedStock(stock._id);
+            }}>
               <Card style={{ backgroundColor: "#374151", cursor: "pointer" }}>
                 <Row>
                   <Col xs={3}>

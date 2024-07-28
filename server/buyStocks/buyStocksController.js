@@ -50,6 +50,8 @@ const buyStocks = async (req, res) => {
     stock.currentMarketPrice = Math.round(
       onePercentageOfCMP + stock.currentMarketPrice
     );
+
+    stock.cmpArr.push({ value: stock.currentMarketPrice, date: Date.now() });
     await stock.save();
 
     const buyStocks = new BuyStocksModel({
@@ -121,6 +123,7 @@ const sellStocksById = async (req, res) => {
 
     // 4. increase availble shares of stocks
     stock.availableShares += Number(sellingQuantity);
+    stock.cmpArr.push({ value: stock.currentMarketPrice, date: Date.now() });
 
     await holdings.save();
     await stock.save();

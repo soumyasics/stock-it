@@ -2,8 +2,14 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Footer2 } from "../../common/footer2/footer2";
 import { UserNavbar } from "../userNavbar/userNavbar";
 import { UserDashboardSidebar } from "./dashboardSidebar";
+import { useState } from "react";
+import { UserDashboardMainbar } from "./userDashboardMainbar.jsx";
 
 export const UserDashboard = () => {
+  const [selectedStock, setSelectedStock] = useState("")
+  const changeSelectedStock = (value) => {
+    setSelectedStock(value)
+  }
   return (
     <div>
       <UserNavbar />
@@ -14,12 +20,13 @@ export const UserDashboard = () => {
       >
         <Row>
           <Col className="sidebar w-100" style={{ backgroundColor: "#374151" }}>
-            <UserDashboardSidebar />
+            <UserDashboardSidebar changeSelectedStock={changeSelectedStock}/>
           </Col>
-          <Col md={9}>h1 chart</Col>
+          <Col md={9}>
+            {selectedStock && <UserDashboardMainbar selectedStock={selectedStock}/>}
+          </Col>
         </Row>
       </Container>
-      <Footer2 />
     </div>
   );
 };
