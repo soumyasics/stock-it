@@ -124,8 +124,6 @@ export const PortfolioDetails = () => {
     }
   };
 
-  console.log("sto", stockData);
-
   return (
     <>
       <Row id="stock-details-container">
@@ -237,6 +235,15 @@ export const PortfolioDetails = () => {
                 Sell Stocks
               </Button>
             )}
+
+            <Button
+              onClick={() => {
+                navigate("/userDashboard/" + stockData?.IPOId?._id);
+              }}
+              className="buy-btn ms-3"
+            >
+              View Chart
+            </Button>
           </div>
         </Col>
 

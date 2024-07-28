@@ -97,6 +97,7 @@ import { ViewETSubs } from "./components/educational-tutors/et-viewSubs/et-views
 import { CompanyViewBuyOrders } from "./components/company/viewOrders/buyOrders";
 import { CompanyViewBuyOrderDetails } from "./components/company/viewOrders/orderDetails";
 import { UserDashboard } from "./components/user/userDashboard/userDashboard";
+import { UserDashboardParams } from "./components/user/userDashboard/userDashboardParams";
 
 function App() {
   return (
@@ -177,6 +178,7 @@ function App() {
           <Route path="/userViewEtDetail/:id" element={<UserViewEtDetail />} />
           <Route path="/userRatingTutor" element={<TutorRating/>}/>
           <Route path="/userDashboard" element={<UserDashboard/>}/>
+          <Route path="/userDashboard/:id" element={<UserDashboardParams/>}/>
 
           {/* admin pages  */}
           <Route path="/admin" element={<AdminDashboard />} />

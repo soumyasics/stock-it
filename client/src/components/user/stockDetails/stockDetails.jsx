@@ -215,9 +215,14 @@ export const StockDetails = () => {
             <Col>{totalPurchasePrice}</Col>
           </Row>
 
-          <div className="d-flex justify-content-center mt-5 stock-details-row">
+          <div className="d-flex justify-content-center gap-5 mt-5 stock-details-row">
             <Button onClick={openPaymentModal} className="buy-btn">
               Buy Stocks
+            </Button>
+            <Button onClick={() => {
+              navigate('/userDashboard/'+id)
+            }} className="buy-btn">
+              View Chart
             </Button>
           </div>
         </Col>
