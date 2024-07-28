@@ -6,8 +6,8 @@ import { Footer2 } from "../../common/footer2/footer2";
 import AdminNavbar from "../../common/adminNavbar";
 import { AdminOverview } from "../adminOverview/adminOverview";
 import { ETPendingRequest } from "../adminViewAllETPendingRequests/viewAllETPendingRequest";
-import AdminViewBroughtStock from "../adminViewBroughtStock/adminViewBroughtStock";
 import { AdminViewComapaniesArticles } from "../companyArticleList/companyArticleList";
+import { AdminViewTutorsArticles } from "../companyArticleList/tutorArticleList";
 
 export const AdminDashboard = () => {
   const [activePage, setActivePage] = useState("overview");
@@ -28,6 +28,9 @@ export const AdminDashboard = () => {
           )}
           {activePage === "view-company-articles" && (
             <AdminViewComapaniesArticles />
+          )}
+          {activePage === "view-tutors-articles" && (
+            <AdminViewTutorsArticles />
           )}
           {activePage === "et-pending-request" && (
             <ETPendingRequest />

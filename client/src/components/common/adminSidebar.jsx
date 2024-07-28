@@ -14,7 +14,8 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { toast } from "react-hot-toast";
 import { IoMdStar } from "react-icons/io";
-
+import { FaRegNewspaper } from "react-icons/fa6";
+import { TiNews } from "react-icons/ti";
 function AdminSidebar({ changePage }) {
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
@@ -190,17 +191,33 @@ function AdminSidebar({ changePage }) {
               </h5>
             </div>
           </div>
-          <div className="adminSidebar-stock">
-            <div className="clickable-item adminSidebar-stock-grid">
-              <img src={img2} alt="" />
+          <div className="mb-3 mt-1 adminSidebar-stock d-flex align-items-center ms-5 ps-2">
+            <div className="text-light clickable-item fs-6">
+              <FaRegNewspaper />
             </div>
             <div className=" clickable-item stock-h1">
               <h5
                 onClick={() => {
                   changePage("view-company-articles");
                 }}
+                className="m-0 "
               >
                 Companies Articles
+              </h5>
+            </div>
+          </div>
+          <div className="mb-3 mt-1 adminSidebar-stock d-flex align-items-center ms-5 ps-2">
+            <div className="text-light clickable-item fs-6">
+              <TiNews />
+            </div>
+            <div className=" clickable-item stock-h1">
+              <h5
+                onClick={() => {
+                  changePage("view-tutors-articles");
+                }}
+                className="m-0 "
+              >
+                Educational contents
               </h5>
             </div>
           </div>

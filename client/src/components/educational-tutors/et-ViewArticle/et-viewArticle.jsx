@@ -69,7 +69,7 @@ function EtviewArticle() {
     try {
       const res = await axiosInstance.delete(`deleteArticleById/${id}`);
       if (res.status === 200) {
-        navigate("/etdashboard");
+        navigate(-1);
         toast.error("Video article deleted successfully.");
       }
     } catch (error) {
