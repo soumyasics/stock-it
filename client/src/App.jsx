@@ -94,6 +94,8 @@ import AdminViewBroughtStock from "./components/Admin/adminViewBroughtStock/admi
 import { TutorRating } from "./components/user/userRatingTutor/userRatingTutor";
 import AdminViewEtRating from "./components/Admin/adminEtRating/adminViewEtRating";
 import { ViewETSubs } from "./components/educational-tutors/et-viewSubs/et-viewsubs";
+import { CompanyViewBuyOrders } from "./components/company/viewOrders/buyOrders";
+import { CompanyViewBuyOrderDetails } from "./components/company/viewOrders/orderDetails";
 
 function App() {
   return (
@@ -131,6 +133,8 @@ function App() {
             element={<CompanyArticleList />}
           />
           <Route path="/companyAddArticles" element={<CompanyAddArticle />} />
+          <Route path="/companyViewBuyOrders" element={<CompanyViewBuyOrders />} />
+          <Route path="/companyViewBuyOrders/:id" element={<CompanyViewBuyOrderDetails />} />
           <Route
             path="/companyViewArticles/:id/:userType"
             element={<CompanyViewArticle />}

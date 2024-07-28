@@ -64,6 +64,9 @@ export const CompanySidebar = ({ changePage }) => {
     }
   };
 
+  const redirectToBuyOrders = () => {
+    navigate('/companyViewBuyOrders')
+  }
   return (
     <div>
       <div className="companysidebar-main pt-5">
@@ -171,8 +174,12 @@ export const CompanySidebar = ({ changePage }) => {
                   {show && (
                     <div className="sidebar-drop">
                       <ul>
-                        <li>Buy order</li>
-                        <li>Sell Order</li>
+                        <li onClick={() => {
+                          navigate('/companyViewBuyOrders')
+                        }}>Buy order</li>
+                        <li onClick={() => {
+                          // navigate('/companyViewBuyOrders')
+                        }}>Sell Order</li>
                       </ul>
                     </div>
                   )}
