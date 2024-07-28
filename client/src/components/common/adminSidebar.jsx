@@ -25,7 +25,6 @@ function AdminSidebar({ changePage }) {
   useEffect(() => {
     const isAdminLoggedin =
       localStorage.getItem("stock_it_admin_login") || null;
-    console.log("is admin ", isAdminLoggedin);
 
     if (isAdminLoggedin === null || isAdminLoggedin === "false") {
       console.log("workd");
@@ -191,12 +190,32 @@ function AdminSidebar({ changePage }) {
               </h5>
             </div>
           </div>
-          <div className="adminSidebar-rating " style={{ marginLeft: "18%",width:"50%" }}>
+          <div className="adminSidebar-stock">
+            <div className="clickable-item adminSidebar-stock-grid">
+              <img src={img2} alt="" />
+            </div>
+            <div className=" clickable-item stock-h1">
+              <h5
+                onClick={() => {
+                  changePage("view-company-articles");
+                }}
+              >
+                Companies Articles
+              </h5>
+            </div>
+          </div>
+          <div
+            className="adminSidebar-rating "
+            style={{ marginLeft: "18%", width: "50%" }}
+          >
             <div className="fs-5 adminSidebar-rating-grid">
               <IoMdStar />
-              <div className="clickable-item-rating" onClick={()=>{
-                navigate("/adminViewEtRating")
-              }}>
+              <div
+                className="clickable-item-rating"
+                onClick={() => {
+                  navigate("/adminViewEtRating");
+                }}
+              >
                 View Rating
               </div>
             </div>

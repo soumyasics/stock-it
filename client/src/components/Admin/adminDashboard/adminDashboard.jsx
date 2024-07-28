@@ -7,6 +7,8 @@ import AdminNavbar from "../../common/adminNavbar";
 import { AdminOverview } from "../adminOverview/adminOverview";
 import { ETPendingRequest } from "../adminViewAllETPendingRequests/viewAllETPendingRequest";
 import AdminViewBroughtStock from "../adminViewBroughtStock/adminViewBroughtStock";
+import { AdminViewComapaniesArticles } from "../companyArticleList/companyArticleList";
+
 export const AdminDashboard = () => {
   const [activePage, setActivePage] = useState("overview");
   const changePage = (value) => {
@@ -23,6 +25,9 @@ export const AdminDashboard = () => {
           {activePage === "overview" && <AdminOverview />}
           {activePage === "company-pending-request" && (
             <CompanyPendingRequest />
+          )}
+          {activePage === "view-company-articles" && (
+            <AdminViewComapaniesArticles />
           )}
           {activePage === "et-pending-request" && (
             <ETPendingRequest />

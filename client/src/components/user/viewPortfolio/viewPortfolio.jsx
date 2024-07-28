@@ -18,7 +18,7 @@ export const MyPortfolio = () => {
       );
       if (res.status === 200) {
         let allStocks = res.data?.data || [];
-        allStocks = allStocks.reverse()
+        allStocks = allStocks.reverse();
         setMyStocks(allStocks);
       } else {
         console.log("Error ", res);
@@ -52,8 +52,25 @@ export const MyPortfolio = () => {
           <div className="companyRequesest-second-box" role="group"></div>
         </div>
 
+        <h4 className=" text-light text-center"> Current Holdings</h4>
+        <div className="viewCompany-table d-flex flex-wrap gap-5 p-5 mb-5">
+          {myStocks.map((co) => {
+            if (co.totalQuantity <= 0) {
+              return null;
+            }
+            return (
+              <div key={co._id}>
+                <PortfolioCard data={co} />
+              </div>
+            );
+          })}
+        </div>
+        <h4 className="text-center text-light">Closed Positions</h4>
         <div className="viewCompany-table d-flex flex-wrap gap-5 p-5">
           {myStocks.map((co) => {
+            if (co.totalQuantity > 0) {
+              return null;
+            }
             return (
               <div key={co._id}>
                 <PortfolioCard data={co} />

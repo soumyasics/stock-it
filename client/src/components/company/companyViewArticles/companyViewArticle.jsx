@@ -11,7 +11,6 @@ function CompanyViewArticle() {
   const navigate = useNavigate();
   const [viewArticle, setViewArticle] = useState(null);
   const { id, userType } = useParams();
-  console.log("user typ", userType);
   const [videoUrl, setVideoUrl] = useState(null);
   useEffect(() => {
     if (viewArticle) {
@@ -56,6 +55,7 @@ function CompanyViewArticle() {
   const getArticle = async () => {
     try {
       const response = await axiosInstance.post(`co-getArticleById/${id}`);
+      console.log("repo55", response)
       if (response.status === 200) {
         setViewArticle(response.data.data);
         console.log("data", response.data.data);
@@ -68,7 +68,7 @@ function CompanyViewArticle() {
     try {
       const res = await axiosInstance.delete(`co-deleteArticleById/${id}`);
       if (res.status === 200) {
-        navigate("/company-dashboard");
+        navigate(-1);
         toast.error("Video article deleted successfully.");
       }
     } catch (error) {
@@ -123,11 +123,7 @@ function CompanyViewArticle() {
             </div>
 
             <div className="companyViewArticle-btn d-flex gap-3">
-              {/* <div className="etArticle-editbtn">
-                <button type="button" className="btn btn-outline-success">
-                  Edit
-                </button>
-              </div> */}
+         
 
               {userType === "company" && (
                 <div className="etArticle-deletebtn">

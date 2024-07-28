@@ -14,7 +14,7 @@ function AdminViewUserDetail() {
   const navigate = useNavigate();
   useEffect(() => {
     axiosInstance
-      .post(`/getUserById/${id}`)   
+      .post(`/getUserById/${id}`)
       .then((response) => {
         console.log(response);
         setUserData(response.data.data);
@@ -27,31 +27,30 @@ function AdminViewUserDetail() {
   const redirectBack = () => {
     navigate("/adminViewUsers");
   };
-const redirectToUserView=()=>{
-  navigate("/adminViewUsers")
-}
+  const redirectToUserView = () => {
+    navigate("/adminViewUsers");
+  };
   const toAccept = () => {
     axiosInstance.post(`/activateUserById/${id}`).then((response) => {
       if (response.status == 200) {
         toast.success("User activation sucessfull");
-        redirectToUserView()
+        redirectToUserView();
       } else {
         toast.error(response.data.msg);
       }
     });
   };
-  const toDelete=()=>{
-    axiosInstance.post(`/deActivateUserById/${id}`)
-    .then((response)=>{
-      console.log("res",response);
-      if(response.status==200){
-        toast.success("User deactivation sucessfully")
-        redirectToUserView()
-      }else{
-        toast.error(response.data.msg)
+  const toDelete = () => {
+    axiosInstance.post(`/deActivateUserById/${id}`).then((response) => {
+      console.log("res", response);
+      if (response.status == 200) {
+        toast.success("User deactivation sucessfully");
+        redirectToUserView();
+      } else {
+        toast.error(response.data.msg);
       }
     });
-  }
+  };
   return (
     <div>
       <div className="w-100">
@@ -157,13 +156,26 @@ const redirectToUserView=()=>{
               </tr>
             </table>
           </div>
-          <div className="adminViewUserDetail-btn">
-            <button className="btn" type="submit" value="submit" onClick={toAccept}>
-              Active
-            </button>
-            <button className="btn" type="submit" value="submit" onClick={toDelete} >
-              Inactive
-            </button>
+          <div className="adminViewUserDetail-btn ">
+            {userData?.isActive ? (
+              <button
+                className="btn"
+                type="submit"
+                value="submit"
+                onClick={toDelete}
+              >
+                Inactive
+              </button>
+            ) : (
+              <button
+                className="btn btn-primary"
+                type="submit"
+                value="submit"
+                onClick={toAccept}
+              >
+                Active
+              </button>
+            )}
           </div>
 
           {/* Modal page */}

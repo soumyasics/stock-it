@@ -229,8 +229,7 @@ export const StockDetails = () => {
                 <Alert key={d?._id} variant="success ">
                   <span className="text-uppercase ">{company?.name}</span>{" "}
                   &nbsp; announced a dividend of {d?.dividentPerShare} rupees
-                  per share. It will be added to your bank account on{" "}
-                  {d?.createdAt?.substring(0, 10)}.
+                  per share. 
                 </Alert>
               </div>
             );

@@ -240,7 +240,7 @@ export const PortfolioDetails = () => {
           </div>
         </Col>
 
-        <Col className="p-5" style={{overflowY: "auto", maxHeight: "500px"}}>
+        <Col className="p-5" style={{ overflowY: "auto", maxHeight: "500px" }}>
           {dividents.map((d) => {
             const company = d?.companyId;
             return (
@@ -248,8 +248,15 @@ export const PortfolioDetails = () => {
                 <Alert key={d?._id} variant="success ">
                   <span className="text-uppercase ">{company?.name}</span>{" "}
                   &nbsp; announced a dividend of {d?.dividentPerShare} rupees
-                  per share. It will be added to your bank account on{" "}
-                  {d?.createdAt?.substring(0, 10)}.
+                  per share.{" "}
+                  {stockData.totalQuantity > 0 && (
+                    <span>
+                      It will be added to your bank account on{" "}
+                      {d?.createdAt?.substring(0, 10)}. Currently you are
+                      holding {stockData.totalQuantity} shares. So you will get{" "}
+                      {stockData.totalQuantity * d?.dividentPerShare} rupees.
+                    </span>
+                  )}
                 </Alert>
               </div>
             );

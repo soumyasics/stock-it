@@ -50,7 +50,6 @@ function AdminCount() {
   const getAllETs = async () => {
     try {
       const res = await axiosInstance.post("getAllTutors");
-      console.log("tuts", res);
       if (res.status === 200) {
         let data = res.data?.data || [];
         let activeUsers = data?.filter((i) => {
