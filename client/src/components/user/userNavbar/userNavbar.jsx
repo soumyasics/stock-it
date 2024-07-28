@@ -89,6 +89,10 @@ export const UserNavbar = () => {
   const reDirectToUserProfile = () => {
     navigate(`/userProfile`);
   };
+
+  const redirectDashboard = () => {
+    navigate('/userDashboard')
+  }
   return (
     <div>
       <nav className="navbar commonNavbar">
@@ -157,6 +161,12 @@ export const UserNavbar = () => {
             {stocksDropdown && (
               <div className="position-relative">
                 <div className="position-absolute text-light user-home-nav-drop d-flex flex-column">
+                  <div
+                    className="user-home-nav-drop-down"
+                    onClick={redirectDashboard}
+                  >
+                    Dashboard
+                  </div>
                   <div
                     className="user-home-nav-drop-down"
                     onClick={redirectBuyStocks}

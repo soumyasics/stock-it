@@ -96,6 +96,7 @@ import AdminViewEtRating from "./components/Admin/adminEtRating/adminViewEtRatin
 import { ViewETSubs } from "./components/educational-tutors/et-viewSubs/et-viewsubs";
 import { CompanyViewBuyOrders } from "./components/company/viewOrders/buyOrders";
 import { CompanyViewBuyOrderDetails } from "./components/company/viewOrders/orderDetails";
+import { UserDashboard } from "./components/user/userDashboard/userDashboard";
 
 function App() {
   return (
@@ -175,6 +176,7 @@ function App() {
           <Route path="/userViewEt" element={<UserViewTutors />} />
           <Route path="/userViewEtDetail/:id" element={<UserViewEtDetail />} />
           <Route path="/userRatingTutor" element={<TutorRating/>}/>
+          <Route path="/userDashboard" element={<UserDashboard/>}/>
 
           {/* admin pages  */}
           <Route path="/admin" element={<AdminDashboard />} />
