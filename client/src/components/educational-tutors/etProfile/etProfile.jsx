@@ -3,7 +3,7 @@ import { BASE_URL } from "../../../apis/baseUrl";
 import axiosInstance from "../../../apis/axiosInstance";
 import EtEditModal from "../etEditProfile/etEditProfile";
 import { Row, Col } from "react-bootstrap";
-import tutorImg from '../../../assets/images/tutor-2.png'
+import tutorImg from "../../../assets/images/tutor-2.png";
 function EtProfile() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const openModal = () => {
@@ -40,19 +40,23 @@ function EtProfile() {
     <div>
       <div className="" style={{ marginTop: "5%" }}>
         <div className="adminViewUserDetail-bg" style={{ height: "60vh" }}>
-        <Row>
-              <Col>
-              <img src={tutorImg} alt="" />
-              </Col>
-              <Col>
-          <div className="adminViewUserDetail-header">
-            <img src={`${BASE_URL}${etData?.photo?.filename}`} alt="profile" />
-            <div className="adminViewUserDetail-companyname">
-              <h2 style={{ textTransform: "capitalize" }}>{etData.fullName}</h2>
-            </div>
-          </div>
-          <div className="adminViewUserDetail-content">
-           
+          <Row>
+            <Col md={4} className="d-flex justify-content-center align-items-center">
+              <img className="w-100" src={tutorImg} alt="" />
+            </Col>
+            <Col md={8}>
+              <div className="adminViewUserDetail-header">
+                <img
+                  src={`${BASE_URL}${etData?.photo?.filename}`}
+                  alt="profile"
+                />
+                <div className="adminViewUserDetail-companyname">
+                  <h2 style={{ textTransform: "capitalize" }}>
+                    {etData.fullName}
+                  </h2>
+                </div>
+              </div>
+              <div className="adminViewUserDetail-content">
                 <table>
                   <tbody>
                     <tr>
@@ -103,26 +107,25 @@ function EtProfile() {
                     </tr>
                   </tbody>
                 </table>
-             
-          </div>
-          <div className="adminViewUserDetail-btn">
-            <button
-              onClick={editProfile}
-              className="btn"
-              type="submit"
-              value="submit"
-            >
-              Edit
-            </button>
-            
-            <EtEditModal
-              closeModal={closeModal}
-              openModal={openModal}
-              modalIsOpen={modalIsOpen}
-              getEtData2={getEtData}
-            />
-          </div>
-          </Col>
+              </div>
+              <div className="adminViewUserDetail-btn">
+                <button
+                  onClick={editProfile}
+                  className="btn"
+                  type="submit"
+                  value="submit"
+                >
+                  Edit
+                </button>
+
+                <EtEditModal
+                  closeModal={closeModal}
+                  openModal={openModal}
+                  modalIsOpen={modalIsOpen}
+                  getEtData2={getEtData}
+                />
+              </div>
+            </Col>
           </Row>
         </div>
       </div>
