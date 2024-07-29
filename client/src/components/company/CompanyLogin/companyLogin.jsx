@@ -132,7 +132,7 @@ function CompanyLogin() {
               </div>
               <div className="forgot-password">
                 <span onClick={redirectToComapnyForgotpassword}>
-                  forgot password?
+                  Forgot Password?
                 </span>
               </div>
               <button className="login-button" value="submit" type="submit">
@@ -142,8 +142,9 @@ function CompanyLogin() {
                 Don't have an account Yet?
                 <span
                   onClick={redirectToComapanySignup}
-                  className="fs-6 fw-bold ms-2"
+                  className="text-primary fs-6 fw-bold ms-2"
                   style={{ cursor: "pointer" }}
+                  
                 >
                   Register Now!
                 </span>

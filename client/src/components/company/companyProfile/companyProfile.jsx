@@ -255,12 +255,12 @@ export const CompanyProfile = () => {
               >
                 Company License
               </h1>
-              <button
+              {/* <button
                 type="button"
                 className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
-              ></button>
+              ></button> */}
             </div>
             <div className="modal-body modal-image">
               <img

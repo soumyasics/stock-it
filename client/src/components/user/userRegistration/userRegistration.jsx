@@ -81,6 +81,17 @@ export const UserRegistration = () => {
 
   const handleChanges = (e) => {
     const { name, value } = e.target;
+    if (name === "pincode") {
+      if (String(value).length > 6) {
+        return;
+      }
+    }
+    if (name === "contactNumber") {
+      if (String(value).length > 10) {
+        return;
+      }
+    }
+
     setUserData({ ...userData, [name]: value });
   };
 

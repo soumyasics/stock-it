@@ -80,6 +80,31 @@ function CompanyRegistration() {
   };
   const handleChange = (e) => {
     const { name, value, files } = e.target;
+    if (name === "year") {
+      if (String(value).length > 4) {
+        return;
+      }
+    }
+    if (name === "regNo") {
+      if (String(value).length > 10) {
+        return;
+      }
+    }
+    if (name === "pincode") {
+      if (String(value).length > 6) {
+        return;
+      }
+    }
+    if (name === "contact") {
+      if (String(value).length > 10) {
+        return;
+      }
+    }
+    if (name === "year") {
+      if (String(value).length > 4) {
+        return;
+      }
+    }
     if (files) {
       setCompanyData({ ...companyData, [name]: files[0] });
     } else {
@@ -124,11 +149,12 @@ function CompanyRegistration() {
         toast.success("Company registered successfully");
         redirectToLogin();
       } else {
-        alert(response.data.msg);
+        const msg = response?.data?.msg || "Something went wrong!";
+        toast.error(msg);
       }
     } catch (error) {
       console.error("There was an error registering the company!", error);
-      alert(error);
+      toast.error("Please fill data correctly");
     }
   };
   const handleSubmit = async (e) => {
@@ -330,7 +356,7 @@ function CompanyRegistration() {
                     <div className="col-md-6">
                       <label className="form-label">Contact Number</label>
                       <input
-                        type="tel"
+                        type="number"
                         name="contact"
                         className="form-control CompanyRegistration-inp"
                         placeholder="Enter Contact Number"
@@ -345,7 +371,7 @@ function CompanyRegistration() {
                     <div className="col-md-6">
                       <label className="form-label">Registration number</label>
                       <input
-                        type="text"
+                        type="number"
                         name="regNo"
                         className="form-control CompanyRegistration-inp"
                         placeholder="Enter Registration Number"

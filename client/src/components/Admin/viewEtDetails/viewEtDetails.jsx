@@ -57,7 +57,10 @@ export const AdminViewETDetails = () => {
       <div className="w-100">
         <div className="adminViewUserDetail-bg">
           <div className="adminViewUserDetail-header">
-            <img src={`${BASE_URL}${userData?.photo?.filename}`} alt="profile" />
+            <img
+              src={`${BASE_URL}${userData?.photo?.filename}`}
+              alt="profile"
+            />
             <div className="adminViewUserDetail-companyname">
               <h2>{userData.fullName}</h2>
             </div>
@@ -67,7 +70,7 @@ export const AdminViewETDetails = () => {
           </div>
           <div className="adminViewUserDetail-content">
             <table>
-            <tr>
+              <tr>
                 <td>Email ID</td>
                 <td>-</td>
                 <td>{userData.email} </td>
@@ -98,7 +101,6 @@ export const AdminViewETDetails = () => {
                 <td>{userData?.contactNumber}</td>
               </tr>
 
-              
               <tr>
                 <td>Rating</td>
                 <td>-</td>
@@ -107,12 +109,25 @@ export const AdminViewETDetails = () => {
             </table>
           </div>
           <div className="adminViewUserDetail-btn">
-            <button className="btn" type="submit" value="submit" onClick={toAccept}>
-              Active
-            </button>
-            <button className="btn" type="submit" value="submit" onClick={toDelete}>
-              Inactive
-            </button>
+            {userData?.isActive ? (
+              <button
+                className="btn"
+                type="submit"
+                value="submit"
+                onClick={toDelete}
+              >
+                Inactive
+              </button>
+            ) : (
+              <button
+                className="btn"
+                type="submit"
+                value="submit"
+                onClick={toAccept}
+              >
+                Active
+              </button>
+            )}
           </div>
 
           {/* Modal page */}

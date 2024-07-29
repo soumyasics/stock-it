@@ -145,7 +145,7 @@ export const UserLogin = () => {
                     style={{ cursor: "pointer" }}
                     onClick={redirectToUserLogin}
                   >
-                    forgot password?
+                    Forgot Password?
                   </span>
 
                   <button
@@ -158,7 +158,7 @@ export const UserLogin = () => {
                   <div className="register-now">
                     Don't have an account Yet?
                     <span
-                      className="fs-6 fw-bold ms-2"
+                      className="fs-6 fw-bold ms-2 text-primary"
                       style={{ cursor: "pointer" }}
                       onClick={navigateToUserRegistration}
                     >

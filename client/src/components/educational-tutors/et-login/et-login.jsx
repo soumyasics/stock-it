@@ -155,7 +155,7 @@ function Etlogin() {
                   </div>
                   <div className="etforgot-password">
                     <span onClick={redirectToforgotPassword}>
-                      forgot password?
+                      Forgot Password?
                     </span>
                   </div>
                   <button
@@ -168,7 +168,7 @@ function Etlogin() {
                   <div className="register-now">
                     Don't have an account Yet?
                     <span
-                      className="fs-6 fw-bold ms-2"
+                      className="fs-6 fw-bold ms-2 text-primary"
                       style={{ cursor: "pointer" }}
                       onClick={redirectToETRegister}
                     >

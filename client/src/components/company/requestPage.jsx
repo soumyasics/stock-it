@@ -165,12 +165,7 @@ function RequestPage() {
                   <h1 className="modal-title fs-5" id="staticBackdropLabel">
                     Company License
                   </h1>
-                  <button
-                    type="button"
-                    className="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
+            
                 </div>
                 <div className="modal-body modal-image">
                   <img

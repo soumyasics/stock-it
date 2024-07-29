@@ -131,9 +131,9 @@ function AdminSidebar({ changePage }) {
                     <li onClick={navigateToActiveCompanies}>
                       View active companies
                     </li>
-                    {/* <li onClick={navigateToAllCompanies}>
-                      View all company article
-                    </li> */}
+                    <li onClick={navigateToAllCompanies}>
+                      View all companies
+                    </li>
                   </ul>
                 </div>
               )}
