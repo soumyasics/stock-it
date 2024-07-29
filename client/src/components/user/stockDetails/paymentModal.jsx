@@ -10,6 +10,8 @@ export const PaymentModal = ({
   handlePaymentDataChange,
   buyStocks,
 }) => {
+  const [today] = useState(new Date().toISOString().split("T")[0]);
+
   return (
     <div id="my-unique-payment">
       <Modal
@@ -72,6 +74,7 @@ export const PaymentModal = ({
                 <Form.Group className="mb-3" controlId="formExpiry">
                   <Form.Label>Expiry date</Form.Label>
                   <Form.Control
+                    min={today}
                     type="date"
                     name="expiry"
                     required

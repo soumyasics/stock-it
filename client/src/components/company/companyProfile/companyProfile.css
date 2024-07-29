@@ -5,5 +5,16 @@
 
 .capitalizeText {
     text-transform: capitalize;
-
+}
+.divdend-headPart{
+    margin-top: 5%;
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 5%;
+}
+.profile-dividend{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

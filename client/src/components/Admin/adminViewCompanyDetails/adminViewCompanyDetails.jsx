@@ -78,11 +78,6 @@ export const AdminViewCompanyDetails = () => {
           <div className="requestpage-crossbtn" onClick={redirectBack}>
             <img src={img2} alt="x" style={{ cursor: "pointer" }} />
           </div>
-          <div className="requestpage-paragraph">
-            <p>
-              {state.name}-{state.description}
-            </p>
-          </div>
           <div className="requestpage-content">
             <table>
               <tr>
@@ -150,6 +145,11 @@ export const AdminViewCompanyDetails = () => {
                 <td>{state.website}</td>
               </tr>
             </table>
+          </div>
+          <div className="requestpage-paragraph" style={{width:"50%"}}>
+            <p>
+              {state.name}-{state.description}
+            </p>
           </div>
           <div className="requestpage-btn">
             {state.isActive ? (
