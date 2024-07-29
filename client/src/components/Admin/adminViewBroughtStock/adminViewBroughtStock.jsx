@@ -34,7 +34,7 @@ function AdminViewBroughtStock() {
           >
             <IoReturnUpBack />
           </div>
-          <h4>All Brought Stocks</h4>
+          <h4>Stock orders</h4>
           <div></div>
         </div>
 
@@ -49,22 +49,20 @@ function AdminViewBroughtStock() {
               <th>User</th>
               <th>Company</th>
               <th>Ticker Name</th>
-              <th>Total Shares</th>
-              <th>Available Shares</th>
-              <th>CoastPerShares</th>
-              <th>CurrentMarketPrice</th>
+              <th>Quantity purchased</th>
+
+              <th>Cost per share</th>
             </tr>
             {getStock.map((co, i) => {
+              console.log("coo", co)
               return (
                 <tr key={co?._id}>
                   <td>{i + 1}</td>
                   <td>{co?.userId?.firstName}</td>
                   <td> {co?.companyId?.name}</td>
                   <td>{co?.companyId?.ticker}</td>
-                  <td>{co?.IPOId?.totalShares}</td>
-                  <td>{co?.IPOId?.availableShares}</td>
+                  <td>{co?.numberOfSharesBought}</td>
                   <td>{co?.IPOId?.costPerShare}</td>
-                  <td>{co?.IPOId?.currentMarketPrice}</td>
                  
                 </tr>
               );

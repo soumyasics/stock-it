@@ -218,7 +218,7 @@ const adminRejectTutorById = async (req, res) => {
     if (!tutor) {
       return res.status(404).json({ msg: "Tutor not found" });
     }
-    res.json({ msg: "Tutor approved successfully", data: tutor });
+    res.json({ msg: "Tutor rejected successfully", data: tutor });
   } catch (error) {
     res.status(500).json({ msg: error.message });
   }

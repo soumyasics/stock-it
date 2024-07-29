@@ -67,6 +67,11 @@ export const AdminViewETDetails = () => {
           </div>
           <div className="adminViewUserDetail-content">
             <table>
+            <tr>
+                <td>Email ID</td>
+                <td>-</td>
+                <td>{userData.email} </td>
+              </tr>
               <tr>
                 <td>Gender</td>
                 <td>-</td>
@@ -78,15 +83,26 @@ export const AdminViewETDetails = () => {
                 <td>{userData.qualification} </td>
               </tr>
               <tr>
+                <td>Experience</td>
+                <td>-</td>
+                <td>{userData?.experience} </td>
+              </tr>
+              <tr>
                 <td>Specification</td>
                 <td>-</td>
                 <td>{userData.specification} </td>
               </tr>
-
               <tr>
-                <td>Email ID</td>
+                <td>Contact Number</td>
                 <td>-</td>
-                <td>{userData.email} </td>
+                <td>{userData?.contactNumber}</td>
+              </tr>
+
+              
+              <tr>
+                <td>Rating</td>
+                <td>-</td>
+                <td>{userData?.rating || 0}</td>
               </tr>
             </table>
           </div>

@@ -17,8 +17,9 @@ export const AdminViewAllETs = () => {
       const res = await axiosInstance.post("getAllTutors");
       if (res.status === 200) {
         let data = res.data?.data || [];
-        data.reverse();
-        setAllETs(data);
+        const activeEts = data?.filter((et) => et.adminApproved === "approve");
+        activeEts.reverse();
+        setAllETs(activeEts);
       } else {
         console.log("Error ", res);
       }

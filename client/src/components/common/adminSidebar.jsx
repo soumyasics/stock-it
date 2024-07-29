@@ -131,9 +131,9 @@ function AdminSidebar({ changePage }) {
                     <li onClick={navigateToActiveCompanies}>
                       View active companies
                     </li>
-                    <li onClick={navigateToAllCompanies}>
+                    {/* <li onClick={navigateToAllCompanies}>
                       View all company article
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
               )}
@@ -195,7 +195,7 @@ function AdminSidebar({ changePage }) {
                   navigate("/adminViewBroughtStock");
                 }}
               >
-                Stock
+                Stock Orders
               </h5>
             </div>
           </div>
