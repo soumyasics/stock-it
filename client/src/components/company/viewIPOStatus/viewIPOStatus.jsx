@@ -57,9 +57,9 @@ export const ViewIPOStatus = () => {
   return (
     <div className="text-light pt-5">
       <h4 className="text-center">IPO Status</h4>
-      <Row className=" mx-auto mt-5" style={{ width: "90%" }}>
+      <Row className=" mx-auto mt-5" style={{ width: "80%" }}>
         <Col md={6} className="company-ipo-status shadow p-3">
-          <Card style={{ width: "18rem" }}>
+          <Card style={{ width: "28rem" }}>
             <Card.Header className="capitalizeText text-center fw-bold">
               {ipoStatus?.companyId?.name?.substring(0, 20)} IPO Status
             </Card.Header>
@@ -111,21 +111,36 @@ export const ViewIPOStatus = () => {
               <ListGroup.Item>
                 {" "}
                 <h6>
-                  Cost per share:
+                  Available Shares: <span>{ipoStatus?.availableShares}</span>{" "}
+                </h6>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                {" "}
+                <h6>
+                  Cost Per Share:
                   <span>{ipoStatus?.costPerShare}</span>
+                </h6>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                {" "}
+                <h6>
+                  IPO Initiated Date:
+                  <span>{ipoStatus?.createdAt?.substring(0, 10)}</span>
                 </h6>
               </ListGroup.Item>
             </ListGroup>
           </Card>
           {ipoStatus.costPerShare && (
-            <Button
-              className="ipoStatusBtn"
-              style={{ width: "100px", marginTop: "5%" }}
-              variant="success"
-              onClick={editProfile}
-            >
-              Edit
-            </Button>
+            <div className="ipoStatusFooter">
+              <Button
+                className="ipoStatusBtn"
+                style={{ width: "100px", marginTop: "5%" }}
+                variant="success"
+                onClick={editProfile}
+              >
+                Edit
+              </Button>
+            </div>
           )}
           <IpoStatusEditModal
             openModal={openModal}
