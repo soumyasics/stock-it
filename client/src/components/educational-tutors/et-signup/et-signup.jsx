@@ -407,7 +407,7 @@ function EtSignup() {
                 <span>
                   <button type="submit">Register</button>
                   <p className="login-link">
-                    Already have an account?
+                    Already have an account? &nbsp;
                     <span
                       className="text-primary"
                       style={{
