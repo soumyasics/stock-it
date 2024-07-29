@@ -14,7 +14,7 @@ function UserDashDefaultPage() {
         </Col>
         <Col>
           <div className="UserDashDefaultPage-head">
-            <h2>Please select a company for view chart </h2>
+            <h4>Please select a company for view chart </h4>
           </div>
         </Col>
       </div>

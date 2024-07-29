@@ -89,7 +89,10 @@ export const CompanyProfile = () => {
     }
   };
   return (
-    <div className="text-light pt-5" style={{overflowY:"scroll",height:"800px"}}>
+    <div
+      className="text-light pt-5"
+      style={{ overflowY: "scroll" }}
+    >
       <h4 className="text-center">Profile </h4>
       <Row className=" mx-auto mt-5" style={{ width: "90%" }}>
         <Col
@@ -236,7 +239,12 @@ export const CompanyProfile = () => {
           </div>
         </Col>
       </Row>
-      <CompanyProfileDividend dividend={dividend} />
+      <div
+        className=" "
+        style={{ height: "300px", overflowY: "auto" }}
+      >
+        <CompanyProfileDividend dividend={dividend} />
+      </div>
       <div
         className="modal fade"
         id="staticBackdrop"
@@ -255,12 +263,12 @@ export const CompanyProfile = () => {
               >
                 Company License
               </h1>
-              {/* <button
+              <button
                 type="button"
                 className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
-              ></button> */}
+              ></button>
             </div>
             <div className="modal-body modal-image">
               <img

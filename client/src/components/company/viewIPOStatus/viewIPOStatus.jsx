@@ -57,9 +57,9 @@ export const ViewIPOStatus = () => {
   return (
     <div className="text-light pt-5">
       <h4 className="text-center">IPO Status</h4>
-      <Row className=" mx-auto mt-5" style={{ width: "80%" }}>
+      <Row className=" mx-auto mt-5" style={{ width: "95%" }}>
         <Col md={6} className="company-ipo-status shadow p-3">
-          <Card style={{ width: "28rem" }}>
+          <Card className="w-100">
             <Card.Header className="capitalizeText text-center fw-bold">
               {ipoStatus?.companyId?.name?.substring(0, 20)} IPO Status
             </Card.Header>

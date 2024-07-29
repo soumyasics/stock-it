@@ -23,7 +23,7 @@ export const CompanyDashboard = () => {
   return (
     <div
       className="d-flex "
-      style={{ height: "120vh", backgroundColor: "#374151" }}
+      style={{  backgroundColor: "#374151" }}
     >
       <CompanySidebar changePage={changePage} />
       <div

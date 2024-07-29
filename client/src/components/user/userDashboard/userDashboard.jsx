@@ -8,7 +8,6 @@ import UserDashDefaultPage from "../userDashboardDefaultPage/userDashDefaultPage
 
 export const UserDashboard = () => {
   const [selectedStock, setSelectedStock] = useState("");
-  const [defaultPage, setDefaultPage] = useState("DefaultPage");
   const changeSelectedStock = (value) => {
     setSelectedStock(value);
   };
@@ -25,10 +24,13 @@ export const UserDashboard = () => {
             <UserDashboardSidebar changeSelectedStock={changeSelectedStock} />
           </Col>
           <Col md={9}>
-            {selectedStock && (
+            {selectedStock ? (
               <UserDashboardMainbar selectedStock={selectedStock} />
+            ) : (
+              <div>
+                <UserDashDefaultPage />
+              </div>
             )}
-            {defaultPage ==="DefaultPage"&& <UserDashDefaultPage/>}
           </Col>
         </Row>
       </Container>
