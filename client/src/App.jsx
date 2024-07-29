@@ -100,6 +100,8 @@ import { UserDashboard } from "./components/user/userDashboard/userDashboard";
 import { UserDashboardParams } from "./components/user/userDashboard/userDashboardParams";
 import { AdminViewActiveCompanies } from "./components/Admin/adminViewAllcompanies/adminViewAllCompanies copy";
 import { AdminAllIPO } from "./components/Admin/adminAllIPOs/adminallIPO";
+import UserDashDefaultPage from "./components/user/userDashboardDefaultPage/userDashDefaultPage";
+import CompanyProfileDividend from "./components/company/companyProfileDividend/companyProfileDividend";
 
 function App() {
   return (
@@ -153,6 +155,7 @@ function App() {
             element={<CompanyViewUserdetails />}
           />
           <Route path="companyDividend" element={<CompanyDivident />} />
+          <Route path="/companyProfileDividend" element={<CompanyProfileDividend/>}/>
           {/* user pages  */}
           <Route path="/userRegistration" element={<UserRegistration />} />
           <Route path="/userHome" element={<UserHomePage />} />
@@ -181,6 +184,7 @@ function App() {
           <Route path="/userRatingTutor" element={<TutorRating/>}/>
           <Route path="/userDashboard" element={<UserDashboard/>}/>
           <Route path="/userDashboard/:id" element={<UserDashboardParams/>}/>
+          <Route path="/userDashboardDefault" element={<UserDashDefaultPage/>}/>
 
           {/* admin pages  */}
           <Route path="/admin" element={<AdminDashboard />} />

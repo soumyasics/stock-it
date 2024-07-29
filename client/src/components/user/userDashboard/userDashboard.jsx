@@ -4,12 +4,14 @@ import { UserNavbar } from "../userNavbar/userNavbar";
 import { UserDashboardSidebar } from "./dashboardSidebar";
 import { useState } from "react";
 import { UserDashboardMainbar } from "./userDashboardMainbar.jsx";
+import UserDashDefaultPage from "../userDashboardDefaultPage/userDashDefaultPage.jsx";
 
 export const UserDashboard = () => {
-  const [selectedStock, setSelectedStock] = useState("")
+  const [selectedStock, setSelectedStock] = useState("");
+  const [defaultPage, setDefaultPage] = useState("DefaultPage");
   const changeSelectedStock = (value) => {
-    setSelectedStock(value)
-  }
+    setSelectedStock(value);
+  };
   return (
     <div>
       <UserNavbar />
@@ -20,10 +22,13 @@ export const UserDashboard = () => {
       >
         <Row>
           <Col className="sidebar w-100" style={{ backgroundColor: "#374151" }}>
-            <UserDashboardSidebar changeSelectedStock={changeSelectedStock}/>
+            <UserDashboardSidebar changeSelectedStock={changeSelectedStock} />
           </Col>
           <Col md={9}>
-            {selectedStock && <UserDashboardMainbar selectedStock={selectedStock}/>}
+            {selectedStock && (
+              <UserDashboardMainbar selectedStock={selectedStock} />
+            )}
+            {defaultPage ==="DefaultPage"&& <UserDashDefaultPage/>}
           </Col>
         </Row>
       </Container>

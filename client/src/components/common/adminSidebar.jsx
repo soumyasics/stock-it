@@ -132,7 +132,7 @@ function AdminSidebar({ changePage }) {
                       View active companies
                     </li>
                     <li onClick={navigateToAllCompanies}>
-                      View all company article
+                      View all companies
                     </li>
                   </ul>
                 </div>
