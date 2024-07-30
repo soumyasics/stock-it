@@ -385,7 +385,7 @@ function CompanyRegistration() {
                   <div className="row g-3">
                     <div className="col-md-6">
                       <label for="file" className="form-label">
-                        Comapany licences
+                        Company license
                       </label>
 
                       <input

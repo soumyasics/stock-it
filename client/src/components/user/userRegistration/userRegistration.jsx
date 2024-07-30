@@ -478,7 +478,7 @@ export const UserRegistration = () => {
                           onChange={handleChanges}
                           value={userData.password}
                         />
-                        <InputGroup.Text id="basic-addonUser">
+                        <InputGroup.Text id="basic-addonUser1">
                           {showPassword ? (
                             <FaEyeSlash onClick={toggleButton} />
                           ) : (
@@ -508,7 +508,7 @@ export const UserRegistration = () => {
                           onChange={handleChanges}
                           value={userData.confirmPassword}
                         />
-                        <InputGroup.Text id="basic-addonUser">
+                        <InputGroup.Text id="basic-addonUser1">
                           {showPassword1 ? (
                             <FaEyeSlash onClick={toggleButton1} />
                           ) : (
