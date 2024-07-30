@@ -127,13 +127,13 @@ function EtForgotpassword() {
                     placeholder="Enter New Password"
                     type={showPassword ? "password" : "text"}
                     aria-label="password"
-                    aria-describedby="basic-addon1"
+                    aria-describedby="basic-addonEt"
                     name="password"
                     onChange={(e) => {
                       setPassword(e.target.value);
                     }}
                   />
-                  <InputGroup.Text id="basic-addon1">
+                  <InputGroup.Text id="basic-addonEt">
                     {showPassword ? (
                       <FaEyeSlash onClick={toggleButton} />
                     ) : (
@@ -165,7 +165,7 @@ function EtForgotpassword() {
                       setConfirmPassword(e.target.value);
                     }}
                   />
-                  <InputGroup.Text id="basic-addon1">
+                  <InputGroup.Text id="basic-addonEt">
                     {showPassword1 ? (
                       <FaEyeSlash onClick={toggleButton1} />
                     ) : (

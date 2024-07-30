@@ -139,7 +139,7 @@ function UserForgotpassword() {
                         setPassword(e.target.value);
                       }}
                     />
-                    <InputGroup.Text id="basic-addon1">
+                    <InputGroup.Text id="basic-addonUser">
                       {showPassword ? (
                         <FaEyeSlash onClick={toggleButton} />
                       ) : (
@@ -171,7 +171,7 @@ function UserForgotpassword() {
                         setConfirmPassword(e.target.value);
                       }}
                     />
-                    <InputGroup.Text id="basic-addon1">
+                    <InputGroup.Text id="basic-addonUser">
                       {showPassword1 ? (
                         <FaEyeSlash onClick={toggleButton1} />
                       ) : (

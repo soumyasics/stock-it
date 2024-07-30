@@ -351,7 +351,7 @@ function EtSignup() {
                           onChange={handleChanges}
                           value={etData.password}
                         />
-                        <InputGroup.Text id="basic-addonEt">
+                        <InputGroup.Text id="basic-addonEt1">
                           {showPassword ? (
                             <FaEyeSlash onClick={toggleButton} />
                           ) : (
@@ -380,7 +380,7 @@ function EtSignup() {
                           onChange={handleChanges}
                           value={etData.confirmPassword}
                         />
-                        <InputGroup.Text id="basic-addonEt">
+                        <InputGroup.Text id="basic-addonEt1">
                           {showPassword1 ? (
                             <FaEyeSlash onClick={toggleButton1} />
                           ) : (

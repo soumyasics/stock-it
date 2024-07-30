@@ -142,7 +142,7 @@ function CompanyForgotpassword() {
                         setPassword(e.target.value);
                       }}
                     />
-                    <InputGroup.Text id="basic-addon1">
+                    <InputGroup.Text id="basic-addonCo">
                       {showPassword ? (
                         <FaEyeSlash onClick={toggleButton} />
                       ) : (

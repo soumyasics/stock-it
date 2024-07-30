@@ -67,7 +67,7 @@ export const ViewCompanyDetails = () => {
           <div className="requestpage-crossbtn" onClick={redirectBack}>
             <img src={img2} alt="x" style={{ cursor: "pointer" }} />
           </div>
-          <div className="requestpage-paragraph w-75 ">
+          <div className="requestpage-paragraph">
             <p>
               {state?.name}-{state?.description}
             </p>
