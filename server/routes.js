@@ -24,6 +24,7 @@ router.post("/resetPwd", admin.resetPwd);
 //company routes
 router.post("/registerCompany", company.upload, company.registerCompany);
 router.post("/viewCompanies", company.viewCompanies);
+router.get("/viewApprovedCompanies", company.viewApprovedCompanies);
 router.post("/viewPendingCompanies", company.viewPendingCompanies);
 router.post("/add-ticker", company.addTicker);
 router.post("/loginCompany", company.login);

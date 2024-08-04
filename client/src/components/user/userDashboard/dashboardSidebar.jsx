@@ -15,10 +15,11 @@ export const UserDashboardSidebar = ({ changeSelectedStock }) => {
     try {
       const res = await axiosInstance.get("getAllApprovedIPOs");
       if (res.status === 200) {
-        const allIPOs = res.data?.data || [];
+        let allIPOs = res.data?.data || [];
         const allCompanies = allIPOs.map((IPO) => {
           return IPO.companyId;
         });
+        allIPOs = allIPOs.reverse();
         setStocks(allIPOs);
         setFixedData(allIPOs);
       } else {
@@ -76,9 +77,13 @@ export const UserDashboardSidebar = ({ changeSelectedStock }) => {
             path = `${BASE_URL}${logoUrl}`;
           }
           return (
-            <ListGroup.Item key={index} style={{ backgroundColor: "#374151" }} onClick={() => {
-              changeSelectedStock(stock._id);
-            }}>
+            <ListGroup.Item
+              key={index}
+              style={{ backgroundColor: "#374151" }}
+              onClick={() => {
+                changeSelectedStock(stock._id);
+              }}
+            >
               <Card style={{ backgroundColor: "#374151", cursor: "pointer" }}>
                 <Row>
                   <Col xs={3}>

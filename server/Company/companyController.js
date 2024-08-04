@@ -119,6 +119,18 @@ const viewCompanies = async (req, res) => {
     res.json({ status: 500, msg: "Failed to retrieve companies", error });
   }
 };
+const viewApprovedCompanies = async (req, res) => {
+  try {
+    const companies = await Company.find({adminApproved: true});
+    return res.json({
+      status: 200,
+      msg: "Companies retrieved successfully",
+      data: companies,
+    });
+  } catch (error) {
+    res.json({ status: 500, msg: "Failed to retrieve companies", error });
+  }
+};
 const viewPendingCompanies = async (req, res) => {
   try {
     const companies = await Company.find({
@@ -386,6 +398,6 @@ module.exports = {
   forgotPassword,
   viewPendingCompanies,
   addTicker,
-
+  viewApprovedCompanies,
   editCompanyById
 };

@@ -16,7 +16,7 @@ export const AdminViewAllCompanies = () => {
 
   const getAllCompanies = async () => {
     try {
-      const res = await axiosInstance.post("viewCompanies");
+      const res = await axiosInstance.get("viewApprovedCompanies");
       if (res.status === 200) {
         let data = res.data?.data || [];
         data.reverse();

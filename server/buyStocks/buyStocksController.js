@@ -46,11 +46,13 @@ const buyStocks = async (req, res) => {
     stock.availableShares = stock.availableShares - totalQuantity;
 
     // increase the currentMarketPrice of the stock
-    const onePercentageOfCMP = Math.round(stock.currentMarketPrice * 0.01);
+    const onePercentageOfCMP = Math.ceil(stock.currentMarketPrice * 0.01);
+    console.log('one per', onePercentageOfCMP)
     stock.currentMarketPrice = Math.round(
       onePercentageOfCMP + stock.currentMarketPrice
     );
 
+    console.log('cmp st', stock.currentMarketPrice)
     stock.cmpArr.push({ value: stock.currentMarketPrice, date: Date.now() });
     await stock.save();
 
@@ -116,7 +118,7 @@ const sellStocksById = async (req, res) => {
     holdings.totalQuantity -= sellingQuantity;
 
     // 3. reduce current market price
-    const onePercentageOfCMP = Math.round(stock.currentMarketPrice * 0.01);
+    const onePercentageOfCMP = Math.ceil(stock.currentMarketPrice * 0.01);
     stock.currentMarketPrice = Math.round(
       stock.currentMarketPrice - onePercentageOfCMP
     );

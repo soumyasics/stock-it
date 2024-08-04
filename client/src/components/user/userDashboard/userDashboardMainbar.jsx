@@ -64,7 +64,7 @@ export const UserDashboardMainbar = ({ selectedStock }) => {
             Current Market Price: {stock.currentMarketPrice}
           </h6>
         </Col>
-        <Col>
+        <Col className="d-flex align-items-center">
           <Button
             onClick={redirectToBuyStock}
             style={{ backgroundColor: "#111827", color: "white" }}
@@ -76,7 +76,7 @@ export const UserDashboardMainbar = ({ selectedStock }) => {
             onClick={redirectCompanyDetails}
             style={{ backgroundColor: "#111827", color: "white" }}
           >
-            View Stock Details
+            View Details
           </Button>
         </Col>
         <Col className="d-flex align-items-center">

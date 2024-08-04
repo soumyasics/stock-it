@@ -20,9 +20,11 @@ export const ListedCompanies = () => {
       const res = await axiosInstance.get("getAllApprovedIPOs");
       if (res.status === 200) {
         const allIPOs = res.data?.data || [];
-        const allCompanies = allIPOs.map((IPO) => {
+        let allCompanies = allIPOs.map((IPO) => {
           return IPO.companyId;
         });
+        allCompanies = allCompanies.reverse()
+
         setAllCompanies(allCompanies);
         setFixedData(allCompanies);
       } else {

@@ -128,9 +128,9 @@ function AdminSidebar({ changePage }) {
                     >
                       Company pending requests
                     </li>
-                    <li onClick={navigateToActiveCompanies}>
+                    {/* <li onClick={navigateToActiveCompanies}>
                       View active companies
-                    </li>
+                    </li> */}
                     <li onClick={navigateToAllCompanies}>
                       View all companies
                     </li>

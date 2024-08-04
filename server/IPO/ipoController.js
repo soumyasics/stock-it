@@ -23,12 +23,15 @@ exports.createIpo = async (req, res) => {
         .status(409)
         .json({ message: "Your companies already listed." });
     }
+    let obj = {value: costPerShare, date: new Date()};
+    const cmpArr = [obj];
 
     const newIpo = new Ipo({
       totalShares,
       costPerShare,
       currentMarketPrice: costPerShare,
       availableShares: totalShares,
+      cmpArr,
       capitation,
       companyId,
     });
@@ -64,7 +67,10 @@ exports.editIPO = async (req, res) => {
     ipo.capitation = capitation;
     ipo.adminApproved = "pending"; 
 
-    console.log("ipooo", ipo)
+    let obj = {value: costPerShare, date: new Date()};
+    const cmpArr = [obj];
+    ipo.cmpArr = cmpArr;
+
     await ipo.save();
     res.status(200).json(ipo);
   } catch (err) {

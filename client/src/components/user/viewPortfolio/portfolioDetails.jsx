@@ -83,7 +83,6 @@ export const PortfolioDetails = () => {
     }
   };
 
-  console.log("stock data", stockData);
   const handleNoSharesChanges = (e) => {
     const noShares = e.target.value;
     setSellingQuantity(noShares);
