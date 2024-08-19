@@ -138,10 +138,10 @@ export const UserNavbar = () => {
                 </div>
               </div>
             )}
-            <h6 className="text-light fw-bold" onClick={toggleTutorsDropdowm}>
+            <h6 className="text-light fw-bold" onClick={redirectToTutor}>
               Tutors
             </h6>
-            {tutorDropdown && (
+            {/* {tutorDropdown && (
               <div className="position-relative">
                 <div className="position-absolute text-light user-home-nav-drop d-flex flex-column">
                   <div
@@ -152,7 +152,7 @@ export const UserNavbar = () => {
                   </div>
                 </div>
               </div>
-            )}
+            )} */}
 
             <h6 className="text-light fw-bold" onClick={toggleStockDropdown}>
               Stocks

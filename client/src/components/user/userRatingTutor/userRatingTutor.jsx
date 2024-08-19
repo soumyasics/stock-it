@@ -55,7 +55,13 @@ export const TutorRating = ({ etId, getTutorById }) => {
         throw new Error("Couldn't add review");
       }
     } catch (error) {
-      toast.error("Couldn't add review");
+      const status = error?.response?.status;
+      if (status === 400) {
+        toast.error(error.response.data.message);
+      }else {
+
+        toast.error("Couldn't add review");
+      }
     } finally {
       getTutorById();
     }

@@ -12,7 +12,9 @@ import img5 from "../../assets/images/phonegroup.png";
 import img6 from "../../assets/images/commentsgif.gif";
 import CommonNavbar from "../common/commonNavbar";
 import Footer from "../../components/common/userNavbar/Footer";
+import { useNavigate } from "react-router-dom";
 function LandingPageHeader() {
+  const navigate = useNavigate();
   return (
     <>
       <CommonNavbar />
@@ -37,7 +39,13 @@ function LandingPageHeader() {
                 where informed decision meet seamless transaction
               </p>
               <div className="landingheader-left-btn">
-                <button type="button" className="btn btn-primary">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={() => {
+                    navigate("/userLogin");
+                  }}
+                >
                   Get Started
                 </button>
               </div>

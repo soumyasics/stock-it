@@ -28,7 +28,7 @@ function AdminViewEtComplaintDetail() {
       .post(`/activateTutorById/${complaint?.etId?._id}`)
       .then((response) => {
         if (response.status == 200) {
-          toast.success("User activation sucessfull");
+          toast.success("Tutor activation sucessfull");
           navigate(-1);
         } else {
           toast.error(response.data.msg);
@@ -41,7 +41,7 @@ function AdminViewEtComplaintDetail() {
       .then((response) => {
         console.log("res", response);
         if (response.status == 200) {
-          toast.success("User deactivation sucessfully");
+          toast.success("Tutor deactivation sucessfull");
           navigate(-1);
         } else {
           toast.error(response.data.msg);
@@ -188,7 +188,7 @@ function AdminViewEtComplaintDetail() {
         <div className="banOrSuspendBtn">
           {complaint?.etId?.isActive ? (
             <Button variant="danger" size="lg" onClick={toDelete}>
-              Deactivate User
+              Deactivate Tutor
             </Button>
           ) : (
             <Button variant="success" size="lg" onClick={toAccept}>

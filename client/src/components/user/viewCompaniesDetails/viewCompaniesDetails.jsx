@@ -51,7 +51,7 @@ export const ViewCompanyDetails = () => {
   };
 
   const redirectBack = () => {
-    navigate("/userHome");
+    navigate(-1);
   };
   return (
     <>

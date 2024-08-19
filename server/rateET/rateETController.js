@@ -12,6 +12,7 @@ const addRating = async (req, res) => {
       });
     }
 
+
     if (
       !mongoose.isValidObjectId(etId) ||
       !mongoose.isValidObjectId(userId)
@@ -26,6 +27,16 @@ const addRating = async (req, res) => {
       return res.status(404).json({
         success: false,
         message: "Tutor not found.",
+      });
+    }
+    const alreadyRated = await RateETModel.findOne({
+      userId,
+      etId,
+    });
+    if (alreadyRated) {
+      return res.status(400).json({
+        success: false,
+        message: "You have already rated this tutor.",
       });
     }
     

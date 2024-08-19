@@ -219,11 +219,11 @@ function AdminViewCoComplaintDetail() {
         <div className="banOrSuspendBtn">
           {complaint?.companyId?.isActive ? (
             <Button variant="danger" size="lg" onClick={toDelete}>
-             Deactivate
+             Deactivate Company
             </Button>
           ) : (
             <Button variant="success" size="lg" onClick={toAccept}>
-              Activate
+              Activate Company 
             </Button>
           )}
         </div>

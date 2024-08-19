@@ -246,7 +246,7 @@ const activateCompanyById = async (req, res) => {
     }
     res.json({
       status: 200,
-      msg: "Company Updated successfully",
+      msg: "Company activated successfully",
       data: company,
     });
   } catch (error) {
@@ -268,7 +268,7 @@ const deActivateCompanyById = async (req, res) => {
     }
     res.json({
       status: 200,
-      msg: "Company Deativated successfully",
+      msg: "Company Deactivated successfully",
       data: company,
     });
   } catch (error) {

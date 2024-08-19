@@ -34,8 +34,9 @@ export const UserViewCompanies = () => {
       const res = await axiosInstance.post("viewCompanies");
       if (res.status === 200) {
         const data = res.data?.data || [];
-        setAllCompanies(data);
-        setFixedData(data);
+        let activeCo = data.filter((c) => c.adminApproved === true)
+        setAllCompanies(activeCo);
+        setFixedData(activeCo);
       } else {
         console.log("Error ", res);
       }
@@ -51,9 +52,6 @@ export const UserViewCompanies = () => {
   }, []);
   const sendComplaint = (complaint) => {
     try {
-      console.log("CoId", companyId);
-      console.log("user id", userId);
-      console.log(complaint);
       toast.success("Complaint uploaded");
     } catch (error) {
       toast.error("network issue");
