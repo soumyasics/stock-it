@@ -197,31 +197,43 @@ export const StockDetails = () => {
             <Col md={1}>:</Col>
             <Col>{stockData.currentMarketPrice}</Col>
           </Row>
-          <Row className="stock-details-row  ">
-            <Col>Number of Shares Needed </Col>
-            <Col md={1}>:</Col>
-            <Col>
-              <input
-                max={stockData.totalShares}
-                value={totalBoughtShares}
-                onChange={handleNoSharesChanges}
-                type="number"
-              />
-            </Col>
-          </Row>
-          <Row className="stock-details-row  ">
-            <Col>Total Purchase Price </Col>
-            <Col md={1}>:</Col>
-            <Col>{totalPurchasePrice}</Col>
-          </Row>
+          {stockData.availableShares > 0 && (
+            <>
+              <Row className="stock-details-row  ">
+                <Col>Number of Shares Needed </Col>
+                <Col md={1}>:</Col>
+                <Col>
+                  <input
+                    max={stockData.totalShares}
+                    value={totalBoughtShares}
+                    onChange={handleNoSharesChanges}
+                    type="number"
+                  />
+                </Col>
+              </Row>
+              <Row className="stock-details-row  ">
+                <Col>Total Purchase Price </Col>
+                <Col md={1}>:</Col>
+                <Col>{totalPurchasePrice}</Col>
+              </Row>
+            </>
+          )}
 
           <div className="d-flex justify-content-center gap-5 mt-5 stock-details-row">
-            <Button onClick={openPaymentModal} className="buy-btn">
-              Buy Stocks
-            </Button>
-            <Button onClick={() => {
-              navigate('/userDashboard/'+id)
-            }} className="buy-btn">
+            {stockData.availableShares > 0 ? (
+              <Button onClick={openPaymentModal} className="buy-btn">
+                Buy Stocks
+              </Button>
+            ) : (
+              <p style={{ color: "red" }}> All shares sold</p>
+            )}
+
+            <Button
+              onClick={() => {
+                navigate("/userDashboard/" + id);
+              }}
+              className="buy-btn"
+            >
               View Chart
             </Button>
           </div>
@@ -234,7 +246,7 @@ export const StockDetails = () => {
                 <Alert key={d?._id} variant="success ">
                   <span className="text-uppercase ">{company?.name}</span>{" "}
                   &nbsp; announced a dividend of {d?.dividentPerShare} rupees
-                  per share. 
+                  per share.
                 </Alert>
               </div>
             );

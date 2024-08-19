@@ -47,12 +47,10 @@ const buyStocks = async (req, res) => {
 
     // increase the currentMarketPrice of the stock
     const onePercentageOfCMP = Math.ceil(stock.currentMarketPrice * 0.01);
-    console.log('one per', onePercentageOfCMP)
     stock.currentMarketPrice = Math.round(
       onePercentageOfCMP + stock.currentMarketPrice
     );
 
-    console.log('cmp st', stock.currentMarketPrice)
     stock.cmpArr.push({ value: stock.currentMarketPrice, date: Date.now() });
     await stock.save();
 

@@ -32,10 +32,9 @@ export const PortfolioDetails = () => {
   }, [id]);
 
   useEffect(() => {
-    setBookedProfitOrLoss(stockData.currentProfit - stockData.currentLoss);
+    setBookedProfitOrLoss(stockData.currentProfit + stockData.currentLoss);
+    console.log("stock data", stockData.currentProfit , stockData.currentLoss);
   }, [stockData.currentProfit, stockData.currentLoss]);
-
-  console.log("stock data", stockData);
 
   const getStockData = async () => {
     try {
@@ -59,10 +58,10 @@ export const PortfolioDetails = () => {
         if (stock.totalQuantity === 0) {
           pAndL = currentProfilt - currentLoss;
         } else {
-          totalCurrentMarektValuation = CMP * stock?.numberOfSharesBought;
+          totalCurrentMarektValuation = CMP * stock?.totalQuantity;
           setCurrentMarketValue(totalCurrentMarektValuation);
-
-          pAndL = totalCurrentMarektValuation - stock?.totalCost;
+          const totalCostOfHoldingShares = stock?.totalQuantity * stock?.costPerShare;
+          pAndL = totalCurrentMarektValuation - totalCostOfHoldingShares;
         }
 
         setProfitOrLoss(pAndL);
@@ -120,6 +119,8 @@ export const PortfolioDetails = () => {
         toast.error("Server error.");
       }
       console.log("Error on sell stocks", error);
+    }finally {
+      setSellingQuantity(0);
     }
   };
 
@@ -197,21 +198,22 @@ export const PortfolioDetails = () => {
               </Col>
             </Row>
           )}
-
-          <Row className="stock-details-row  ">
-            <Col>Live Profit / Loss Status </Col>
-            <Col md={1}>:</Col>
-            {profitOrLoss > 0 ? (
-              <Col>
-                <p className="text-success" style={{ textAlign: "left" }}>
-                  {" "}
-                  ₹ {profitOrLoss}{" "}
-                </p>
-              </Col>
-            ) : (
-              <Col className="text-danger"> ₹ {profitOrLoss}</Col>
-            )}
-          </Row>
+          {stockData.totalQuantity !== 0 && (
+            <Row className="stock-details-row  ">
+              <Col>Live Profit / Loss Status </Col>
+              <Col md={1}>:</Col>
+              {profitOrLoss > 0 ? (
+                <Col>
+                  <p className="text-success" style={{ textAlign: "left" }}>
+                    {" "}
+                    ₹ {profitOrLoss}{" "}
+                  </p>
+                </Col>
+              ) : (
+                <Col className="text-danger"> ₹ {profitOrLoss}</Col>
+              )}
+            </Row>
+          )}
 
           <Row className="stock-details-row  ">
             <Col>Booked Profit / Loss </Col>
