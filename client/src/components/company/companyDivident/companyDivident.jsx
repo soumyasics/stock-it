@@ -153,8 +153,22 @@ function CompanyDivident() {
         setDividentPerShare(0);
         setTotalDivident(0);
         // redirect to ipo status.
+
+        // reset payment data
+        setPaymentData({
+          cardHolderName: "",
+          cardNumber: "",
+          cvv: "",
+          expiry: "",
+        });
+        setPaymentDate(today);
       }
     } catch (error) {
+      const status = error?.response?.status;
+
+      if (status === 400) {
+        toast.error(error?.response?.data?.msg || "Network issue");
+      }
       console.log("Error on divident", error);
     }finally {
       handleClose()

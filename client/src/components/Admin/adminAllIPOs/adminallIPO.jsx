@@ -21,7 +21,7 @@ export const AdminAllIPO = () => {
       const res = await axiosInstance.get("getIpos");
       if (res.status === 200) {
         let data = res.data?.data || [];
-        data.reverse()
+        data.reverse();
         setAllIPOs(data);
         setFixedData(data);
       } else {
@@ -40,7 +40,9 @@ export const AdminAllIPO = () => {
     const value = e.target.value;
     if (value) {
       const filterData = fixedData.filter((items) => {
-        return items.companyId?.name.toLowerCase().includes(value.toLowerCase());
+        return items.companyId?.name
+          .toLowerCase()
+          .includes(value.toLowerCase());
       });
       setAllIPOs(filterData);
     } else {
@@ -62,7 +64,7 @@ export const AdminAllIPO = () => {
           >
             <IoReturnUpBack />
           </div>
-          <h4>All  IPOs</h4>
+          <h4>All IPOs</h4>
           <div></div>
         </div>
 
@@ -85,56 +87,63 @@ export const AdminAllIPO = () => {
               <BsSearch />
             </InputGroup.Text>
           </InputGroup>
-          {
-            allIPOs.length==0? <h3 className="fs-3" style={{fontWeight:"bold"}}>No Data Found</h3>:
-          
-          <table border="1px">
-            <thead>
-              <tr className="viewCompancy-head-row">
-                <th>Sl. No</th>
-                <th>Company name</th>
-                <th>Total shares</th>
-                <th>Cost per share </th>
-                <th>Market Capitalization</th>
-                <th>Approved Status</th>
-                <th>View More</th>
-              </tr>
-            </thead>
-            <tbody>
-              {allIPOs.map((u, i) => {
-                return (
-                  <tr key={u._id}>
-                    <td>{i + 1}</td>
-                    <td>{u?.companyId?.name}</td>
-                    <td>{u?.totalShares}</td>
-                    <td>{u?.costPerShare}</td>
-                    <td> {u?.capitation}</td>
-                    <td>
-                      {u?.adminApproved === "approved" ? (
-                        <p className="text-success"> Approved </p>
-                      ) : u?.adminApproved === "rejected" ? (
-                        <p className="text-danger"> Rejected</p>
-                      ) : (
-                        <p>Pending </p>
-                      )}
-                    </td>
-                    <td>
-                      <td className="viewComapny-viewmore">
-                        <Button
-                          onClick={() => {
-                            navigate(`/adminIPOPending/${u?._id}`);
-                          }}
-                        >
-                          View more
-                        </Button>
+          {allIPOs.length == 0 ? (
+            <h3 className="fs-3" style={{ fontWeight: "bold" }}>
+              No Data Found
+            </h3>
+          ) : (
+            <table border="1px">
+              <thead>
+                <tr className="viewCompancy-head-row">
+                  <th>Sl. No</th>
+                  <th>Company name</th>
+                  <th>Total shares</th>
+                  <th>IPO Price </th>
+                  <th>CMP</th>
+                  {/* <th>Market Capitalization</th> */}
+                  <th> Current Valuation</th>
+                  <th>Approved Status</th>
+                  <th>View More</th>
+                </tr>
+              </thead>
+              <tbody>
+                {allIPOs.map((u, i) => {
+                  console.log("ipoda", u);
+                  return (
+                    <tr key={u._id}>
+                      <td>{i + 1}</td>
+                      <td>{u?.companyId?.name}</td>
+                      <td>{u?.totalShares}</td>
+                      <td>{u?.costPerShare}</td>
+                      <td>{u?.currentMarketPrice}</td>
+                      {/* <td> {u?.capitation}</td> */}
+                      <td> {u?.currentMarketPrice * u?.totalShares}</td>
+                      <td>
+                        {u?.adminApproved === "approved" ? (
+                          <p className="text-success"> Approved </p>
+                        ) : u?.adminApproved === "rejected" ? (
+                          <p className="text-danger"> Rejected</p>
+                        ) : (
+                          <p>Pending </p>
+                        )}
                       </td>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>}
-          
+                      <td>
+                        <td className="viewComapny-viewmore">
+                          <Button
+                            onClick={() => {
+                              navigate(`/adminIPOPending/${u?._id}`);
+                            }}
+                          >
+                            View more
+                          </Button>
+                        </td>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
 

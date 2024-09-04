@@ -20,6 +20,16 @@ const addDivident = async (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(companyId)) {
       return res.status(400).json({ msg: "Invalid company Id" });
     }
+    const isDividnentAlreadyExist = await DividnetModel.findOne({
+      IPOId,
+      companyId,
+      paymentDate,
+    });
+    if (isDividnentAlreadyExist) {
+      return res
+        .status(400)
+        .json({ msg: "Divident already added for this date" });
+    }
 
     const newDivident = new DividnetModel({
       IPOId,

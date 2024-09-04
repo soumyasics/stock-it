@@ -194,6 +194,15 @@ function CompanyRegistration() {
       formIsValid = false;
       return;
     }
+
+    // name field should allow only characters
+    if (!/^[a-zA-Z ]+$/.test(name)) {
+      toast.error("Please enter valid company name");
+      formIsValid = false;
+      return;
+    }
+
+
     if (!district) {
       toast.error("District is required");
       formIsValid = false;
@@ -246,6 +255,8 @@ function CompanyRegistration() {
       formIsValid = false;
       return;
     }
+
+    
 
     if (formIsValid) {
       sendDataToServer(formData);

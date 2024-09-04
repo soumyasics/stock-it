@@ -26,7 +26,9 @@ export const ViewETSubs = () => {
       );
       console.log(response);
       if (response.status == 200) {
-        setMySubs(response.data.data);
+        let myData = response.data?.data || [];
+        myData.reverse();
+        setMySubs(myData);
       }
     } catch (error) {
       console.log("Fail on get subs data", error);

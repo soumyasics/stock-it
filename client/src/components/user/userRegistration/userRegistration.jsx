@@ -136,9 +136,17 @@ export const UserRegistration = () => {
         toast.error("First name is required");
         return false;
       }
+      if (!/^[a-zA-Z ]+$/.test(firstName)) {
+        toast.error("Please enter valid first name");
+        return;
+      }
       if (!lastName) {
         toast.error("Last name is required");
         return false;
+      }
+      if (!/^[a-zA-Z ]+$/.test(lastName)) {
+        toast.error("Please enter valid last name");
+        return;
       }
       if (!gender) {
         toast.error("Gender is required");

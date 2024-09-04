@@ -27,7 +27,9 @@ export const EtviewArticleList = () => {
     try {
       axiosInstance.get(`getArticleByTutorId/${id}`).then((response) => {
         if (response.status === 200) {
-          setViewArticle(response.data.data);
+          let myData = response.data?.data || [];
+          myData.reverse();
+          setViewArticle(myData);
         }
       });
     } catch (error) {

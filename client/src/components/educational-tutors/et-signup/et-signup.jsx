@@ -66,6 +66,11 @@ function EtSignup() {
       toast.error("Full name is required");
       return false;
     }
+    if (!/^[a-zA-Z ]+$/.test(fullName)) {
+      toast.error("Please enter valid name");
+      return;
+    }
+
     if (!gender) {
       toast.error("Gender is required");
       return false;
