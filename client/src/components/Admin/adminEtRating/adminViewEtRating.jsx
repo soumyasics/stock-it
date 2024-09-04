@@ -14,7 +14,9 @@ function AdminViewEtRating() {
       const response = await axiosInstance.get("/getAllRating");
       console.log(response);
       if (response.status == 200) {
-        setRating(response.data.data);
+        let myData = response.data?.data || [];
+        myData.reverse();
+        setRating(myData);
       }
     } catch (error) {
       console.log("Fail on receiving data");

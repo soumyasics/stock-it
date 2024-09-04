@@ -17,7 +17,9 @@ function AdminViewCoComplaint() {
     axiosInstance.get("/getAllComplaints").then((response) => {
       console.log(response);
       if (response.status === 200) {
-        setComplaint(response.data.data);
+        let myData = response.data?.data || [];
+        myData.reverse();
+        setComplaint(myData);
       }
     });
   }, []);

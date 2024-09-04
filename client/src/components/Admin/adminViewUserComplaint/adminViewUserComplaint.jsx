@@ -19,7 +19,9 @@ function AdminViewUserComplaint() {
     const response = await axiosInstance.get("user-getAllComplaints");
     try {
       if (response.status === 200) {
-        setComplaint(response.data.data);
+        let myData = response.data?.data || [];
+        myData.reverse();
+        setComplaint(myData);
       }
     } catch (error) {
       console.log("Fail on receiving complaint");

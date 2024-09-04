@@ -17,7 +17,9 @@ function AdminViewEtComplaint() {
       const responce = await axiosInstance.get("/getAllComplaintsET");
       console.log(responce);
       if (responce.status == 200) {
-        setComplaint(responce.data.data);
+        let myData = responce.data?.data || [];
+        myData.reverse();
+        setComplaint(myData);
       }
     } catch (error) {
       console.log("fail on receiving data");

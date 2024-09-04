@@ -46,7 +46,9 @@ function CompanyViewUser() {
     try {
       const response = await axiosInstance.post("/getAllUsers");
       if (response.status === 200) {
-        setAllUsers(response.data.data);
+        let myData = response.data?.data || [];
+        myData.reverse();
+        setAllUsers(myData);
       }
     } catch (error) {
       console.log("error on receiving data");
