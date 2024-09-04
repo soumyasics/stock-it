@@ -17,7 +17,8 @@ export const AdminViewTutorsArticles = () => {
     try {
       axiosInstance.get(`getAllArticles`).then((response) => {
         if (response.status === 200) {
-          setViewArticle(response.data.data);
+          let myData = response.data?.data || [];
+          setViewArticle(myData);
         }
       });
     } catch (error) {

@@ -35,6 +35,7 @@ export const UserViewCompanies = () => {
       if (res.status === 200) {
         const data = res.data?.data || [];
         let activeCo = data.filter((c) => c.adminApproved === true)
+        activeCo.reverse()
         setAllCompanies(activeCo);
         setFixedData(activeCo);
       } else {

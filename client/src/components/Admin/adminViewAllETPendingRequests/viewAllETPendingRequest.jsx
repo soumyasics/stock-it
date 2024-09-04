@@ -20,7 +20,9 @@ export const ETPendingRequest = () => {
       .get("/getAllPendingTutors")
       .then((res) => {
         console.log(res);
-        setState(res.data.data);
+        let myData = res.data?.data || [];
+        myData.reverse();
+        setState(myData);
       })
       .catch((err) => {
         console.log(err);
@@ -78,7 +80,7 @@ export const ETPendingRequest = () => {
       {
         <div
           style={{ height: "500px", overflow: "auto" }}
-          className="d-flex flex-wrap justify-content-between px-3 pe-5 gap-5 mt-3 ms-3"
+          className="d-flex flex-wrap justify-content-start px-3 pe-5 gap-5 mt-3 ms-3"
         >
           {displayUsers}
         </div>

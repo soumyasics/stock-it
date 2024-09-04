@@ -20,6 +20,7 @@ export const AdminViewAllUsers = () => {
       const res = await axiosInstance.post("getAllUsers");
       if (res.status === 200) {
         let data = res.data?.data || [];
+        data.reverse()
         setAllUsers(data);
         setFixedData(data);
       } else {

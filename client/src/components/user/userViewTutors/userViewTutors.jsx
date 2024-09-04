@@ -16,7 +16,7 @@ function UserViewTutors() {
     try {
       const responce = await axiosInstance.get("/getAllApprovedTutors");
       if (responce.status == 200) {
-        setApprovedEt(responce.data.data);
+        setApprovedEt(responce.data?.data?.reverse() || []);
       }
     } catch (error) {
       console.log("Fail on receiving data");

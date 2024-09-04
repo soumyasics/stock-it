@@ -17,7 +17,9 @@ export const AdminViewComapaniesArticles = () => {
     try {
       axiosInstance.get(`co-getAllArticles`).then((response) => {
         if (response.status === 200) {
-          setViewArticle(response.data.data);
+          let myData = response.data?.data || [];
+          myData.reverse();
+          setViewArticle(myData);
         }
       });
     } catch (error) {

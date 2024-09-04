@@ -30,8 +30,10 @@ export const CompanyPendingRequest = () => {
       .post("/viewPendingCompanies")
       .then((res) => {
         if (res.data.status === 200) {
-          setState(res.data.data);
-          setFixedData(res.data.data);
+          let myData = res.data?.data || [];
+          myData.reverse();
+          setState(myData);
+          setFixedData(myData);
         }
         console.log("pending co.", res);
       })
@@ -115,7 +117,7 @@ export const CompanyPendingRequest = () => {
       {
         <div
           style={{ height: "500px", overflow: "auto" }}
-          className="d-flex flex-wrap justify-content-between px-3 pe-5 gap-5 mt-3 ms-3"
+          className="d-flex flex-wrap justify-content-start px-3 pe-5 gap-5 mt-3 ms-3"
         >
           {displayUsers}
         </div>

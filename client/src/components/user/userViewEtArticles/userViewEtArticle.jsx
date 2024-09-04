@@ -14,7 +14,7 @@ function UserViewEtArticle() {
   useEffect(() => {
     axiosInstance.get("/getAllArticles").then((response) => {
       if (response.status === 200) {
-        setViewArticle(response.data.data);
+        setViewArticle(response.data?.data?.reverse() || []);
       }
     });
   }, []);

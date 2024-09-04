@@ -14,7 +14,7 @@ function UserViewCoArticles() {
   useEffect(() => {
     axiosInstance.get("co-getAllArticles").then((response) => {
       if (response.status === 200) {
-        setViewArticle(response.data.data);
+        setViewArticle(response.data?.data?.reverse() || []);
       }
     });
   }, []);
